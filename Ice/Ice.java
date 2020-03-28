@@ -192,6 +192,14 @@ public abstract class Ice
 	}
 	/**
 	 * 
+	 * @return
+	 */
+	public int getNeighbourNum()
+	{
+		return neighbourNum;
+	}
+	/**
+	 * 
 	 */
 	public void breakIce()
 	{
