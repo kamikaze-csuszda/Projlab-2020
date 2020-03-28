@@ -1,6 +1,7 @@
 package Ice;
 
 import Characters.Character;
+import Strategy.Igloo;
 
 //
 //
@@ -22,14 +23,13 @@ public class StableIce extends Ice
 	
 	public void buildIgloo()
 	{
-	}
-	
-	public void destroyIgloo()
-	{
+		Igloo ig = new Igloo();
+		setIglooStrategy(ig);
 	}
 
 	@Override
-	public void moveHere(Character c) {
+	public void moveHere(Character c) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
