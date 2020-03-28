@@ -10,13 +10,20 @@ package Strategy;
 //
 //
 
-
+import Character.*;
+import Ice.*;
 
 
 public class NoDivingSuit implements WaterStrategy
 {
 	public void fallInWater(Character c)
 	{
+		Ice hole = c.getIce();
+		bool isSaved = false;
+		int num = 0;
+		while (isSaved == false || van még szomszéd)  //ide kell majd a szomszédok száma
+		{
 
+		}
 	}
 }

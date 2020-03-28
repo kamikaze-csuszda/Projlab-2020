@@ -10,12 +10,14 @@ package Strategy;
 //
 //
 
-
+import Character.*;
 
 
 public class DivingSuitStrategy implements WaterStrategy
 {
+	//Mivel a karakteren van búvárruha, ezért kimászik a legelső található szomszéd mezőre.
 	public void fallInWater(Character c)
 	{
+		c.move(0);
 	}
 }
