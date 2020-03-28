@@ -12,10 +12,15 @@ package Strategy;
 
 
 
-
+//Ez a stratégia akkor érvényesül, ha a játékosnál van kötél.
 public class RopeHelp implements HelpStrategy
 {
+	//Mivel van a szomszédnál kötél, ezért a vízbe esett karakter átlép az ő mezőjére.
+	//A függvény pedig igazat ad vissza, mivel a karakter meg van mentve.
 	public boolean help(Character c1, Character c2)
 	{
+		Ice neighbor = c2.getIce();
+		c1.moveTo(neighbor);
+		return true;
 	}
 }

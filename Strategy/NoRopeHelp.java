@@ -12,10 +12,12 @@ package Strategy;
 
 
 
-
+//Ez a stratégia akkor érvényesül, ha a karakternél nincs kötél.
 public class NoRopeHelp implements HelpStrategy
 {
+	//Mivel nem tud segíteni, ezért hamis értéket ad vissza.
 	public boolean help(Character c1, Character c2)
 	{
+		return false;
 	}
 }
