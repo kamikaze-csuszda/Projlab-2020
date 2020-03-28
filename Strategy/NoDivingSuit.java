@@ -10,7 +10,7 @@ package Strategy;
 //
 //
 
-import Character.*;
+import Characters.*;
 import Ice.*;
 
 

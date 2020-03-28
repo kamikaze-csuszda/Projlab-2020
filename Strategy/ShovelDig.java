@@ -11,7 +11,7 @@ package Strategy;
 //
 
 import Ice.*;
-import Character.*;
+import Characters.*;
 
 
 public class ShovelDig implements DigStrategy

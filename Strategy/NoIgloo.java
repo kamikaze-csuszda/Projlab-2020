@@ -1,7 +1,7 @@
 package Strategy;
 
 import Ice.Ice;
-import Character.*;
+import Characters.*;
 
 //
 //

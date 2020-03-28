@@ -12,7 +12,7 @@ package Strategy;
 //
 
 import Ice.*;
-import Character.*;
+import Characters.*;
 
 
 public class NoShovelDig implements DigStrategy
