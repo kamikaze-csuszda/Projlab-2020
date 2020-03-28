@@ -9,7 +9,6 @@ import Main.Game;
 import Strategy.DigStrategy;
 import Strategy.HelpStrategy;
 import Strategy.WaterStrategy;
-import sun.applet.Main;
 
 //
 //

@@ -34,7 +34,7 @@ public abstract class Ice
 	private ArrayList<Ice> neighbours;
 	private ArrayList<Item> items;
 	private IglooStrategy iglooStrategy;
-	public int neighbourNum;
+	private int neighbourNum;
 	
 	/**
 	 * Az osztaly alapertelmezett konstruktora
