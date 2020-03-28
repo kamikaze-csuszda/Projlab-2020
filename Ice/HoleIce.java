@@ -23,10 +23,16 @@ public class HoleIce extends Ice
 	}
 
 	@Override
-	public void moveHere(Character c) throws Exception
+	public void moveHere(Character c)
 	{
 		addCharacter(c);
-		getCharacter(0).fallInWater();
+		try
+		{
+			getCharacter(0).fallInWater();
+		} catch (Exception e)
+		{
+		}
+		
 		
 	}
 

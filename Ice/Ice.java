@@ -155,34 +155,34 @@ public abstract class Ice
 		return characters.get(i);
 	}
 	/**
-	 * 
-	 * @return
+	 * A mezon allo karakterek szamanak gettere
+	 * @return a mezon allo karakterek szama
 	 */
 	public int getCharNum()
 	{
 		return characters.size();
 	}
 	/**
-	 * 
-	 * @param c
+	 * Hozzaadja a parameterul kapott karaktert a mezon allo karakterekhez
+	 * @param c a hozzaadando karakter
 	 */
 	public void addCharacter(Character c)
 	{
 		characters.add(c);
 	}
 	/**
-	 * 
-	 * @param c
+	 * Kiveszi a mezon allo karakterek kozul a parameterul kapott karaktert
+	 * @param c a kivevendo karakter
 	 */
 	public void removeCharacter(Character c)
 	{
 		characters.remove(c);
 	}
 	/**
-	 * 
-	 * @param i
-	 * @return
-	 * @throws Exception 
+	 * Visszaadja az i-edik eszkozt a mezon, hibat dob ha tulindexelik
+	 * @param i az eszkoz indexe
+	 * @return az i-edik eszköz
+	 * @throws Exception hiba, ha tulindexelik
 	 */
 	public Item getItem(int i) throws Exception
 	{
@@ -191,15 +191,15 @@ public abstract class Ice
 		return items.get(i);
 	}
 	/**
-	 * 
-	 * @return
+	 * Visszaadja a szomszedok szamat
+	 * @return a szomszedok szama
 	 */
 	public int getNeighbourNum()
 	{
 		return neighbourNum;
 	}
 	/**
-	 * 
+	 * Kitori a mezon talalhato osszes targyat a jegbol
 	 */
 	public void breakIce()
 	{
@@ -209,35 +209,34 @@ public abstract class Ice
 		}
 	}
 	/**
-	 * 
-	 * @param i
+	 * Hozzaad egy targyat a mezon levo targyakhoz
+	 * @param i a hozzaadando targy
 	 */
 	public void addItem(Item i)
 	{
 		items.add(i);
 	}
 	/**
-	 * 
-	 * @param i
+	 * Kivesz egy targyat a mezon levo targyak kozul
+	 * @param i a kivevendo targy
 	 */
 	public void removeItem(Item i)
 	{
 		items.remove(i);
 	}
 	/**
-	 * 
-	 * @param c
-	 * @throws Exception
+	 * Egy karakter erre a mezore mozgatasa. A leszarmazottakban mas mas hatasa van
+	 * @param c az erkezo karakter
 	 */
-	public abstract void moveHere(Character c) throws Exception;
+	public abstract void moveHere(Character c);
 	/**
-	 * 
+	 * A buildIgloo() alapertelmezetten semmit nem csinal, csak a leszarmazottakban.
 	 */
 	public void buildIgloo()
 	{
 	}
 	/**
-	 * 
+	 * Az iglooStrategy-t visszaallitja az alaphelyzetbe.
 	 */
 	public void destroyIgloo()
 	{
