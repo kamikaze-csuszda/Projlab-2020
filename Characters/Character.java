@@ -28,7 +28,7 @@ public abstract class Character implements Movable
 	private Item equipment;
 	private HelpStrategy helpStrategy;
 	private DigStrategy digStrategy;
-	private WaterStrategy waterStrategy;
+	private WaterStrategy waterStrategy; //valamit 
 	public Ice getIce()
 	{
 	}
