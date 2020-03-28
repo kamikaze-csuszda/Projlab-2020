@@ -30,8 +30,7 @@ public class StableIce extends Ice
 	@Override
 	public void moveHere(Character c) 
 	{
-		// TODO Auto-generated method stub
-		
+		addCharacter(c);
 	}
 	
 }
