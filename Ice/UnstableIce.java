@@ -1,5 +1,7 @@
 package Ice;
 
+import java.net.Socket;
+
 import Characters.Character;
 
 //
@@ -18,11 +20,20 @@ import Characters.Character;
 
 public class UnstableIce extends Ice
 {
+	public UnstableIce(int maxChar)
+	{
+		super(maxChar);
+	}
 
 	@Override
-	public void moveHere(Character c) {
-		// TODO Auto-generated method stub
+	public void moveHere(Character c) throws Exception {
+		addCharacter(c);
 		
+		if(getCharNum() >= getMaxCharacters())
+			for (int i = 0; i < getCharNum(); i++)
+			{
+				getCharacter(i).fallInWater();
+			}
 	}
 	
 }

@@ -39,6 +39,17 @@ public abstract class Ice
 		iglooStrategy = nig;
 		
 	}
+	public Ice(int maxChar) 
+	{
+		snow = 0;
+		maxCharacters = maxChar;
+		characters = new ArrayList<Character>();
+		neighbours = new ArrayList<Ice>();
+		items = new ArrayList<Item>();
+		NoIgloo nig = new NoIgloo();
+		iglooStrategy = nig;
+		
+	}
 	
 	
 	public int getMaxCharacters()
@@ -136,7 +147,7 @@ public abstract class Ice
 		items.remove(i);
 	}
 	
-	public abstract void moveHere(Character c);
+	public abstract void moveHere(Character c) throws Exception;
 	
 	public void buildIgloo()
 	{
