@@ -10,11 +10,14 @@ package Strategy;
 //
 //
 
-import Ice.Ice;
+import Ice.*;
 
 public class Igloo implements IglooStrategy
 {
+	//Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
+	//De az iglu megvédi a rajta állókat a testhőcsökkenéstől, és új hóréteg sem rakódik le.
 	public void stormEffects(Ice i)
 	{
+		i.destroyIgloo();
 	}
 }

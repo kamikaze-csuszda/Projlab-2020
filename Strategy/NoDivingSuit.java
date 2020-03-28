@@ -17,5 +17,6 @@ public class NoDivingSuit implements WaterStrategy
 {
 	public void fallInWater(Character c)
 	{
+
 	}
 }
