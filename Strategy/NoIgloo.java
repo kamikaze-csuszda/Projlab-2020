@@ -16,7 +16,7 @@ import Characters.*;
 
 
 
-
+//Ez a stratégia fut le, ha az adott mezőn nincs iglu a vihar időpontjában.
 public class NoIgloo implements IglooStrategy
 {
 	//Mivel nincs iglu az adott mezőn, így nő eggyel a hó mennyisége.

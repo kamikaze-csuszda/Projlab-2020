@@ -12,6 +12,7 @@ package Strategy;
 
 import Ice.*;
 
+//Ez a stratégia fut le, ha az adott mezőn úgy megy végbe vihar, hogy van rajta iglu.
 public class Igloo implements IglooStrategy
 {
 	//Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
