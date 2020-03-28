@@ -13,7 +13,7 @@ import Characters.Character;
 
 
 
-
+//A segítségnyújtás stratégiája.
 public interface HelpStrategy
 {
 	public boolean help(Characters.Character c1, Characters.Character character);
