@@ -13,7 +13,7 @@ package Strategy;
 import Ice.*;
 import Characters.*;
 
-
+//Ez a stratégia fut le akkor, ha a karakter ásóval ás.
 public class ShovelDig implements DigStrategy
 {
 	//A karakteren keresztül megkapjuk a mezőt,

@@ -13,7 +13,7 @@ import Characters.Character;
 
 
 
-
+//Az ásás stratégiájának interfésze.
 public interface DigStrategy 
 {
 	public void dig(Character character);
