@@ -34,12 +34,10 @@ public abstract class Ice
 	private ArrayList<Ice> neighbours;
 	private ArrayList<Item> items;
 	private IglooStrategy iglooStrategy;
+	public int neighbourNum;
 	
 	/**
-	 * Ez az osztaly felel a jegtablakert es minden hozzajuk kapcsolodo interakcioert. 
-	 * Tarolja a szomszedos jegtablakat, a rajta levo ho mennyiseget, 
-	 * a rajta tartozkodo karakterek szamat, illetve hogy van-e rajta iglu. 
-	 * Hovihar sujthatja, ekkor eggyel no rajta a ho mennyisege.
+	 * Az osztaly alapertelmezett konstruktora
 	 */
 	public Ice()
 	{
@@ -49,22 +47,26 @@ public abstract class Ice
 		items = new ArrayList<Item>();
 		NoIgloo nig = new NoIgloo();
 		iglooStrategy = nig;
+		neighbourNum = 0;
 	}
 	
 	/**
-	 * 
-	 * @param snow
+	 * Az osztaly ho parameterrel ellatott konstruktora
+	 * @param snow a ho vastagsaga, max 5
 	 */
 	public Ice(int snow) 
 	{
 		this();
-		this.snow = snow;
+		if(snow <= 5)
+			this.snow = snow;
+		else
+			this.snow = 5;
 	}
 	
 	/**
-	 * 
-	 * @param maxChar
-	 * @param snow
+	 * Az osztaly ketparameteres konstruktora
+	 * @param maxChar max karakterek szama a mezon
+	 * @param snow a ho vastagsaga
 	 */
 	public Ice(int maxChar, int snow) 
 	{
@@ -73,15 +75,15 @@ public abstract class Ice
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * A maxCharacters gettere
+	 * @return a mezo teherbirasa
 	 */
 	public int getMaxCharacters()
 	{
 		return maxCharacters;
 	}
 	/**
-	 * 
+	 * Meghivja a strategia viharfuggvenyet
 	 */
 	public void stormEffects()
 	{
@@ -89,15 +91,15 @@ public abstract class Ice
 		
 	}
 	/**
-	 * 
-	 * @return
+	 * A ho vastagsaganak gettere
+	 * @return a ho vastagsaga
 	 */
 	public int getSnow()
 	{
 		return snow;
 	}
 	/**
-	 * 
+	 * A ho vastagsaganak novelese, max 5 a vastagsag
 	 */
 	public void incSnow()
 	{
@@ -105,7 +107,7 @@ public abstract class Ice
 			snow++;
 	}
 	/**
-	 * 
+	 * A ho vastagsaganak novelese, 0-nal nem lehet kisebb
 	 */
 	public void decSnow()
 	{
@@ -113,26 +115,26 @@ public abstract class Ice
 			snow--;
 	}
 	/**
-	 * 
-	 * @param is
+	 * Az iglooStrategy settere. Az iglooStrategy a vihar hatasait befolyasolja.
+	 * @param is az uj strategia
 	 */
 	public void setIglooStrategy(IglooStrategy is)
 	{
 		iglooStrategy = is;
 	}
 	/**
-	 * 
-	 * @param i
+	 * Hozzaad egy uj szomszedot a mezohoz
+	 * @param i az uj szomszed
 	 */
 	public void addNeighbour(Ice i)
 	{
 		neighbours.add(i);
 	}
 	/**
-	 * 
-	 * @param d
-	 * @return
-	 * @throws Exception
+	 * A szomszedos mezok gettere
+	 * @param d a szomszed indexe
+	 * @return a szomszed
+	 * @throws Exception ha nincs ennyi szomszed, hiba
 	 */
 	public Ice getNeighbour(int d) throws Exception
 	{
@@ -141,9 +143,9 @@ public abstract class Ice
 		return neighbours.get(d);
 	}
 	/**
-	 * 
-	 * @param i
-	 * @return
+	 * A mezon allo karakterek gettere
+	 * @param i a karakter indexe
+	 * @return az i-edik karakter
 	 * @throws Exception
 	 */
 	public Character getCharacter(int i) throws Exception
