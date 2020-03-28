@@ -13,7 +13,7 @@ import Characters.Character;
 
 
 
-
+//Annak a stratégiája, hogy mi fut le, ammikor egy karakter a vízbe esik.
 public interface WaterStrategy
 {
 	public void fallInWater(Characters.Character character);

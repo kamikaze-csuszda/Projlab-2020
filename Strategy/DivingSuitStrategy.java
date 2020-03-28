@@ -12,7 +12,7 @@ package Strategy;
 
 import Characters.*;
 
-
+//Ez fut le akkor, ha a vízbe esett karakteren van búvárruha.
 public class DivingSuitStrategy implements WaterStrategy
 {
 	//Mivel a karakteren van búvárruha, ezért kimászik a legelső található szomszéd mezőre.

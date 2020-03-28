@@ -13,7 +13,7 @@ package Strategy;
 import Characters.*;
 import Ice.*;
 
-
+//Ez fut le akkor, ha a vízbe esett karakteren nincs búvárruha.
 public class NoDivingSuit implements WaterStrategy
 {
 	//Amíg a karaktert nem menti meg valaki, vagy van még szomszédja a lyuknak, amibe beleesett,
