@@ -19,7 +19,13 @@ import Strategy.NoIgloo;
 
 
 
-
+/**
+ * Ez az osztaly felel a jegtablakert es minden hozzajuk kapcsolodo interakcioert. 
+ * Tarolja a szomszedos jegtablakat, a rajta levo ho mennyiseget, 
+ * a rajta tartozkodo karakterek szamat, illetve hogy van-e rajta iglu. 
+ * Hovihar sujthatja, ekkor eggyel no rajta a ho mennyisege.
+ * 
+ */
 public abstract class Ice
 {
 	private int snow;
@@ -29,7 +35,13 @@ public abstract class Ice
 	private ArrayList<Item> items;
 	private IglooStrategy iglooStrategy;
 	
-	public Ice() 
+	/**
+	 * Ez az osztaly felel a jegtablakert es minden hozzajuk kapcsolodo interakcioert. 
+	 * Tarolja a szomszedos jegtablakat, a rajta levo ho mennyiseget, 
+	 * a rajta tartozkodo karakterek szamat, illetve hogy van-e rajta iglu. 
+	 * Hovihar sujthatja, ekkor eggyel no rajta a ho mennyisege.
+	 */
+	public Ice()
 	{
 		snow = 0;
 		characters = new ArrayList<Character>();
@@ -37,59 +49,88 @@ public abstract class Ice
 		items = new ArrayList<Item>();
 		NoIgloo nig = new NoIgloo();
 		iglooStrategy = nig;
-		
 	}
-	public Ice(int maxChar) 
+	
+	/**
+	 * 
+	 * @param snow
+	 */
+	public Ice(int snow) 
 	{
-		snow = 0;
+		this();
+		this.snow = snow;
+	}
+	
+	/**
+	 * 
+	 * @param maxChar
+	 * @param snow
+	 */
+	public Ice(int maxChar, int snow) 
+	{
+		this(snow);
 		maxCharacters = maxChar;
-		characters = new ArrayList<Character>();
-		neighbours = new ArrayList<Ice>();
-		items = new ArrayList<Item>();
-		NoIgloo nig = new NoIgloo();
-		iglooStrategy = nig;
-		
 	}
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getMaxCharacters()
 	{
 		return maxCharacters;
 	}
-	
+	/**
+	 * 
+	 */
 	public void stormEffects()
 	{
+		iglooStrategy.stormEffects(this);
+		
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getSnow()
 	{
 		return snow;
 	}
-	
+	/**
+	 * 
+	 */
 	public void incSnow()
 	{
 		if(snow < 5)
 			snow++;
 	}
-	
+	/**
+	 * 
+	 */
 	public void decSnow()
 	{
 		if(snow > 0)
 			snow--;
 	}
-	
+	/**
+	 * 
+	 * @param is
+	 */
 	public void setIglooStrategy(IglooStrategy is)
 	{
 		iglooStrategy = is;
 	}
-	
+	/**
+	 * 
+	 * @param i
+	 */
 	public void addNeighbour(Ice i)
 	{
 		neighbours.add(i);
 	}
 	/**
 	 * 
-	 * @param d 
+	 * @param d
 	 * @return
 	 * @throws Exception
 	 */
@@ -99,36 +140,57 @@ public abstract class Ice
 			throw new Exception("Nincs mezo abban az iranyban!");
 		return neighbours.get(d);
 	}
-	
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 * @throws Exception
+	 */
 	public Character getCharacter(int i) throws Exception
 	{
 		if(i > characters.size()-1)
 			throw new Exception("Nincs ennyi karakter a mezon!");
 		return characters.get(i);
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getCharNum()
 	{
 		return characters.size();
 	}
-	
+	/**
+	 * 
+	 * @param c
+	 */
 	public void addCharacter(Character c)
 	{
 		characters.add(c);
 	}
-	
+	/**
+	 * 
+	 * @param c
+	 */
 	public void removeCharacter(Character c)
 	{
 		characters.remove(c);
 	}
-	
+	/**
+	 * 
+	 * @param i
+	 * @return
+	 * @throws Exception 
+	 */
 	public Item getItem(int i) throws Exception
 	{
 		if(i > characters.size()-1)
 			throw new Exception("Nincs ennyi eszkoz a mezon!");
 		return items.get(i);
 	}
-	
+	/**
+	 * 
+	 */
 	public void breakIce()
 	{
 		for (Item item : items) 
@@ -136,23 +198,37 @@ public abstract class Ice
 			item.defrost();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param i
+	 */
 	public void addItem(Item i)
 	{
 		items.add(i);
 	}
-	
+	/**
+	 * 
+	 * @param i
+	 */
 	public void removeItem(Item i)
 	{
 		items.remove(i);
 	}
-	
+	/**
+	 * 
+	 * @param c
+	 * @throws Exception
+	 */
 	public abstract void moveHere(Character c) throws Exception;
-	
+	/**
+	 * 
+	 */
 	public void buildIgloo()
 	{
 	}
-	
+	/**
+	 * 
+	 */
 	public void destroyIgloo()
 	{
 		NoIgloo nig = new NoIgloo();
