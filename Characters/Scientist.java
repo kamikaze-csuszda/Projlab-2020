@@ -15,7 +15,8 @@ package Characters;
 
 public class Scientist extends Character
 {
-	public int ability(int d)
+	public int ability(int d) throws Exception
 	{
+		return getIce().getNeighbour(d).getMaxCharacters();
 	}
 }

@@ -26,13 +26,20 @@ public class UnstableIce extends Ice
 	}
 
 	@Override
-	public void moveHere(Character c) throws Exception {
+	public void moveHere(Character c) {
 		addCharacter(c);
 		
 		if(getCharNum() >= getMaxCharacters())
 			for (int i = 0; i < getCharNum(); i++)
 			{
-				getCharacter(i).fallInWater();
+				try
+				{
+					getCharacter(i).fallInWater();
+				} catch (Exception e)
+				{
+					System.out.println(e);
+				}
+				
 			}
 	}
 	

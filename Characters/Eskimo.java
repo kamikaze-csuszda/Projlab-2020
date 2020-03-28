@@ -17,5 +17,8 @@ public class Eskimo extends Character
 {
 	public void ability()
 	{
+		if (getIce().getSnow() > 0) {
+			getIce().buildIgloo();			
+		}
 	}
 }
