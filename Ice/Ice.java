@@ -1,7 +1,10 @@
 package Ice;
+import java.util.ArrayList;
+
 import Characters.Character;
 import Item.Item;
 import Strategy.IglooStrategy;
+import Strategy.NoIgloo;
 
 //
 //
@@ -21,12 +24,26 @@ public abstract class Ice
 {
 	private int snow;
 	private int maxCharacters;
-	private Character characters;
-	private Ice neighbours;
-	private Item items;
+	private ArrayList<Character> characters;
+	private ArrayList<Ice> neighbours;
+	private ArrayList<Item> items;
 	private IglooStrategy iglooStrategy;
+	
+	public Ice() 
+	{
+		snow = 0;
+		characters = new ArrayList<Character>();
+		neighbours = new ArrayList<Ice>();
+		items = new ArrayList<Item>();
+		NoIgloo nig = new NoIgloo();
+		iglooStrategy = nig;
+		
+	}
+	
+	
 	public int getMaxCharacters()
 	{
+		return maxCharacters;
 	}
 	
 	public void stormEffects()
@@ -35,58 +52,88 @@ public abstract class Ice
 	
 	public int getSnow()
 	{
+		return snow;
 	}
 	
 	public void incSnow()
 	{
+		if(snow < 5)
+			snow++;
 	}
 	
 	public void decSnow()
 	{
+		if(snow > 0)
+			snow--;
 	}
 	
 	public void setIglooStrategy(IglooStrategy is)
 	{
+		iglooStrategy = is;
 	}
 	
 	public void addNeighbour(Ice i)
 	{
+		neighbours.add(i);
+	}
+	/**
+	 * 
+	 * @param d 
+	 * @return
+	 * @throws Exception
+	 */
+	public Ice getNeighbour(int d) throws Exception
+	{
+		if(d > neighbours.size()-1)
+			throw new Exception("Nincs mezo abban az iranyban!");
+		return neighbours.get(d);
 	}
 	
-	public Ice getNeighbour(int d)
+	public Character getCharacter(int i) throws Exception
 	{
-	}
-	
-	public Character getCharacter(int i)
-	{
+		if(i > characters.size()-1)
+			throw new Exception("Nincs ennyi karakter a mezon!");
+		return characters.get(i);
 	}
 	
 	public int getCharNum()
 	{
+		return characters.size();
 	}
 	
 	public void addCharacter(Character c)
 	{
+		characters.add(c);
 	}
 	
 	public void removeCharacter(Character c)
 	{
+		characters.remove(c);
 	}
 	
-	public Item getItem(int i)
+	public Item getItem(int i) throws Exception
 	{
+		if(i > characters.size()-1)
+			throw new Exception("Nincs ennyi eszkoz a mezon!");
+		return items.get(i);
 	}
 	
 	public void breakIce()
 	{
+		for (Item item : items) 
+		{
+			item.defrost();
+		}
 	}
 	
 	public void addItem(Item i)
 	{
+		items.add(i);
 	}
 	
 	public void removeItem(Item i)
 	{
+		items.remove(i);
 	}
 	
 	public abstract void moveHere(Character c);
@@ -97,5 +144,7 @@ public abstract class Ice
 	
 	public void destroyIgloo()
 	{
+		NoIgloo nig = new NoIgloo();
+		iglooStrategy = nig;
 	}
 }
