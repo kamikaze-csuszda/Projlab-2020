@@ -15,4 +15,13 @@ package Item;
 
 public class Flare extends Gun
 {
+    /**
+     * Alapertelmezett konstruktor.
+     */
+    public Flare()
+    {
+        super();
+        System.out.println("--> Flare()");
+        System.out.println("<--");
+    }
 }
