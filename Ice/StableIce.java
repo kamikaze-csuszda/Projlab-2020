@@ -28,7 +28,9 @@ public class StableIce extends Ice
 		System.out.println("--> StableIce()");
 		System.out.println("<--");
 	}
-
+	/**
+	 * Megépíti az iglut és beaállítja az iglustratégiát
+	 */
 	public void buildIgloo()
 	{
 		System.out.println("--> buildIgloo()");
@@ -37,7 +39,10 @@ public class StableIce extends Ice
 		decSnow();
 		System.out.println("<--");
 	}
-
+	/**
+	 * Ide mozgatja a paramterben megadott karaktert.
+	 * @param c
+	 */
 	@Override
 	public void moveHere(Character c) 
 	{
