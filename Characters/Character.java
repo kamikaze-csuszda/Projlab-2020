@@ -55,7 +55,7 @@ public abstract class Character implements Movable
 		waterStrategy = nds;
 	}
 	/**
-	 * 
+	 * A karakter egy paraméteres konstruktora
 	 * @param bodywarmth
 	 */
 	public Character(int bodywarmth)
@@ -64,7 +64,7 @@ public abstract class Character implements Movable
 		this.bodywarmth = bodywarmth;
 	}
 	/**
-	 * 
+	 * A karakter két paraméteres konstruktora
 	 * @param i
 	 * @param bodywarmth
 	 */
