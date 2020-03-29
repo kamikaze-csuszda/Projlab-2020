@@ -13,13 +13,18 @@ import Ice.Ice;
 //
 
 
-
-
-//Ez a stratégia akkor érvényesül, ha a játékosnál van kötél.
+/**
+ * Ez a strategia akkor ervenyesul, ha a karakternel van kotel.
+ */
 public class RopeHelp implements HelpStrategy
 {
-	//Mivel van a szomszédnál kötél, ezért a vízbe esett karakter átlép az ő mezőjére.
-	//A függvény pedig igazat ad vissza, mivel a karakter meg van mentve.
+	/**
+	 * Mivel van a szomszednal kotel, ezert a vizbe esett karakter atlep az o mezojere.
+	 * 	A fuggveny pedig igazat ad vissza, mivel a karakter meg van mentve.
+	 * @param c1 : a karakter, aki segitseget ker
+	 * @param c2 : a karakter, akit megkertek, hogy segitsen
+	 * @return : visszaadja, hogy sikerult megmenteni
+	 */
 	public boolean help(Character c1, Character c2)
 	{
 		Ice neighbor = c2.getIce();

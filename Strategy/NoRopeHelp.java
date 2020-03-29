@@ -12,11 +12,17 @@ import Characters.Character;
 //
 
 
-
-//Ez a stratégia akkor érvényesül, ha a karakternél nincs kötél.
+/**
+ * Ez a strategia akkor fut le, ha a megkert karakternel nincs kotel.
+ */
 public class NoRopeHelp implements HelpStrategy
 {
-	//Mivel nem tud segíteni, ezért hamis értéket ad vissza.
+	/**
+	 * Mivel a karakter nem tud segiteni, ezert hamis erteket ad vissza.
+	 * @param c1 : a karakter aki segitseget ker
+	 * @param c2 : a karakter, akit megkertek, hogy segitsen
+	 * @return : megmondja, hogy nem sikerult megmenteni
+	 */
 	public boolean help(Character c1, Character c2)
 	{
 		return false;

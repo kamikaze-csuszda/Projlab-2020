@@ -12,9 +12,16 @@ import Characters.Character;
 //
 
 
-
-//A segítségnyújtás stratégiája.
+/**
+ * A segitsegnyujtasi strategia interfesze.
+ */
 public interface HelpStrategy
 {
+	/**
+	 * Meghatarozza, hogy segitsegnyujtas soran mi tortenik.
+	 * @param c1 : a karakter, aki segitseget ker
+	 * @param c2 : a karakter, akit megkernek, hogy segitsen
+	 * @return : megmondja, hogy sikerult-e megmenteni vagy sem
+	 */
 	public boolean help(Character c1, Character c2);
 }
