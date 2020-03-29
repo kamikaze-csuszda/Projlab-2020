@@ -18,6 +18,6 @@ import Ice.Ice;
 //A vihar következményeinek stratégiája.
 public interface IglooStrategy
 {
-	public void stormEffects(Ice i);
+	public void stormEffects(Ice i) throws Exception;
 	
 }

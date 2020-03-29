@@ -84,8 +84,9 @@ public abstract class Ice
 	}
 	/**
 	 * Meghivja a strategia viharfuggvenyet
+	 * @throws Exception indexelesi hiba a fuggvenyen belul
 	 */
-	public void stormEffects()
+	public void stormEffects() throws Exception
 	{
 		iglooStrategy.stormEffects(this);
 		

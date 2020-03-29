@@ -17,7 +17,7 @@ public class Igloo implements IglooStrategy
 {
 	//Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
 	//De az iglu megvédi a rajta állókat a testhőcsökkenéstől, és új hóréteg sem rakódik le.
-	public void stormEffects(Ice i)
+	public void stormEffects(Ice i) throws Exception
 	{
 		i.destroyIgloo();
 	}

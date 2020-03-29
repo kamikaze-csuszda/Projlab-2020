@@ -181,7 +181,7 @@ public abstract class Character implements Movable
 		return	helpStrategy.help(c1, this);
 	}
 	
-	public void fallInWater()
+	public void fallInWater() throws Exception
 	{
 		waterStrategy.fallInWater(this);
 	}

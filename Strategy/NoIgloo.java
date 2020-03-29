@@ -2,6 +2,7 @@ package Strategy;
 
 import Ice.Ice;
 import Characters.*;
+import Characters.Character;
 
 //
 //
@@ -21,7 +22,7 @@ public class NoIgloo implements IglooStrategy
 {
 	//Mivel nincs iglu az adott mezőn, így nő eggyel a hó mennyisége.
 	//Elkérjük a mezőn álló karakterek számát, majd végigiterálunk rajtuk, és mindegyiknek csökken a testhője eggyel.
-	public void stormEffects(Ice i)
+	public void stormEffects(Ice i) throws Exception
 	{
 		i.incSnow();
 		int charNum = i.getCharNum();
