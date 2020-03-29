@@ -55,7 +55,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Character konstruktora, ha mas a testho kezdeti erteke
-	 * @param bodywarmth: testho erteke
+	 * @param bodywarmth  testho erteke
 	 */
 	public Character(int bodywarmth)
 	{
@@ -64,8 +64,8 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Character kostruktora 
-	 * @param i: az Ice erteke ahol a Character kezd 
-	 * @param bodywarmth: testho erteke
+	 * @param i  az Ice erteke ahol a Character kezd 
+	 * @param bodywarmth  testho erteke
 	 */
 	public Character(Ice i, int bodywarmth)
 	{
@@ -75,7 +75,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Getter az aktualis jegtablara
-	 * @return: Visszaadja az aktualis jegtablat, amin a Character all 
+	 * @return  Visszaadja az aktualis jegtablat, amin a Character all 
 	 */
 	public Ice getIce()
 	{
@@ -85,7 +85,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Getter a action ertekere
-	 * @return: aktualis action szamaval ter vissza
+	 * @return  aktualis action szamaval ter vissza
 	 */
 	public int getAction()
 	{
@@ -135,7 +135,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * felesz i a hobol az i-dik itemet, amennyiben az nincs befagyva �s van m�g hely az equipmentben
-	 * @param i: az item sorszama a mit fel akarunk venni
+	 * @param i  az item sorszama a mit fel akarunk venni
 	 */
 	public void itemPickup(int i)
 	{
@@ -152,7 +152,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * kozzaadja egy itemet egy karakterhez
-	 * @param i: az item  amit hozz� akarunk adni 
+	 * @param i  az item  amit hozz� akarunk adni 
 	 */
 	public void addItem(Item i)
 	{
@@ -163,9 +163,9 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * osszerakja a fegyver 3 alkatreszet, es megnyerik a jatekor, amennyiben mindenki ugyan azon a mezon van
-	 * @param g1: a fegyver egyik alkatresze
-	 * @param g2: a fegyver masik alkatresze
-	 * @param g3: a fegyver harmadik alkatresze
+	 * @param g1  a fegyver egyik alkatresze
+	 * @param g2  a fegyver masik alkatresze
+	 * @param g3  a fegyver harmadik alkatresze
 	 */
 	public void assembleGun(Gun g1, Gun g2, Gun g3)
 	{
@@ -174,7 +174,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * eltavolit egy itemet a Character equipment-jebol
-	 * @param i: az Item amit eltavolitunk
+	 * @param i  az Item amit eltavolitunk
 	 */
 	public void removeItem(Item i)
 	{
@@ -196,8 +196,8 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Item-et adunk at egyik Characternek a masiktol
-	 * @param c: A Character akinek az itemet atadjuk 
-	 * @param i: Az Item amit atadunk
+	 * @param c  A Character akinek az itemet atadjuk 
+	 * @param i  Az Item amit atadunk
 	 */
 	public void itemGive(Character c, Item i)
 	{
@@ -208,7 +208,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * A Charactert atmozgatjuk egy masik jegteblara, szomszedossag vizsgalat nelkul 
-	 * @param i: a Jegtabla, amire moztgatjuk 
+	 * @param i  a Jegtabla, amire moztgatjuk 
 	 */
 	public void moveTo(Ice i)
 	{
@@ -220,7 +220,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Setter az akutalis jegtabla beallitasara 
-	 * @param i: az jegtabla, amire athelyezzuk a Character-t 
+	 * @param i  az jegtabla, amire athelyezzuk a Character-t 
 	 */
 	public void setIce(Ice i)
 	{
@@ -230,7 +230,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * settet a helpstrategyre 
-	 * @param hs: a helpstrategy uj allapota
+	 * @param hs  a helpstrategy uj allapota
 	 */
 	public void setHelpStrategy(HelpStrategy hs)
 	{
@@ -240,7 +240,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * settet a DigStrategy 
-	 * @param ds: a DigStrategy uj allapota
+	 * @param ds  a DigStrategy uj allapota
 	 */
 	public void setDigStrategy(DigStrategy ds)
 	{
@@ -250,7 +250,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * settet a WaterStrategy 
-	 * @param ws: a WaterStrategy uj allapota
+	 * @param ws a WaterStrategy uj allapota
 	 */
 	public void setWaterStrategy(WaterStrategy ws)
 	{
@@ -260,7 +260,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * getter a bodywarmth-ra
-	 * @return: aktualis bodywarmth-ot adja vissza
+	 * @return aktualis bodywarmth-ot adja vissza
 	 */
 	public int getWarmth()
 	{
@@ -269,12 +269,18 @@ public abstract class Character implements Movable
 		return bodywarmth;
 	}
 	/**
-	 * 3 akcioert novel a bodywarmth-on egyet 
+	 * getter az Itemre, ami a Characternel van
+	 * @param i az item sorszama
+	 * @return i-dik Item
 	 */
 	public Item getItem(int i)
 	{
 		return equipment.get(i);
 	}
+	/**
+	 * 3 akcioert novel a bodywarmth-on egyet 
+	 */
+	
 	public void warmup()
 	{
 		System.out.println("--> warmup()");
@@ -307,7 +313,7 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * a Character-t mozgatjuk a fugvennyel
-	 * @param d: a mozgas iranyat hatarozza meg 
+	 * @param d  a mozgas iranyat hatarozza meg 
 	 */
 	public void move(int d)
 	{
@@ -324,8 +330,8 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * Characternek a helpstrategy-jet meghivja, ami eldonti hogy tud-e segiten a masik karakternek
-	 * @param c1: Character aki segiteni akar
-	 * @return: visszater hogy tud-e segiteni (true), vagy sem (false)
+	 * @param c1  Character aki segiteni akar
+	 * @return  visszater hogy tud-e segiteni (true), vagy sem (false)
 	 */
 	public boolean help(Character c1)
 	{
