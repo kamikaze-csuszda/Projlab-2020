@@ -60,6 +60,7 @@ public abstract class Character implements Movable
 	{
 		this(bodywarmth);
 		ice = i;
+		i.addCharacter(this);
 	}
 	
 	public Ice getIce()
