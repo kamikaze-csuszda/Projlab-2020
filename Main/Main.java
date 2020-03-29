@@ -7,6 +7,7 @@ import Characters.Eskimo;
 import Characters.Scientist;
 import Ice.StableIce;
 import Ice.UnstableIce;
+import Strategy.DivingSuitStrategy;
 
 public class Main{
 
@@ -126,9 +127,12 @@ public class Main{
     	st.addNeighbour(ui);
     	ui.addNeighbour(st);
     	Scientist sc = new Scientist();
+    	DivingSuitStrategy dvs = new DivingSuitStrategy();
+    	sc.setWaterStrategy(dvs);
     	ui.addCharacter(sc);
     	sc.setIce(ui);
     	e.move(0);
     	
     }
+    
 }

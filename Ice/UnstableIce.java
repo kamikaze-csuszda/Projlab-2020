@@ -35,7 +35,7 @@ public class UnstableIce extends Ice
 		c.getIce().removeCharacter(c);
 		c.setIce(this);
 		if(getCharNum() >= getMaxCharacters())
-			for (int i = 0; i < getCharNum(); i++)
+			for (int i = getCharNum()-1; i>= 0; i--)
 			{
 				try
 				{
