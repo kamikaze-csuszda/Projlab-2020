@@ -17,11 +17,16 @@ import Characters.Character;
 
 
 
-//Ez a stratégia fut le, ha az adott mezőn nincs iglu a vihar időpontjában.
+/**
+ * Az Ice-hoz tartozo strategia, akkor fut le, ha nincs rajta iglu.
+ */
 public class NoIgloo implements IglooStrategy
 {
-	//Mivel nincs iglu az adott mezőn, így nő eggyel a hó mennyisége.
-	//Elkérjük a mezőn álló karakterek számát, majd végigiterálunk rajtuk, és mindegyiknek csökken a testhője eggyel.
+	/**
+	 * Mivel nincs iglu az adott mezőn, így nő eggyel a hó mennyisége.
+	 * Elkérjük a mezőn álló karakterek számát, majd végigiterálunk rajtuk, és mindegyiknek csökken a testhője eggyel.
+	 * @param i : a jegtabla, melyre erkezik a vihar
+	 */
 	public void stormEffects(Ice i) throws Exception
 	{
 		i.incSnow();

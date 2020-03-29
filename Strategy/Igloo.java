@@ -12,11 +12,17 @@ package Strategy;
 
 import Ice.*;
 
-//Ez a stratégia fut le, ha az adott mezőn úgy megy végbe vihar, hogy van rajta iglu.
+/**
+ * A jegtabla strategiaja, akkor fut le, ha van az adott jegtablan iglu.
+ */
 public class Igloo implements IglooStrategy
 {
-	//Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
-	//De az iglu megvédi a rajta állókat a testhőcsökkenéstől, és új hóréteg sem rakódik le.
+	/**
+	 * Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
+	 * De az iglu megvédi a rajta állókat a testhőcsökkenéstől, és új hóréteg sem rakódik le.
+	 * @param i : a jegtabla, melyre vihar erkezik
+	 * @throws Exception
+	 */
 	public void stormEffects(Ice i) throws Exception
 	{
 		i.destroyIgloo();
