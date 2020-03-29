@@ -21,6 +21,14 @@ import Characters.Character;
 public class NoShovelDig implements DigStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public NoShovelDig()
+	{
+		System.out.println("--> NoShovelDig()");
+		System.out.println("<--");
+	}
+	/**
 	 * A karakteren keresztül megkapjuk a mezőt,
 	 * 	amin áll, és ezen csökkentjük a hó mennyiségét.
 	 * 	Mivel nincs nála ásó, ezért csak eggyel.
@@ -28,8 +36,10 @@ public class NoShovelDig implements DigStrategy
 	 */
 	public void dig(Character c)
 	{
+		System.out.println("--> dig(c)");
 		Ice ice = c.getIce();
 		ice.decSnow();
 		c.decAction();
+		System.out.println("<--");
 	}
 }

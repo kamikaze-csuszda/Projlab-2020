@@ -20,6 +20,15 @@ import Characters.Character;
 public class ShovelDig implements DigStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public ShovelDig()
+	{
+		System.out.println("--> ShovelDig()");
+		System.out.println("<--");
+	}
+
+	/**
 	 * A karakteren keresztul megkapjuk a mezot,
 	 * 	amin all, es ezen csokkentjuk a ho mennyiseget.
 	 * 	Mivel van nala aso, ezert ket egyseggel.
@@ -27,9 +36,11 @@ public class ShovelDig implements DigStrategy
 	 */
 	public void dig(Character c)
 	{
+		System.out.println("--> dig(c)");
 		Ice ice = c.getIce();
 		ice.decSnow();
 		ice.decSnow();
 		c.decAction();
+		System.out.println("<--");
 	}
 }

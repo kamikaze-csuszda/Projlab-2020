@@ -18,6 +18,14 @@ import Characters.Character;
 public class NoRopeHelp implements HelpStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public NoRopeHelp()
+	{
+		System.out.println("--> NoRopeHelp()");
+		System.out.println("<--");
+	}
+	/**
 	 * Mivel a karakter nem tud segiteni, ezert hamis erteket ad vissza.
 	 * @param c1 : a karakter aki segitseget ker
 	 * @param c2 : a karakter, akit megkertek, hogy segitsen
@@ -25,6 +33,8 @@ public class NoRopeHelp implements HelpStrategy
 	 */
 	public boolean help(Character c1, Character c2)
 	{
+		System.out.println("--> help(c1, c2)");
+		System.out.println("<-- false");
 		return false;
 	}
 }

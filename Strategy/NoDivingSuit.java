@@ -19,6 +19,15 @@ import Ice.*;
 public class NoDivingSuit implements WaterStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public NoDivingSuit()
+	{
+		System.out.println("--> NoDivingSuit()");
+		System.out.println("<--");
+	}
+
+	/**
 	 * Amig a karaktert nem menti meg valaki, vagy van meg szomszedja a lyuknak, amibe beleesett,
 	 * 	addig vesszuk a kovetkezo szomszedot, megnezzuk, hogy hany karakter all rajta,
 	 * 	es amig nem menti meg valaki vagy van meg karakter, addig a karakternek meghivjuk a help fuggvenyet,
@@ -29,6 +38,7 @@ public class NoDivingSuit implements WaterStrategy
 	 */
 	public void fallInWater(Character c) throws Exception
 	{
+		System.out.println("--> fallInWater(c)");
 		Ice hole = c.getIce();
 		boolean isSaved = false;
 		int num = 0;
@@ -49,5 +59,6 @@ public class NoDivingSuit implements WaterStrategy
 		{
 			c.die();
 		}
+		System.out.println("<--");
 	}
 }
