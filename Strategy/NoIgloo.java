@@ -23,8 +23,8 @@ import Characters.Character;
 public class NoIgloo implements IglooStrategy
 {
 	/**
-	 * Mivel nincs iglu az adott mezőn, így nő eggyel a hó mennyisége.
-	 * Elkérjük a mezőn álló karakterek számát, majd végigiterálunk rajtuk, és mindegyiknek csökken a testhője eggyel.
+	 * Mivel nincs iglu az adott mezon, igy no eggyel a ho mennyisege.
+	 * Elkerjuk a mezon allo karakterek szamat, majd vegigiteralunk rajtuk, és mindegyiknek csokken a testhoje eggyel.
 	 * @param i : a jegtabla, melyre erkezik a vihar
 	 */
 	public void stormEffects(Ice i) throws Exception

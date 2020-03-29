@@ -15,12 +15,17 @@ import Ice.*;
 import Characters.*;
 import Characters.Character;
 
-//Ez a stratégia fut le akkor, ha a karakter nem ásóval ás.
+/**
+ * Ez a strategia fut le, ha az asast vegzo karakternel nincs aso.
+ */
 public class NoShovelDig implements DigStrategy
 {
-	//A karakteren keresztül megkapjuk a mezőt,
-	//amin áll, és ezen csökkentjük a hó mennyiségét.
-	//Mivel nincs nála ásó, ezért csak eggyel.
+	/**
+	 * A karakteren keresztül megkapjuk a mezőt,
+	 * 	amin áll, és ezen csökkentjük a hó mennyiségét.
+	 * 	Mivel nincs nála ásó, ezért csak eggyel.
+	 * @param c : a karakter, aki as
+	 */
 	public void dig(Character c)
 	{
 		Ice ice = c.getIce();

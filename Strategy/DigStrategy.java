@@ -12,9 +12,14 @@ import Characters.Character;
 //
 
 
-
-//Az ásás stratégiájának interfésze.
+/**
+ * Az asas strategiajanak interfesze.
+ */
 public interface DigStrategy 
 {
+	/**
+	 * Az asast megvalosito fuggveny deklaralasa.
+	 * @param c : a karakter, aki as
+	 */
 	public void dig(Character c);
 }

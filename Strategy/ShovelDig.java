@@ -14,12 +14,17 @@ import Ice.*;
 import Characters.*;
 import Characters.Character;
 
-//Ez a stratégia fut le akkor, ha a karakter ásóval ás.
+/**
+ * Ez a strategia fut le ha az adott karakter aso hasznalataval as.
+ */
 public class ShovelDig implements DigStrategy
 {
-	//A karakteren keresztül megkapjuk a mezőt,
-	//amin áll, és ezen csökkentjük a hó mennyiségét.
-	//Mivel van nála ásó, ezért két egységgel.
+	/**
+	 * A karakteren keresztul megkapjuk a mezot,
+	 * 	amin all, es ezen csokkentjuk a ho mennyiseget.
+	 * 	Mivel van nala aso, ezert ket egyseggel.
+	 * @param c : a karakter aki as
+	 */
 	public void dig(Character c)
 	{
 		Ice ice = c.getIce();

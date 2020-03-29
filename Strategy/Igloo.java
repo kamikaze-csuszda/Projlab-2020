@@ -18,8 +18,8 @@ import Ice.*;
 public class Igloo implements IglooStrategy
 {
 	/**
-	 * Ha van iglu az adott mezőn, akkor a vihar azt lerombolja.
-	 * De az iglu megvédi a rajta állókat a testhőcsökkenéstől, és új hóréteg sem rakódik le.
+	 * Ha van iglu az adott mezon, akkor a vihar azt lerombolja.
+	 * De az iglu megvedi a rajta allokat a testhocsokkenestol, es uj horeteg sem rakodik le.
 	 * @param i : a jegtabla, melyre vihar erkezik
 	 * @throws Exception
 	 */
