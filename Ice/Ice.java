@@ -208,7 +208,7 @@ public abstract class Ice
 	/**
 	 * Visszaadja az i-edik eszkozt a mezon, hibat dob ha tulindexelik
 	 * @param i az eszkoz indexe
-	 * @return az i-edik eszk�z
+	 * @return az i-edik eszkoz
 	 * @throws Exception hiba, ha tulindexelik
 	 */
 	public Item getItem(int i) throws Exception
