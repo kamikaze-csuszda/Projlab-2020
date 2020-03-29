@@ -23,7 +23,7 @@ public class NoDivingSuit implements WaterStrategy
 	 * 	addig vesszuk a kovetkezo szomszedot, megnezzuk, hogy hany karakter all rajta,
 	 * 	es amig nem menti meg valaki vagy van meg karakter, addig a karakternek meghivjuk a help fuggvenyet,
 	 * 	ami megadja, hogy megmentette-e a karaktert, vagy sem.
-	 * 	Ha a karakterek és a szomszedok is elfogynak, es senki nem mentette meg, akkor meghal.
+	 * 	Ha a karakterek es a szomszedok is elfogynak, es senki nem mentette meg, akkor meghal.
 	 * @param c : a karakter, aki vizbe esett
 	 * @throws Exception
 	 */
@@ -32,12 +32,12 @@ public class NoDivingSuit implements WaterStrategy
 		Ice hole = c.getIce();
 		boolean isSaved = false;
 		int num = 0;
-		while (isSaved == false || num < hole.getNeighbourNum())
+		while (isSaved == false && num < hole.getNeighbourNum())
 		{
 			Ice neighbour = hole.getNeighbour(num);
 			int charCount = neighbour.getCharNum();
 			int currentChar = 0;
-			while (isSaved == false || currentChar < charCount)
+			while (isSaved == false && currentChar < charCount)
 			{
 				Character c2 = neighbour.getCharacter(currentChar);
 				isSaved = c2.help(c);

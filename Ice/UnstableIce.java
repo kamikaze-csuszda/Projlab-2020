@@ -22,13 +22,14 @@ public class UnstableIce extends Ice
 {
 	public UnstableIce(int maxChar)
 	{
-		super(maxChar);
+		super(maxChar, 0);
 	}
 
 	@Override
 	public void moveHere(Character c) {
 		addCharacter(c);
-		
+		c.getIce().removeCharacter(c);
+		c.setIce(this);
 		if(getCharNum() >= getMaxCharacters())
 			for (int i = 0; i < getCharNum(); i++)
 			{
