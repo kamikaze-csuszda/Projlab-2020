@@ -28,7 +28,7 @@ public class HoleIce extends Ice
 		System.out.println("<--");
 	}
 	/**
-	 *
+	 * Felulirja az addItem fuggvenyeket, mert itt nem lehet eszköz befagyva
 	 * @param i
 	 */
 	public void addItem(Item i)
