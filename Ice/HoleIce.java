@@ -24,10 +24,9 @@ public class HoleIce extends Ice
 		System.out.println("<--");
 	}
 
-	public void addItem() //ennek tippre lesz meg parametere
+	public void addItem(Item i)
 	{
-		System.out.println("--> addItem()");
-		System.out.println("<--");
+		//ide elvileg nem kell kiírás
 	}
 
 	@Override

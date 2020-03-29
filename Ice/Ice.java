@@ -80,6 +80,8 @@ public abstract class Ice
 	 */
 	public int getMaxCharacters()
 	{
+		System.out.println("--> getMaxCharacters()");
+		System.out.println("<--" + maxCharacters);
 		return maxCharacters;
 	}
 	/**
@@ -88,8 +90,9 @@ public abstract class Ice
 	 */
 	public void stormEffects() throws Exception
 	{
+		System.out.println("--> stormEffects()");
 		iglooStrategy.stormEffects(this);
-		
+		System.out.println("<--");
 	}
 	/**
 	 * A ho vastagsaganak gettere
@@ -97,6 +100,8 @@ public abstract class Ice
 	 */
 	public int getSnow()
 	{
+		System.out.println("--> getSnow()");
+		System.out.println("<-- " + snow);
 		return snow;
 	}
 	/**
@@ -104,16 +109,20 @@ public abstract class Ice
 	 */
 	public void incSnow()
 	{
+		System.out.println("--> incSnow()");
 		if(snow < 5)
 			snow++;
+		System.out.println("<--");
 	}
 	/**
 	 * A ho vastagsaganak novelese, 0-nal nem lehet kisebb
 	 */
 	public void decSnow()
 	{
+		System.out.println("-->decSnow()");
 		if(snow > 0)
 			snow--;
+		System.out.println("<--");
 	}
 	/**
 	 * Az iglooStrategy settere. Az iglooStrategy a vihar hatasait befolyasolja.
@@ -121,7 +130,9 @@ public abstract class Ice
 	 */
 	public void setIglooStrategy(IglooStrategy is)
 	{
+		System.out.println("--> setIglooStrategy(is)");
 		iglooStrategy = is;
+		System.out.println("<--");
 	}
 	/**
 	 * Hozzaad egy uj szomszedot a mezohoz
@@ -129,7 +140,9 @@ public abstract class Ice
 	 */
 	public void addNeighbour(Ice i)
 	{
+		System.out.println("--> addNeighbour(i)");
 		neighbours.add(i);
+		System.out.println("<--");
 	}
 	/**
 	 * A szomszedos mezok gettere
@@ -139,9 +152,12 @@ public abstract class Ice
 	 */
 	public Ice getNeighbour(int d) throws Exception
 	{
+		System.out.println("--> getNeighbour(" + d + ")");
 		if(d > neighbours.size()-1)
 			throw new Exception("Nincs mezo abban az iranyban!");
-		return neighbours.get(d);
+		Ice neigh = neighbours.get(d);
+		System.out.println("<-- i");
+		return neigh;
 	}
 	/**
 	 * A mezon allo karakterek gettere
@@ -151,9 +167,12 @@ public abstract class Ice
 	 */
 	public Character getCharacter(int i) throws Exception
 	{
+		System.out.println("--> getCharacter(" + i + ")");
 		if(i > characters.size()-1)
 			throw new Exception("Nincs ennyi karakter a mezon!");
-		return characters.get(i);
+		Character c = characters.get(i);
+		System.out.println("<-- c");
+		return c;
 	}
 	/**
 	 * A mezon allo karakterek szamanak gettere
@@ -161,7 +180,10 @@ public abstract class Ice
 	 */
 	public int getCharNum()
 	{
-		return characters.size();
+		System.out.println("--> getCharNum()");
+		int num = characters.size();
+		System.out.println("<--" + num);
+		return num;
 	}
 	/**
 	 * Hozzaadja a parameterul kapott karaktert a mezon allo karakterekhez
@@ -169,7 +191,9 @@ public abstract class Ice
 	 */
 	public void addCharacter(Character c)
 	{
+		System.out.println("--> addCharacter(c)");
 		characters.add(c);
+		System.out.println("<--");
 	}
 	/**
 	 * Kiveszi a mezon allo karakterek kozul a parameterul kapott karaktert
@@ -177,19 +201,24 @@ public abstract class Ice
 	 */
 	public void removeCharacter(Character c)
 	{
+		System.out.println("--> removeCharacter(c)");
 		characters.remove(c);
+		System.out.println("<--");
 	}
 	/**
 	 * Visszaadja az i-edik eszkozt a mezon, hibat dob ha tulindexelik
 	 * @param i az eszkoz indexe
-	 * @return az i-edik eszköz
+	 * @return az i-edik eszkï¿½z
 	 * @throws Exception hiba, ha tulindexelik
 	 */
 	public Item getItem(int i) throws Exception
 	{
+		System.out.println("--> getItem(" + i + ")");
 		if(i > characters.size()-1)
 			throw new Exception("Nincs ennyi eszkoz a mezon!");
-		return items.get(i);
+		Item it = items.get(i);
+		System.out.println("<-- i");
+		return it;
 	}
 	/**
 	 * Visszaadja a szomszedok szamat
@@ -197,6 +226,8 @@ public abstract class Ice
 	 */
 	public int getNeighbourNum()
 	{
+		System.out.println("--> getNeighbourNum()");
+		System.out.println("<-- " + neighbourNum);
 		return neighbourNum;
 	}
 	/**
@@ -204,10 +235,12 @@ public abstract class Ice
 	 */
 	public void breakIce()
 	{
+		System.out.println("--> breakIce()");
 		for (Item item : items) 
 		{
 			item.defrost();
 		}
+		System.out.println("<--");
 	}
 	/**
 	 * Hozzaad egy targyat a mezon levo targyakhoz
@@ -215,7 +248,9 @@ public abstract class Ice
 	 */
 	public void addItem(Item i)
 	{
+		System.out.println("--> addItem(i)");
 		items.add(i);
+		System.out.println("<--");
 	}
 	/**
 	 * Kivesz egy targyat a mezon levo targyak kozul
@@ -223,7 +258,9 @@ public abstract class Ice
 	 */
 	public void removeItem(Item i)
 	{
+		System.out.println("--> removeItem(i)");
 		items.remove(i);
+		System.out.println("<--");
 	}
 	/**
 	 * Egy karakter erre a mezore mozgatasa. A leszarmazottakban mas mas hatasa van
@@ -241,7 +278,9 @@ public abstract class Ice
 	 */
 	public void destroyIgloo()
 	{
+		System.out.println("--> destroyIgloo()");
 		NoIgloo nig = new NoIgloo();
 		iglooStrategy = nig;
+		System.out.println("<--");
 	}
 }
