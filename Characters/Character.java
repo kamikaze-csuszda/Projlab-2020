@@ -2,6 +2,8 @@ package Characters;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 
+import com.sun.jdi.Type;
+
 import Ice.Ice;
 import Item.Gun;
 import Item.Item;
@@ -58,6 +60,7 @@ public abstract class Character implements Movable
 	{
 		this(bodywarmth);
 		ice = i;
+		i.addCharacter(this);
 	}
 	
 	public Ice getIce()
@@ -194,14 +197,15 @@ public abstract class Character implements Movable
 	{
 		
 		try {
-			System.out.println("	-->st1.getNeighbour(0)");
-			System.out.println("	<--st2");
-			System.out.println("	-->st2.moveHere(e)");
+			System.out.println("	-->ice1.getNeighbour(" + d + ")");
+			System.out.println("	<--ice2");
+			System.out.println("	-->ice2.moveHere(c)");
 			ice.getNeighbour(d).moveHere(this);
-			System.out.println("	-->st1.removeCharacter(e)");
+			System.out.println("	<--");
+			System.out.println("	-->ice1.removeCharacter(c)");
 			System.out.println("	<--");
 			ice.removeCharacter(this);
-			System.out.println("	-->e.setIce(st2)");
+			System.out.println("	-->c.setIce(ice2)");
 			System.out.println("	<--");
 			setIce(ice.getNeighbour(d));
 		} catch (Exception e) {
