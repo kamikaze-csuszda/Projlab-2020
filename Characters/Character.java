@@ -2,7 +2,6 @@ package Characters;
 import java.util.ArrayList;
 import java.util.IntSummaryStatistics;
 
-import com.sun.jdi.Type;
 
 import Ice.Ice;
 import Item.Gun;
@@ -55,8 +54,8 @@ public abstract class Character implements Movable
 		waterStrategy = nds;
 	}
 	/**
-	 * 
-	 * @param bodywarmth
+	 * Character konstruktora, ha mas a testho kezdeti erteke
+	 * @param bodywarmth: testho erteke
 	 */
 	public Character(int bodywarmth)
 	{
@@ -64,9 +63,9 @@ public abstract class Character implements Movable
 		this.bodywarmth = bodywarmth;
 	}
 	/**
-	 * 
-	 * @param i
-	 * @param bodywarmth
+	 * Character kostruktora 
+	 * @param i: az Ice erteke ahol a Character kezd 
+	 * @param bodywarmth: testho erteke
 	 */
 	public Character(Ice i, int bodywarmth)
 	{
@@ -84,35 +83,46 @@ public abstract class Character implements Movable
 		System.out.println("<-- i");
 		return ice;
 	}
-	
+	/**
+	 * Getter a action ertekere
+	 * @return: aktualis action szamaval ter vissza
+	 */
 	public int getAction()
 	{
 		System.out.println("--> getAction()");
 		System.out.println("<-- " + action);
 		return action;
 	}
-	
+	/**
+	 * visszaallitja alapertekre az action pontok szamat
+	 */
 	public void resetAction()
 	{
 		System.out.println("--> resetAction()");
 		action = 4;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * csokkenti az action pontok szamat 
+	 */
 	public void decAction()
 	{
 		System.out.println("--> decAction()");
 		action -=1;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * meghivja a karakterhet tartozo aktualis strategy-t
+	 */
 	public void dig()
 	{
 		System.out.println("--> dig()");
 		digStrategy.dig(this);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * feltori a jegbe fagyott itemeket, ha a jegtablan nincs ho
+	 */
 	public void breakIce()
 	{
 		System.out.println("--> breakIce()");
@@ -123,7 +133,10 @@ public abstract class Character implements Movable
 		decAction();
 		System.out.println("<--");
 	}
-	
+	/**
+	 * felesz i a hobol az i-dik itemet, amennyiben az nincs befagyva és van még hely az equipmentben
+	 * @param i: az item sorszama a mit fel akarunk venni
+	 */
 	public void itemPickup(int i)
 	{
 		System.out.println("--> itemPickup()");
@@ -137,20 +150,31 @@ public abstract class Character implements Movable
 			}
 		System.out.println("<--");
 	}
-	
+	/**
+	 * kozzaadja egy itemet egy karakterhez
+	 * @param i: az item  amit hozzá akarunk adni 
+	 */
 	public void addItem(Item i)
 	{
 		System.out.println("--> addItem(i)");
 		equipment.add(i);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * osszerakja a fegyver 3 alkatreszet, es megnyerik a jatekor, amennyiben mindenki ugyan azon a mezon van
+	 * @param g1: a fegyver egyik alkatresze
+	 * @param g2: a fegyver masik alkatresze
+	 * @param g3: a fegyver harmadik alkatresze
+	 */
 	public void assembleGun(Gun g1, Gun g2, Gun g3)
 	{
 		System.out.println("--> assembleGun(g1, g2, g3)");
 		System.out.println("<--");
 	}
-	
+	/**
+	 * eltavolit egy itemet a Character equipment-jebol
+	 * @param i: az Item amit eltavolitunk
+	 */
 	public void removeItem(Item i)
 	{
 		System.out.println("--> removeItem(i)");
@@ -158,7 +182,10 @@ public abstract class Character implements Movable
 		i.discard();
 		System.out.println("<--");
 	}
-	
+	/**
+	 * az item jegre valo ledobasakor meghivodo fuggveny
+	 * @param i az item a mit a jegre dobunk 
+	 */
 	public void itemDiscard(Item i)
 	{
 		System.out.println("--> itemDiscard(i)");
@@ -167,7 +194,11 @@ public abstract class Character implements Movable
 		ice.addItem(i);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * Item-et adunk at egyik Characternek a masiktol
+	 * @param c: A Character akinek az itemet atadjuk 
+	 * @param i: Az Item amit atadunk
+	 */
 	public void itemGive(Character c, Item i)
 	{
 		System.out.println("--> itemGive(c, i)");
@@ -175,7 +206,10 @@ public abstract class Character implements Movable
 		c.addItem(i);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * A Charactert atmozgatjuk egy masik jegteblara, szomszedossag vizsgalat nelkul 
+	 * @param i: a Jegtabla, amire moztgatjuk 
+	 */
 	public void moveTo(Ice i)
 	{
 		System.out.println("--> moveTo(i)");
@@ -184,42 +218,59 @@ public abstract class Character implements Movable
 		setIce(i);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * Setter az akutalis jegtabla beallitasara 
+	 * @param i: az jegtabla, amire athelyezzuk a Character-t 
+	 */
 	public void setIce(Ice i)
 	{
 		System.out.println("--> setIce(i)");
 		ice = i;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * settet a helpstrategyre 
+	 * @param hs: a helpstrategy uj allapota
+	 */
 	public void setHelpStrategy(HelpStrategy hs)
 	{
 		System.out.println("--> setHelpStrategy(hs)");
 		helpStrategy = hs;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * settet a DigStrategy 
+	 * @param ds: a DigStrategy uj allapota
+	 */
 	public void setDigStrategy(DigStrategy ds)
 	{
 		System.out.println("--> setDigStrategy(ds)");
 		digStrategy = ds;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * settet a WaterStrategy 
+	 * @param ws: a WaterStrategy uj allapota
+	 */
 	public void setWaterStrategy(WaterStrategy ws)
 	{
 		System.out.println("--> setWaterStrategy(ws)");
 		waterStrategy = ws;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * getter a bodywarmth-ra
+	 * @return: aktualis bodywarmth-ot adja vissza
+	 */
 	public int getWarmth()
 	{
 		System.out.println("--> getWarmth()");
 		System.out.println("<-- " + bodywarmth);
 		return bodywarmth;
 	}
-	
+	/**
+	 * 3 akcioert novel a bodywarmth-on egyet 
+	 */
 	public void warmup()
 	{
 		System.out.println("--> warmup()");
@@ -229,7 +280,9 @@ public abstract class Character implements Movable
 		warmthInc();
 		System.out.println("<--");
 	}
-	
+	/**
+	 * csokkenti a bodywarmth erteket eggyel 
+	 */
 	public void warmthDec()
 	{
 		System.out.println("--> warmthDec()");
@@ -239,17 +292,22 @@ public abstract class Character implements Movable
 		}
 		System.out.println("<--");
 	}
-	
+	/**
+	 * noveli a bodywarmth erteket eggyel 
+	 */
 	public void warmthInc()
 	{
 		System.out.println("--> warmthInc()");
 		bodywarmth +=1;
 		System.out.println("<--");
 	}
-	
+	/**
+	 * a Character-t mozgatjuk a fugvennyel
+	 * @param d: a mozgas iranyat hatarozza meg 
+	 */
 	public void move(int d)
 	{
-		System.out.println("--> move(" + d + ")");  //konkrÃ©t szÃ¡m kell majd ide
+		System.out.println("--> move(" + d + ")");  //konkret szam kell majd ide
 		try {
 		
 			ice.getNeighbour(d).moveHere(this);
@@ -260,7 +318,11 @@ public abstract class Character implements Movable
 		}
 		System.out.println("<--");
 	}
-	
+	/**
+	 * Characternek a helpstrategy-jet meghivja, ami eldonti hogy tud-e segiten a masik karakternek
+	 * @param c1: Character aki segiteni akar
+	 * @return: visszater hogy tud-e segiteni (true), vagy sem (false)
+	 */
 	public boolean help(Character c1)
 	{
 		System.out.println("--> help(c1)");
@@ -268,14 +330,19 @@ public abstract class Character implements Movable
 		System.out.println("<--" + result);
 		return result;
 	}
-	
+	/**
+	 * a Character viselkedese a waterstrategy alapjan 
+	 * @throws Exception
+	 */
 	public void fallInWater() throws Exception
 	{
 		System.out.println("--> fallInWater()");
 		waterStrategy.fallInWater(this);
 		System.out.println("<--");
 	}
-	
+	/**
+	 * a Character meghal, es a jeteknak vege
+	 */
 	public void die()
 	{
 		System.out.println("--> die()");
