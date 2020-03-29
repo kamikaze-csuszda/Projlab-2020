@@ -34,7 +34,8 @@ public class Scientist extends Character
 	public int ability(int d) throws Exception
 	{
 		System.out.println("--> ability()"); //ide majd valami random szám kell
-		return getIce().getNeighbour(d).getMaxCharacters();
 		System.out.println("<-- "); //ide is visszatérési értéknek
+		return getIce().getNeighbour(d).getMaxCharacters();
+		
 	}
 }

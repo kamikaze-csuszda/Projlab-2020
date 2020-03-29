@@ -22,8 +22,8 @@ public class UnstableIce extends Ice
 {
 	public UnstableIce(int maxChar)
 	{
-		System.out.println("--> UnstableIce(2)"); //ezt még ki kell talalni, egyelore beirok kettot, mert talan az fog kelleni a teszteknel
 		super(maxChar, 0);
+		System.out.println("--> UnstableIce(2)"); //ezt még ki kell talalni, egyelore beirok kettot, mert talan az fog kelleni a tesztekne
 		System.out.println("<--");
 	}
 
