@@ -36,7 +36,7 @@ public class HoleIce extends Ice
 		//ide elvileg nem kell kiírás
 	}
 	/**
-	 * A paraméretben megadott karakter
+	 * A parameretben megadott karakter
 	 * @param c
 	 */
 	@Override
