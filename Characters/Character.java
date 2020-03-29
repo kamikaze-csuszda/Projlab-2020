@@ -132,85 +132,109 @@ public abstract class Character implements Movable
 	
 	public void assembleGun(Gun g1, Gun g2, Gun g3)
 	{
-			
+		System.out.println("--> assembleGun(g1, g2, g3)");
+		System.out.println("<--");
 	}
 	
 	public void removeItem(Item i)
 	{
+		System.out.println("--> removeItem(i)");
 		equipment.remove(i);
 		i.discard();
+		System.out.println("<--");
 	}
 	
 	public void itemDiscard(Item i)
 	{
+		System.out.println("--> itemDiscard(i)");
 		removeItem(i);
 		i.removeCharacter();
 		ice.addItem(i);
+		System.out.println("<--");
 	}
 	
 	public void itemGive(Character c, Item i)
 	{
+		System.out.println("--> itemGive(c, i)");
 		removeItem(i);
 		c.addItem(i);
+		System.out.println("<--");
 	}
 	
 	public void moveTo(Ice i)
 	{
+		System.out.println("--> moveTo(i)");
 		ice.removeCharacter(this);
 		i.addCharacter(this);
 		setIce(i);
+		System.out.println("<--");
 	}
 	
 	public void setIce(Ice i)
 	{
+		System.out.println("--> setIce(i)");
 		ice = i;
+		System.out.println("<--");
 	}
 	
 	public void setHelpStrategy(HelpStrategy hs)
 	{
+		System.out.println("--> setHelpStrategy(hs)");
 		helpStrategy = hs;
+		System.out.println("<--");
 	}
 	
 	public void setDigStrategy(DigStrategy ds)
 	{
+		System.out.println("--> setDigStrategy(ds)");
 		digStrategy = ds;
+		System.out.println("<--");
 	}
 	
 	public void setWaterStrategy(WaterStrategy ws)
 	{
+		System.out.println("--> setWaterStrategy(ws)");
 		waterStrategy = ws;
+		System.out.println("<--");
 	}
 	
 	public int getWarmth()
 	{
+		System.out.println("--> getWarmth()");
+		System.out.println("<-- ");  //konkrét szám kell majd ide
 		return bodywarmth;
 	}
 	
 	public void warmup()
 	{
+		System.out.println("--> warmup()");
 		for (int i = 0; i < 3; i++) {
 			decAction();
 		}
 		warmthInc();
+		System.out.println("<--");
 	}
 	
 	public void warmthDec()
 	{
+		System.out.println("--> warmthDec()");
 		bodywarmth -=1;
 		if (bodywarmth == 0) {
 			die();
 		}
-				
+		System.out.println("<--");
 	}
 	
 	public void warmthInc()
 	{
+		System.out.println("--> warmthInc()");
 		bodywarmth +=1;
+		System.out.println("<--");
 	}
 	
 	public void move(int d)
 	{
-		
+		System.out.println("--> move(" + d + ")");  //konkrét szám kell majd ide
 		try {
 		
 			ice.getNeighbour(d).moveHere(this);
@@ -219,20 +243,27 @@ public abstract class Character implements Movable
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		System.out.println("<--");
 	}
 	
 	public boolean help(Character c1)
 	{
-		return	helpStrategy.help(c1, this);
+		System.out.println("--> help(c1)");
+		boolean result = helpStrategy.help(c1, this);
+		System.out.println("<--");
+		return result;
 	}
 	
 	public void fallInWater() throws Exception
 	{
+		System.out.println("--> fallInWater()");
 		waterStrategy.fallInWater(this);
+		System.out.println("<--");
 	}
 	
 	public void die()
 	{
-		
+		System.out.println("--> die()");
+		System.out.println("<--");
 	}
 }
