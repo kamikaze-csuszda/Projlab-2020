@@ -28,10 +28,9 @@ public class HoleIce extends Ice
 		System.out.println("<--");
 	}
 	/**
-	 * Hozzá adja valami....
 	 *
+	 * @param i
 	 */
-
 	public void addItem(Item i)
 	{
 		//ide elvileg nem kell kiírás
