@@ -23,12 +23,21 @@ import Characters.Character;
 public class NoIgloo implements IglooStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public NoIgloo()
+	{
+		System.out.println("--> NoIgloo()");
+		System.out.println("<--");
+	}
+	/**
 	 * Mivel nincs iglu az adott mezon, igy no eggyel a ho mennyisege.
 	 * Elkerjuk a mezon allo karakterek szamat, majd vegigiteralunk rajtuk, és mindegyiknek csokken a testhoje eggyel.
 	 * @param i : a jegtabla, melyre erkezik a vihar
 	 */
 	public void stormEffects(Ice i) throws Exception
 	{
+		System.out.println("--> stormEffects(i)");
 		i.incSnow();
 		int charNum = i.getCharNum();
 		for(int sz = 0; sz < charNum; sz++)
@@ -36,5 +45,6 @@ public class NoIgloo implements IglooStrategy
 			Character character = i.getCharacter(sz);
 			character.warmthDec();
 		}
+		System.out.println("<--");
 	}
 }

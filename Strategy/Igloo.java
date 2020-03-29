@@ -18,6 +18,14 @@ import Ice.*;
 public class Igloo implements IglooStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public Igloo()
+	{
+		System.out.println("--> Igloo()");
+		System.out.println("<--");
+	}
+	/**
 	 * Ha van iglu az adott mezon, akkor a vihar azt lerombolja.
 	 * De az iglu megvedi a rajta allokat a testhocsokkenestol, es uj horeteg sem rakodik le.
 	 * @param i : a jegtabla, melyre vihar erkezik
@@ -25,6 +33,8 @@ public class Igloo implements IglooStrategy
 	 */
 	public void stormEffects(Ice i) throws Exception
 	{
+		System.out.println("--> stormEffects(i)");
 		i.destroyIgloo();
+		System.out.println("<--");
 	}
 }
