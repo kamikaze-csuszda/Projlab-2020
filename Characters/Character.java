@@ -65,40 +65,53 @@ public abstract class Character implements Movable
 	
 	public Ice getIce()
 	{
+		System.out.println("--> getIce()");
+		System.out.println("<-- i");
 		return ice;
 	}
 	
 	public int getAction()
 	{
+		System.out.println("--> getAction()");
+		System.out.println("<-- "); //valami random szám
 		return action;
 	}
 	
 	public void resetAction()
 	{
+		System.out.println("--> resetAction()");
 		action = 4;
+		System.out.println("<--");
 	}
 	
 	public void decAction()
 	{
+		System.out.println("--> decAction()");
 		action -=1;
+		System.out.println("<--");
 	}
 	
 	public void dig()
 	{
+		System.out.println("--> dig()");
 		digStrategy.dig(this);
+		System.out.println("<--");
 	}
 	
 	public void breakIce()
 	{
+		System.out.println("--> breakIce()");
 		int snow = ice.getSnow();
 		
 		if(snow==0) 
 			ice.breakIce();
 		decAction();
+		System.out.println("<--");
 	}
 	
 	public void itemPickup(int i)
 	{
+		System.out.println("--> itemPickup()");
 		try {
 		if(equipment.size()<=4 && ice.getItem(i).getFrozen()==false) {
 			addItem(ice.getItem(i));
@@ -107,12 +120,14 @@ public abstract class Character implements Movable
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-		
+		System.out.println("<--");
 	}
 	
 	public void addItem(Item i)
 	{
+		System.out.println("--> addItem(i)");
 		equipment.add(i);
+		System.out.println("<--");
 	}
 	
 	public void assembleGun(Gun g1, Gun g2, Gun g3)

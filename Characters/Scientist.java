@@ -15,8 +15,26 @@ package Characters;
 
 public class Scientist extends Character
 {
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public Scientist()
+	{
+		super(4);
+		System.out.println("--> Scientist()");
+		System.out.println("<--");
+	}
+
+	/**
+	 *
+	 * @param d
+	 * @return
+	 * @throws Exception
+	 */
 	public int ability(int d) throws Exception
 	{
+		System.out.println("--> ability()"); //ide majd valami random szám kell
 		return getIce().getNeighbour(d).getMaxCharacters();
+		System.out.println("<-- "); //ide is visszatérési értéknek
 	}
 }
