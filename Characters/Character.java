@@ -134,7 +134,7 @@ public abstract class Character implements Movable
 		System.out.println("<--");
 	}
 	/**
-	 * felesz i a hobol az i-dik itemet, amennyiben az nincs befagyva és van még hely az equipmentben
+	 * felesz i a hobol az i-dik itemet, amennyiben az nincs befagyva ï¿½s van mï¿½g hely az equipmentben
 	 * @param i: az item sorszama a mit fel akarunk venni
 	 */
 	public void itemPickup(int i)
@@ -152,12 +152,13 @@ public abstract class Character implements Movable
 	}
 	/**
 	 * kozzaadja egy itemet egy karakterhez
-	 * @param i: az item  amit hozzá akarunk adni 
+	 * @param i: az item  amit hozzï¿½ akarunk adni 
 	 */
 	public void addItem(Item i)
 	{
 		System.out.println("--> addItem(i)");
 		equipment.add(i);
+		i.setCharacter(this);
 		System.out.println("<--");
 	}
 	/**
@@ -178,8 +179,8 @@ public abstract class Character implements Movable
 	public void removeItem(Item i)
 	{
 		System.out.println("--> removeItem(i)");
-		equipment.remove(i);
 		i.discard();
+		equipment.remove(i);
 		System.out.println("<--");
 	}
 	/**
@@ -189,9 +190,8 @@ public abstract class Character implements Movable
 	public void itemDiscard(Item i)
 	{
 		System.out.println("--> itemDiscard(i)");
-		removeItem(i);
-		i.removeCharacter();
 		ice.addItem(i);
+		removeItem(i);
 		System.out.println("<--");
 	}
 	/**
@@ -271,6 +271,10 @@ public abstract class Character implements Movable
 	/**
 	 * 3 akcioert novel a bodywarmth-on egyet 
 	 */
+	public Item getItem(int i)
+	{
+		return equipment.get(i);
+	}
 	public void warmup()
 	{
 		System.out.println("--> warmup()");

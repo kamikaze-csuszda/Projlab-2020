@@ -23,6 +23,10 @@ public class Scientist extends Character
 		System.out.println("--> Scientist()");
 		System.out.println("<--");
 	}
+    /**
+     * A kutató i paraméteres kontruktora
+     * @param i
+     */
 	public Scientist(Ice i)
 	{
 		super(i, 4);
@@ -31,16 +35,16 @@ public class Scientist extends Character
 	}
 
 	/**
-	 *
+	 *A Kutató képessége
 	 * @param d
 	 * @return
 	 * @throws Exception
 	 */
 	public int ability(int d) throws Exception
 	{
-		System.out.println("--> ability(" + d + ")"); //ide majd valami random szám kell
+		System.out.println("--> ability()"); //ide majd valami random szám kell
 		int result = getIce().getNeighbour(d).getMaxCharacters();
-		System.out.println("<-- "+ result); //ide is visszatérési értéknek
+		System.out.println("<-- "); //ide is visszatérési értéknek
 		return result;
 		
 	}

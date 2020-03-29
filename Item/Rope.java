@@ -52,10 +52,6 @@ public class Rope extends Item
 		NoRopeHelp nrh = new NoRopeHelp();
 		Character c = this.getCharacter();
 		c.setHelpStrategy(nrh);
-		
-		Ice i = c.getIce();
-		i.addItem(this);
-		this.removeCharacter();
 		System.out.println("<--");
 	}
 	

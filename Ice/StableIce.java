@@ -19,7 +19,9 @@ import Strategy.Igloo;
 
 public class StableIce extends Ice
 {
-	
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
 	public StableIce()
 	{
 		super();
@@ -38,7 +40,9 @@ public class StableIce extends Ice
 	@Override
 	public void moveHere(Character c) 
 	{
+		System.out.println("--> moveHere(c)");
 		addCharacter(c);
+		System.out.println("<--");
 	}
 	
 }

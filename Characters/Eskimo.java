@@ -12,26 +12,38 @@ package Characters;
 
 import Ice.Ice;
 
+import java.util.jar.JarOutputStream;
+
 public class Eskimo extends Character
 {
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
 	public Eskimo()
 	{
 		super(5);
 		System.out.println("--> Eskimo()");
 		System.out.println("<--");
 	}
+	/**
+	 * Az Eskimo i paraméterrel ellátott konstruktora
+	 * @param i
+	 */
 	public Eskimo(Ice i)
 	{
 		super(i, 5);
 		System.out.println("--> Eskimo(i)");
 		System.out.println("<--");
 	}
+	/**
+	 *Az Eskimo képessége
+	 *
+	 */
 	public void ability()
 	{
 		System.out.println("--> ability()");
-		Ice ice = getIce();
-		if (ice.getSnow() > 0) {
-			ice.buildIgloo();			
+		if (getIce().getSnow() > 0) {
+			getIce().buildIgloo();			
 		}
 		System.out.println("<--");
 	}
