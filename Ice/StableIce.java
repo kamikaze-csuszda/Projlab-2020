@@ -28,6 +28,7 @@ public class StableIce extends Ice
 		System.out.println("--> StableIce()");
 		System.out.println("<--");
 	}
+
 	public void buildIgloo()
 	{
 		System.out.println("--> buildIgloo()");

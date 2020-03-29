@@ -20,13 +20,20 @@ import Characters.Character;
 
 public class UnstableIce extends Ice
 {
+	/**
+	 * Egy paraméteres konstruktor
+	 * @param maxChar
+	 */
 	public UnstableIce(int maxChar)
 	{
 		super(maxChar, 0);
 		System.out.println("--> UnstableIce(" + maxChar + ")");
 		System.out.println("<--");
 	}
-
+	/**
+	 * A karakter mozgása hívja meg, ha sokan álnak rajta kkor meghívja a fallInWatre-t
+	 * @param c
+	 */
 	@Override
 	public void moveHere(Character c) {
 
