@@ -30,10 +30,10 @@ public class HoleIce extends Ice
 	 * Hozzá adja valami....
 	 *
 	 */
-	public void addItem() //ennek tippre lesz meg parametere
+
+	public void addItem(Item i)
 	{
-		System.out.println("--> addItem()");
-		System.out.println("<--");
+		//ide elvileg nem kell kiírás
 	}
 	/**
 	 * A paraméretben megadott karakter
