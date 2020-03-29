@@ -24,7 +24,7 @@ public class Scientist extends Character
 		System.out.println("<--");
 	}
     /**
-     * A kutató i paraméteres kontruktora
+     * A kutató i parameteres kontruktora
      * @param i
      */
 	public Scientist(Ice i)
@@ -35,7 +35,7 @@ public class Scientist extends Character
 	}
 
 	/**
-	 *A Kutató képessége
+	 *A Kutato kepessege
 	 * @param d
 	 * @return
 	 * @throws Exception

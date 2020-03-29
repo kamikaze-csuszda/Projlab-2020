@@ -21,7 +21,7 @@ import Characters.Character;
 public class UnstableIce extends Ice
 {
 	/**
-	 * Egy paraméteres konstruktor
+	 * Egy parameteres konstruktor
 	 * @param maxChar
 	 */
 	public UnstableIce(int maxChar)
@@ -31,7 +31,7 @@ public class UnstableIce extends Ice
 		System.out.println("<--");
 	}
 	/**
-	 * A karakter mozgása hívja meg, ha sokan álnak rajta kkor meghívja a fallInWatre-t
+	 * A karakter mozgasa hivja meg, ha sokan alnak rajta kkor meghivja a fallInWatre-t
 	 * @param c
 	 */
 	@Override

@@ -29,7 +29,7 @@ public class StableIce extends Ice
 		System.out.println("<--");
 	}
 	/**
-	 * Megépíti az iglut és beaállítja az iglustratégiát
+	 * Megepíti az iglut és beallitja az iglustrategiat
 	 */
 	public void buildIgloo()
 	{

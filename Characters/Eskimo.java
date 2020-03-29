@@ -26,7 +26,7 @@ public class Eskimo extends Character
 		System.out.println("<--");
 	}
 	/**
-	 * Az Eskimo i paraméterrel ellátott konstruktora
+	 * Az Eskimo i parameterrel ellatott konstruktora
 	 * @param i
 	 */
 	public Eskimo(Ice i)
@@ -36,7 +36,7 @@ public class Eskimo extends Character
 		System.out.println("<--");
 	}
 	/**
-	 *Az Eskimo képessége
+	 *Az Eskimo kepessege
 	 *
 	 */
 	public void ability()
