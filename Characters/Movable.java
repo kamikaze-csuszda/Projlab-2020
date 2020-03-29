@@ -15,5 +15,5 @@ package Characters;
 
 public interface Movable
 {
-	public default void move(int d);
+	public void move(int d);
 }
