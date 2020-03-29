@@ -10,11 +10,18 @@ package Characters;
 //
 //
 
-
-
+import Ice.Ice;
 
 public class Eskimo extends Character
 {
+	public Eskimo()
+	{
+		super(5);
+	}
+	public Eskimo(Ice i)
+	{
+		super(i, 5);
+	}
 	public void ability()
 	{
 		if (getIce().getSnow() > 0) {

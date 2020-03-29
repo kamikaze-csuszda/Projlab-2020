@@ -20,17 +20,24 @@ import Strategy.Igloo;
 public class StableIce extends Ice
 {
 	
-	
+	public StableIce()
+	{
+		super();
+		
+	}
 	public void buildIgloo()
 	{
 		Igloo ig = new Igloo();
 		setIglooStrategy(ig);
+		decSnow();
 	}
 
 	@Override
 	public void moveHere(Character c) 
 	{
+		System.out.println("		-->addCharacter(c)");
 		addCharacter(c);
+		System.out.println("		<--");
 	}
 	
 }

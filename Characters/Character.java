@@ -8,6 +8,9 @@ import Item.Item;
 import Main.Game;
 import Strategy.DigStrategy;
 import Strategy.HelpStrategy;
+import Strategy.NoDivingSuit;
+import Strategy.NoRopeHelp;
+import Strategy.NoShovelDig;
 import Strategy.WaterStrategy;
 
 //
@@ -33,6 +36,29 @@ public abstract class Character implements Movable
 	private HelpStrategy helpStrategy;
 	private DigStrategy digStrategy;
 	private WaterStrategy waterStrategy; 
+	
+	public Character()
+	{
+		bodywarmth = 4;
+		action = 4;
+		equipment = new ArrayList<Item>();
+		NoRopeHelp nrh = new NoRopeHelp();
+		helpStrategy = nrh;
+		NoShovelDig nsd = new NoShovelDig();
+		digStrategy = nsd;
+		NoDivingSuit nds = new NoDivingSuit();
+		waterStrategy = nds;
+	}
+	public Character(int bodywarmth)
+	{
+		this();
+		this.bodywarmth = bodywarmth;
+	}
+	public Character(Ice i, int bodywarmth)
+	{
+		this(bodywarmth);
+		ice = i;
+	}
 	
 	public Ice getIce()
 	{
@@ -168,8 +194,15 @@ public abstract class Character implements Movable
 	{
 		
 		try {
+			System.out.println("	-->st1.getNeighbour(0)");
+			System.out.println("	<--st2");
+			System.out.println("	-->st2.moveHere(e)");
 			ice.getNeighbour(d).moveHere(this);
+			System.out.println("	-->st1.removeCharacter(e)");
+			System.out.println("	<--");
 			ice.removeCharacter(this);
+			System.out.println("	-->e.setIce(st2)");
+			System.out.println("	<--");
 			setIce(ice.getNeighbour(d));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

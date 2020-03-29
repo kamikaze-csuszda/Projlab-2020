@@ -3,6 +3,9 @@ package Main;
 
 import java.util.Scanner;
 
+import Characters.Eskimo;
+import Ice.StableIce;
+
 public class Main{
 
     public static void main(String[] args)
@@ -26,9 +29,31 @@ public class Main{
                 "16) Eszkimó átad eszközt a sarkkutatónak\n");
         Scanner in = new Scanner(System.in);
         int ans = in.nextInt();
+        System.out.println("Bemenet: " + ans);
         switch (ans)
         {
             case 1:
+            {
+            	System.out.println("-->Main.CreateObjectST1()");
+            	System.out.println("<--");
+            	StableIce st1 = new StableIce();
+            	System.out.println("-->Main.CreateObjectE(st1)");
+            	System.out.println("<--");
+            	Eskimo e = new Eskimo(st1);
+            	System.out.println("-->Main.CreateObjectST2()");
+            	System.out.println("<--");
+            	StableIce st2 = new StableIce();
+            	System.out.println("st1.SetAssociation(st2)");
+            	System.out.println("<--");
+            	st1.addNeighbour(st2);
+            	System.out.println("st2.SetAssociation(st1)");
+            	System.out.println("<--");
+            	st2.addNeighbour(st1);
+            	System.out.println("-->e.move(0)");
+            	e.move(0);
+            	System.out.println("<--");
+            	break;
+            }
 
         }
     }
