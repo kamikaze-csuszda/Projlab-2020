@@ -2,20 +2,19 @@ package Main;
 
 
 import java.util.Scanner;
-
 import Characters.Eskimo;
 import Characters.Scientist;
+import Ice.HoleIce;
 import Ice.StableIce;
 import Ice.UnstableIce;
 import Strategy.DivingSuitStrategy;
+import Strategy.RopeHelp;
 
 public class Main{
 
     public static void main(String[] args)
     {
-    	menu();
-        Scanner in = new Scanner(System.in);
-        int ans = in.nextInt();
+    	int ans = menu();
         System.out.println("Bemenet: " + ans);
         switch (ans)
         {
@@ -32,14 +31,17 @@ public class Main{
             }
             case 3:
             {
+            	teszt3();
             	break;
             }
             case 4:
             {
+            	teszt4();
             	break;
             }
             case 5:
             {
+            	teszt5();
             	break;
             }
             case 6:
@@ -90,7 +92,7 @@ public class Main{
 
         }
     }
-    static void menu()
+    static int menu()
     {
     	 System.out.println("Valassz egy tesztesetet! Gepeld be a futtatni kivant eset szamat, es egy entert!\n" +
                  "1) Eszkimo egy jegtablarol stabil jegtablara lep\n" +
@@ -109,29 +111,59 @@ public class Main{
                  "14) Eszkimo osszerakja a pisztolyt\n" +
                  "15) Eszkimo eldob egy itemet\n" +
                  "16) Eszkimo atad eszkozt a sarkkutatonak\n");
+    	 Scanner in = new Scanner(System.in);
+         return in.nextInt();
+         
     }
     static void teszt1() 
     {
-    	StableIce st1 = new StableIce();
-    	Eskimo e = new Eskimo(st1);
-    	StableIce st2 = new StableIce();
-    	st1.addNeighbour(st2);
-    	st2.addNeighbour(st1);
-    	e.move(0);
+    	StableIce ice1 = new StableIce();
+    	Eskimo c = new Eskimo(ice1);
+    	StableIce ice2 = new StableIce();
+    	ice1.addNeighbour(ice2);
+    	ice2.addNeighbour(ice1);
+    	c.move(0);
     }
     static void teszt2()
     {
-    	StableIce st = new StableIce();
-    	Eskimo e = new Eskimo(st);
-    	UnstableIce ui = new UnstableIce(1);
-    	st.addNeighbour(ui);
-    	ui.addNeighbour(st);
-    	Scientist sc = new Scientist();
+    	StableIce ice1 = new StableIce();
+    	Eskimo c1 = new Eskimo(ice1);
+    	UnstableIce ice2 = new UnstableIce(1);
+    	ice1.addNeighbour(ice2);
+    	ice2.addNeighbour(ice1);
+    	Scientist c2 = new Scientist();
     	DivingSuitStrategy dvs = new DivingSuitStrategy();
-    	sc.setWaterStrategy(dvs);
-    	ui.addCharacter(sc);
-    	sc.setIce(ui);
-    	e.move(0);
+    	c2.setWaterStrategy(dvs);
+    	ice2.addCharacter(c2);
+    	c2.setIce(ice2);
+    	c1.move(0);
+    	
+    }
+    static void teszt3() 
+    {
+    	StableIce ice1 = new StableIce();
+    	Eskimo c1 = new Eskimo(ice1);
+    	HoleIce ice2 = new HoleIce();
+    	ice1.addNeighbour(ice2);
+    	ice2.addNeighbour(ice1);
+    	Scientist c2 = new Scientist(ice1);
+    	RopeHelp rh = new RopeHelp();
+    	c2.setHelpStrategy(rh);
+    	c1.move(0);
+    	
+    }
+    static void teszt4() 
+    {
+    	StableIce ice1 = new StableIce();
+    	Eskimo c1 = new Eskimo(ice1);
+    	HoleIce ice2 = new HoleIce();
+    	ice1.addNeighbour(ice2);
+    	ice2.addNeighbour(ice1);
+    	Scientist c2 = new Scientist(ice1);
+    	c1.move(0);
+    }
+    static void teszt5() 
+    {
     	
     }
     

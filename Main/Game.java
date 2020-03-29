@@ -1,4 +1,6 @@
 package Main;
+import java.util.ArrayList;
+
 import Ice.Ice;
 
 //
@@ -17,7 +19,7 @@ import Ice.Ice;
 
 public class Game
 {
-	private Ice mapPieces;
+	private ArrayList<Ice> mapPieces;
 	public void init()
 	{
 	}
