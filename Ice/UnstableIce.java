@@ -22,11 +22,15 @@ public class UnstableIce extends Ice
 {
 	public UnstableIce(int maxChar)
 	{
+		System.out.println("--> UnstableIce(2)"); //ezt még ki kell talalni, egyelore beirok kettot, mert talan az fog kelleni a teszteknel
 		super(maxChar);
+		System.out.println("<--");
 	}
 
 	@Override
 	public void moveHere(Character c) {
+
+		System.out.println("--> moveHere(c)");
 		addCharacter(c);
 		
 		if(getCharNum() >= getMaxCharacters())
@@ -41,6 +45,7 @@ public class UnstableIce extends Ice
 				}
 				
 			}
+		System.out.println("<--");
 	}
 	
 }

@@ -18,13 +18,22 @@ import Characters.Character;
 
 public class HoleIce extends Ice
 {
-	public void addItem()
+	public HoleIce()
 	{
+		System.out.println("--> HoleIce()");
+		System.out.println("<--");
+	}
+
+	public void addItem() //ennek tippre lesz meg parametere
+	{
+		System.out.println("--> addItem()");
+		System.out.println("<--");
 	}
 
 	@Override
 	public void moveHere(Character c)
 	{
+		System.out.println("--> moveHere(c)");
 		addCharacter(c);
 		try
 		{
@@ -32,8 +41,8 @@ public class HoleIce extends Ice
 		} catch (Exception e)
 		{
 		}
-		
-		
+
+		System.out.println("<--");
 	}
 
 	

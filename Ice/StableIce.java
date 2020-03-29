@@ -22,22 +22,25 @@ public class StableIce extends Ice
 	
 	public StableIce()
 	{
+		System.out.println("--> StableIce()");
 		super();
-		
+		System.out.println("<--");
 	}
 	public void buildIgloo()
 	{
+		System.out.println("--> buildIgloo()");
 		Igloo ig = new Igloo();
 		setIglooStrategy(ig);
 		decSnow();
+		System.out.println("<--");
 	}
 
 	@Override
 	public void moveHere(Character c) 
 	{
-		System.out.println("		-->addCharacter(c)");
+		System.out.println("		--> addCharacter(c)");
 		addCharacter(c);
-		System.out.println("		<--");
+		System.out.println("		<-- ");
 	}
 	
 }
