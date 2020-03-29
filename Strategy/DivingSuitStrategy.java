@@ -12,10 +12,16 @@ import Characters.Character;
 //
 
 
-//Ez fut le akkor, ha a vízbe esett karakteren van búvárruha.
+/**
+ * Ez a strategia fut le, ha a vizbe esett karakteren van buvarruha.
+ */
 public class DivingSuitStrategy implements WaterStrategy
 {
-	//Mivel a karakteren van búvárruha, ezért kimászik a legelső található szomszéd mezőre.
+	/**
+	 * Mivel a karakteren van buvarruha, ezert kimaszik a legelso talalhato szomszed mezore.
+	 * @param c : a karakter aki vizbe esett
+	 * @throws Exception
+	 */
 	public void fallInWater(Character c) throws Exception
 	{
 		c.move(0);

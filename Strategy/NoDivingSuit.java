@@ -13,16 +13,20 @@ import Ice.*;
 //
 
 
-
-
-//Ez fut le akkor, ha a vízbe esett karakteren nincs búvárruha.
+/**
+ * Ez a strategia fut le, ha a vizbe esett karakteren nincs buvarruha.
+ */
 public class NoDivingSuit implements WaterStrategy
 {
-	//Amíg a karaktert nem menti meg valaki, vagy van még szomszédja a lyuknak, amibe beleesett,
-	//addig vesszük a következő szomszédot, megnézzük, hogy hány karakter áll rajta,
-	//és amíg nem menti meg valaki vagy van még karakter, addig a karakternek meghívjuk a help függvényét,
-	//ami megadja, hogy megmentette-e a karaktert, vagy sem.
-	//Ha a karakterek és a szomszédok is elfogynak, és senki nem mentette meg, akkor meghal.
+	/**
+	 * Amig a karaktert nem menti meg valaki, vagy van meg szomszedja a lyuknak, amibe beleesett,
+	 * 	addig vesszuk a kovetkezo szomszedot, megnezzuk, hogy hany karakter all rajta,
+	 * 	es amig nem menti meg valaki vagy van meg karakter, addig a karakternek meghivjuk a help fuggvenyet,
+	 * 	ami megadja, hogy megmentette-e a karaktert, vagy sem.
+	 * 	Ha a karakterek és a szomszedok is elfogynak, es senki nem mentette meg, akkor meghal.
+	 * @param c : a karakter, aki vizbe esett
+	 * @throws Exception
+	 */
 	public void fallInWater(Character c) throws Exception
 	{
 		Ice hole = c.getIce();

@@ -12,9 +12,15 @@ import Characters.Character;
 //
 
 
-
-//Annak a stratégiája, hogy mi fut le, ammikor egy karakter a vízbe esik.
+/**
+ * A karakter vizbe esesenek interfesze.
+ */
 public interface WaterStrategy
 {
+	/**
+	 * A fuggveny mely megmondja, mi tortenik vizbe eseskor.
+	 * @param c : a karakter aki vizbe esik
+	 * @throws Exception
+	 */
 	public void fallInWater(Character c) throws Exception;
 }
