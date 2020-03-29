@@ -55,10 +55,6 @@ public class DivingSuit extends Item
 		NoDivingSuit nds = new NoDivingSuit();
 		Character c = this.getCharacter();
 		c.setWaterStrategy(nds);
-		
-		Ice i = c.getIce();
-		i.addItem(this);
-		this.removeCharacter();
 		System.out.println("<--");
 	}
 	

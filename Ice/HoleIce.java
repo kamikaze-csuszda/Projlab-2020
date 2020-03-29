@@ -1,6 +1,7 @@
 package Ice;
 
 import Characters.Character;
+import Item.Item;
 
 //
 //
