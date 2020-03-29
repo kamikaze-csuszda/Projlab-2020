@@ -18,12 +18,23 @@ import Characters.Character;
 public class DivingSuitStrategy implements WaterStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public DivingSuitStrategy()
+	{
+		System.out.println("--> DivingSuitStrategy()");
+		System.out.println("<--");
+	}
+
+	/**
 	 * Mivel a karakteren van buvarruha, ezert kimaszik a legelso talalhato szomszed mezore.
 	 * @param c : a karakter aki vizbe esett
 	 * @throws Exception
 	 */
 	public void fallInWater(Character c) throws Exception
 	{
+		System.out.println("--> fallInWater(c)");
 		c.move(0);
+		System.out.println("<--");
 	}
 }
