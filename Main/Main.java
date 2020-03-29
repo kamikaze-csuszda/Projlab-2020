@@ -1,6 +1,5 @@
 package Main;
 
-
 import java.util.Scanner;
 import Characters.Eskimo;
 import Characters.Scientist;
@@ -8,6 +7,7 @@ import Ice.HoleIce;
 import Ice.StableIce;
 import Ice.UnstableIce;
 import Strategy.DivingSuitStrategy;
+import Strategy.Igloo;
 import Strategy.RopeHelp;
 
 public class Main{
@@ -46,14 +46,17 @@ public class Main{
             }
             case 6:
             {
+            	teszt6();
             	break;
             }
             case 7:
             {
+            	teszt7();
             	break;
             }
             case 8:
             {
+            	teszt8();
             	break;
             }
             case 9:
@@ -164,7 +167,52 @@ public class Main{
     }
     static void teszt5() 
     {
-    	
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	try
+		{
+			ice.stormEffects();
+		} catch (Exception e)
+		{
+		}
     }
-    
+    static void teszt6()
+    {
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	Igloo igloo = new Igloo();
+    	ice.setIglooStrategy(igloo);
+    	try
+		{
+			ice.stormEffects();
+		} catch (Exception e)
+		{
+		}
+    }
+    static void teszt7()
+    {
+    	StableIce ice1 = new StableIce();
+    	Scientist c = new Scientist(ice1);
+    	UnstableIce ice2 = new UnstableIce(3);
+    	ice1.addNeighbour(ice2);
+    	ice2.addNeighbour(ice1);
+    	int teherbiras = 0;
+    	try
+		{
+			teherbiras = c.ability(0);
+		} catch (Exception e)
+		{
+		}
+    	if(teherbiras == 3)
+    		System.out.println("Elvart: 3, Kapott: " + teherbiras + " Sikeres");
+    	else 
+    		System.out.println("Elvart: 3, Kapott: " + teherbiras + " Sikertelen");
+    }
+    static void teszt8() 
+    {
+    	StableIce ice = new StableIce();
+    	ice.incSnow();
+    	Eskimo c = new Eskimo(ice);
+    	c.ability();
+    }
 }

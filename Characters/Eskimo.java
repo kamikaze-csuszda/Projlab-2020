@@ -12,8 +12,6 @@ package Characters;
 
 import Ice.Ice;
 
-import java.util.jar.JarOutputStream;
-
 public class Eskimo extends Character
 {
 	public Eskimo()
@@ -31,8 +29,9 @@ public class Eskimo extends Character
 	public void ability()
 	{
 		System.out.println("--> ability()");
-		if (getIce().getSnow() > 0) {
-			getIce().buildIgloo();			
+		Ice ice = getIce();
+		if (ice.getSnow() > 0) {
+			ice.buildIgloo();			
 		}
 		System.out.println("<--");
 	}
