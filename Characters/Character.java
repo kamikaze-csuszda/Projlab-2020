@@ -39,6 +39,9 @@ public abstract class Character implements Movable
 	private DigStrategy digStrategy;
 	private WaterStrategy waterStrategy; 
 	
+	/**
+	 * default konstruktora a Characternek
+	 */
 	public Character()
 	{
 		bodywarmth = 4;
@@ -51,18 +54,30 @@ public abstract class Character implements Movable
 		NoDivingSuit nds = new NoDivingSuit();
 		waterStrategy = nds;
 	}
+	/**
+	 * 
+	 * @param bodywarmth
+	 */
 	public Character(int bodywarmth)
 	{
 		this();
 		this.bodywarmth = bodywarmth;
 	}
+	/**
+	 * 
+	 * @param i
+	 * @param bodywarmth
+	 */
 	public Character(Ice i, int bodywarmth)
 	{
 		this(bodywarmth);
 		ice = i;
 		i.addCharacter(this);
 	}
-	
+	/**
+	 * Getter az aktualis jegtablara
+	 * @return: Visszaadja az aktualis jegtablat, amin a Character all 
+	 */
 	public Ice getIce()
 	{
 		System.out.println("--> getIce()");
