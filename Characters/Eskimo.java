@@ -37,7 +37,6 @@ public class Eskimo extends Character
 	}
 	/**
 	 *Az Eskimo kepessege
-	 *
 	 */
 	public void ability()
 	{

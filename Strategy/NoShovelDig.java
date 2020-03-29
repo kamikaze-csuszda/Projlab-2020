@@ -29,9 +29,9 @@ public class NoShovelDig implements DigStrategy
 		System.out.println("<--");
 	}
 	/**
-	 * A karakteren keresztül megkapjuk a mezőt,
-	 * 	amin áll, és ezen csökkentjük a hó mennyiségét.
-	 * 	Mivel nincs nála ásó, ezért csak eggyel.
+	 * A karakteren keresztul megkapjuk a mezot,
+	 * 	amin all, es ezen csokkentjuk a ho mennyiseget.
+	 * 	Mivel nincs nala aso, ezert csak eggyel.
 	 * @param c : a karakter, aki as
 	 */
 	public void dig(Character c)
