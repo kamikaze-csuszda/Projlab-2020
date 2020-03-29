@@ -52,10 +52,6 @@ public class Shovel extends Item
 		NoShovelDig nsd = new NoShovelDig();
 		Character c = this.getCharacter();
 		c.setDigStrategy(nsd);	
-		
-		Ice i = c.getIce();
-		i.addItem(this);
-		this.removeCharacter();
 		System.out.println("<--");
 	}
 }

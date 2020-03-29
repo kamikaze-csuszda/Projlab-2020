@@ -142,6 +142,7 @@ public abstract class Character implements Movable
 	{
 		System.out.println("--> addItem(i)");
 		equipment.add(i);
+		i.setCharacter(this);
 		System.out.println("<--");
 	}
 	
@@ -154,17 +155,16 @@ public abstract class Character implements Movable
 	public void removeItem(Item i)
 	{
 		System.out.println("--> removeItem(i)");
-		equipment.remove(i);
 		i.discard();
+		equipment.remove(i);
 		System.out.println("<--");
 	}
 	
 	public void itemDiscard(Item i)
 	{
 		System.out.println("--> itemDiscard(i)");
-		removeItem(i);
-		i.removeCharacter();
 		ice.addItem(i);
+		removeItem(i);
 		System.out.println("<--");
 	}
 	
@@ -219,7 +219,10 @@ public abstract class Character implements Movable
 		System.out.println("<-- " + bodywarmth);
 		return bodywarmth;
 	}
-	
+	public Item getItem(int i)
+	{
+		return equipment.get(i);
+	}
 	public void warmup()
 	{
 		System.out.println("--> warmup()");

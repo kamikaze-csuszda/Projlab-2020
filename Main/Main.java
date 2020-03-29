@@ -6,19 +6,28 @@ import Characters.Scientist;
 import Ice.HoleIce;
 import Ice.StableIce;
 import Ice.UnstableIce;
+import Item.Cartridge;
+import Item.DivingSuit;
+import Item.Flare;
+import Item.FlareGun;
+import Item.Food;
+import Item.Rope;
 import Strategy.DivingSuitStrategy;
 import Strategy.Igloo;
 import Strategy.RopeHelp;
+import Strategy.ShovelDig;
 
 public class Main{
 
     public static void main(String[] args)
     {
-    	int ans = menu();
+    	
+    	int ans = -1;
+        while(ans != 0) {
+        ans = menu();
         System.out.println("Bemenet: " + ans);
         switch (ans)
         {
-        	//szerintem ez nem lesz így jó - V
             case 1:
             {
             	teszt1();
@@ -61,37 +70,45 @@ public class Main{
             }
             case 9:
             {
+            	teszt9();
             	break;
             }
             case 10:
             {
+            	teszt10();
             	break;
             }
             case 11:
             {
+            	teszt11();
             	break;
             }
             case 12:
             {
+            	teszt12();
             	break;
             }
             case 13:
             {
+            	teszt13();
             	break;
             }
             case 14:
             {
+            	teszt14();
             	break;
             }
             case 15:
             {
+            	teszt15();
             	break;
             }
             case 16:
             {
+            	teszt16();
             	break;
             }
-            
+        }
 
         }
     }
@@ -113,7 +130,8 @@ public class Main{
                  "13) Eszkimo elfogyaszt egy elelmet\n" +
                  "14) Eszkimo osszerakja a pisztolyt\n" +
                  "15) Eszkimo eldob egy itemet\n" +
-                 "16) Eszkimo atad eszkozt a sarkkutatonak\n");
+                 "16) Eszkimo atad eszkozt a sarkkutatonak\n" + 
+                 "0) Kilépés\n");
     	 Scanner in = new Scanner(System.in);
          return in.nextInt();
          
@@ -215,4 +233,88 @@ public class Main{
     	Eskimo c = new Eskimo(ice);
     	c.ability();
     }
+    static void teszt9()
+    {
+    	StableIce ice = new StableIce();
+    	ice.incSnow();
+    	Eskimo c = new Eskimo(ice);
+    	c.dig();
+    }
+    static void teszt10()
+    {
+    	StableIce ice = new StableIce();
+    	ice.incSnow();
+    	ice.incSnow();
+    	Eskimo c = new Eskimo(ice);
+    	ShovelDig sDig = new ShovelDig();
+    	c.setDigStrategy(sDig);
+    	c.dig();
+    }
+    
+    static void teszt11()
+    {
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	DivingSuit d = new DivingSuit();
+    	Rope r = new Rope();
+    	ice.addItem(d);
+    	ice.addItem(r);
+    	c.breakIce();
+    }
+    static void teszt12()
+    {
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	DivingSuit d = new DivingSuit();
+    	c.breakIce();
+    	c.itemPickup(0);
+    }
+    static void teszt13()
+    {
+    	Eskimo c = new Eskimo();
+    	Food f = new Food();
+    	c.addItem(f);
+    	c.warmthDec();
+    	c.getItem(0).use();
+    }
+    static void teszt14()
+    {
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	Cartridge cartridge = new Cartridge();
+    	Flare flare = new Flare();
+    	FlareGun flareGun = new FlareGun();
+    	c.addItem(cartridge);
+    	c.addItem(flareGun);
+    	c.addItem(flare);
+    	c.assembleGun(cartridge, flare, flareGun);
+    }
+    static void teszt15()
+    {
+    	StableIce ice = new StableIce();
+    	Eskimo c = new Eskimo(ice);
+    	DivingSuit ds = new DivingSuit();
+    	c.addItem(ds);
+    	c.itemDiscard(ds);
+    }
+    static void teszt16()
+    {
+    	Eskimo c1 = new Eskimo();
+    	Scientist c2 = new Scientist();
+    	DivingSuit ds = new DivingSuit();
+    	c1.addItem(ds);
+    	c1.itemGive(c2, ds);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

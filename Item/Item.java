@@ -21,6 +21,11 @@ public abstract class Item
 	private boolean frozen;
 	private Character character;
 	
+	public Item()
+	{
+		frozen = true;
+	}
+	
 	/**
 	 * A fuggveny visszater az Item birtokosaval.  
 	 * @return character
@@ -75,7 +80,6 @@ public abstract class Item
 	public void discard() {
 		Character c = this.getCharacter();
 		Ice i = c.getIce();
-		i.addItem(this);
 		this.removeCharacter();
 	}
 }
