@@ -34,7 +34,7 @@ public class NoRopeHelp implements HelpStrategy
 	public boolean help(Character c1, Character c2)
 	{
 		System.out.println("--> help(c1, c2)");
-		System.out.println("<--");
+		System.out.println("<-- false");
 		return false;
 	}
 }

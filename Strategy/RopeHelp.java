@@ -39,7 +39,7 @@ public class RopeHelp implements HelpStrategy
 		System.out.println("--> help(c1, c2)");
 		Ice neighbor = c2.getIce();
 		c1.moveTo(neighbor);
-		System.out.println("<--");
+		System.out.println("<-- true");
 		return true;
 	}
 }
