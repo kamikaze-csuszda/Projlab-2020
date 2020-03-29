@@ -19,6 +19,15 @@ import Ice.Ice;
 public class RopeHelp implements HelpStrategy
 {
 	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public RopeHelp()
+	{
+		System.out.println("--> RopeHelp()");
+		System.out.println("<--");
+	}
+
+	/**
 	 * Mivel van a szomszednal kotel, ezert a vizbe esett karakter atlep az o mezojere.
 	 * 	A fuggveny pedig igazat ad vissza, mivel a karakter meg van mentve.
 	 * @param c1 : a karakter, aki segitseget ker
@@ -27,8 +36,10 @@ public class RopeHelp implements HelpStrategy
 	 */
 	public boolean help(Character c1, Character c2)
 	{
+		System.out.println("--> help(c1, c2)");
 		Ice neighbor = c2.getIce();
 		c1.moveTo(neighbor);
+		System.out.println("<--");
 		return true;
 	}
 }
