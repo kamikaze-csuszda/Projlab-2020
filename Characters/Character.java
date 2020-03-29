@@ -73,7 +73,7 @@ public abstract class Character implements Movable
 	public int getAction()
 	{
 		System.out.println("--> getAction()");
-		System.out.println("<-- "); //valami random szám
+		System.out.println("<-- " + action);
 		return action;
 	}
 	
@@ -201,7 +201,7 @@ public abstract class Character implements Movable
 	public int getWarmth()
 	{
 		System.out.println("--> getWarmth()");
-		System.out.println("<-- ");  //konkrét szám kell majd ide
+		System.out.println("<-- " + bodywarmth);
 		return bodywarmth;
 	}
 	
@@ -250,7 +250,7 @@ public abstract class Character implements Movable
 	{
 		System.out.println("--> help(c1)");
 		boolean result = helpStrategy.help(c1, this);
-		System.out.println("<--");
+		System.out.println("<--" + result);
 		return result;
 	}
 	
