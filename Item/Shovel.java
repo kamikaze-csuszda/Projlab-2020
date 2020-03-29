@@ -20,16 +20,25 @@ import Strategy.NoShovelDig;
 
 public class Shovel extends Item
 {
-
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public Shovel()
+	{
+		System.out.println("--> Shovel()");
+		System.out.println("<--");
+	}
 	/**
 	 * A Shovel Item hasznalatat irja le. Azzal, hogy atallitja a karakter asasi startegiajat arra, hogy van nala aso. 
 	 */
 	@Override
 	public void use()
 	{
+		System.out.println("--> use()");
 		ShovelDig sd = new ShovelDig();
 		Character c = this.getCharacter();
-		c.setDigStrategy(sd);		
+		c.setDigStrategy(sd);
+		System.out.println("<--");
 	}
 
 	/**
@@ -39,6 +48,7 @@ public class Shovel extends Item
 	@Override
 	public void discard()
 	{
+		System.out.println("--> discard()");
 		NoShovelDig nsd = new NoShovelDig();
 		Character c = this.getCharacter();
 		c.setDigStrategy(nsd);	
@@ -46,5 +56,6 @@ public class Shovel extends Item
 		Ice i = c.getIce();
 		i.addItem(this);
 		this.removeCharacter();
+		System.out.println("<--");
 	}
 }

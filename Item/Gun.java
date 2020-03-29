@@ -17,13 +17,22 @@ package Item;
 
 public class Gun extends Item
 {
-
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public Gun()
+	{
+		System.out.println("--> Gun()");
+		System.out.println("<--");
+	}
 	/**
 	 * Gun Item hasznalata. Direkt nem csinal semmit. 
 	 */
 	@Override
 	public void use() {
-		// direkt nem csinal semmit	
+		System.out.println("--> use()");
+		// direkt nem csinal semmit
+		System.out.println("<--");
 	}
 
 }

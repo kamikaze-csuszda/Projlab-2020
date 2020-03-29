@@ -15,4 +15,13 @@ package Item;
 
 public class Cartridge extends Gun
 {
+    /**
+     * Alapertelmezett konstruktor.
+     */
+    public Cartridge()
+    {
+        super();
+        System.out.println("--> Cartridge()");
+        System.out.println("<--");
+    }
 }

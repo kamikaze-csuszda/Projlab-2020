@@ -20,16 +20,25 @@ import Strategy.NoRopeHelp;
 
 public class Rope extends Item
 {
-
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
+	public Rope()
+	{
+		System.out.println("--> Rope()");
+		System.out.println("<--");
+	}
 	/**
 	 * A Rope Item hasznalatat irja le. Atallitja a HelpStrategiajat arra, hogy van nala kotel. 
 	 */
 	@Override
-	public void use() {
+	public void use()
+	{
+		System.out.println("--> use()");
 		RopeHelp rh = new RopeHelp();
 		Character c = this.getCharacter();
 		c.setHelpStrategy(rh);
-		
+		System.out.println("<--");
 	}
 
 	/**
@@ -37,7 +46,9 @@ public class Rope extends Item
 	 * Utana pedig a Jegtabla Itemjeihez hozzadaja, amin a karakter all es eltavolitja a karaktertol. 
 	 */
 	@Override
-	public void discard() {
+	public void discard()
+	{
+		System.out.println("--> discard()");
 		NoRopeHelp nrh = new NoRopeHelp();
 		Character c = this.getCharacter();
 		c.setHelpStrategy(nrh);
@@ -45,6 +56,7 @@ public class Rope extends Item
 		Ice i = c.getIce();
 		i.addItem(this);
 		this.removeCharacter();
+		System.out.println("<--");
 	}
 	
 }
