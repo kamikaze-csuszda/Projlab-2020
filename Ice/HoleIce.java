@@ -18,18 +18,27 @@ import Characters.Character;
 
 public class HoleIce extends Ice
 {
+	/**
+	 * Alapertelmezett konstruktor.
+	 */
 	public HoleIce()
 	{
 		System.out.println("--> HoleIce()");
 		System.out.println("<--");
 	}
-
+	/**
+	 * Hozzá adja valami....
+	 *
+	 */
 	public void addItem() //ennek tippre lesz meg parametere
 	{
 		System.out.println("--> addItem()");
 		System.out.println("<--");
 	}
-
+	/**
+	 * A paraméretben megadott karakter
+	 * @param c
+	 */
 	@Override
 	public void moveHere(Character c)
 	{
