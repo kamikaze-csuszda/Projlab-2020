@@ -19,11 +19,13 @@ import Ice.Ice;
 public abstract class Item
 {
 	private boolean frozen;
+	private int durability;
 	private Character character;
 	
-	public Item()
+	public Item(int dur)
 	{
 		frozen = true;
+		durability = dur;
 	}
 	
 	/**
@@ -50,6 +52,21 @@ public abstract class Item
 	public void removeCharacter()
 	{
 		this.character = null;
+	}
+
+	/**
+	 *  A durability adattag gettere.
+	 * @return az adott Item hany hasznalatot bir meg ki
+	 */
+	public int getDurability(){
+		return durability;
+	}
+
+	/**
+	 *  Csokkenti eggyel a durability adattagot amikor hasznaljak a targyat.
+	 */
+	public void decreaseDurability(){ ///TODO: itt fog valszeg eltorni is ha lecsokken nullara
+		durability--;
 	}
 	
 	/**
