@@ -36,11 +36,9 @@ public class Shovel extends Item
 	@Override
 	public void use()
 	{
-		System.out.println("--> use()");
 		ShovelDig sd = new ShovelDig(this);
 		Character c = this.getCharacter();
 		c.setDigStrategy(sd);
-		System.out.println("<--");
 	}
 
 	/**
@@ -50,10 +48,8 @@ public class Shovel extends Item
 	@Override
 	public void discard()
 	{
-		System.out.println("--> discard()");
 		NoShovelDig nsd = new NoShovelDig();
 		Character c = this.getCharacter();
-		c.setDigStrategy(nsd);	
-		System.out.println("<--");
+		c.setDigStrategy(nsd);
 	}
 }
