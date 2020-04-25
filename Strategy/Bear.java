@@ -1,7 +1,13 @@
 package Strategy;
 
+import Ice.*;
+
 public class Bear {
+    /**
+     *
+     * @param i
+     */
     public void bearHere(Ice i){
-        //TODO: szekvencia nem lesz jo
+        i.stepOn();
     }
 }
