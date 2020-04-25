@@ -1,5 +1,7 @@
 package Strategy;
 
+import Ice.Ice;
+
 public class NoBear {
     /**
      * Mivel nincs a mezon medve, igy nem csinal semmit.

@@ -1,6 +1,7 @@
 package Strategy;
 
 import Ice.Ice;
+import Main.Game;
 import Characters.*;
 import Characters.Character;
 
@@ -56,7 +57,7 @@ public class NoIgloo implements IglooStrategy
 	public void stepOn(Ice i) {
 		int num = i.getCharNum();
 		if (num > 0)
-			loseGame();  //TODO: game meghívási módja
+			Game.getInstance().loseGame();  //TODO: game meghívási módja
 	}
 
 	/**

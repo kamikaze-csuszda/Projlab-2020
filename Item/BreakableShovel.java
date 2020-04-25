@@ -2,7 +2,7 @@ package Item;
 
 
 
-public BreakableShovel extends Shovel {
+public class BreakableShovel extends Shovel {
     /**
      *  Alapertelmezett konstruktor.
      */

@@ -11,7 +11,7 @@ public class Commands
 	enum mode {GAME, INIT}
 	mode m;
 	String[] args;
-	void start() throws IOException {
+	void start() throws Exception {
 		m = mode.GAME;
 		String temp;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -110,7 +110,7 @@ public class Commands
 					{
 						if(Game.getInstance().getObjects().get(key) instanceof Ice)
 						{
-							System.out.println(key + " Items:");
+							System.out.println("{\n" + key + " Items:");
 							int index = 0;
 							for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray())
 							{
@@ -120,10 +120,11 @@ public class Commands
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}
+							System.out.println("}");
 						}
 						if(Game.getInstance().getObjects().get(key) instanceof Character)
 						{
-							System.out.println(key + " Items:");
+							System.out.println("{\n" + key + "s Items:");
 							int index = 0;
 							for (Item it: ((Character)Game.getInstance().getObjects().get(key)).getEquipment())
 							{
@@ -133,6 +134,7 @@ public class Commands
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}
+							System.out.println("}");
 						}
 					}
 			}
@@ -141,21 +143,71 @@ public class Commands
 				if(Game.getInstance().getObjects().get(args2[2]) instanceof Ice)
 				{
 					
+					System.out.println("{\n" + args2[2] + " Items:");
+					int index = 0;
+					for (Item it: ((Ice)Game.getInstance().getObjects().get(args2[2])).getItemArray())
+					{
+						String temp = it.getClass().toString();
+						String[] temp2 = temp.split(".");
+						temp = temp2[temp2.length-1];
+						System.out.println("\t" + index + " " + temp);
+					}
+					System.out.println("}");
+						
 				}
 				else if(Game.getInstance().getObjects().get(args2[2]) instanceof Ice)
 				{
-					
+					System.out.println("{\n" + args2[2] + " Items:");
+					int index = 0;
+					for (Item it: ((Character)Game.getInstance().getObjects().get(args2[2])).getEquipment())
+					{
+						String temp = it.getClass().toString();
+						String[] temp2 = temp.split(".");
+						temp = temp2[temp2.length-1];
+						System.out.println("\t" + index + " " + temp);
+						index++;
+					}
+					System.out.println("}");
 				}
 				else throw new IllegalArgumentException("Unexpected value: " + args2[2]);
 			}
 			break;
 		case "give":
+			if(args2.length < 5)
+				throw new IllegalArgumentException("Not enough arguments!");
+			String key1 = args2[2], key2 = args2[3];
+			int id = Integer.parseInt(args2[4]);
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character) || !(Game.getInstance().getObjects().get(key2) instanceof Character)) 
+				throw new IllegalArgumentException("Object is not a Character!");
+			if(id < 0 || id > 5)
+				throw new IllegalArgumentException("Maximum index: 5. Given index: " + id);
+			((Character)Game.getInstance().getObjects().get(key1)).itemGive((Character)(Game.getInstance().getObjects().get(key2)), ((Character)Game.getInstance().getObjects().get(key1)).getItem(id));
+			
+			
 			break;
 		case "drop":
+		{
+			if(args2.length < 4)
+				throw new IllegalArgumentException("Not enough arguments!");
+			String key = args2[2];
+			int index = Integer.parseInt(args2[3]);
+			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
+				throw new IllegalArgumentException("Object is not a Character!");
+			((Character)Game.getInstance().getObjects().get(key)).itemDiscard(((Character)Game.getInstance().getObjects().get(key)).getItem(index));
+		
 			break;
+			}
 		case "pickup":
+		{
+			if(args2.length < 4)
+				throw new IllegalArgumentException("Not enough arguments!");
+			String key = args2[2];
+			int index = Integer.parseInt(args2[3]);
+			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
+				throw new IllegalArgumentException("Object is not a Character!");
+			((Character)Game.getInstance().getObjects().get(key)).itemPickup(index);
 			break;
-			
+		}
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		}
@@ -163,18 +215,62 @@ public class Commands
 	}
 	private void dig(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		String key = args2[1];
+		int snowBefore, snowAfter;
+		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
+			throw new IllegalArgumentException("Object is not a Character!");
+		snowBefore = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
+		((Character)Game.getInstance().getObjects().get(key)).dig();
+		snowAfter = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
+		System.out.println("$A ho vastagsaga " + snowBefore + "rol " + snowAfter+"re csokkent!");
 		
 	}
 	private void assemble(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+		String key = args2[1];
+		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
+			throw new IllegalArgumentException("Object is not a Character!");
+		// TODO Befejezni, ha megvan az assemblegun
 	}
-	private void use(String[] args2)
+	private void use(String[] args2) throws Exception
 	{
-		// TODO Auto-generated method stub
-		
+		switch(args2[1]) 
+		{
+		case "ability":
+			{
+				if(args2.length < 3)
+					throw new IllegalArgumentException("Not enough arguments");
+				if(args2.length == 3) 
+				{
+					String key = args2[2];
+					if(!(Game.getInstance().getObjects().get(key) instanceof Eskimo)) 
+						throw new IllegalArgumentException("Object is not an Eskimo!");
+					((Eskimo)Game.getInstance().getObjects().get(key)).ability();
+				}
+				if(args2.length == 4) 
+				{
+					int d = Integer.parseInt(args2[3]);
+					String key = args2[2];
+					if(!(Game.getInstance().getObjects().get(key) instanceof Scientist)) 
+						throw new IllegalArgumentException("Object is not an Eskimo!");
+					((Scientist)Game.getInstance().getObjects().get(key)).ability(d);
+				}
+				break;	
+			}
+		case "item":
+			{
+				if(args2.length < 4)
+					throw new IllegalArgumentException("Not enough arguments");
+				String key = args2[2];
+				int id = Integer.parseInt(args2[3]);
+				if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
+					throw new IllegalArgumentException("Object is not a Character!");
+				((Character)Game.getInstance().getObjects().get(key)).getItem(id).use();
+				break;
+			}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+		}
 	}
 	private void move(String[] args2)
 	{

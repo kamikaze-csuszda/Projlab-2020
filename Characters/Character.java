@@ -152,7 +152,7 @@ public abstract class Character implements Movable
 	 */
 	public void assembleGun()
 	{
-		if (Game.getInstance().getNumOfCharacters() == ice.characters.size() && gunParts.size() == 3){
+		if (Game.getInstance().getNumOfCharacters() == ice.getCharNum() && gunParts.size() == 3){
 			Game.getInstance().winGame();
 		}
 	}

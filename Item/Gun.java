@@ -31,16 +31,16 @@ public class Gun extends Item
 	 */
 	@Override
 	public void use() {
-		character.removeItem(this);
-		character.addGunpart(this);
+		getCharacter().removeItem(this);
+		getCharacter().addGunpart(this);
 	}
 
 	/**
 	 * Az alkatresz kikerul az alkatresztarolobol, es vissza a sima itemek koze.
 	 */
 	public void discard(){
-		character.removeGunpart(this);
-		character.addItem(this);
+		getCharacter().removeGunpart(this);
+		getCharacter().addItem(this);
 	}
 
 }

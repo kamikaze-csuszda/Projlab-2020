@@ -3,7 +3,7 @@ package Item;
 import Ice.*;
 import Characters.Character;
 import Strategy.TentStrategy;
-import Strategy.NoIglooStrategy;
+import Strategy.NoIgloo;
 
 
 public class Tent extends Item {

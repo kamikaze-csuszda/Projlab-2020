@@ -2,6 +2,7 @@ package Strategy;
 
 
 import Ice.*;
+import Main.Game;
 
 
 public class TentStrategy implements IglooStrategy
@@ -28,7 +29,7 @@ public class TentStrategy implements IglooStrategy
 		i.destroyIgloo();
 		int chars = i.getCharNum();
 		if (chars > 0)
-			loseGame();  //dunno hogy hivatkozzuk a game-et, TODO
+			Game.getInstance().loseGame();  //dunno hogy hivatkozzuk a game-et, TODO
 	}
 	@Override
 	public void turnEnd(Ice i) {

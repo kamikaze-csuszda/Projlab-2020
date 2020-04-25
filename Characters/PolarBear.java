@@ -1,12 +1,15 @@
 package Characters;
 
 import Ice.Ice;
-import Startegy.NoBear;
 import Strategy.Bear;
+import Strategy.NoBear;
 
 public class PolarBear implements Movable {
 
 	private Ice ice;
+	public void setIce(Ice i) {
+		ice = i;
+	}
 
 	/**
 	 * A medve atmozog a megadott szomszedos mezore, es a strategiakat is ennek megfeleloen allitja.

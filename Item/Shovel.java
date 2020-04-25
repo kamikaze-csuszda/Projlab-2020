@@ -26,8 +26,9 @@ public class Shovel extends Item
 	public Shovel()
 	{
 		super();
-		System.out.println("--> Shovel()");
-		System.out.println("<--");
+	}
+	public Shovel(int i) {
+		super(3);
 	}
 	/**
 	 * A Shovel Item hasznalatat irja le. Azzal, hogy atallitja a karakter asasi startegiajat arra, hogy van nala aso. 
@@ -36,7 +37,7 @@ public class Shovel extends Item
 	public void use()
 	{
 		System.out.println("--> use()");
-		ShovelDig sd = new ShovelDig();
+		ShovelDig sd = new ShovelDig(this);
 		Character c = this.getCharacter();
 		c.setDigStrategy(sd);
 		System.out.println("<--");

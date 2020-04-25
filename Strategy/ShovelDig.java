@@ -13,8 +13,7 @@ package Strategy;
 import Ice.*;
 import Characters.*;
 import Characters.Character;
-import Item.Shovel;
-import Item.BreakableShovel;
+import Item.*;
 
 /**
  * Ez a strategia fut le ha az adott karakter aso hasznalataval as.
