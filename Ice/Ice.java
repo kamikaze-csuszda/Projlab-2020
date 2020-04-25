@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import Characters.Character;
 import Item.Item;
+import Strategy.BearStrategy;
 import Strategy.IglooStrategy;
 import Strategy.NoIgloo;
 
@@ -34,6 +35,7 @@ public abstract class Ice
 	private ArrayList<Ice> neighbours;
 	private ArrayList<Item> items;
 	private IglooStrategy iglooStrategy;
+	private BearStrategy bearStrategy;
 	private int neighbourNum;
 	
 	/**
