@@ -23,6 +23,7 @@ public class Tent extends Item {
         Character c = this.getCharacter();
         Ice i = c.getIce();
         i.setIglooStrategy(ts);
+        c.removeItem(this);
     }
 
     /**

@@ -108,7 +108,7 @@ public abstract class Item
 	 */
 	public void discard() {
 		Character c = this.getCharacter();
-		Ice i = c.getIce();
+		Ice i = c.getIce(); //<- ez szerintem gecifölöseges
 		this.removeCharacter();
 	}
 }

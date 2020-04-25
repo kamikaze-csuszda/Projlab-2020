@@ -57,7 +57,7 @@ public class NoIgloo implements IglooStrategy
 	public void stepOn(Ice i) {
 		int num = i.getCharNum();
 		if (num > 0)
-			Game.getInstance().loseGame();  //TODO: game meghívási módja
+			Game.getInstance().loseGame(); 
 	}
 
 	/**

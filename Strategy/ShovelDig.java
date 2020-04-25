@@ -40,7 +40,6 @@ public class ShovelDig implements DigStrategy
 	 */
 	public void dig(Character c)
 	{
-		System.out.println("--> dig(c)");
 		Ice ice = c.getIce();
 		ice.decSnow();
 		ice.decSnow();
@@ -50,6 +49,5 @@ public class ShovelDig implements DigStrategy
 			shovel.discard();
 			c.removeItem(shovel);
 		}
-		System.out.println("<--");
 	}
 }
