@@ -23,7 +23,7 @@ public class Food extends Item
 	 */
 	public Food()
 	{
-		super();
+		super(-1);
 		System.out.println("--> Food()");
 		System.out.println("<--");
 	}
