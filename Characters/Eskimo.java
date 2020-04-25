@@ -22,8 +22,7 @@ public class Eskimo extends Character
 	public Eskimo()
 	{
 		super(5);
-		System.out.println("--> Eskimo()");
-		System.out.println("<--");
+		
 	}
 	/**
 	 * Az Eskimo i parameterrel ellatott konstruktora
@@ -32,18 +31,17 @@ public class Eskimo extends Character
 	public Eskimo(Ice i)
 	{
 		super(i, 5);
-		System.out.println("--> Eskimo(i)");
-		System.out.println("<--");
+		
 	}
 	/**
 	 *Az Eskimo kepessege
 	 */
 	public void ability()
 	{
-		System.out.println("--> ability()");
+		
 		if (getIce().getSnow() > 0) {
 			getIce().buildIgloo();			
 		}
-		System.out.println("<--");
+		
 	}
 }

@@ -23,8 +23,6 @@ public class RopeHelp implements HelpStrategy
 	 */
 	public RopeHelp()
 	{
-		System.out.println("--> RopeHelp()");
-		System.out.println("<--");
 	}
 
 	/**
@@ -36,10 +34,9 @@ public class RopeHelp implements HelpStrategy
 	 */
 	public boolean help(Character c1, Character c2)
 	{
-		System.out.println("--> help(c1, c2)");
+		
 		Ice neighbor = c2.getIce();
 		c1.moveTo(neighbor);
-		System.out.println("<-- true");
 		return true;
 	}
 }

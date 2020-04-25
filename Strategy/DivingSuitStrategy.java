@@ -22,8 +22,6 @@ public class DivingSuitStrategy implements WaterStrategy
 	 */
 	public DivingSuitStrategy()
 	{
-		System.out.println("--> DivingSuitStrategy()");
-		System.out.println("<--");
 	}
 
 	/**
@@ -33,8 +31,8 @@ public class DivingSuitStrategy implements WaterStrategy
 	 */
 	public void fallInWater(Character c) throws Exception
 	{
-		System.out.println("--> fallInWater(c)");
+		
 		c.move(0);
-		System.out.println("<--");
+		
 	}
 }

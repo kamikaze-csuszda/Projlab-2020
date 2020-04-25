@@ -25,8 +25,7 @@ public class NoShovelDig implements DigStrategy
 	 */
 	public NoShovelDig()
 	{
-		System.out.println("--> NoShovelDig()");
-		System.out.println("<--");
+		
 	}
 	/**
 	 * A karakteren keresztul megkapjuk a mezot,
@@ -36,10 +35,10 @@ public class NoShovelDig implements DigStrategy
 	 */
 	public void dig(Character c)
 	{
-		System.out.println("--> dig(c)");
+		
 		Ice ice = c.getIce();
 		ice.decSnow();
 		c.decAction();
-		System.out.println("<--");
+		
 	}
 }

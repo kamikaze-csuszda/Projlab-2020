@@ -23,8 +23,7 @@ public class NoDivingSuit implements WaterStrategy
 	 */
 	public NoDivingSuit()
 	{
-		System.out.println("--> NoDivingSuit()");
-		System.out.println("<--");
+		
 	}
 
 	/**
@@ -38,7 +37,6 @@ public class NoDivingSuit implements WaterStrategy
 	 */
 	public void fallInWater(Character c) throws Exception
 	{
-		System.out.println("--> fallInWater(c)");
 		Ice hole = c.getIce();
 		boolean isSaved = false;
 		int num = 0;
@@ -59,6 +57,5 @@ public class NoDivingSuit implements WaterStrategy
 		{
 			c.die();
 		}
-		System.out.println("<--");
 	}
 }

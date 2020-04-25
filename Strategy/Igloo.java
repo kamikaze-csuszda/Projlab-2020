@@ -33,9 +33,9 @@ public class Igloo implements IglooStrategy
 	 */
 	public void stormEffects(Ice i) throws Exception
 	{
-		System.out.println("--> stormEffects(i)");
+		
 		i.destroyIgloo();
-		System.out.println("<--");
+	
 	}
 
 	/**
