@@ -13,18 +13,22 @@ package Strategy;
 import Ice.*;
 import Characters.*;
 import Characters.Character;
+import Item.Shovel;
+import Item.BreakableShovel;
 
 /**
  * Ez a strategia fut le ha az adott karakter aso hasznalataval as.
  */
 public class ShovelDig implements DigStrategy
 {
+	private Shovel shovel;
 	/**
 	 * Alapertelmezett konstruktor.
 	 */
-	public ShovelDig()
+	public ShovelDig(Shovel sh)
 	{
 		System.out.println("--> ShovelDig()");
+		shovel = sh;
 		System.out.println("<--");
 	}
 
@@ -32,6 +36,7 @@ public class ShovelDig implements DigStrategy
 	 * A karakteren keresztul megkapjuk a mezot,
 	 * 	amin all, es ezen csokkentjuk a ho mennyiseget.
 	 * 	Mivel van nala aso, ezert ket egyseggel.
+	 * 	Az asonak ezutan csokkentjuk a durabilityjet, es ha nullara csokkent, akkor eltorik, nem lehet tovabb hasznalni.
 	 * @param c : a karakter aki as
 	 */
 	public void dig(Character c)
@@ -41,6 +46,11 @@ public class ShovelDig implements DigStrategy
 		ice.decSnow();
 		ice.decSnow();
 		c.decAction();
+		shovel.decreaseDurability();
+		if (shovel.getDurability() == 0){
+			shovel.discard();
+			c.removeItem(shovel);
+		}
 		System.out.println("<--");
 	}
 }
