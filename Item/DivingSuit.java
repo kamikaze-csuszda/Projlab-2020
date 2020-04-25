@@ -27,8 +27,6 @@ public class DivingSuit extends Item
 	public DivingSuit()
 	{
 		super();
-		System.out.println("--> DivingSuit()");
-		System.out.println("<--");
 	}
 
 	/**
@@ -37,11 +35,9 @@ public class DivingSuit extends Item
 	@Override
 	public void use()
 	{
-		System.out.println("--> use()");
 		DivingSuitStrategy dss = new DivingSuitStrategy();
 		Character c = this.getCharacter();
 		c.setWaterStrategy(dss);
-		System.out.println("<--");
 	}
 
 	/**
@@ -51,11 +47,9 @@ public class DivingSuit extends Item
 	@Override
 	public void discard()
 	{
-		System.out.println("--> discard()");
 		NoDivingSuit nds = new NoDivingSuit();
 		Character c = this.getCharacter();
 		c.setWaterStrategy(nds);
-		System.out.println("<--");
 	}
 	
 	
