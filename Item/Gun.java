@@ -25,14 +25,22 @@ public class Gun extends Item
 		System.out.println("--> Gun()");
 		System.out.println("<--");
 	}
+
 	/**
-	 * Gun Item hasznalata. Direkt nem csinal semmit. 
+	 * Az alkatresz kikerul a normal itemek kozul, es bekerul az alkatreszek tarolojaba.
 	 */
 	@Override
 	public void use() {
-		System.out.println("--> use()");
-		// direkt nem csinal semmit
-		System.out.println("<--");
+		character.removeItem(this);
+		character.addGunpart(this);
+	}
+
+	/**
+	 * Az alkatresz kikerul az alkatresztarolobol, es vissza a sima itemek koze.
+	 */
+	public void discard(){
+		character.removeGunpart(this);
+		character.addItem(this);
 	}
 
 }
