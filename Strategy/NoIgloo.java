@@ -47,14 +47,23 @@ public class NoIgloo implements IglooStrategy
 		}
 		System.out.println("<--");
 	}
+
+	/**
+	 * Amikor a medve ralep a mezore ezzel a strategiaval, megnezi, hogy van-e karakter a mezon, ha van, akkor jatek vege.
+	 * @param i a mezo amire ralep
+	 */
 	@Override
 	public void stepOn(Ice i) {
-		// TODO Auto-generated method stub
-		
+		int num = i.getCharNum();
+		if (num > 0)
+			loseGame();  //TODO: game meghívási módja
 	}
+
+	/**
+	 * Szandekosan nem csinal semmit.
+	 * @param i
+	 */
 	@Override
 	public void turnEnd(Ice i) {
-		// TODO Auto-generated method stub
-		
 	}
 }
