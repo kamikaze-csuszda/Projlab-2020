@@ -26,4 +26,5 @@ public interface IglooStrategy
 	 */
 	public void stormEffects(Ice i) throws Exception;
 	
+	
 }
