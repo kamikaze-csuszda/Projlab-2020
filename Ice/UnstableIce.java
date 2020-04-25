@@ -29,7 +29,7 @@ public class UnstableIce extends Ice
 		super(maxChar, 0);
 	}
 	/**
-	 * A karakter mozgasa hivja meg, ha sokan alnak rajta kkor meghivja a fallInWatre-t
+	 * A karakter mozgasa hivja meg, ha sokan alnak rajta akkor meghivja a fallInWater-t
 	 * @param c
 	 */
 	@Override
