@@ -28,6 +28,7 @@ public class Game
 	public static Game getInstance() {
 		return game;
 	}
+	private int numOfCharacters = 0;
 	private ArrayList<Ice> mapPieces;
 	private Map<String, Object> objects = new HashMap<String, Object>();
 	public Map<String, Object> getObjects()
@@ -92,4 +93,27 @@ public class Game
 	public void loseGame()
 	{
 	}
+
+	/**
+	 * A karakterek szamanak gettere.
+	 * @return a karakterek szama.
+	 */
+	public int getNumOfCharacters(){
+		return numOfCharacters;
+	}
+
+	/**
+	 * Megnoveli a karakterek szamat eggyel.
+	 */
+	public void incCharNum(){
+		numOfCharacters++;
+	}
+
+	/**
+	 * Lecsokkenti a karakterek szamat eggyel.
+	 */
+	public void decCharNum(){
+		numOfCharacters--;
+	}
+
 }
