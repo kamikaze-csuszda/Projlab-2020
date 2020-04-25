@@ -323,6 +323,7 @@ public abstract class Character implements Movable
 			ice.getNeighbour(d).moveHere(this);
 			ice.removeCharacter(this);
 			setIce(ice.getNeighbour(d));
+			ice.bearHere();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
