@@ -26,12 +26,9 @@ public class Tent extends Item {
     }
 
     /**
-     * Beallitja a mezo strategiajat arra, hogy nincs rajta sator.
+     * Felulirja az os fuggvenyet hogy ne csinaljon semmit.
      */
     public void discard(){
-        NoIglooStrategy nig = new NoIglooStrategy();
-        Character c = this.getCharacter();
-        Ice i = c.getIce();
-        i.setIglooStrategy(nig);
+
     }
 }
