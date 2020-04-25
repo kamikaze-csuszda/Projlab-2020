@@ -20,7 +20,7 @@ public class FlareGun extends Gun
      */
     public FlareGun()
     {
-        super(-1);
+        super();
         System.out.println("--> FlareGun()");
         System.out.println("<--");
     }

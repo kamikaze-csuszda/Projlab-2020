@@ -20,7 +20,7 @@ public class Cartridge extends Gun
      */
     public Cartridge()
     {
-        super(-1);
+        super();
         System.out.println("--> Cartridge()");
         System.out.println("<--");
     }

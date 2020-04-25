@@ -21,7 +21,19 @@ public abstract class Item
 	private boolean frozen;
 	private int durability;
 	private Character character;
-	
+
+	/**
+	 * Alapertelemezett konstruktor.
+	 */
+	public Item(){
+		durability = -1;
+		frozen = true;
+	}
+
+	/**
+	 * A durability allithatosagat biztosito konstruktor.
+	 * @param dur a durability adattag kivant erteke
+	 */
 	public Item(int dur)
 	{
 		frozen = true;

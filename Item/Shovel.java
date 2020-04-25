@@ -25,7 +25,7 @@ public class Shovel extends Item
 	 */
 	public Shovel()
 	{
-		super(-1);
+		super();
 		System.out.println("--> Shovel()");
 		System.out.println("<--");
 	}

@@ -25,7 +25,7 @@ public class Rope extends Item
 	 */
 	public Rope()
 	{
-		super(-1);
+		super();
 		System.out.println("--> Rope()");
 		System.out.println("<--");
 	}
