@@ -104,7 +104,7 @@ public class Commands
 			if(args2[2] == "all")
 			{
 				for(String key: Game.getInstance().getObjects().keySet())
-					if(Game.getInstance().getObjects().get(key) instanceof PolarBear)
+					if(!(Game.getInstance().getObjects().get(key) instanceof Character) || !(Game.getInstance().getObjects().get(key) instanceof Ice))
 						;
 					else
 					{
@@ -272,14 +272,23 @@ public class Commands
 			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		}
 	}
-	private void move(String[] args2)
+	private void move(String[] args2) throws Exception
 	{
-		// TODO Auto-generated method stub
+		if(args2.length < 3)
+			throw new IllegalArgumentException("Not enough arguments");
+		String key = args2[1];
+		int d = Integer.parseInt(args2[2]);
+		if((Game.getInstance().getObjects().get(key) instanceof Character)) 
+			((Character)Game.getInstance().getObjects().get(key)).move(d);
+		else if((Game.getInstance().getObjects().get(key) instanceof PolarBear)) 
+			((PolarBear)Game.getInstance().getObjects().get(key)).move(d);
+		else
+			throw new IllegalArgumentException("Object is not a Movable Object!");
 		
 	}
 	private void set(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		
 		
 	}
 	private void delete(String[] args2)

@@ -28,7 +28,7 @@ public class Shovel extends Item
 		super();
 	}
 	public Shovel(int i) {
-		super(3);
+		super(i);
 	}
 	/**
 	 * A Shovel Item hasznalatat irja le. Azzal, hogy atallitja a karakter asasi startegiajat arra, hogy van nala aso. 
