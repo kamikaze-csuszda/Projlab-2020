@@ -22,8 +22,6 @@ public class Gun extends Item
 	 */
 	public Gun()
 	{
-		System.out.println("--> Gun()");
-		System.out.println("<--");
 	}
 
 	/**
