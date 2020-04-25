@@ -285,4 +285,12 @@ public abstract class Ice
 		iglooStrategy = nig;
 		System.out.println("<--");
 	}
+	
+	public void bearHere() {
+		
+	}
+	
+	public void turnEnd() {
+		
+	}
 }
