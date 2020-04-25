@@ -20,16 +20,19 @@ public class TentStrategy implements IglooStrategy
 	{
 		System.out.println("--> stormEffects(i)");
 		i.destroyIgloo();
+		i.incSnow();
 		System.out.println("<--");
 	}
 	@Override
 	public void stepOn(Ice i) {
-		// TODO Auto-generated method stub
-		
+		i.destroyIgloo();
+		int chars = i.getCharNum();
+		if (chars > 0)
+			loseGame();  //dunno hogy hivatkozzuk a game-et, TODO
 	}
 	@Override
 	public void turnEnd(Ice i) {
-		// TODO Auto-generated method stub
+		i.destroyIgloo();
 		
 	}
 }
