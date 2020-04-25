@@ -358,4 +358,14 @@ public abstract class Character implements Movable
 		System.out.println("--> die()");
 		System.out.println("<--");
 	}
+	
+	public void removeGunpart() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public void addGunpart() {
+		//TODO
+	}
+	
 }
