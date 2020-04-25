@@ -279,4 +279,9 @@ public abstract class Ice
 	public ArrayList<Item> getItemArray(){
 		return items;
 	}
+	
+	public void setBearStrategy(BearStrategy bs) {
+		bearStrategy = bs;
+		
+	}
 }

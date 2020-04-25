@@ -2,7 +2,7 @@ package Strategy;
 
 import Ice.*;
 
-public class Bear {
+public class Bear implements BearStrategy{
     /**
      *
      * @param i

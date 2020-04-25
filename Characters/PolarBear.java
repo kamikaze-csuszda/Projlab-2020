@@ -15,9 +15,10 @@ public class PolarBear implements Movable {
 	 * A medve atmozog a megadott szomszedos mezore, es a strategiakat is ennek megfeleloen allitja.
 	 * A vegen pedig jelzi, hogy lepett, azaz ha van vedtelen karakter a mezon, akkor vege a jateknak.
 	 * @param d
+	 * @throws Exception 
 	 */
 	@Override
-	public void move(int d) {
+	public void move(int d) throws Exception {
 		NoBear nb = new NoBear();
 		Ice neighbour = ice.getNeighbour(d);
 		ice.setBearStrategy(nb);

@@ -15,5 +15,5 @@ package Characters;
 
 public interface Movable
 {
-	public void move(int d);
+	public void move(int d) throws Exception;
 }
