@@ -26,7 +26,7 @@ public class DivingSuit extends Item
 	 */
 	public DivingSuit()
 	{
-		super();
+		super(-1);
 		System.out.println("--> DivingSuit()");
 		System.out.println("<--");
 	}
