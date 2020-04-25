@@ -368,5 +368,7 @@ public abstract class Character implements Movable
 	public void addGunpart() {
 		//TODO
 	}
-	
+	public ArrayList<Item> getEquipment(){
+		return equipment;
+	}
 }

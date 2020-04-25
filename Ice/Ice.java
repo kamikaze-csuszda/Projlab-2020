@@ -293,4 +293,7 @@ public abstract class Ice
 	public void turnEnd() {
 		
 	}
+	public ArrayList<Item> getItemArray(){
+		return items;
+	}
 }

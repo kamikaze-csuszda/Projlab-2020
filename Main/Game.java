@@ -21,11 +21,11 @@ import Ice.Ice;
 
 public class Game
 {
-	private Game game = new Game();
+	private static Game game = new Game();
 	private Game() {
 		
 	}
-	public Game getInstance() {
+	public static Game getInstance() {
 		return game;
 	}
 	private ArrayList<Ice> mapPieces;
