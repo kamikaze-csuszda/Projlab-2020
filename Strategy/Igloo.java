@@ -37,14 +37,20 @@ public class Igloo implements IglooStrategy
 		i.destroyIgloo();
 		System.out.println("<--");
 	}
+
+	/**
+	 * Direkt nem csinal semmit.
+	 * @param i
+	 */
 	@Override
 	public void stepOn(Ice i) {
-		// TODO Auto-generated method stub
-		
 	}
+
+	/**
+	 * Direkt nem csinal semmit
+	 * @param i
+	 */
 	@Override
 	public void turnEnd(Ice i) {
-		// TODO Auto-generated method stub
-		
 	}
 }
