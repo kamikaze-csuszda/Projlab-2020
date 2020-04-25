@@ -14,8 +14,10 @@ public class Commands
 	void start() throws Exception {
 		m = mode.GAME;
 		String temp;
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		temp = br.readLine();
+		temp.toLowerCase();
 		args = temp.split(" ");
 		String command = args[0];
 		if(m == mode.INIT)
@@ -288,7 +290,36 @@ public class Commands
 	}
 	private void set(String[] args2)
 	{
-		
+		if(args2.length < 4)
+			throw new IllegalArgumentException("Not enough arguments"); 
+		String attrib = args2[1];
+		switch (attrib) 
+		{
+		case "neighbour":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+				throw new IllegalArgumentException(key1 + " is not Ice!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
+				throw new IllegalArgumentException(key2 + " is not Ice!");
+			((Ice)Game.getInstance().getObjects().get(key1)).addNeighbour((Ice)Game.getInstance().getObjects().get(key2));
+			((Ice)Game.getInstance().getObjects().get(key2)).addNeighbour((Ice)Game.getInstance().getObjects().get(key1));
+			
+			break;
+		}
+		case "snow":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+				throw new IllegalArgumentException(key1 + " is not Ice!");
+			int num = Integer.parseInt(args2[3]);
+			if(num < 0 || num > 5)
+				throw new IllegalArgumentException(num + " is an invalid number for snow!");
+			((Ice)Game.getInstance().getObjects().get(key1)).
+			break;
+		}
+		}
 		
 	}
 	private void delete(String[] args2)
