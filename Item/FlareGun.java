@@ -21,7 +21,5 @@ public class FlareGun extends Gun
     public FlareGun()
     {
         super();
-        System.out.println("--> FlareGun()");
-        System.out.println("<--");
     }
 }

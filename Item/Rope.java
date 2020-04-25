@@ -26,8 +26,6 @@ public class Rope extends Item
 	public Rope()
 	{
 		super();
-		System.out.println("--> Rope()");
-		System.out.println("<--");
 	}
 	/**
 	 * A Rope Item hasznalatat irja le. Atallitja a HelpStrategiajat arra, hogy van nala kotel. 
@@ -35,11 +33,9 @@ public class Rope extends Item
 	@Override
 	public void use()
 	{
-		System.out.println("--> use()");
 		RopeHelp rh = new RopeHelp();
 		Character c = this.getCharacter();
 		c.setHelpStrategy(rh);
-		System.out.println("<--");
 	}
 
 	/**
@@ -49,11 +45,9 @@ public class Rope extends Item
 	@Override
 	public void discard()
 	{
-		System.out.println("--> discard()");
 		NoRopeHelp nrh = new NoRopeHelp();
 		Character c = this.getCharacter();
 		c.setHelpStrategy(nrh);
-		System.out.println("<--");
 	}
 	
 }

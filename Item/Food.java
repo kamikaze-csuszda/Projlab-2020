@@ -24,8 +24,6 @@ public class Food extends Item
 	public Food()
 	{
 		super();
-		System.out.println("--> Food()");
-		System.out.println("<--");
 	}
 	/**
 	 * A Food Item hasznalatat irja le. Ekkor meghivja a karakterenek a testho noveles fuggvenyet, majd eltavolitja magat tole.
@@ -33,11 +31,9 @@ public class Food extends Item
 	@Override
 	public void use()
 	{
-		System.out.println("--> use()");
 		Character c = this.getCharacter();
 		c.warmthInc();
 		c.removeItem(this);
-		System.out.println("<--");
 	}
 	
 }
