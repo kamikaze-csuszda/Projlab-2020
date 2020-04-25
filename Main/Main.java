@@ -12,6 +12,7 @@ import Item.Flare;
 import Item.FlareGun;
 import Item.Food;
 import Item.Rope;
+import Item.Shovel;
 import Strategy.DivingSuitStrategy;
 import Strategy.Igloo;
 import Strategy.RopeHelp;
@@ -322,8 +323,9 @@ public class Main{
     	StableIce ice = new StableIce();		
     	ice.incSnow();							
     	ice.incSnow();							
-    	Eskimo c = new Eskimo(ice);				
-    	ShovelDig sDig = new ShovelDig();		
+    	Eskimo c = new Eskimo(ice);
+    	Shovel shovel = new Shovel();
+    	ShovelDig sDig = new ShovelDig(shovel);		
     	c.setDigStrategy(sDig);					
     	c.dig();								
     }
