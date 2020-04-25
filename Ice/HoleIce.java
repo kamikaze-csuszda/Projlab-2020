@@ -24,8 +24,6 @@ public class HoleIce extends Ice
 	 */
 	public HoleIce()
 	{
-		System.out.println("--> HoleIce()");
-		System.out.println("<--");
 	}
 	/**
 	 * Felulirja az addItem fuggvenyeket, mert itt nem lehet eszköz befagyva
@@ -33,7 +31,7 @@ public class HoleIce extends Ice
 	 */
 	public void addItem(Item i)
 	{
-		//ide elvileg nem kell kiírás
+
 	}
 	/**
 	 * A parameretben megadott karakter
@@ -42,7 +40,6 @@ public class HoleIce extends Ice
 	@Override
 	public void moveHere(Character c)
 	{
-		System.out.println("--> moveHere(c)");
 		addCharacter(c);
 		try
 		{
@@ -51,7 +48,6 @@ public class HoleIce extends Ice
 		{
 		}
 
-		System.out.println("<--");
 	}
 
 	

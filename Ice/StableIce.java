@@ -25,19 +25,15 @@ public class StableIce extends Ice
 	public StableIce()
 	{
 		super();
-		System.out.println("--> StableIce()");
-		System.out.println("<--");
 	}
 	/**
 	 * Megepíti az iglut és beallitja az iglustrategiat
 	 */
 	public void buildIgloo()
 	{
-		System.out.println("--> buildIgloo()");
 		Igloo ig = new Igloo();
 		setIglooStrategy(ig);
 		decSnow();
-		System.out.println("<--");
 	}
 	/**
 	 * Ide mozgatja a paramterben megadott karaktert.
@@ -46,9 +42,7 @@ public class StableIce extends Ice
 	@Override
 	public void moveHere(Character c) 
 	{
-		System.out.println("--> moveHere(c)");
 		addCharacter(c);
-		System.out.println("<--");
 	}
 	
 }

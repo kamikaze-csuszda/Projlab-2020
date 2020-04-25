@@ -27,8 +27,6 @@ public class UnstableIce extends Ice
 	public UnstableIce(int maxChar)
 	{
 		super(maxChar, 0);
-		System.out.println("--> UnstableIce(" + maxChar + ")");
-		System.out.println("<--");
 	}
 	/**
 	 * A karakter mozgasa hivja meg, ha sokan alnak rajta kkor meghivja a fallInWatre-t
@@ -37,7 +35,6 @@ public class UnstableIce extends Ice
 	@Override
 	public void moveHere(Character c) {
 
-		System.out.println("--> moveHere(c)");
 		addCharacter(c);
 		c.getIce().removeCharacter(c);
 		c.setIce(this);
@@ -53,7 +50,7 @@ public class UnstableIce extends Ice
 				}
 				
 			}
-		System.out.println("<--");
+
 	}
 	
 }
