@@ -37,4 +37,14 @@ public class Igloo implements IglooStrategy
 		i.destroyIgloo();
 		System.out.println("<--");
 	}
+	@Override
+	public void stepOn(Ice i) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void turnEnd(Ice i) {
+		// TODO Auto-generated method stub
+		
+	}
 }

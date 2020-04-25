@@ -25,6 +25,8 @@ public interface IglooStrategy
 	 * @throws Exception
 	 */
 	public void stormEffects(Ice i) throws Exception;
+	public void stepOn(Ice i);
+	public void turnEnd(Ice i);
 	
 	
 }
