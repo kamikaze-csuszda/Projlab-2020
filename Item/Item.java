@@ -48,6 +48,13 @@ public abstract class Item
 		ice = i;
 	}
 	/**
+	 * Beallitja a tartossagot
+	 * @param i beallitando ertek
+	 */
+	public void setDurability(int i) {
+		durability = i;
+	}
+	/**
 	 * Megnezi, melyik tablan van az item
 	 * @return tabla, amin van
 	 */
