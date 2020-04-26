@@ -455,17 +455,15 @@ public class Commands
 		
 	}
 	/**
-	 * Be�ll�tja a megadott mez� tulajdons�gait:
-	 * - szomsz�dokat
-	 * - h� mennyis�get
-	 * - hozz�adhat karaktert vagy t�rgyakat
-	 * - be�ll�tja a strat�gi�kat
+	 * Bealltja a megadott mezo tulajdonsagait:
+	 * - szomszedokat
+	 * - ho mennyiseget
+	 * - hozzaadhat karaktert vagy targyakat
+	 * - beallitja a strategiakat
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
-	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem Ice
-	 * @throws IllegalArgumentException ha az 
-	 * @throws IllegalArgumentException ha az 
+	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem megfelelo az argumentum tipusa
 	 */
 	private void set(String[] args2)
 	{
@@ -804,6 +802,12 @@ public class Commands
 		// TODO Auto-generated method stub
 		
 	}
+	/**
+	*
+	*
+	* @param
+	*
+	*/
 	private void help(String[] args2)
 	{
 		if (args2.length != 2)
