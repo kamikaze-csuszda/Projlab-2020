@@ -192,7 +192,7 @@ public class Commands
 		
 	}
 	/**Minden targyal kapcsolatos interakcio
-	 * Elfogadott meta parancsok:
+	 * Elfogadott (meta) parancsok:
 	 * - item list all: minden targy kilistazasa ami a jatekban jelen van, barhol (jegen/karakternel)
 	 * - item list <<ice>>: a megnevezett jegtablan levo targyak kilistazasa 
 	 * - item list <<character>>: a megnevezett karakternel levo targyak kilistazasa 
@@ -336,6 +336,7 @@ public class Commands
 	 * - nem megfelelo szamu argumentum van 
 	 * - ismeretlen parancsot kap
 	 * - nem megfelelo a parameter tipusa
+	 * 
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 */
 	private void dig(String[] args2)
@@ -353,9 +354,13 @@ public class Commands
 		
 	}
 	
-	/**
+	/**Osszeallitja a fegyvert a fegyverdarabokbol. 
 	 * 
-	 * @param args2
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - nem megfelelo a parameter tipusa
+	 * 
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 */
 	private void assemble(String[] args2)
 	{
@@ -366,6 +371,16 @@ public class Commands
 			throw new IllegalArgumentException("Object is not a Character!");
 		((Character)Game.getInstance().getObjects().get(key)).assembleGun();
 	}
+	/**A targyak vagy kepessegek hasznalata. 
+	 * Eszkimo iglut epit, a sarkkutato 
+	 * 
+	 * Elfogadott parancsok:
+	 * - use ability <<character>> (<<int>>): karakter kepesseget hasznalja, az utolso parameter csak akkor kell, ha sarkkutatorol van szo
+	 * - use <<item>> <<character>> <<int>>: a karakter a megadot sorszamu targyat hasznalja a nala levok kozul
+	 * 
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws Exception
+	 */
 	private void use(String[] args2) throws Exception
 	{
 		if (args2.length < 2)
