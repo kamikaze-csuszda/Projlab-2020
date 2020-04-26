@@ -455,17 +455,15 @@ public class Commands
 		
 	}
 	/**
-	 * Be�ll�tja a megadott mez� tulajdons�gait:
-	 * - szomsz�dokat
-	 * - h� mennyis�get
-	 * - hozz�adhat karaktert vagy t�rgyakat
-	 * - be�ll�tja a strat�gi�kat
+	 * Bealltja a megadott mezo tulajdonsagait:
+	 * - szomszedokat
+	 * - ho mennyiseget
+	 * - hozzaadhat karaktert vagy targyakat
+	 * - beallitja a strategiakat
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
-	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem Ice
-	 * @throws IllegalArgumentException ha az 
-	 * @throws IllegalArgumentException ha az 
+	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem megfelelo az argumentum tipusa
 	 */
 	private void set(String[] args2)
 	{
@@ -805,6 +803,12 @@ public class Commands
 		// TODO Auto-generated method stub
 		
 	}
+	/**
+	*
+	*
+	* @param
+	*
+	*/
 	private void help(String[] args2)
 	{
 		if (args2.length != 2)
@@ -890,7 +894,20 @@ public class Commands
 	}
 	private void state(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo paramterszam!");
+		String argument = args2[1];
+		if (argument.equals("all")){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof PolarBear){
+
+		}
 	}
 }
