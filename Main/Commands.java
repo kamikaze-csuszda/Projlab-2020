@@ -89,8 +89,28 @@ public class Commands
 	}
 	private void breakice(String[] args2)
 	{
-	 	String ice = args2[1];
-
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+	 	String key = args2[1];
+		if (Game.getInstance().getObjects().get(key) instanceof Ice){
+			if ((Ice)Game.getInstance().getObjects().get(key).getSnow() == 0){
+				String print = new String("Sikeresen kitorted a jegbol a(z)");
+				for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray()){
+					it.defrost();
+					String temp = it.getClass().toString();
+					String[] temp2 = temp.split(".");
+					temp = temp2[temp2.length-1];
+					print.concat(" " + temp + ",");
+				}
+				print.concat("eszkozoket!");
+				System.out.println(print);
+			}
+			else
+				throw new IllegalArgumentException("Sikertelen jegtores!");
+		}
+		else{
+			throw new IllegalArgumentException("Nincs ilyen nevu objektum!");
+		}
 	}
 	private void warmup(String[] args2)
 	{
