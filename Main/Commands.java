@@ -382,6 +382,13 @@ public class Commands
 	 * - use ability <<character>> (<<int>>): karakter kepesseget hasznalja, az utolso parameter csak akkor kell, ha sarkkutatorol van szo
 	 * - use <<item>> <<character>> <<int>>: a karakter a megadot sorszamu targyat hasznalja a nala levok kozul
 	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ismeretlen parancsot kap
+	 * - nem megfelelo a parameter tipusa
+	 * - nincs olyan objektum amire hivatkozik
+	 * - tulindexeles lep fel
+	 * 
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws Exception
 	 */
@@ -427,6 +434,7 @@ public class Commands
 			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		}
 	}
+	
 	private void move(String[] args2) throws Exception
 	{
 		if(args2.length < 3)
