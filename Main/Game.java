@@ -1,7 +1,10 @@
 package Main;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import Ice.Ice;
 
@@ -74,8 +77,34 @@ public class Game
 	{
 	}
 	
-	public void generateMap()
+	public void generateMap(String filename) throws FileNotFoundException
 	{
+		File file = new File(filename);
+		Scanner sc = new Scanner(file);
+		String s = sc.nextLine();
+		String temp[] = s.split("\t");
+		int length = temp.length;
+		int[][] mapMatrix = new int[length][length];
+		for(int i = 0; i<length; i++) {
+			s = sc.nextLine();
+			temp = s.split("\t");
+			for(int j = 0; j < length; j++)
+			{
+				mapMatrix[i][j] = Integer.parseInt(temp[j]);
+			}
+		}
+		s = sc.nextLine();
+		s = sc.nextLine();
+		temp = s.split("\t");
+		int[] type = new int[length];
+		for(int i = 0; i<length; i++) {
+			type[i] = Integer.parseInt(temp[i]);
+		}
+		for(int i = 0; i<length; i++)
+		{
+			
+		}
+		
 	}
 	
 	public void generateCharacters()
