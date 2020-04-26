@@ -388,8 +388,8 @@ public class Commands
 	 * 
 	 * @param args2
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
-	 * @thorws IllegalArgumentException ha az 
-	 * @throws IllegalArgumentException ha az 
+	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
+	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem Ice
 	 * @throws IllegalArgumentException ha az 
 	 * @throws IllegalArgumentException ha az 
 	 */
