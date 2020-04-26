@@ -132,6 +132,14 @@ public abstract class Ice
 	{
 		neighbours.add(i);
 	}
+
+	/**
+	 * Kiveszi a mezo egy szomszedjat.
+	 * @param i az eltavolitando szomszed
+	 */
+	public void removeNeighbour(Ice i){
+		neighbours.remove(i);
+	}
 	/**
 	 * A szomszedos mezok gettere
 	 * @param d a szomszed indexe
