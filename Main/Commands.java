@@ -8,13 +8,16 @@ import Item.DivingSuit;
 import Item.Flare;
 import Item.FlareGun;
 import Item.Food;
+import Item.Gun;
 import Item.Item;
 import Item.Rope;
 import Item.Shovel;
 import Item.Tent;
 import Strategy.Bear;
 import Strategy.BearStrategy;
+import Strategy.DigStrategy;
 import Strategy.DivingSuitStrategy;
+import Strategy.HelpStrategy;
 import Strategy.Igloo;
 import Strategy.IglooStrategy;
 import Strategy.NoBear;
@@ -25,6 +28,7 @@ import Strategy.NoShovelDig;
 import Strategy.RopeHelp;
 import Strategy.ShovelDig;
 import Strategy.TentStrategy;
+import Strategy.WaterStrategy;
 
 import java.io.*;
 
@@ -270,7 +274,7 @@ public class Commands
 					System.out.println("}");
 						
 				}
-				else if(Game.getInstance().getObjects().get(args2[2]) instanceof Ice)
+				else if(Game.getInstance().getObjects().get(args2[2]) instanceof Character)
 				{
 					System.out.println("{\n" + args2[2] + " Items:");
 					int index = 0;
@@ -476,13 +480,24 @@ public class Commands
 		case "character":
 		{
 			String key1 = args2[2]; 
-			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException(key1 + " is not Ice!");
+			if((Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
 				throw new IllegalArgumentException(key2 + " is not Character!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addCharacter(((Character)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
+			}
+			if((Game.getInstance().getObjects().get(key1) instanceof Item)) 
+			{
+				String key2 = args2[3];
+				if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
+					throw new IllegalArgumentException(key2 + " is not Character!");
+				((Item)Game.getInstance().getObjects().get(key1)).setCharacter(((Character)Game.getInstance().getObjects().get(key2)));
+				System.out.println("$Sikeres beallitas!");
+			}
+			else
+				throw new IllegalArgumentException(key1 + " is not Ice or Item!");
 			break;
 		}
 		case "bearstrategy":
@@ -534,6 +549,116 @@ public class Commands
 			System.out.println("$Sikeres beallitas!");
 			break;
 		}
+		case "bodywarmth":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			int num = Integer.parseInt(args2[3]);
+			((Character)Game.getInstance().getObjects().get(key1)).setBodywarmth(num);
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "action":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			int num = Integer.parseInt(args2[3]);
+			((Character)Game.getInstance().getObjects().get(key1)).setAction(num);
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "ice":
+		{
+			String key1 = args2[2];
+			if((Game.getInstance().getObjects().get(key1) instanceof Character)) 
+			{
+				String key2 = args2[3];
+				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
+					throw new IllegalArgumentException(key2 + " is not Ice!");
+				((Character)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
+				System.out.println("$Sikeres beallitas!");
+			}
+			else if((Game.getInstance().getObjects().get(key1) instanceof Item)) 
+			{
+				String key2 = args2[3];
+				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
+					throw new IllegalArgumentException(key2 + " is not Ice!");
+				((Item)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
+				System.out.println("$Sikeres beallitas!");
+			}
+			else if((Game.getInstance().getObjects().get(key1) instanceof PolarBear))
+			{
+				String key2 = args2[3];
+				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
+					throw new IllegalArgumentException(key2 + " is not Ice!");
+				((PolarBear)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
+				System.out.println("$Sikeres beallitas!");
+			}
+			else throw new IllegalArgumentException(key1 + " is not Character or Item!");
+			break;
+		}
+		case "gunpart":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Gun)) 
+				throw new IllegalArgumentException(key2 + " is not Gun!");
+			((Character)Game.getInstance().getObjects().get(key1)).addGunpart(((Gun)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "digstrategy":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof DigStrategy)) 
+				throw new IllegalArgumentException(key2 + " is not DigStrategy!");
+			((Character)Game.getInstance().getObjects().get(key1)).setDigStrategy(((DigStrategy)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "waterstrategy":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof WaterStrategy)) 
+				throw new IllegalArgumentException(key2 + " is not WaterStrategy!");
+			((Character)Game.getInstance().getObjects().get(key1)).setWaterStrategy(((WaterStrategy)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "helpstrategy":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
+				throw new IllegalArgumentException(key1 + " is not Character!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof HelpStrategy)) 
+				throw new IllegalArgumentException(key2 + " is not HelpStrategy!");
+			((Character)Game.getInstance().getObjects().get(key1)).setHelpStrategy(((HelpStrategy)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		case "durability":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Item)) 
+				throw new IllegalArgumentException(key1 + " is not Item!");
+			int num = Integer.parseInt(args[3]);
+			((Item)Game.getInstance().getObjects().get(key1)).setDurability(num);
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		
 		}
 		
@@ -584,12 +709,7 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
-	/**
-	 * Letrehozza a parameterben megadott agrumentumot.
-	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
-	 * @throws IllegalArgumentException ha a parameterben megadott tömbben kevesebb mint 3 elem van
-	 * @throws IllegalArgumentException ha a paramerteben megadott tömbbel megegyezo objektum nem letezik
-	 */
+
 	private void create(String[] args2)
 	{
 		if (args2.length != 3)
@@ -645,12 +765,11 @@ public class Commands
 				break;
 			case "RopeHelp": Game.getInstance().addObject(new RopeHelp(), name);
 				break;
-			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(), name);
+			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(new Shovel(3)), name);
 				break;
 			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
 				break;
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
-				break;
 		}
 	}
 	private void save(String[] args2)

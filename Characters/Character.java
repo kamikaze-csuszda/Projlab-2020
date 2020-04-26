@@ -160,6 +160,20 @@ public abstract class Character implements Movable
 		}
 	}
 	/**
+	 * Beallitja az akciok szamat
+	 * @param i beallitando ertek
+	 */
+	public void setAction(int i) {
+		action = i;
+	}
+	/**
+	 * Beallitja a testhot
+	 * @param i a beallitando ertek
+	 */
+	public void setBodywarmth(int i) {
+		bodywarmth = i;
+	}
+	/**
 	 * eltavolit egy itemet a Character equipment-jebol
 	 * @param i  az Item amit eltavolitunk
 	 */
