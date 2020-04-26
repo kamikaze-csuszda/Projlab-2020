@@ -731,6 +731,7 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
+	
 	/**
 	 * Letrehozza a parameterben megadott agrumentumot.
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
