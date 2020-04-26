@@ -176,6 +176,7 @@ public abstract class Character implements Movable
 	public void itemDiscard(Item i)
 	{
 		ice.addItem(i);
+		i.setIce(this.getIce());
 		removeItem(i);
 	}
 	/**

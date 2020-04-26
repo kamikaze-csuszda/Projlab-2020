@@ -21,6 +21,7 @@ public abstract class Item
 	private boolean frozen;
 	private int durability;
 	private Character character;
+	private Ice ice;
 
 	/**
 	 * Alapertelemezett konstruktor.
@@ -39,6 +40,21 @@ public abstract class Item
 		frozen = true;
 		durability = dur;
 	}
+	/**
+	 * Beallitja, melyik tablan van az item
+	 * @param i tabla
+	 */
+	public void setIce(Ice i) {
+		ice = i;
+	}
+	/**
+	 * Megnezi, melyik tablan van az item
+	 * @return tabla, amin van
+	 */
+	public Ice getIce() {
+		return ice;
+	}
+	
 	
 	/**
 	 * A fuggveny visszater az Item birtokosaval.  
