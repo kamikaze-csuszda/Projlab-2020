@@ -53,7 +53,7 @@ public class Commands
 			default:
 				throw new IllegalArgumentException("Unexpected value: " + command);
 			}
-		else if(m == mode.INIT)
+		else if(m == mode.GAME)
 			switch(command) 
 			{
 			case "breakice":
@@ -89,8 +89,8 @@ public class Commands
 	}
 	private void breakice(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+	 	String ice = args2[1];
+
 	}
 	private void warmup(String[] args2)
 	{
@@ -106,7 +106,7 @@ public class Commands
 			if(args2[2] == "all")
 			{
 				for(String key: Game.getInstance().getObjects().keySet())
-					if(!(Game.getInstance().getObjects().get(key) instanceof Character) || !(Game.getInstance().getObjects().get(key) instanceof Ice))
+					if(!(Game.getInstance().getObjects().get(key) instanceof Character) || !(Game.getInstance().getObjects().get(key) instanceof Ice)) //itt nem es kapcsolat kene a ketto kozott?
 						;
 					else
 					{
