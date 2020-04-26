@@ -110,7 +110,8 @@ public class Commands
 	 * - ha nem sikerult a jeget feltorni
 	 * - nincs ilyen objektum 
 	 * 
-	 * @param args2 
+	 * 
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza 
 	 */
 	private void breakice(String[] args2)
 	{
@@ -138,9 +139,14 @@ public class Commands
 		}
 	}
 	
-	/**
+	/**Az adott karakter 3 akció pontot felhasznal és noveli a testhojet 1-gyel, ha van hianyzo testhoje 
 	 * 
-	 * @param args2
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ha nem sikerult a jeget feltorni
+	 * - nincs ilyen objektum 
+	 * 
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza 
 	 */
 	private void warmup(String[] args2)
 	{
@@ -163,6 +169,24 @@ public class Commands
 		}
 		
 	}
+	/**Minden targyal kapcsolatos interakcio
+	 * Elfogadott meta parancsok:
+	 * - item list all: minden targy kilistazasa ami a jatekban jelen van, barhol (jegen/karakternel)
+	 * - item list <<ice>>: a megnevezett jegtablan levo targyak kilistazasa 
+	 * - item list <<character>>: a megnevezett karakternel levo targyak kilistazasa 
+	 * - item give <<character1>> <<character2>> <<int>>: az egyik karakter atad egy masik karakternek egy targyat a sajat targyai kezul
+	 * - item drop <<character>> <<int>>: az egyik karakter eldob egy targyat a sajat targyai kozul a jegtablara, ahol all 
+	 * - item pickup <<character>> <<int>>: az egyik karakter felvesz egy targyat a jegrol es berakja a sajatjai koze, ha van helye
+	 * a <<>>-vel jelolt parameterek meta parameterek, helyukre valamilyen letezo objektum neve, vagy ertek kell keruljon,
+	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ismeretlen parancsot kap
+	 * - nem megfelelo a parameter tipusa
+	 * - nincs olyan objektum amire hivatkozik
+	 * - tulindexeles lep fel
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 */
 	private void item(String[] args2)
 	{
 		if (args2.length < 2)
@@ -282,6 +306,16 @@ public class Commands
 		}
 		
 	}
+	
+	/**A karakter havat as lapattal, vagy kezzel.
+	 * Az asas a havat eltunteti, ha lapattal, akkor 2 egysegnyi, ha kezzel akkor 1 egysegnyit.
+	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ismeretlen parancsot kap
+	 * - nem megfelelo a parameter tipusa
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 */
 	private void dig(String[] args2)
 	{
 		if (args2.length != 2)
@@ -296,6 +330,11 @@ public class Commands
 		System.out.println("$A ho vastagsaga " + snowBefore + "rol " + snowAfter+"re csokkent!");
 		
 	}
+	
+	/**
+	 * 
+	 * @param args2
+	 */
 	private void assemble(String[] args2)
 	{
 		if (args2.length != 2)
