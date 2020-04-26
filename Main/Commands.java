@@ -114,6 +114,8 @@ public class Commands
 	}
 	private void warmup(String[] args2)
 	{
+		if (args2.length < 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
 			int warmthbefore = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
@@ -133,13 +135,15 @@ public class Commands
 	}
 	private void item(String[] args2)
 	{
+		if (args2.length < 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		switch (args2[1])
 		{
 		case "list":
 			if(args2[2] == "all")
 			{
 				for(String key: Game.getInstance().getObjects().keySet())
-					if(!(Game.getInstance().getObjects().get(key) instanceof Character) || !(Game.getInstance().getObjects().get(key) instanceof Ice)) //itt nem es kapcsolat kene a ketto kozott?
+					if(!(Game.getInstance().getObjects().get(key) instanceof Character) && !(Game.getInstance().getObjects().get(key) instanceof Ice))
 						;
 					else
 					{
@@ -250,6 +254,8 @@ public class Commands
 	}
 	private void dig(String[] args2)
 	{
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		String key = args2[1];
 		int snowBefore, snowAfter;
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
@@ -262,6 +268,8 @@ public class Commands
 	}
 	private void assemble(String[] args2)
 	{
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		String key = args2[1];
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 			throw new IllegalArgumentException("Object is not a Character!");
@@ -269,6 +277,8 @@ public class Commands
 	}
 	private void use(String[] args2) throws Exception
 	{
+		if (args2.length < 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		switch(args2[1]) 
 		{
 		case "ability":
@@ -357,7 +367,9 @@ public class Commands
 	}
 	private void delete(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+		String key = args2[1];
 		
 	}
 	private void create(String[] args2)
