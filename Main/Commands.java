@@ -434,7 +434,12 @@ public class Commands
 			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		}
 	}
-	
+	/**
+	 * Mozgatja a karaktereket és a jegyesmedvet.
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws IllegalArgumentException ha kevesebb mint 3 elem van a tombben
+	 * @throws IllegalArgumentException ha az objektum nem mozgathato
+	 */
 	private void move(String[] args2) throws Exception
 	{
 		if(args2.length < 3)
