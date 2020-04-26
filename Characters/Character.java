@@ -31,6 +31,7 @@ import Strategy.WaterStrategy;
 public abstract class Character implements Movable
 {
 	private int bodywarmth;
+	private int maxbodywarmth;
 	private int action;
 	private Ice ice;
 	private ArrayList<Item> equipment;
@@ -45,6 +46,7 @@ public abstract class Character implements Movable
 	public Character()
 	{
 		bodywarmth = 4;
+		maxbodywarmth = 4;
 		action = 4;
 		equipment = new ArrayList<Item>();
 		gunParts = new ArrayList<Gun>();
@@ -63,6 +65,7 @@ public abstract class Character implements Movable
 	{
 		this();
 		this.bodywarmth = bodywarmth;
+		maxbodywarmth = bodywarmth;
 	}
 	/**
 	 * Character kostruktora 
@@ -235,6 +238,12 @@ public abstract class Character implements Movable
 	{
 		return bodywarmth;
 	}
+
+	/**
+	 * A testho maximalis ertekenek gettere.
+	 * @return a maximum testho
+	 */
+	public int getMaxWarmth() { return maxbodywarmth; }
 	/**
 	 * getter az Itemre, ami a Characternel van
 	 * @param i az item sorszama
@@ -270,7 +279,8 @@ public abstract class Character implements Movable
 	 */
 	public void warmthInc()
 	{
-		bodywarmth +=1;
+		if (bodywarmth < maxbodywarmth)
+			bodywarmth +=1;
 	}
 	/**
 	 * a Character-t mozgatjuk a fugvennyel
