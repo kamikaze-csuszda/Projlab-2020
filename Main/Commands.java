@@ -731,7 +731,12 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
-
+	/**
+	 * Letrehozza a parameterben megadott agrumentumot.
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws IllegalArgumentException ha a parameterben megadott tombben kevesebb mint 3 elem van
+	 * @throws IllegalArgumentException ha a paramerteben megadott tombbel megegyezo objektum nem letezik
+	 */
 	private void create(String[] args2) throws Exception
 	{
 		if (args2.length != 3)
