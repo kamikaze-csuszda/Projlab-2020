@@ -94,7 +94,7 @@ public class Commands
 	 	String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Ice){
 			if ((Ice)Game.getInstance().getObjects().get(key).getSnow() == 0){
-				String print = new String("Sikeresen kitorted a jegbol a(z)");
+				String print = new String("$Sikeresen kitorted a jegbol a(z)");
 				for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray()){
 					it.defrost();
 					String temp = it.getClass().toString();
@@ -109,26 +109,25 @@ public class Commands
 				throw new IllegalArgumentException("Sikertelen jegtores!");
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen nevu objektum!");
+			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
 	private void warmup(String[] args2)
 	{
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
-			int warmth = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
-			int max = ((Character) Game.getInstance().getObjects().get(key)).getMaxWarmth();
-			if (bodywarmth < max){
-				((Character) Game.getInstance().getObjects().get(key)).warmup();
-				System.out.println("Sikeresen melegedtel! Jelenlegi testhod: " + bodywarmth + "!");
-			}
+			int warmthbefore = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
+			((Character) Game.getInstance().getObjects().get(key)).warmup();
+			int warmthafter = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
+			if (warmthbefore < warmthafter)
+				System.out.println("$Sikeresen melegedtel! Jelenlegi testhod: " + warmthafter + "!");
 			else{
-				System.out.println("Mar maximum testhon vagy, nem kell melegedned!");
+				System.out.println("$Mar maximum testhon vagy, nem kell melegedned!");
 			}
 
 		}
 		else{
-			throw new IllegalArgumentException("Object is not a Character!");
+			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 		
 	}
