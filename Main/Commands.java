@@ -165,7 +165,7 @@ public class Commands
 		}
 	}
 	
-	/**Az adott karakter 3 akció pontot felhasznal és noveli a testhojet 1-gyel, ha van hianyzo testhoje 
+	/**Az adott karakter 3 akciï¿½ pontot felhasznal ï¿½s noveli a testhojet 1-gyel, ha van hianyzo testhoje 
 	 * 
 	 * Hibat dob, ha:
 	 * - nem megfelelo szamu argumentum van 
@@ -435,7 +435,7 @@ public class Commands
 		}
 	}
 	/**
-	 * Mozgatja a karaktereket és a jegyesmedvet.
+	 * Mozgatja a karaktereket ï¿½s a jegyesmedvet.
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha kevesebb mint 3 elem van a tombben
 	 * @throws IllegalArgumentException ha az objektum nem mozgathato
@@ -455,11 +455,11 @@ public class Commands
 		
 	}
 	/**
-	 * Beállítja a megadott mezõ tulajdonságait:
-	 * - szomszédokat
-	 * - hó mennyiséget
-	 * - hozzáadhat karaktert vagy tárgyakat
-	 * - beállítja a stratégiákat
+	 * Beï¿½llï¿½tja a megadott mezï¿½ tulajdonsï¿½gait:
+	 * - szomszï¿½dokat
+	 * - hï¿½ mennyisï¿½get
+	 * - hozzï¿½adhat karaktert vagy tï¿½rgyakat
+	 * - beï¿½llï¿½tja a stratï¿½giï¿½kat
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
@@ -806,7 +806,80 @@ public class Commands
 	}
 	private void help(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+		String command = args2[1];
+		System.out.println("Lehetseges parameterek ( a felsorolt parameterek minden esetben kotelezoek! ):");
+		switch(command){
+			case "load":
+				System.out.println("\tstate <fajlnev> : Betolt egy elore elkeszitett jatekallast a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				System.out.println("\tlevel <fajlnev> : Betolt egy elore elkeszitett palyat a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				break;
+			case "save":
+				System.out.println("\t<fajlnev> : Kimenti a megadott fajlba az osszes letezo objektumot. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				break;
+			case "create":
+				System.out.println("\t<objektum> <nev> : Letrehoz egy peldanyt a megadott tÃ­pussal es a megadott nevvel.");
+				System.out.println("\t\tobjektum: Barmelyik peldanyosithato osztaly neve kerulhet ide.");
+				System.out.println("\t\tnev: A nev, amit az adott peldanynak adni akarunk, kesobb ezzel hivatkozhato. Ha tartalmaz whitespace karaktert, akkor csak az elso whitespacig lesz eltarolva.");
+				break;
+			case "delete":
+				System.out.println("\t<objektum neve> : Kitorli a megadott nevvel rendelkezo peldanyt a jatekbol. Ha nem letezik a megadott objektum, ertesitest kapunk.");
+				break;
+			case "start":
+				System.out.println("\tgame : Jatek modba valt. A jatekban hasznalatos parancsokat lehet kiadni.");
+				System.out.println("\tinit : Inicializalas modba valt. Az inicializalasnal hasznalatos parancsok adhatok ki.");
+				break;
+			case "state":
+				System.out.println("\tall : Minden objektumrol keszit egy teljes leirast.");
+				System.out.println("\t<objektum> : A megadott objektumrol keszit egy teljes leirast.");
+				System.out.println("\t\tobjektum: Az objektum neve, aminek az alalpotat le szeretnenk kerdezni. Ha nem letezik az objektum, ertesitest kapunk.");
+				break;
+			case "set":
+				System.out.println("\tneighbour <jegtabla> <jegtabla> : Ket jegtabla szomszedossagat allitja, igy a ket megadott objektum csak valamilyen jegtabla lehet.");
+				System.out.println("\t<attributum> <objektum> <ertek> : A megadott objektum megadott attributumanak erteket allitja be a megadott ertekre.");
+				break;
+			case "move":
+				System.out.println("\t<objektum> <irany> : A nevevel hivatkozott objektumot elmozgatja a megadott iranyba.");
+				System.out.println("\t\tobjektum: Csak Character illetve PolarBear tipusu lehet.");
+				System.out.println("\t\tirany: Egesz szam, azt reprezentalja, hogy a jelenlegi jegtabla hanyadik szomszedjara lepunk.");
+				break;
+			case "use":
+				System.out.println("\titem <karakter> <index> : A megadott karakter hasznalja a nala levo targyat.");
+				System.out.println("\t\tkarakter: Barmelyik letezo karakter neve.");
+				System.out.println("\t\tindex: A hasznalni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				break;
+			case "assemble":
+				System.out.println("\t<karakter> : A karakter megprobalja osszeszerelni a pisztolyt a reszekbol.");
+				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				break;
+			case "dig":
+				System.out.println("\t<karakter> : A megadott karakter havat lapatol a jelenlegi tartozkodasi helyen.");
+				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				break;
+			case "breakice":
+				System.out.println("\t<karakter> : A megadott karakter feltori a jeget a jelenlegi tartozkodasi helyen.");
+				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				break;
+			case "item":
+				System.out.println("\tlist all : Az osszes jatekban letezo targyat kilistazza.");
+				System.out.println("\tlist <objektum> : A megadott objektumhoz kapcsolodo targyakat listazza ki.");
+				System.out.println("\t\tobjektum: Lehet Eskimo, Scientist, ekkor a karakter eszkoztaraban talalhato targyakat listazza ki, illetve barmilyen jegtabla tipus, ekkor pedig a jegen talalhato targyakat listazza");
+				System.out.println("\tgive <karakter> <karakter> <index> : Egy karakter atad egy targyat egy masiknak.");
+				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist, az elso argumentum adja, a masodik kapja a targyat.");
+				System.out.println("\t\tindex: Az atadni kivant targy indexe az atado karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				System.out.println("\tdrop <karakter> <index> : A karakter ledob egy targyat a jegtablara.");
+				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist, a nevevel hivatkozva.");
+				System.out.println("\t\tindex: Az eldobni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				System.out.println("\tpickup <karakter> <index> : A karakter felveszi a megadott elemet a jegtablarol.");
+				System.out.println("\t\tkarakter: A karakter akivel fel akarjuk venni a targyat.");
+				System.out.println("\t\tindex: Az index, hogy hanyadik targyat akarjuk felvenni a jegtablarol.");
+				break;
+			case "warmup":
+				System.out.println("\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
+				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist.");
+				break;
+		}
 		
 	}
 	private void load(String[] args2)
