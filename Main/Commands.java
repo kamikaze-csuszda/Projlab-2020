@@ -408,6 +408,12 @@ public class Commands
 			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
 		}
 	}
+	/**
+	 * Mozgatja a karaktereket és a jegyesmedvét.
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws IllegalArgumentException ha kevesebb mint 3 elem van a tombben
+	 * @throws IllegalArgumentException ha az objektum nem mozgathato
+	 */
 	private void move(String[] args2) throws Exception
 	{
 		if(args2.length < 3)
@@ -423,11 +429,11 @@ public class Commands
 		
 	}
 	/**
-	 * Beállítja a megadott mezõ tulajdonságait:
-	 * - szomszédokat
-	 * - hó mennyiséget
-	 * - hozzáadhat karaktert vagy tárgyakat
-	 * - beállítja a stratégiákat
+	 * Beallitja a megadott mezo tulajdonságait:
+	 * - szomszedokat
+	 * - hó mennyiseget
+	 * - hozzáadhat karaktert vagy targyakat
+	 * - beallitja a strategiakat
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
@@ -578,7 +584,12 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
-
+	/**
+	 * Letrehozza a parameterben megadott agrumentumot.
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws IllegalArgumentException ha a parameterben megadott tömbben kevesebb mint 3 elem van
+	 * @throws IllegalArgumentException ha a paramerteben megadott tömbbel megegyezo objektum nem letezik
+	 */
 	private void create(String[] args2)
 	{
 		if (args2.length != 3)
