@@ -365,7 +365,7 @@ public class Commands
 	 * 
 	 * 
 	 * @param args2
-	 * @throws IllegalArgumentException ha a tömb mérete kisebb mint 4
+	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az 
 	 * @throws IllegalArgumentException ha az 
 	 * @throws IllegalArgumentException ha az 
@@ -405,12 +405,12 @@ public class Commands
 		}
 	}
 	/**
-	 * Törli a paraméterben megadott tömböt.
-	 * Különbözõ képpen jár el ha a különbözõ típuusú objektumoknál.
+	 * Torli a parameterben megadott tombot.
+	 * Kulonbozo keppen jar el ha a kulonbozo tipusu objektumoknal.
 	 * @param args2
-	 * @throws IllegalArgumentException ha a tömb mérete nem 2
-	 * @thorws IllegalArgumentException ha az argumentum Ice típusú és a rajtalévõ karakterek széma nagyobb 0
-	 * @throws IllegalArgumentException ha az argumentum típusa nem egyezik az elõtte ellenõrzöttekkel
+	 * @throws IllegalArgumentException ha a tomb merete nem 2
+	 * @thorws IllegalArgumentException ha az argumentum Ice tipusu es a rajtalevo karakterek szama nagyobb 0
+	 * @throws IllegalArgumentException ha az argumentum tipusa nem egyezik az elotte ellenorzottekkel
 	 */
 	private void delete(String[] args2)
 	{
