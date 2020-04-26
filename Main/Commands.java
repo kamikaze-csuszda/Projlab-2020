@@ -423,9 +423,12 @@ public class Commands
 		
 	}
 	/**
-	 * 
-	 * 
-	 * @param args2
+	 * Beállítja a megadott mezõ tulajdonságait:
+	 * - szomszédokat
+	 * - hó mennyiséget
+	 * - hozzáadhat karaktert vagy tárgyakat
+	 * - beállítja a stratégiákat
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az argumentum 3. eleme nem Ice
 	 * @throws IllegalArgumentException ha az argumentum 4. eleme nem Ice
@@ -532,7 +535,7 @@ public class Commands
 	/**
 	 * Torli a parameterben megadott tombot.
 	 * Kulonbozo keppen jar el ha a kulonbozo tipusu objektumoknal.
-	 * @param args2
+	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha a tomb merete nem 2
 	 * @thorws IllegalArgumentException ha az argumentum Ice tipusu es a rajtalevo karakterek szama nagyobb 0
 	 * @throws IllegalArgumentException ha az argumentum tipusa nem egyezik az elotte ellenorzottekkel
