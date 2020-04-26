@@ -370,6 +370,38 @@ public class Commands
 		if (args2.length != 2)
 			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 		String key = args2[1];
+		if (Game.getInstance().getObjects().get(key) instanceof Character){
+			Character character = ((Character)Game.getInstance().getObjects().get(key));
+			Game.getInstance().getObjects().remove(character);
+			character.getIce().removeCharacter(character);
+			System.out.println("$A(z) " + key + " objektum torlese sikeres!");
+		}
+		else if (Game.getInstance().getObjects().get(key) instanceof Ice){
+			Ice ice = ((Ice)Game.getInstance().getObjects().get(key));
+			if (ice.getCharNum() > 0)
+				throw new IllegalArgumentException("Sikertelen torles!");
+			Game.getInstance().getObjects().remove(ice);
+			for (int i = 0; i < ice.getNeighbourNum(); i++){
+				ice.getNeighbour(i).removeNeighbour(ice);
+			}
+		}
+		else if (Game.getInstance().getObjects().get(key) instanceof Item){
+			Item item = ((Item)Game.getInstance().getObjects().get(key));
+			if (item.getCharacter() == null){
+				item.getIce().removeItem(item);
+
+			}
+			else{
+				item.getCharacter().removItem(item);
+
+			}
+			Game.getInstance().getObjects().remove(item);
+			System.out.println("$A(z) " + key + " objektum torlese sikeres!");
+
+		}
+		else{
+			throw new IllegalArgumentException("Nincs ilyen objektum!");
+		}
 		
 	}
 	private void create(String[] args2)
