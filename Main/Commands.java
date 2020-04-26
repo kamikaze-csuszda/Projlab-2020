@@ -11,11 +11,25 @@ public class Commands
 	enum mode {GAME, INIT}
 	mode m;
 	String[] args;
+	
+	/**A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak. 
+	 * Ez a fuggveny hivja meg a kapott parancsnak megfelelo metodust. 
+	 * Mukodes:
+	 *  - standard inputrol beolvassunk a br stringbe egy sort, majd kisbetusiti
+	 *  - ezt kovetoen feldaraboljuk a parancsot minden whitespace karakternel -> az elso szo a parancs, a tobbi az argumnetuma
+	 *  - megvizsgaljuk, hogy milyen modban (GAME/INIT) vagyunk, es ennek megfeleloen milyen parancsok vannak ertelmezve
+	 *  - a parancsnak megfelelo fuggvenyt meghivjuk, amennyiben van ilyen, ha nincs, akkor kivetelt dob a program
+	 * 
+	 * INIT modban hivhato parancsok: state, load, help, start, create, delete, set
+	 * GAME modban hivhato parancsok: breakice, move, use, assemble, dig, item, warmup, help, start
+	 * 
+	 * @throws Exception: nem letezo vagy adott modban nem ertelemezett parancs eseten dobja a kivetelt 
+	 */
 	void start() throws Exception {
 		m = mode.GAME;
 		String temp;
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 		temp = br.readLine();
 		temp.toLowerCase();
 		args = temp.split(" ");
@@ -87,6 +101,17 @@ public class Commands
 					throw new IllegalArgumentException("Unexpected value: " + command);
 			}
 	}
+	
+	/**A karakter feltori a jeget, azon a jegtablan ahol all. Ennek eredmenye, hogy minden targy ami azon a jegtablan volt kiolvad, es felvehetove valik. 
+	 * Miutan a targyakat kitortuk a jegbol, ki is listazzuk a felhasznalonak. 
+	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ha nem sikerult a jeget feltorni
+	 * - nincs ilyen objektum 
+	 * 
+	 * @param args2 
+	 */
 	private void breakice(String[] args2)
 	{
 		if (args2.length != 2)
@@ -112,6 +137,11 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
+	
+	/**
+	 * 
+	 * @param args2
+	 */
 	private void warmup(String[] args2)
 	{
 		if (args2.length < 2)
@@ -392,7 +422,7 @@ public class Commands
 
 			}
 			else{
-				item.getCharacter().removItem(item);
+				item.getCharacter().removeItem(item);
 
 			}
 			Game.getInstance().getObjects().remove(item);
