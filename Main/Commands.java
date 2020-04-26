@@ -2,7 +2,29 @@ package Main;
 import Characters.*;
 import Characters.Character;
 import Ice.*;
+import Item.BreakableShovel;
+import Item.Cartridge;
+import Item.DivingSuit;
+import Item.Flare;
+import Item.FlareGun;
+import Item.Food;
 import Item.Item;
+import Item.Rope;
+import Item.Shovel;
+import Item.Tent;
+import Strategy.Bear;
+import Strategy.BearStrategy;
+import Strategy.DivingSuitStrategy;
+import Strategy.Igloo;
+import Strategy.IglooStrategy;
+import Strategy.NoBear;
+import Strategy.NoDivingSuit;
+import Strategy.NoIgloo;
+import Strategy.NoRopeHelp;
+import Strategy.NoShovelDig;
+import Strategy.RopeHelp;
+import Strategy.ShovelDig;
+import Strategy.TentStrategy;
 
 import java.io.*;
 
@@ -26,7 +48,7 @@ public class Commands
 	 * @throws Exception: nem letezo vagy adott modban nem ertelemezett parancs eseten dobja a kivetelt 
 	 */
 	void start() throws Exception {
-		m = mode.GAME;
+		m = mode.INIT;
 		String temp;
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
@@ -404,7 +426,7 @@ public class Commands
 	 * 
 	 * 
 	 * @param args2
-	 * @throws IllegalArgumentException ha a tömb mérete kisebb mint 4
+	 * @throws IllegalArgumentException ha a tomb merete kisebb mint 4
 	 * @thorws IllegalArgumentException ha az 
 	 * @throws IllegalArgumentException ha az 
 	 * @throws IllegalArgumentException ha az 
@@ -439,19 +461,83 @@ public class Commands
 			if(num < 0 || num > 5)
 				throw new IllegalArgumentException(num + " is an invalid number for snow!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setSnow(num);
+			System.out.println("$Sikeres beallitas!");
 			break;
 		}
+		case "character":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+				throw new IllegalArgumentException(key1 + " is not Ice!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
+				throw new IllegalArgumentException(key2 + " is not Character!");
+			((Ice)Game.getInstance().getObjects().get(key1)).addCharacter(((Character)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
 		}
+		case "bearstrategy":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+				throw new IllegalArgumentException(key1 + " is not Ice!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof BearStrategy)) 
+				throw new IllegalArgumentException(key2 + " is not BearStrategy!");
+			((Ice)Game.getInstance().getObjects().get(key1)).setBearStrategy(((BearStrategy)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			
+			break;
+		}
+		case "item":
+		{
+			String key1 = args2[2]; 
+			if(Game.getInstance().getObjects().get(key1) instanceof Ice)
+			{
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
+				throw new IllegalArgumentException(key2 + " is not Item!");
+			((Ice)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			}
+			else if(Game.getInstance().getObjects().get(key1) instanceof Character)
+			{
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
+				throw new IllegalArgumentException(key2 + " is not Item!");
+			((Character)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			}
+			else
+				throw new IllegalArgumentException(key1 + " is not Item or Character!");
+			
+			break;
+		}
+		case "igloostrategy":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
+				throw new IllegalArgumentException(key1 + " is not Ice!");
+			String key2 = args2[3];
+			if(!(Game.getInstance().getObjects().get(key2) instanceof IglooStrategy)) 
+				throw new IllegalArgumentException(key2 + " is not IglooStrategy!");
+			((Ice)Game.getInstance().getObjects().get(key1)).setIglooStrategy(((IglooStrategy)Game.getInstance().getObjects().get(key2)));
+			System.out.println("$Sikeres beallitas!");
+			break;
+		}
+		
+		}
+		
 	}
 	/**
-	 * Törli a paraméterben megadott tömböt.
-	 * Különbözõ képpen jár el ha a különbözõ típuusú objektumoknál.
+	 * Torli a parameterben megadott tombot.
+	 * Kulonbozo keppen jar el ha a kulonbozo tipusu objektumoknal.
 	 * @param args2
-	 * @throws IllegalArgumentException ha a tömb mérete nem 2
-	 * @thorws IllegalArgumentException ha az argumentum Ice típusú és a rajtalévõ karakterek széma nagyobb 0
-	 * @throws IllegalArgumentException ha az argumentum típusa nem egyezik az elõtte ellenõrzöttekkel
+	 * @throws IllegalArgumentException ha a tomb merete nem 2
+	 * @thorws IllegalArgumentException ha az argumentum Ice tipusu es a rajtalevo karakterek szama nagyobb 0
+	 * @throws IllegalArgumentException ha az argumentum tipusa nem egyezik az elotte ellenorzottekkel
 	 */
-	private void delete(String[] args2)
+	private void delete(String[] args2) throws Exception
 	{
 		if (args2.length != 2)
 			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
@@ -505,7 +591,7 @@ public class Commands
 				break;
 			case "HoleIce": Game.getInstance().addObject(new HoleIce(), name);
 				break;
-			case "UnstableIce": Game.getInstance().addObject(new UnstableIce(), name);
+			case "UnstableIce": Game.getInstance().addObject(new UnstableIce(3), name);
 				break;
 			case "StableIce": Game.getInstance().addObject(new StableIce(), name);
 				break;
@@ -525,21 +611,13 @@ public class Commands
 				break;
 			case "Shovel": Game.getInstance().addObject(new Shovel(), name);
 				break;
-			case "Tent": Game.getInstance().addObject(new Tent, name);
+			case "Tent": Game.getInstance().addObject(new Tent(), name);
 				break;
-			case "Bear": Game.getInstance().addObject(new Bear, name);
-				break;
-			case "BearStrategy": Game.getInstance().addObject(new BearStrategy, name);
-				break;
-			case "DigStrategy": Game.getInstance().addObject(new DigStrategy, name);
+			case "Bear": Game.getInstance().addObject(new Bear(), name);
 				break;
 			case "DivingSuitStrategy": Game.getInstance().addObject(new DivingSuitStrategy(), name);
 				break;
-			case "HelpStrategy": Game.getInstance().addObject(new HelpStrategy(), name);
-				break;
 			case "Igloo": Game.getInstance().addObject(new Igloo(), name);
-				break;
-			case "IglooStrategy": Game.getInstance().addObject(new IglooStrategy(), name);
 				break;
 			case "NoBear": Game.getInstance().addObject(new NoBear(), name);
 				break;
@@ -556,8 +634,6 @@ public class Commands
 			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(), name);
 				break;
 			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
-				break;
-			case "WaterStrategy": Game.getInstance().addObject(new WaterStrategy(), name);
 				break;
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
 				break;
