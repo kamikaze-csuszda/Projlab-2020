@@ -11,11 +11,25 @@ public class Commands
 	enum mode {GAME, INIT}
 	mode m;
 	String[] args;
+	
+	/**A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak. 
+	 * Ez a fuggveny hivja meg a kapott parancsnak megfelelo metodust. 
+	 * Mukodes:
+	 *  - standard inputrol beolvassunk a br stringbe egy sort, majd kisbetusiti
+	 *  - ezt kovetoen feldaraboljuk a parancsot minden whitespace karakternel -> az elso szo a parancs, a tobbi az argumnetuma
+	 *  - megvizsgaljuk, hogy milyen modban (GAME/INIT) vagyunk, es ennek megfeleloen milyen parancsok vannak ertelmezve
+	 *  - a parancsnak megfelelo fuggvenyt meghivjuk, amennyiben van ilyen, ha nincs, akkor kivetelt dob a program
+	 * 
+	 * INIT modban hivhato parancsok: state, load, help, start, create, delete, set
+	 * GAME modban hivhato parancsok: breakice, move, use, assemble, dig, item, warmup, help, start
+	 * 
+	 * @throws Exception: nem letezo vagy adott modban nem ertelemezett parancs eseten dobja a kivetelt 
+	 */
 	void start() throws Exception {
 		m = mode.GAME;
 		String temp;
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 		temp = br.readLine();
 		temp.toLowerCase();
 		args = temp.split(" ");
@@ -87,6 +101,17 @@ public class Commands
 					throw new IllegalArgumentException("Unexpected value: " + command);
 			}
 	}
+	
+	/**A karakter feltori a jeget, azon a jegtablan ahol all. Ennek eredmenye, hogy minden targy ami azon a jegtablan volt kiolvad, es felvehetove valik. 
+	 * Miutan a targyakat kitortuk a jegbol, ki is listazzuk a felhasznalonak. 
+	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ha nem sikerult a jeget feltorni
+	 * - nincs ilyen objektum 
+	 * 
+	 * @param args2 
+	 */
 	private void breakice(String[] args2)
 	{
 		if (args2.length != 2)
@@ -112,6 +137,11 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
+	
+	/**
+	 * 
+	 * @param args2
+	 */
 	private void warmup(String[] args2)
 	{
 		if (args2.length < 2)
@@ -409,7 +439,7 @@ public class Commands
 
 			}
 			else{
-				item.getCharacter().removItem(item);
+				item.getCharacter().removeItem(item);
 
 			}
 			Game.getInstance().getObjects().remove(item);
@@ -423,8 +453,76 @@ public class Commands
 
 	private void create(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+		if (args2.length != 3)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+		String type = args2[1];
+		String name = args2[2];
+		switch(type){
+			case "Eskimo": Game.getInstance().addObject(new Eskimo(), name);
+				break;
+			case "Scientist": Game.getInstance().addObject(new Scientist(), name);
+				break;
+			case "PolarBear": Game.getInstance().addObject(new PolarBear(), name);
+				break;
+			case "HoleIce": Game.getInstance().addObject(new HoleIce(), name);
+				break;
+			case "UnstableIce": Game.getInstance().addObject(new UnstableIce(), name);
+				break;
+			case "StableIce": Game.getInstance().addObject(new StableIce(), name);
+				break;
+			case "BreakableShovel": Game.getInstance().addObject(new BreakableShovel(), name);
+				break;
+			case "Cartridge": Game.getInstance().addObject(new Cartridge(), name);
+				break;
+			case "DivingSuit": Game.getInstance().addObject(new DivingSuit(), name);
+				break;
+			case "Flare": Game.getInstance().addObject(new Flare(), name);
+				break;
+			case "FlareGun": Game.getInstance().addObject(new FlareGun(), name);
+				break;
+			case "Food": Game.getInstance().addObject(new Food(), name);
+				break;
+			case "Rope": Game.getInstance().addObject(new Rope(), name);
+				break;
+			case "Shovel": Game.getInstance().addObject(new Shovel(), name);
+				break;
+			case "Tent": Game.getInstance().addObject(new Tent, name);
+				break;
+			case "Bear": Game.getInstance().addObject(new Bear, name);
+				break;
+			case "BearStrategy": Game.getInstance().addObject(new BearStrategy, name);
+				break;
+			case "DigStrategy": Game.getInstance().addObject(new DigStrategy, name);
+				break;
+			case "DivingSuitStrategy": Game.getInstance().addObject(new DivingSuitStrategy(), name);
+				break;
+			case "HelpStrategy": Game.getInstance().addObject(new HelpStrategy(), name);
+				break;
+			case "Igloo": Game.getInstance().addObject(new Igloo(), name);
+				break;
+			case "IglooStrategy": Game.getInstance().addObject(new IglooStrategy(), name);
+				break;
+			case "NoBear": Game.getInstance().addObject(new NoBear(), name);
+				break;
+			case "NoDivingSuit": Game.getInstance().addObject(new NoDivingSuit(), name);
+				break;
+			case "NoIgloo": Game.getInstance().addObject(new NoIgloo(), name);
+				break;
+			case "NoRopeHelp": Game.getInstance().addObject(new NoRopeHelp(), name);
+				break;
+			case "NoShovelDig": Game.getInstance().addObject(new NoShovelDig(), name);
+				break;
+			case "RopeHelp": Game.getInstance().addObject(new RopeHelp(), name);
+				break;
+			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(), name);
+				break;
+			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
+				break;
+			case "WaterStrategy": Game.getInstance().addObject(new WaterStrategy(), name);
+				break;
+			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
+				break;
+		}
 	}
 	private void save(String[] args2)
 	{
