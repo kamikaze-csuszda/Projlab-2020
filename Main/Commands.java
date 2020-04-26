@@ -471,7 +471,7 @@ public class Commands
 				break;
 			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
 				break;
-			case "WaterStrategy": Game.getInstance().addObject(new WtaerStrategy(), name);
+			case "WaterStrategy": Game.getInstance().addObject(new WaterStrategy(), name);
 				break;
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
 				break;
