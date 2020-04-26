@@ -729,6 +729,7 @@ public class Commands
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
 	}
+	
 	/**
 	 * Letrehozza a parameterben megadott agrumentumot.
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
@@ -892,7 +893,20 @@ public class Commands
 	}
 	private void state(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+		if (args2.length != 2)
+			throw new IllegalArgumentException("Nem megfelelo paramterszam!");
+		String argument = args2[1];
+		if (argument.equals("all")){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof PolarBear){
+
+		}
 	}
 }
