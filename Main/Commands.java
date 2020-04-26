@@ -331,6 +331,16 @@ public class Commands
 			throw new IllegalArgumentException("Object is not a Movable Object!");
 		
 	}
+	/**
+	 * 
+	 * 
+	 * @param args2
+	 * @throws IllegalArgumentException ha a tömb mérete kisebb mint 4
+	 * @thorws IllegalArgumentException ha az 
+	 * @throws IllegalArgumentException ha az 
+	 * @throws IllegalArgumentException ha az 
+	 * @throws IllegalArgumentException ha az 
+	 */
 	private void set(String[] args2)
 	{
 		if(args2.length < 4)
@@ -363,8 +373,15 @@ public class Commands
 			break;
 		}
 		}
-		
 	}
+	/**
+	 * Törli a paraméterben megadott tömböt.
+	 * Különbözõ képpen jár el ha a különbözõ típuusú objektumoknál.
+	 * @param args2
+	 * @throws IllegalArgumentException ha a tömb mérete nem 2
+	 * @thorws IllegalArgumentException ha az argumentum Ice típusú és a rajtalévõ karakterek széma nagyobb 0
+	 * @throws IllegalArgumentException ha az argumentum típusa nem egyezik az elõtte ellenõrzöttekkel
+	 */
 	private void delete(String[] args2)
 	{
 		if (args2.length != 2)
@@ -402,8 +419,8 @@ public class Commands
 		else{
 			throw new IllegalArgumentException("Nincs ilyen objektum!");
 		}
-		
 	}
+
 	private void create(String[] args2)
 	{
 		// TODO Auto-generated method stub
