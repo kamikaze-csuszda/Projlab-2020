@@ -406,8 +406,76 @@ public class Commands
 	}
 	private void create(String[] args2)
 	{
-		// TODO Auto-generated method stub
-		
+		if (args2.length != 3)
+			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+		String type = args2[1];
+		String name = args2[2];
+		switch(type){
+			case "Eskimo": Game.getInstance().addObject(new Eskimo(), name);
+				break;
+			case "Scientist": Game.getInstance().addObject(new Scientist(), name);
+				break;
+			case "PolarBear": Game.getInstance().addObject(new PolarBear(), name);
+				break;
+			case "HoleIce": Game.getInstance().addObject(new HoleIce(), name);
+				break;
+			case "UnstableIce": Game.getInstance().addObject(new UnstableIce(), name);
+				break;
+			case "StableIce": Game.getInstance().addObject(new StableIce(), name);
+				break;
+			case "BreakableShovel": Game.getInstance().addObject(new BreakableShovel(), name);
+				break;
+			case "Cartridge": Game.getInstance().addObject(new Cartridge(), name);
+				break;
+			case "DivingSuit": Game.getInstance().addObject(new DivingSuit(), name);
+				break;
+			case "Flare": Game.getInstance().addObject(new Flare(), name);
+				break;
+			case "FlareGun": Game.getInstance().addObject(new FlareGun(), name);
+				break;
+			case "Food": Game.getInstance().addObject(new Food(), name);
+				break;
+			case "Rope": Game.getInstance().addObject(new Rope(), name);
+				break;
+			case "Shovel": Game.getInstance().addObject(new Shovel(), name);
+				break;
+			case "Tent": Game.getInstance().addObject(new Tent, name);
+				break;
+			case "Bear": Game.getInstance().addObject(new Bear, name);
+				break;
+			case "BearStrategy": Game.getInstance().addObject(new BearStrategy, name);
+				break;
+			case "DigStrategy": Game.getInstance().addObject(new DigStrategy, name);
+				break;
+			case "DivingSuitStrategy": Game.getInstance().addObject(new DivingSuitStrategy(), name);
+				break;
+			case "HelpStrategy": Game.getInstance().addObject(new HelpStrategy(), name);
+				break;
+			case "Igloo": Game.getInstance().addObject(new Igloo(), name);
+				break;
+			case "IglooStrategy": Game.getInstance().addObject(new IglooStrategy(), name);
+				break;
+			case "NoBear": Game.getInstance().addObject(new NoBear(), name);
+				break;
+			case "NoDivingSuit": Game.getInstance().addObject(new NoDivingSuit(), name);
+				break;
+			case "NoIgloo": Game.getInstance().addObject(new NoIgloo(), name);
+				break;
+			case "NoRopeHelp": Game.getInstance().addObject(new NoRopeHelp(), name);
+				break;
+			case "NoShovelDig": Game.getInstance().addObject(new NoShovelDig(), name);
+				break;
+			case "RopeHelp": Game.getInstance().addObject(new RopeHelp(), name);
+				break;
+			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(), name);
+				break;
+			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
+				break;
+			case "WaterStrategy": Game.getInstance().addObject(new WtaerStrategy(), name);
+				break;
+			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
+				break;
+		}
 	}
 	private void save(String[] args2)
 	{
