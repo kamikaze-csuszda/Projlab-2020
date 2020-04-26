@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Ice.HoleIce;
 import Ice.Ice;
+import Ice.StableIce;
+import Ice.UnstableIce;
 
 //
 //
@@ -100,10 +103,48 @@ public class Game
 		for(int i = 0; i<length; i++) {
 			type[i] = Integer.parseInt(temp[i]);
 		}
+		String name = "";
+		int stable = 0, unstable = 0, hole = 0;
 		for(int i = 0; i<length; i++)
+		{
+			switch(type[i])
+			{
+			case 0:
+			{
+				name = "st" + stable;
+				stable++;
+				StableIce st = new StableIce();
+				objects.put(name, st);
+				mapPieces.add(st);
+				break;
+			}
+			case 1:
+			{
+				name = "usi" + unstable;
+				unstable++;
+				UnstableIce usi = new UnstableIce((int)(numOfCharacters / 2));
+				objects.put(name, usi);
+				mapPieces.add(usi);
+				break;
+			}
+			case 2:
+			{
+				name = "hi" + hole;
+				hole++;
+				HoleIce hi = new HoleIce();
+				objects.put(name, hi);
+				mapPieces.add(hi);
+				break;
+			}	
+			default:
+				break;
+			}
+		}
+		for(int i = 0; i < length; i++)
 		{
 			
 		}
+		
 		
 	}
 	
