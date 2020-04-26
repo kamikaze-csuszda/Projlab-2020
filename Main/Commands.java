@@ -803,10 +803,9 @@ public class Commands
 		
 	}
 	/**
-	*
-	*
-	* @param
-	*
+	* A paracstol fuggoen kiirja a segitseget. Minden parancshoz tarozik legalbb 1 segitseg.
+	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	* @throws IllegalArgumentException ha a parameter szam nem 2 
 	*/
 	private void help(String[] args2)
 	{
