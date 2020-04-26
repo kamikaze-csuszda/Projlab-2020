@@ -115,7 +115,21 @@ public class Commands
 	private void warmup(String[] args2)
 	{
 		String key = args2[1];
-	 ((Character) Game.getInstance().getObjects().get(key)).warmup();
+		if (Game.getInstance().getObjects().get(key) instanceof Character){
+			int warmth = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
+			int max = ((Character) Game.getInstance().getObjects().get(key)).getMaxWarmth();
+			if (bodywarmth < max){
+				((Character) Game.getInstance().getObjects().get(key)).warmup();
+				System.out.println("Sikeresen melegedtel! Jelenlegi testhod: " + bodywarmth + "!");
+			}
+			else{
+				System.out.println("Mar maximum testhon vagy, nem kell melegedned!");
+			}
+
+		}
+		else{
+			throw new IllegalArgumentException("Object is not a Character!");
+		}
 		
 	}
 	private void item(String[] args2)
