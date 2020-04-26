@@ -93,7 +93,7 @@ public class Commands
 			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
 	 	String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Ice){
-			if ((Ice)Game.getInstance().getObjects().get(key).getSnow() == 0){
+			if (((Ice)Game.getInstance().getObjects().get(key)).getSnow() == 0){
 				String print = new String("$Sikeresen kitorted a jegbol a(z)");
 				for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray()){
 					it.defrost();
@@ -273,7 +273,7 @@ public class Commands
 		String key = args2[1];
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 			throw new IllegalArgumentException("Object is not a Character!");
-		// TODO Befejezni, ha megvan az assemblegun
+		((Character)Game.getInstance().getObjects().get(key)).assembleGun();
 	}
 	private void use(String[] args2) throws Exception
 	{
@@ -359,7 +359,7 @@ public class Commands
 			int num = Integer.parseInt(args2[3]);
 			if(num < 0 || num > 5)
 				throw new IllegalArgumentException(num + " is an invalid number for snow!");
-			((Ice)Game.getInstance().getObjects().get(key1)).
+			((Ice)Game.getInstance().getObjects().get(key1)).setSnow(num);
 			break;
 		}
 		}

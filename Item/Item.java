@@ -107,8 +107,6 @@ public abstract class Item
 	 * A fuggveny az Itemek eldobasaert felel. Hozzaadja a jegtabla Itemjei koze, amin a karakter all es a karaktertol eltavolitja. 
 	 */
 	public void discard() {
-		Character c = this.getCharacter();
-		Ice i = c.getIce(); //<- ez szerintem gecifölöseges
 		this.removeCharacter();
 	}
 }

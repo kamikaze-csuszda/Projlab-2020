@@ -32,13 +32,4 @@ public class Gun extends Item
 		getCharacter().removeItem(this);
 		getCharacter().addGunpart(this);
 	}
-
-	/**
-	 * Az alkatresz kikerul az alkatresztarolobol, es vissza a sima itemek koze.
-	 */
-	public void discard(){
-		getCharacter().removeGunpart(this);
-		getCharacter().addItem(this);
-	}
-
 }

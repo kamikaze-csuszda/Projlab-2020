@@ -141,6 +141,13 @@ public abstract class Ice
 		neighbours.remove(i);
 	}
 	/**
+	 * Beallitja a snow erteket
+	 * @param i az uj erteke
+	 */
+	public void setSnow(int i) {
+		snow = i;
+	}
+	/**
 	 * A szomszedos mezok gettere
 	 * @param d a szomszed indexe
 	 * @return a szomszed

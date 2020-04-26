@@ -329,7 +329,11 @@ public abstract class Character implements Movable
 	 * @param g a kiszedni kivant alkatresz
 	 */
 	public void removeGunpart(Gun g) {
-		gunParts.remove(g);
+		if(equipment.size() < 5) {
+			gunParts.remove(g);
+			addItem(g);
+		}
+		
 	}
 
 	/**

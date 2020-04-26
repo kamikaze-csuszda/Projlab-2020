@@ -25,11 +25,4 @@ public class Tent extends Item {
         i.setIglooStrategy(ts);
         c.removeItem(this);
     }
-
-    /**
-     * Felulirja az os fuggvenyet hogy ne csinaljon semmit.
-     */
-    public void discard(){
-
-    }
 }
