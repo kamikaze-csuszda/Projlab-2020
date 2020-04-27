@@ -33,6 +33,7 @@ import Strategy.WaterStrategy;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Commands
 {
@@ -63,7 +64,8 @@ public class Commands
 		{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 			temp = br.readLine();
-			commands.add(temp);
+			if(!temp.contains("save state"))
+				commands.add(temp);
 			temp = temp.toLowerCase();
 			args = temp.split(" ");
 			execute(args);
@@ -851,6 +853,7 @@ public class Commands
 					bw.write(string);
 					bw.newLine();
 				}
+				bw.close();
 				System.out.println("$Sikeres mentes!");
 			} catch (Exception e)
 			{
@@ -1037,7 +1040,18 @@ public class Commands
 		{
 			try
 			{
-				
+				ArrayList<String> loaded = new ArrayList<String>();
+				Scanner loadedScanner = new Scanner(new FileReader(args2[2]));
+				while(loadedScanner.hasNextLine())
+				{
+					loaded.add(loadedScanner.nextLine());
+				}
+				String[] ldargs;
+				for(int i = 0; i < loaded.size(); i++)
+				{
+					ldargs = loaded.get(i).split(" ");
+					execute(ldargs);
+				}
 			} catch (Exception e)
 			{
 				System.out.println("$Sikertelen betoltes!");
