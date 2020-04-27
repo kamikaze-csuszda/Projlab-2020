@@ -182,10 +182,12 @@ public class Game implements Serializable
 	
 	public void winGame()
 	{
+		System.out.println("$Game Won!");
 	}
 	
 	public void loseGame()
 	{
+		System.out.println("$Game Lost!");
 	}
 
 	/**
@@ -216,7 +218,19 @@ public class Game implements Serializable
 		Random rand = new Random();
 		
 		for (PolarBear pb : maci) {
-			pb.move(rand.nextInt(pb.getIce().getNeighbourNum())-1);
+			pb.move(rand.nextInt(pb.getIce().getNeighbourNum()));
+		}
+		for (Ice ice : mapPieces)
+		{
+			if(rand.nextBoolean())
+				ice.stormEffects();
+		}
+		for (Ice ice : mapPieces)
+		{
+			ice.turnEnd();
+			if(ice.getCharNum() > 0)
+				for(int i = 0; i < ice.getCharNum(); i++)
+					ice.getCharacter(i).resetAction();
 		}
 		
 		

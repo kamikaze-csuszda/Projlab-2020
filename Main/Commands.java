@@ -1082,10 +1082,12 @@ public class Commands
 		}
 	}
 	
-	private void turnend(String[] args2)
+	private void turnend(String[] args2) throws Exception
 	{
 		if (args2.length != 1)
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help turnend' parancsot tovabbi informacioert!");
+		Game.getInstance().turnend();
+		System.out.println("$Sikeres korvege");
 		
 	}
 	
