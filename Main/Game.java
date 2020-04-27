@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Scanner;
 
 import Characters.PolarBear;
@@ -209,4 +210,15 @@ public class Game implements Serializable
 		numOfCharacters--;
 	}
 
+	public void turnend() throws Exception 
+	{
+		
+		Random rand = new Random();
+		
+		for (PolarBear pb : maci) {
+			pb.move(rand.nextInt(pb.getIce().getNeighbourNum())-1);
+		}
+		
+		
+	}
 }

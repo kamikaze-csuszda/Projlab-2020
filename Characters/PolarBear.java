@@ -28,5 +28,8 @@ public class PolarBear implements Movable {
 		neighbour.bearHere();
 	}
 	
+	public Ice getIce() {
+		return ice;
+	}
 	
 }

@@ -1026,8 +1026,6 @@ public class Commands
 	{
 		if (args2.length != 1)
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help turnend' parancsot tovabbi informacioert!");
-		Random random = new Random();
-		int random1 = random.nextInt();
 		
 	}
 	
