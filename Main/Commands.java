@@ -1143,6 +1143,28 @@ public class Commands
 			}
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
+			String message = new String();
+			message = message.concat("Eskimo:\n { \n");
+			message = message.concat("\tEskimo: " + argument + ":\n");
+			message = message.concat("\t\tbodywarmth: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getWarmth());
+			message = message.concat("\t\taction: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getAction());
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() + "\n");
+			message = message.concat("\t\tItems:");
+			for (int i = 0; i < (Eskimo)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
+				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
+			}
+			message = message.concat("\n\t\tGunParts:");
+			for (int i = 0; i < (Eskimo)Game.getInstance().getObjects().get(argument)).getGunParts().size(); i++){
+				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getGunPart(i)) + ", ");
+			}
+			message = message.concat("\n\t\tWaterStrategy:");
+			try{
+
+			}
+
+			message = message.concat("\t\tDigStrategy:");
+			message = message.concat("\t\tHelpStrategy:");
+			message = message.concat("}");
 
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
