@@ -28,8 +28,6 @@ public class NoIgloo implements IglooStrategy
 	 */
 	public NoIgloo()
 	{
-		System.out.println("--> NoIgloo()");
-		System.out.println("<--");
 	}
 	/**
 	 * Mivel nincs iglu az adott mezon, igy no eggyel a ho mennyisege.
@@ -38,7 +36,6 @@ public class NoIgloo implements IglooStrategy
 	 */
 	public void stormEffects(Ice i) throws Exception
 	{
-		System.out.println("--> stormEffects(i)");
 		i.incSnow();
 		int charNum = i.getCharNum();
 		for(int sz = 0; sz < charNum; sz++)
@@ -46,7 +43,6 @@ public class NoIgloo implements IglooStrategy
 			Character character = i.getCharacter(sz);
 			character.warmthDec();
 		}
-		System.out.println("<--");
 	}
 
 	/**

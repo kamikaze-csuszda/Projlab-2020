@@ -32,4 +32,10 @@ public class Gun extends Item
 		getCharacter().removeItem(this);
 		getCharacter().addGunpart(this);
 	}
+
+	@Override
+	public String getItemClass()
+	{
+		return "Gun";
+	}
 }

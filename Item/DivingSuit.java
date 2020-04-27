@@ -51,6 +51,12 @@ public class DivingSuit extends Item
 		Character c = this.getCharacter();
 		c.setWaterStrategy(nds);
 	}
+
+	@Override
+	public String getItemClass()
+	{
+		return "DivingSuit";
+	}
 	
 	
 }

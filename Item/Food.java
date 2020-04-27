@@ -35,5 +35,10 @@ public class Food extends Item
 		c.warmthInc();
 		c.removeItem(this);
 	}
+	@Override
+	public String getItemClass()
+	{
+		return "Food";
+	}
 	
 }

@@ -31,4 +31,9 @@ public class BreakableShovel extends Shovel {
 		Character c = this.getCharacter();
 		c.setDigStrategy(nsd);
 	}
+	@Override
+	public String getItemClass()
+	{
+		return "BreakableShovel";
+	}
 }

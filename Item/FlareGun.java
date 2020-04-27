@@ -22,4 +22,9 @@ public class FlareGun extends Gun
     {
         super();
     }
+    @Override
+	public String getItemClass()
+	{
+		return "FlareGun";
+	}
 }

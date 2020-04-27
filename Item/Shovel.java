@@ -53,4 +53,10 @@ public class Shovel extends Item
 		Character c = this.getCharacter();
 		c.setDigStrategy(nsd);
 	}
+
+	@Override
+	public String getItemClass()
+	{
+		return "Shovel";
+	}
 }

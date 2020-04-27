@@ -49,5 +49,10 @@ public class Rope extends Item
 		Character c = this.getCharacter();
 		c.setHelpStrategy(nrh);
 	}
+	@Override
+	public String getItemClass()
+	{
+		return "Rope";
+	}
 	
 }

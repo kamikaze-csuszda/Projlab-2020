@@ -25,4 +25,10 @@ public class Tent extends Item {
         i.setIglooStrategy(ts);
         c.removeItem(this);
     }
+
+	@Override
+	public String getItemClass()
+	{
+		return "Tent";
+	}
 }

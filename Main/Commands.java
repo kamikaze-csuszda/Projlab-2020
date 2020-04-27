@@ -54,14 +54,16 @@ public class Commands
 	void start() throws Exception {
 		m = mode.INIT;
 		String temp;
+		temp = "def. not null";
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
-		temp = br.readLine();
 		while(temp != null)
 		{
-			temp.toLowerCase();
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+			temp = br.readLine();
+			temp = temp.toLowerCase();
 			args = temp.split(" ");
 			String command = args[0];
+			try {
 			if(m == mode.INIT)
 				switch (command)
 				{
@@ -78,6 +80,9 @@ public class Commands
 				case "start":
 					if (args[1] == "game")
 						m = mode.GAME;				
+					break;
+				case "item":
+					item(args);
 					break;
 				case "save":
 					save(args);
@@ -128,7 +133,10 @@ public class Commands
 					default:
 						throw new IllegalArgumentException("Unexpected value: " + command);
 		}
-		
+			} catch (Exception e)
+			{
+				System.out.println(e.getMessage());
+			}
 		
 			}
 	}
@@ -271,9 +279,7 @@ public class Commands
 					int index = 0;
 					for (Item it: ((Ice)Game.getInstance().getObjects().get(args2[2])).getItemArray())
 					{
-						String temp = it.getClass().toString();
-						String[] temp2 = temp.split(".");
-						temp = temp2[temp2.length-1];
+						String temp = it.getItemClass();
 						System.out.println("\t" + index + " " + temp);
 					}
 					System.out.println("}");
@@ -285,9 +291,7 @@ public class Commands
 					int index = 0;
 					for (Item it: ((Character)Game.getInstance().getObjects().get(args2[2])).getEquipment())
 					{
-						String temp = it.getClass().toString();
-						String[] temp2 = temp.split(".");
-						temp = temp2[temp2.length-1];
+						String temp = it.getItemClass();
 						System.out.println("\t" + index + " " + temp);
 						index++;
 					}
@@ -748,57 +752,57 @@ public class Commands
 		String type = args2[1];
 		String name = args2[2];
 		switch(type){
-			case "Eskimo": Game.getInstance().addObject(new Eskimo(), name);
+			case "eskimo": Game.getInstance().addObject(new Eskimo(), name);
 				break;
-			case "Scientist": Game.getInstance().addObject(new Scientist(), name);
+			case "scientist": Game.getInstance().addObject(new Scientist(), name);
 				break;
-			case "PolarBear": Game.getInstance().addObject(new PolarBear(), name);
+			case "polarbear": Game.getInstance().addObject(new PolarBear(), name);
 				break;
-			case "HoleIce": Game.getInstance().addObject(new HoleIce(), name);
+			case "holeice": Game.getInstance().addObject(new HoleIce(), name);
 				break;
-			case "UnstableIce": Game.getInstance().addObject(new UnstableIce(3), name);
+			case "unstableice": Game.getInstance().addObject(new UnstableIce(3), name);
 				break;
-			case "StableIce": Game.getInstance().addObject(new StableIce(), name);
+			case "stableice": Game.getInstance().addObject(new StableIce(), name);
 				break;
-			case "BreakableShovel": Game.getInstance().addObject(new BreakableShovel(), name);
+			case "breakableshovel": Game.getInstance().addObject(new BreakableShovel(), name);
 				break;
-			case "Cartridge": Game.getInstance().addObject(new Cartridge(), name);
+			case "cartridge": Game.getInstance().addObject(new Cartridge(), name);
 				break;
-			case "DivingSuit": Game.getInstance().addObject(new DivingSuit(), name);
+			case "divingsuit": Game.getInstance().addObject(new DivingSuit(), name);
 				break;
-			case "Flare": Game.getInstance().addObject(new Flare(), name);
+			case "flare": Game.getInstance().addObject(new Flare(), name);
 				break;
-			case "FlareGun": Game.getInstance().addObject(new FlareGun(), name);
+			case "flaregun": Game.getInstance().addObject(new FlareGun(), name);
 				break;
-			case "Food": Game.getInstance().addObject(new Food(), name);
+			case "food": Game.getInstance().addObject(new Food(), name);
 				break;
-			case "Rope": Game.getInstance().addObject(new Rope(), name);
+			case "rope": Game.getInstance().addObject(new Rope(), name);
 				break;
-			case "Shovel": Game.getInstance().addObject(new Shovel(), name);
+			case "shovel": Game.getInstance().addObject(new Shovel(), name);
 				break;
-			case "Tent": Game.getInstance().addObject(new Tent(), name);
+			case "tent": Game.getInstance().addObject(new Tent(), name);
 				break;
-			case "Bear": Game.getInstance().addObject(new Bear(), name);
+			case "bear": Game.getInstance().addObject(new Bear(), name);
 				break;
-			case "DivingSuitStrategy": Game.getInstance().addObject(new DivingSuitStrategy(), name);
+			case "divingsuitstrategy": Game.getInstance().addObject(new DivingSuitStrategy(), name);
 				break;
-			case "Igloo": Game.getInstance().addObject(new Igloo(), name);
+			case "igloo": Game.getInstance().addObject(new Igloo(), name);
 				break;
-			case "NoBear": Game.getInstance().addObject(new NoBear(), name);
+			case "nobear": Game.getInstance().addObject(new NoBear(), name);
 				break;
-			case "NoDivingSuit": Game.getInstance().addObject(new NoDivingSuit(), name);
+			case "nodivingsuit": Game.getInstance().addObject(new NoDivingSuit(), name);
 				break;
-			case "NoIgloo": Game.getInstance().addObject(new NoIgloo(), name);
+			case "noigloo": Game.getInstance().addObject(new NoIgloo(), name);
 				break;
-			case "NoRopeHelp": Game.getInstance().addObject(new NoRopeHelp(), name);
+			case "noropehelp": Game.getInstance().addObject(new NoRopeHelp(), name);
 				break;
-			case "NoShovelDig": Game.getInstance().addObject(new NoShovelDig(), name);
+			case "noshoveldig": Game.getInstance().addObject(new NoShovelDig(), name);
 				break;
-			case "RopeHelp": Game.getInstance().addObject(new RopeHelp(), name);
+			case "ropehelp": Game.getInstance().addObject(new RopeHelp(), name);
 				break;
-			case "ShovelDig": Game.getInstance().addObject(new ShovelDig(new Shovel(3)), name);
+			case "shoveldig": Game.getInstance().addObject(new ShovelDig(new Shovel(3)), name);
 				break;
-			case "TentStrategy": Game.getInstance().addObject(new TentStrategy(), name);
+			case "tentstrategy": Game.getInstance().addObject(new TentStrategy(), name);
 				break;
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}

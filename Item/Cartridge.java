@@ -22,4 +22,9 @@ public class Cartridge extends Gun
     {
         super();
     }
+    @Override
+	public String getItemClass()
+	{
+		return "Cartridge";
+	}
 }
