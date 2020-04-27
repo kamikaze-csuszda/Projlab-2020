@@ -45,6 +45,13 @@ public class Game implements Serializable
 	private int numOfCharacters = 0;
 	private ArrayList<Ice> mapPieces = new ArrayList<Ice>();
 	private Map<String, Object> objects = new HashMap<String, Object>();
+	private ArrayList<PolarBear> maci = new ArrayList<PolarBear>();
+	public ArrayList<PolarBear> getMaci(){
+		return maci;
+	}
+	public ArrayList<Ice> getMapPieces(){
+		return mapPieces;
+	}
 	public Map<String, Object> getObjects()
 	{
 		return objects;
