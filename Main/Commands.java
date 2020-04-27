@@ -310,18 +310,18 @@ public class Commands
 				throw new IllegalArgumentException("$Nincs ennyi eszkozod! Hasznald az 'item list' parancsot az eszkozeid listazasahoz!");
 			else {
 			((Character)Game.getInstance().getObjects().get(key1)).itemGive((Character)(Game.getInstance().getObjects().get(key2)), ((Character)Game.getInstance().getObjects().get(key1)).getItem(id));
-			System.out.println("$Sikeresen atadtad a " + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id).getItemClass() + " eszkozt" + Game.getInstance().getObjects().get(key2) + "nek!");
+			System.out.println("$Sikeresen atadtad a " + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id).getItemClass() + " eszkozt " + key2 + "nek!");
 			}
 			
 			break;
 		case "drop":
 		{
 			if(args2.length < 4)
-				throw new IllegalArgumentException("$Not enough arguments!");
+				throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help item' parancsot tovabbi informacioert!");
 			String key = args2[2];
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key+" is not a Character!");
+				throw new IllegalArgumentException("$"+key+" nem Karakter!");
 			((Character)Game.getInstance().getObjects().get(key)).itemDiscard(((Character)Game.getInstance().getObjects().get(key)).getItem(index));
 		
 			break;
@@ -329,16 +329,16 @@ public class Commands
 		case "pickup":
 		{
 			if(args2.length < 4)
-				throw new IllegalArgumentException("$Not enough arguments!");
+				throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help item' parancsot tovabbi informacioert!");
 			String key = args2[2];
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key+" is not a Character!");
+				throw new IllegalArgumentException("$"+key+" nem Karakter!");
 			((Character)Game.getInstance().getObjects().get(key)).itemPickup(index);
 			break;
 		}
 			default:
-				throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
+				throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
 		
 	}
@@ -356,11 +356,11 @@ public class Commands
 	private void dig(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help dig' parancsot tovabbi informacioert!");
 		String key = args2[1];
 		int snowBefore, snowAfter;
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-			throw new IllegalArgumentException("$"+key+" is not a Character!");
+			throw new IllegalArgumentException("$"+key+" nem Karakter!");
 		snowBefore = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
 		((Character)Game.getInstance().getObjects().get(key)).dig();
 		snowAfter = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
@@ -379,10 +379,10 @@ public class Commands
 	private void assemble(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help assemble' parancsot tovabbi informacioert!");
 		String key = args2[1];
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-			throw new IllegalArgumentException("$"+key+" is not a Character!");
+			throw new IllegalArgumentException("$"+key+" nem Karakter!");
 		((Character)Game.getInstance().getObjects().get(key)).assembleGun();
 	}
 	/**A targyak vagy kepessegek hasznalata. 
@@ -405,18 +405,18 @@ public class Commands
 	private void use(String[] args2) throws Exception
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help use' parancsot tovabbi informacioert!");
 		switch(args2[1]) 
 		{
 		case "ability":
 			{
 				if(args2.length < 3)
-					throw new IllegalArgumentException("$Not enough arguments");
+					throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help use' parancsot tovabbi informacioert!");
 				if(args2.length == 3) 
 				{
 					String key = args2[2];
 					if(!(Game.getInstance().getObjects().get(key) instanceof Eskimo)) 
-						throw new IllegalArgumentException("$"+key+" is not an Eskimo!");
+						throw new IllegalArgumentException("$"+key+" nem Eskimo!");
 					((Eskimo)Game.getInstance().getObjects().get(key)).ability();
 				}
 				if(args2.length == 4) 
@@ -424,7 +424,7 @@ public class Commands
 					int d = Integer.parseInt(args2[3]);
 					String key = args2[2];
 					if(!(Game.getInstance().getObjects().get(key) instanceof Scientist)) 
-						throw new IllegalArgumentException("$"+key+" is not an Eskimo!");
+						throw new IllegalArgumentException("$"+key+" nem Sarkkutato!");
 					((Scientist)Game.getInstance().getObjects().get(key)).ability(d);
 				}
 				break;	
@@ -432,16 +432,16 @@ public class Commands
 		case "item":
 			{
 				if(args2.length < 4)
-					throw new IllegalArgumentException("$Not enough arguments");
+					throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help use' parancsot tovabbi informacioert!");
 				String key = args2[2];
 				int id = Integer.parseInt(args2[3]);
 				if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-					throw new IllegalArgumentException("$"+key+" is not a Character!");
+					throw new IllegalArgumentException("$"+key+" nem Karakter!");
 				((Character)Game.getInstance().getObjects().get(key)).getItem(id).use();
 				break;
 			}
 		default:
-			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
 	}
 	/**
@@ -453,7 +453,7 @@ public class Commands
 	private void move(String[] args2) throws Exception
 	{
 		if(args2.length < 3)
-			throw new IllegalArgumentException("$Not enough arguments");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help move' parancsot tovabbi informacioert!");
 		String key = args2[1];
 		int d = Integer.parseInt(args2[2]);
 		if((Game.getInstance().getObjects().get(key) instanceof Character)) 
@@ -461,7 +461,7 @@ public class Commands
 		else if((Game.getInstance().getObjects().get(key) instanceof PolarBear)) 
 			((PolarBear)Game.getInstance().getObjects().get(key)).move(d);
 		else
-			throw new IllegalArgumentException("$Object is not a Movable Object!");
+			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		
 	}
 	/**
@@ -478,7 +478,7 @@ public class Commands
 	private void set(String[] args2)
 	{
 		if(args2.length < 4)
-			throw new IllegalArgumentException("$Not enough arguments"); 
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help set' parancsot tovabbi informacioert!");
 		String attrib = args2[1];
 		switch (attrib) 
 		{
@@ -486,10 +486,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key2 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key2 + " nem Jég!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addNeighbour((Ice)Game.getInstance().getObjects().get(key2));
 			((Ice)Game.getInstance().getObjects().get(key2)).addNeighbour((Ice)Game.getInstance().getObjects().get(key1));
 			
