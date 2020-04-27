@@ -40,6 +40,9 @@ public abstract class Item
 		frozen = true;
 		durability = dur;
 	}
+	public void setFrozen(Boolean b) {
+		frozen = b;
+	}
 	public abstract String getItemClass();
 	/**
 	 * Beallitja, melyik tablan van az item

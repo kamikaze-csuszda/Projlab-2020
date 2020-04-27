@@ -74,7 +74,7 @@ public class Game implements Serializable
 				ret = key;
 		}
 		if (ret.equals("Not found"))
-			throw new Exception("Nincs ilyen objektum a jatekban!");
+			throw new Exception("$Nincs ilyen objektum a jatekban!");
 		return ret;
 			
 	}
@@ -87,7 +87,7 @@ public class Game implements Serializable
 	public void addObject(Object o, String key) throws Exception 
 	{
 		if(objects.putIfAbsent(key, o)!= null)
-			throw new Exception("Mar van ilyen nevu objektum");
+			throw new Exception("$Mar van ilyen nevu objektum");
 	}
 	public void init()
 	{
@@ -176,18 +176,15 @@ public class Game implements Serializable
 	{
 	}
 	
-	public void randomizeStorm()
-	{
-	}
 	
 	public void winGame()
 	{
-		System.out.println("$Game Won!");
+		System.out.println("Game Won!");
 	}
 	
 	public void loseGame()
 	{
-		System.out.println("$Game Lost!");
+		System.out.println("Game Lost!");
 	}
 
 	/**

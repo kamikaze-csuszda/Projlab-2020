@@ -81,6 +81,12 @@ public class Commands
 			if(m == mode.INIT)
 				switch (command)
 				{
+				case "storm":
+					storm(args);
+					break;
+				case "close":
+					 System.exit(0);
+					 break;
 				case "state":
 					state(args);
 				
@@ -123,6 +129,13 @@ public class Commands
 			else if(m == mode.GAME)
 				switch(command) 
 				{
+				case "state":
+					state(args);
+				
+					break;
+				case "close":
+					 System.exit(0);
+					 break;
 				case "breakice":
 					breakice(args);
 					break;
@@ -170,6 +183,16 @@ public class Commands
 			}
 	}
 	
+	private void storm(String[] args2) throws Exception
+	{
+		if (args2.length != 2)
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help breakeice' parancsot tovabbi informacioert!");
+		if(!(Game.getInstance().getObjects().get(args2[1]) instanceof Ice))
+			throw new IllegalArgumentException(args2[1] + " nem Ice!");
+		((Ice)Game.getInstance().getObjects().get(args2[1])).stormEffects();
+		throw new Exception("$Sikeres hovihar!");
+		
+	}
 	/**
 	 * A karakter feltori a jeget, azon a jegtablan ahol all. Ennek eredmenye, hogy minden targy ami azon a jegtablan volt kiolvad, es felvehetove valik.
 	 * Miutan a targyakat kitortuk a jegbol, ki is listazzuk a felhasznalonak. 
@@ -713,6 +736,17 @@ public class Commands
 			((Item)Game.getInstance().getObjects().get(key1)).setDurability(num);
 			throw new Exception("$Sikeres beallitas!");
 		}
+		case "frozen":
+		{
+			String key1 = args2[2]; 
+			if(!(Game.getInstance().getObjects().get(key1) instanceof Item)) 
+				throw new IllegalArgumentException("$"+key1 + " nem Targy!");
+			if(args2[3].equals("false"))
+				((Item)Game.getInstance().getObjects().get(key1)).setFrozen(false);
+			else
+				((Item)Game.getInstance().getObjects().get(key1)).setFrozen(true);
+			throw new Exception("$Sikeres beallitas!");
+		}
 		default:
 			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		
@@ -796,7 +830,7 @@ public class Commands
 				break;
 				}
 			case "unstableice": {
-				UnstableIce usi = new UnstableIce(3);
+				UnstableIce usi = new UnstableIce(1);
 				Game.getInstance().addObject(usi, name);
 				Game.getInstance().getMapPieces().add(usi);
 				break;
