@@ -75,6 +75,11 @@ public abstract class Ice
 		this(snow);
 		maxCharacters = maxChar;
 	}
+	public Boolean isNeighbour(Ice i) {
+		if(neighbours.contains(i))
+			return true;
+		return false;
+	}
 	
 	/**
 	 * A maxCharacters gettere

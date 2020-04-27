@@ -880,6 +880,52 @@ public class Commands
 				else if(Game.getInstance().getMapPieces().get(i) instanceof HoleIce)
 					type[i] = 2;
 			}
+			int map[][] = new int[size][size];
+			for(int i = 0; i < size; i++)
+			{
+				for(int j = i; j < size; j++)
+				{
+					if(i == j)
+						map[i][j] = 0;
+					else 
+					{
+						if(Game.getInstance().getMapPieces().get(i).isNeighbour(Game.getInstance().getMapPieces().get(j)))
+						{
+							map[i][j] = 1; map[j][i] = 1;
+						}
+						else
+						{
+							map[i][j] = 0; map[j][i] = 0;
+						}
+					}
+				}
+			}
+			for(int i = 0; i<size; i++)
+			{
+				bw.write(String.valueOf(i));
+				if(i < size-1)
+					bw.write("\t");
+			}
+			bw.newLine();
+			for(int i = 0; i < size; i++)
+			{
+				for(int j = 0; j < size; j++)
+				{
+					bw.write(String.valueOf(map[i][j]));
+					if(j<size-1)
+						bw.write("\t");
+				}
+				bw.newLine();
+			}
+			bw.write("$");
+			bw.newLine();
+			for(int i = 0; i < size; i++)
+			{
+				bw.write(String.valueOf(type[i]));
+				if (i<size-1)
+					bw.write("\t");
+			}
+			bw.close();
 			break;
 		}
 		default: throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
