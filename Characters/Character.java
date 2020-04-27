@@ -271,6 +271,13 @@ public abstract class Character implements Movable
 	{
 		return equipment.get(i);
 	}
+
+	/**
+	 * A karakternel levo i. gunPart gettere
+	 * @param i a lekerni kivant gunpart indexe
+	 * @return a gunpart
+	 */
+	public Gun getGunPart(int i) { return gunParts.get(i); }
 	/**
 	 * 3 akcioert novel a bodywarmth-on egyet 
 	 */
