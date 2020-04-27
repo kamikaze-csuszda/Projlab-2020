@@ -47,24 +47,7 @@ public class Game implements Serializable
 	{
 		return objects;
 	}
-	public void saveGame(String filename) throws IOException
-	{
-		FileOutputStream fout = new FileOutputStream(filename);
-		ObjectOutputStream oout = new ObjectOutputStream(fout);
-		oout.writeObject(game);
-		oout.close();
-		fout.close();
-		System.out.println("$Sikeres mentes!");
-	}
-	public void loadGame(String filename) throws IOException, ClassNotFoundException
-	{
-		FileInputStream fin = new FileInputStream(filename);
-		ObjectInputStream oin = new ObjectInputStream(fin);
-		game = (Game) oin.readObject();
-		oin.close();
-		fin.close();
-		System.out.println("$Sikeres betoltes!");
-	}
+	
 	/**
 	 * Vegigmegy az osszes objects beli kulcson, es ha talal egy olyat, aminel 
 	 * megegyezik a hozza tartozo objektum a parameterkent kapottal
