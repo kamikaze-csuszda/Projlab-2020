@@ -236,7 +236,7 @@ public class Commands
 		switch (args2[1])
 		{
 		case "list":
-			if(args2[2] == "all")
+			if(args2[2].equals("all"))
 			{
 				for(String key: Game.getInstance().getObjects().keySet())
 					if(!(Game.getInstance().getObjects().get(key) instanceof Character) && !(Game.getInstance().getObjects().get(key) instanceof Ice))
@@ -249,9 +249,7 @@ public class Commands
 							int index = 0;
 							for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray())
 							{
-								String temp = it.getClass().toString();
-								String[] temp2 = temp.split(".");
-								temp = temp2[temp2.length-1];
+								String temp = it.getItemClass();
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}
@@ -263,9 +261,7 @@ public class Commands
 							int index = 0;
 							for (Item it: ((Character)Game.getInstance().getObjects().get(key)).getEquipment())
 							{
-								String temp = it.getClass().toString();
-								String[] temp2 = temp.split(".");
-								temp = temp2[temp2.length-1];
+								String temp = it.getItemClass();
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}
@@ -321,11 +317,11 @@ public class Commands
 		case "drop":
 		{
 			if(args2.length < 4)
-				throw new IllegalArgumentException("Not enough arguments!");
+				throw new IllegalArgumentException("$Not enough arguments!");
 			String key = args2[2];
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-				throw new IllegalArgumentException("Object is not a Character!");
+				throw new IllegalArgumentException("$"+key+" is not a Character!");
 			((Character)Game.getInstance().getObjects().get(key)).itemDiscard(((Character)Game.getInstance().getObjects().get(key)).getItem(index));
 		
 			break;
@@ -333,16 +329,16 @@ public class Commands
 		case "pickup":
 		{
 			if(args2.length < 4)
-				throw new IllegalArgumentException("Not enough arguments!");
+				throw new IllegalArgumentException("$Not enough arguments!");
 			String key = args2[2];
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-				throw new IllegalArgumentException("Object is not a Character!");
+				throw new IllegalArgumentException("$"+key+" is not a Character!");
 			((Character)Game.getInstance().getObjects().get(key)).itemPickup(index);
 			break;
 		}
 			default:
-				throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+				throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
 		}
 		
 	}
@@ -360,11 +356,11 @@ public class Commands
 	private void dig(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String key = args2[1];
 		int snowBefore, snowAfter;
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-			throw new IllegalArgumentException("Object is not a Character!");
+			throw new IllegalArgumentException("$"+key+" is not a Character!");
 		snowBefore = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
 		((Character)Game.getInstance().getObjects().get(key)).dig();
 		snowAfter = ((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow();
@@ -383,10 +379,10 @@ public class Commands
 	private void assemble(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String key = args2[1];
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-			throw new IllegalArgumentException("Object is not a Character!");
+			throw new IllegalArgumentException("$"+key+" is not a Character!");
 		((Character)Game.getInstance().getObjects().get(key)).assembleGun();
 	}
 	/**A targyak vagy kepessegek hasznalata. 
@@ -409,18 +405,18 @@ public class Commands
 	private void use(String[] args2) throws Exception
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		switch(args2[1]) 
 		{
 		case "ability":
 			{
 				if(args2.length < 3)
-					throw new IllegalArgumentException("Not enough arguments");
+					throw new IllegalArgumentException("$Not enough arguments");
 				if(args2.length == 3) 
 				{
 					String key = args2[2];
 					if(!(Game.getInstance().getObjects().get(key) instanceof Eskimo)) 
-						throw new IllegalArgumentException("Object is not an Eskimo!");
+						throw new IllegalArgumentException("$"+key+" is not an Eskimo!");
 					((Eskimo)Game.getInstance().getObjects().get(key)).ability();
 				}
 				if(args2.length == 4) 
@@ -428,7 +424,7 @@ public class Commands
 					int d = Integer.parseInt(args2[3]);
 					String key = args2[2];
 					if(!(Game.getInstance().getObjects().get(key) instanceof Scientist)) 
-						throw new IllegalArgumentException("Object is not an Eskimo!");
+						throw new IllegalArgumentException("$"+key+" is not an Eskimo!");
 					((Scientist)Game.getInstance().getObjects().get(key)).ability(d);
 				}
 				break;	
@@ -436,16 +432,16 @@ public class Commands
 		case "item":
 			{
 				if(args2.length < 4)
-					throw new IllegalArgumentException("Not enough arguments");
+					throw new IllegalArgumentException("$Not enough arguments");
 				String key = args2[2];
 				int id = Integer.parseInt(args2[3]);
 				if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
-					throw new IllegalArgumentException("Object is not a Character!");
+					throw new IllegalArgumentException("$"+key+" is not a Character!");
 				((Character)Game.getInstance().getObjects().get(key)).getItem(id).use();
 				break;
 			}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
 		}
 	}
 	/**
@@ -457,7 +453,7 @@ public class Commands
 	private void move(String[] args2) throws Exception
 	{
 		if(args2.length < 3)
-			throw new IllegalArgumentException("Not enough arguments");
+			throw new IllegalArgumentException("$Not enough arguments");
 		String key = args2[1];
 		int d = Integer.parseInt(args2[2]);
 		if((Game.getInstance().getObjects().get(key) instanceof Character)) 
@@ -465,7 +461,7 @@ public class Commands
 		else if((Game.getInstance().getObjects().get(key) instanceof PolarBear)) 
 			((PolarBear)Game.getInstance().getObjects().get(key)).move(d);
 		else
-			throw new IllegalArgumentException("Object is not a Movable Object!");
+			throw new IllegalArgumentException("$Object is not a Movable Object!");
 		
 	}
 	/**
@@ -482,7 +478,7 @@ public class Commands
 	private void set(String[] args2)
 	{
 		if(args2.length < 4)
-			throw new IllegalArgumentException("Not enough arguments"); 
+			throw new IllegalArgumentException("$Not enough arguments"); 
 		String attrib = args2[1];
 		switch (attrib) 
 		{
@@ -490,10 +486,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException(key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-				throw new IllegalArgumentException(key2 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key2 + " is not Ice!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addNeighbour((Ice)Game.getInstance().getObjects().get(key2));
 			((Ice)Game.getInstance().getObjects().get(key2)).addNeighbour((Ice)Game.getInstance().getObjects().get(key1));
 			
@@ -503,10 +499,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException(key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
 			int num = Integer.parseInt(args2[3]);
 			if(num < 0 || num > 5)
-				throw new IllegalArgumentException(num + " is an invalid number for snow!");
+				throw new IllegalArgumentException("$"+num + " is an invalid number for snow!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setSnow(num);
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -518,7 +514,7 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
-				throw new IllegalArgumentException(key2 + " is not Character!");
+				throw new IllegalArgumentException("$"+key2 + " is not Character!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addCharacter(((Character)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
@@ -526,22 +522,22 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
-					throw new IllegalArgumentException(key2 + " is not Character!");
+					throw new IllegalArgumentException("$"+key2 + " is not Character!");
 				((Item)Game.getInstance().getObjects().get(key1)).setCharacter(((Character)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException(key1 + " is not Ice or Item!");
+				throw new IllegalArgumentException("$"+key1 + " is not Ice or Item!");
 			break;
 		}
 		case "bearstrategy":
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException(key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof BearStrategy)) 
-				throw new IllegalArgumentException(key2 + " is not BearStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " is not BearStrategy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setBearStrategy(((BearStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			
@@ -554,7 +550,7 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException(key2 + " is not Item!");
+				throw new IllegalArgumentException("$"+key2 + " is not Item!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
@@ -562,12 +558,12 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException(key2 + " is not Item!");
+				throw new IllegalArgumentException("$"+key2 + " is not Item!");
 			((Character)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException(key1 + " is not Item or Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Item or Character!");
 			
 			break;
 		}
@@ -575,10 +571,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException(key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof IglooStrategy)) 
-				throw new IllegalArgumentException(key2 + " is not IglooStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " is not IglooStrategy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setIglooStrategy(((IglooStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -587,7 +583,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			int num = Integer.parseInt(args2[3]);
 			((Character)Game.getInstance().getObjects().get(key1)).setBodywarmth(num);
 			System.out.println("$Sikeres beallitas!");
@@ -597,7 +593,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			int num = Integer.parseInt(args2[3]);
 			((Character)Game.getInstance().getObjects().get(key1)).setAction(num);
 			System.out.println("$Sikeres beallitas!");
@@ -610,7 +606,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException(key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
 				((Character)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -618,7 +614,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException(key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
 				((Item)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -626,20 +622,20 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException(key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
 				((PolarBear)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
-			else throw new IllegalArgumentException(key1 + " is not Character or Item!");
+			else throw new IllegalArgumentException("$"+key1 + " is not Character or Item!");
 			break;
 		}
 		case "gunpart":
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			String key2 = args2[3];
-			if(!(Game.getInstance().getObjects().get(key2) instanceof Gun)) 
+			if(!(Game.getInstance().getObjects().get("$"+key2) instanceof Gun)) 
 				throw new IllegalArgumentException(key2 + " is not Gun!");
 			((Character)Game.getInstance().getObjects().get(key1)).addGunpart(((Gun)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
@@ -649,10 +645,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof DigStrategy)) 
-				throw new IllegalArgumentException(key2 + " is not DigStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " is not DigStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setDigStrategy(((DigStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -661,10 +657,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof WaterStrategy)) 
-				throw new IllegalArgumentException(key2 + " is not WaterStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " is not WaterStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setWaterStrategy(((WaterStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -673,10 +669,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException(key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " is not Character!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof HelpStrategy)) 
-				throw new IllegalArgumentException(key2 + " is not HelpStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " is not HelpStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setHelpStrategy(((HelpStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -685,14 +681,14 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Item)) 
-				throw new IllegalArgumentException(key1 + " is not Item!");
+				throw new IllegalArgumentException("$"+key1 + " is not Item!");
 			int num = Integer.parseInt(args[3]);
 			((Item)Game.getInstance().getObjects().get(key1)).setDurability(num);
 			System.out.println("$Sikeres beallitas!");
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
 		
 		}
 		
@@ -708,19 +704,19 @@ public class Commands
 	private void delete(String[] args2) throws Exception
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
 			Character character = ((Character)Game.getInstance().getObjects().get(key));
-			Game.getInstance().getObjects().remove(character);
+			Game.getInstance().getObjects().remove(key);
 			character.getIce().removeCharacter(character);
 			System.out.println("$A(z) " + key + " objektum torlese sikeres!");
 		}
 		else if (Game.getInstance().getObjects().get(key) instanceof Ice){
 			Ice ice = ((Ice)Game.getInstance().getObjects().get(key));
 			if (ice.getCharNum() > 0)
-				throw new IllegalArgumentException("Sikertelen torles!");
-			Game.getInstance().getObjects().remove(ice);
+				throw new IllegalArgumentException("$Sikertelen torles!");
+			Game.getInstance().getObjects().remove(key);
 			for (int i = 0; i < ice.getNeighbourNum(); i++){
 				ice.getNeighbour(i).removeNeighbour(ice);
 			}
@@ -735,12 +731,12 @@ public class Commands
 				item.getCharacter().removeItem(item);
 
 			}
-			Game.getInstance().getObjects().remove(item);
+			Game.getInstance().getObjects().remove(key);
 			System.out.println("$A(z) " + key + " objektum torlese sikeres!");
 
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen objektum!");
+			throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 	}
 	
@@ -753,7 +749,7 @@ public class Commands
 	private void create(String[] args2) throws Exception
 	{
 		if (args2.length != 3)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String type = args2[1];
 		String name = args2[2];
 		switch(type){
@@ -820,7 +816,12 @@ public class Commands
 		{
 			try
 			{
-				Game.getInstance().saveGame(args2[2]);
+				FileOutputStream fout = new FileOutputStream(args2[2]);
+				ObjectOutputStream oout = new ObjectOutputStream(fout);
+				oout.writeObject(Game.getInstance());
+				oout.close();
+				fout.close();
+				System.out.println("$Sikeres mentes!");
 			} catch (Exception e)
 			{
 				System.out.println("$Sikertelen mentes!");
@@ -832,7 +833,7 @@ public class Commands
 			
 			break;
 		}
-		default: throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+		default: throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
 		}
 		
 	}
@@ -844,77 +845,77 @@ public class Commands
 	private void help(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String command = args2[1];
-		System.out.println("Lehetseges parameterek ( a felsorolt parameterek minden esetben kotelezoek! ):");
+		System.out.println("$Lehetseges parameterek ( a felsorolt parameterek minden esetben kotelezoek! ):");
 		switch(command){
 			case "load":
-				System.out.println("\tstate <fajlnev> : Betolt egy elore elkeszitett jatekallast a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
-				System.out.println("\tlevel <fajlnev> : Betolt egy elore elkeszitett palyat a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				System.out.println("$\tstate <fajlnev> : Betolt egy elore elkeszitett jatekallast a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				System.out.println("$\tlevel <fajlnev> : Betolt egy elore elkeszitett palyat a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
 				break;
 			case "save":
-				System.out.println("\t<fajlnev> : Kimenti a megadott fajlba az osszes letezo objektumot. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+				System.out.println("$\t<fajlnev> : Kimenti a megadott fajlba az osszes letezo objektumot. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
 				break;
 			case "create":
-				System.out.println("\t<objektum> <nev> : Letrehoz egy peldanyt a megadott típussal es a megadott nevvel.");
-				System.out.println("\t\tobjektum: Barmelyik peldanyosithato osztaly neve kerulhet ide.");
-				System.out.println("\t\tnev: A nev, amit az adott peldanynak adni akarunk, kesobb ezzel hivatkozhato. Ha tartalmaz whitespace karaktert, akkor csak az elso whitespacig lesz eltarolva.");
+				System.out.println("$\t<objektum> <nev> : Letrehoz egy peldanyt a megadott típussal es a megadott nevvel.");
+				System.out.println("$\t\tobjektum: Barmelyik peldanyosithato osztaly neve kerulhet ide.");
+				System.out.println("$\t\tnev: A nev, amit az adott peldanynak adni akarunk, kesobb ezzel hivatkozhato. Ha tartalmaz whitespace karaktert, akkor csak az elso whitespacig lesz eltarolva.");
 				break;
 			case "delete":
-				System.out.println("\t<objektum neve> : Kitorli a megadott nevvel rendelkezo peldanyt a jatekbol. Ha nem letezik a megadott objektum, ertesitest kapunk.");
+				System.out.println("$\t<objektum neve> : Kitorli a megadott nevvel rendelkezo peldanyt a jatekbol. Ha nem letezik a megadott objektum, ertesitest kapunk.");
 				break;
 			case "start":
-				System.out.println("\tgame : Jatek modba valt. A jatekban hasznalatos parancsokat lehet kiadni.");
-				System.out.println("\tinit : Inicializalas modba valt. Az inicializalasnal hasznalatos parancsok adhatok ki.");
+				System.out.println("$\tgame : Jatek modba valt. A jatekban hasznalatos parancsokat lehet kiadni.");
+				System.out.println("$\tinit : Inicializalas modba valt. Az inicializalasnal hasznalatos parancsok adhatok ki.");
 				break;
 			case "state":
-				System.out.println("\tall : Minden objektumrol keszit egy teljes leirast.");
-				System.out.println("\t<objektum> : A megadott objektumrol keszit egy teljes leirast.");
-				System.out.println("\t\tobjektum: Az objektum neve, aminek az alalpotat le szeretnenk kerdezni. Ha nem letezik az objektum, ertesitest kapunk.");
+				System.out.println("$\tall : Minden objektumrol keszit egy teljes leirast.");
+				System.out.println("$\t<objektum> : A megadott objektumrol keszit egy teljes leirast.");
+				System.out.println("$\t\tobjektum: Az objektum neve, aminek az alalpotat le szeretnenk kerdezni. Ha nem letezik az objektum, ertesitest kapunk.");
 				break;
 			case "set":
-				System.out.println("\tneighbour <jegtabla> <jegtabla> : Ket jegtabla szomszedossagat allitja, igy a ket megadott objektum csak valamilyen jegtabla lehet.");
-				System.out.println("\t<attributum> <objektum> <ertek> : A megadott objektum megadott attributumanak erteket allitja be a megadott ertekre.");
+				System.out.println("$\tneighbour <jegtabla> <jegtabla> : Ket jegtabla szomszedossagat allitja, igy a ket megadott objektum csak valamilyen jegtabla lehet.");
+				System.out.println("$\t<attributum> <objektum> <ertek> : A megadott objektum megadott attributumanak erteket allitja be a megadott ertekre.");
 				break;
 			case "move":
-				System.out.println("\t<objektum> <irany> : A nevevel hivatkozott objektumot elmozgatja a megadott iranyba.");
-				System.out.println("\t\tobjektum: Csak Character illetve PolarBear tipusu lehet.");
-				System.out.println("\t\tirany: Egesz szam, azt reprezentalja, hogy a jelenlegi jegtabla hanyadik szomszedjara lepunk.");
+				System.out.println("$\t<objektum> <irany> : A nevevel hivatkozott objektumot elmozgatja a megadott iranyba.");
+				System.out.println("$\t\tobjektum: Csak Character illetve PolarBear tipusu lehet.");
+				System.out.println("$\t\tirany: Egesz szam, azt reprezentalja, hogy a jelenlegi jegtabla hanyadik szomszedjara lepunk.");
 				break;
 			case "use":
-				System.out.println("\titem <karakter> <index> : A megadott karakter hasznalja a nala levo targyat.");
-				System.out.println("\t\tkarakter: Barmelyik letezo karakter neve.");
-				System.out.println("\t\tindex: A hasznalni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				System.out.println("$\titem <karakter> <index> : A megadott karakter hasznalja a nala levo targyat.");
+				System.out.println("$\t\tkarakter: Barmelyik letezo karakter neve.");
+				System.out.println("$\t\tindex: A hasznalni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
 				break;
 			case "assemble":
-				System.out.println("\t<karakter> : A karakter megprobalja osszeszerelni a pisztolyt a reszekbol.");
-				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				System.out.println("$\t<karakter> : A karakter megprobalja osszeszerelni a pisztolyt a reszekbol.");
+				System.out.println("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 				break;
 			case "dig":
-				System.out.println("\t<karakter> : A megadott karakter havat lapatol a jelenlegi tartozkodasi helyen.");
-				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				System.out.println("$\t<karakter> : A megadott karakter havat lapatol a jelenlegi tartozkodasi helyen.");
+				System.out.println("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 				break;
 			case "breakice":
-				System.out.println("\t<karakter> : A megadott karakter feltori a jeget a jelenlegi tartozkodasi helyen.");
-				System.out.println("\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+				System.out.println("$\t<karakter> : A megadott karakter feltori a jeget a jelenlegi tartozkodasi helyen.");
+				System.out.println("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 				break;
 			case "item":
-				System.out.println("\tlist all : Az osszes jatekban letezo targyat kilistazza.");
-				System.out.println("\tlist <objektum> : A megadott objektumhoz kapcsolodo targyakat listazza ki.");
-				System.out.println("\t\tobjektum: Lehet Eskimo, Scientist, ekkor a karakter eszkoztaraban talalhato targyakat listazza ki, illetve barmilyen jegtabla tipus, ekkor pedig a jegen talalhato targyakat listazza");
-				System.out.println("\tgive <karakter> <karakter> <index> : Egy karakter atad egy targyat egy masiknak.");
-				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist, az elso argumentum adja, a masodik kapja a targyat.");
-				System.out.println("\t\tindex: Az atadni kivant targy indexe az atado karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
-				System.out.println("\tdrop <karakter> <index> : A karakter ledob egy targyat a jegtablara.");
-				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist, a nevevel hivatkozva.");
-				System.out.println("\t\tindex: Az eldobni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
-				System.out.println("\tpickup <karakter> <index> : A karakter felveszi a megadott elemet a jegtablarol.");
-				System.out.println("\t\tkarakter: A karakter akivel fel akarjuk venni a targyat.");
-				System.out.println("\t\tindex: Az index, hogy hanyadik targyat akarjuk felvenni a jegtablarol.");
+				System.out.println("$\tlist all : Az osszes jatekban letezo targyat kilistazza.");
+				System.out.println("$\tlist <objektum> : A megadott objektumhoz kapcsolodo targyakat listazza ki.");
+				System.out.println("$\t\tobjektum: Lehet Eskimo, Scientist, ekkor a karakter eszkoztaraban talalhato targyakat listazza ki, illetve barmilyen jegtabla tipus, ekkor pedig a jegen talalhato targyakat listazza");
+				System.out.println("$\tgive <karakter> <karakter> <index> : Egy karakter atad egy targyat egy masiknak.");
+				System.out.println("$\t\tkarakter: Lehet Eskimo vagy Scientist, az elso argumentum adja, a masodik kapja a targyat.");
+				System.out.println("$\t\tindex: Az atadni kivant targy indexe az atado karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				System.out.println("$\tdrop <karakter> <index> : A karakter ledob egy targyat a jegtablara.");
+				System.out.println("$\t\tkarakter: Lehet Eskimo vagy Scientist, a nevevel hivatkozva.");
+				System.out.println("$\t\tindex: Az eldobni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+				System.out.println("$\tpickup <karakter> <index> : A karakter felveszi a megadott elemet a jegtablarol.");
+				System.out.println("$\t\tkarakter: A karakter akivel fel akarjuk venni a targyat.");
+				System.out.println("$\t\tindex: Az index, hogy hanyadik targyat akarjuk felvenni a jegtablarol.");
 				break;
 			case "warmup":
-				System.out.println("\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
-				System.out.println("\t\tkarakter: Lehet Eskimo vagy Scientist.");
+				System.out.println("$\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
+				System.out.println("$\t\tkarakter: Lehet Eskimo vagy Scientist.");
 				break;
 		}
 		
@@ -939,7 +940,7 @@ public class Commands
 		{
 			try
 			{
-				Game.getInstance().loadGame(args2[2]);
+				
 			} catch (Exception e)
 			{
 				System.out.println("$Sikertelen betoltes!");
@@ -947,14 +948,14 @@ public class Commands
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
 		}
 		
 	}
 	private void state(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo paramterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo paramterszam!");
 		String argument = args2[1];
 		if (argument.equals("all")){
 

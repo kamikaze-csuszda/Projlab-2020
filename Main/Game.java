@@ -41,30 +41,13 @@ public class Game implements Serializable
 		return game;
 	}
 	private int numOfCharacters = 0;
-	private ArrayList<Ice> mapPieces;
+	private ArrayList<Ice> mapPieces = new ArrayList<Ice>();
 	private Map<String, Object> objects = new HashMap<String, Object>();
 	public Map<String, Object> getObjects()
 	{
 		return objects;
 	}
-	public void saveGame(String filename) throws IOException
-	{
-		FileOutputStream fout = new FileOutputStream(filename);
-		ObjectOutputStream oout = new ObjectOutputStream(fout);
-		oout.writeObject(game);
-		oout.close();
-		fout.close();
-		System.out.println("$Sikeres mentes!");
-	}
-	public void loadGame(String filename) throws IOException, ClassNotFoundException
-	{
-		FileInputStream fin = new FileInputStream(filename);
-		ObjectInputStream oin = new ObjectInputStream(fin);
-		game = (Game) oin.readObject();
-		oin.close();
-		fin.close();
-		System.out.println("$Sikeres betoltes!");
-	}
+	
 	/**
 	 * Vegigmegy az osszes objects beli kulcson, es ha talal egy olyat, aminel 
 	 * megegyezik a hozza tartozo objektum a parameterkent kapottal
