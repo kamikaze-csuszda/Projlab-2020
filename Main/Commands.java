@@ -310,7 +310,7 @@ public class Commands
 				throw new IllegalArgumentException("$Nincs ennyi eszkozod! Hasznald az 'item list' parancsot az eszkozeid listazasahoz!");
 			else {
 			((Character)Game.getInstance().getObjects().get(key1)).itemGive((Character)(Game.getInstance().getObjects().get(key2)), ((Character)Game.getInstance().getObjects().get(key1)).getItem(id));
-			System.out.println("$Sikeresen atadtad a " + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id) + " eszkozt" + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id) + "nek!");
+			System.out.println("$Sikeresen atadtad a " + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id).getItemClass() + " eszkozt" + Game.getInstance().getObjects().get(key2) + "nek!");
 			}
 			
 			break;
