@@ -2,11 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Characters",
-    "\\Ice",
-    "\\Item",
     "\\Main",
     "\\Strategy"
   ],
-  "SelectedNode": "\\Item\\Item.java",
+  "SelectedNode": "\\Main\\Commands.java",
   "PreviewInSolutionExplorer": false
 }

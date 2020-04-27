@@ -949,7 +949,7 @@ public class Commands
 	/**
 	* A paracstol fuggoen kiirja a segitseget. Minden parancshoz tarozik legalbb 1 segitseg.
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
-	 * @throws Exception 
+	* @throws Exception 
 	* @throws IllegalArgumentException ha a parameter szam nem 2 
 	*/
 	private void help(String[] args2) throws Exception
@@ -1054,6 +1054,11 @@ public class Commands
 
 		
 	}
+	/**
+	*
+	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	* @throws Exception
+	*/
 	private void load(String[] args2) throws Exception
 	{
 		switch(args2[1])
@@ -1099,6 +1104,11 @@ public class Commands
 		}
 		
 	}
+	/**
+	*
+	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	* @throws IllegalArgumentException
+	*/
 	private void state(String[] args2)
 	{
 		if (args2.length != 2)
@@ -1117,7 +1127,12 @@ public class Commands
 
 		}
 	}
-	
+	/**
+	*
+	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	* @throws Exception
+	* @throws IllegalArgumentException
+	*/
 	private void turnend(String[] args2) throws Exception
 	{
 		if (args2.length != 1)
