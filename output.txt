@@ -1,0 +1,9 @@
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a sh objektumot!
+$Sikeres beallitas!
+{
+e1s Items:
+}
+{
+e1 Items:
+}

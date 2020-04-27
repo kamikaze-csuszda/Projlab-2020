@@ -41,6 +41,7 @@ public class Commands
 	mode m;
 	ArrayList<String> commands = new ArrayList<String>();
 	String[] args;
+	ArrayList<String> output = new ArrayList<String>();
 	
 	/**
 	 * A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak.
@@ -164,7 +165,8 @@ public class Commands
 		}
 			} catch (Exception e)
 			{
-				throw new Exception();
+				System.out.println(e.getMessage());
+				output.add(e.getMessage());
 			}
 	}
 	
@@ -194,9 +196,9 @@ public class Commands
 					String temp = it.getClass().toString();
 					String[] temp2 = temp.split(".");
 					temp = temp2[temp2.length-1];
-					print.concat(" " + temp + ",");
+					print = print.concat(" " + temp + ",");
 				}
-				print.concat("eszkozoket!");
+				print = print.concat("eszkozoket!");
 				throw new Exception(print);
 			}
 			else
@@ -280,7 +282,7 @@ public class Commands
 							for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray())
 							{
 								String temp = it.getItemClass();
-								print.concat("\t" + index + " " + temp);
+								print = print.concat("\t" + index + " " + temp);
 								index++;
 							}
 							throw new Exception(print + "\n}");
@@ -292,7 +294,7 @@ public class Commands
 							for (Item it: ((Character)Game.getInstance().getObjects().get(key)).getEquipment())
 							{
 								String temp = it.getItemClass();
-								printString.concat("\t" + index + " " + temp);
+								printString = printString.concat("\n\t" + index + " " + temp);
 								index++;
 							}
 							throw new Exception(printString + "\n}");
@@ -309,7 +311,7 @@ public class Commands
 					for (Item it: ((Ice)Game.getInstance().getObjects().get(args2[2])).getItemArray())
 					{
 						String temp = it.getItemClass();
-						printString.concat("\t" + index + " " + temp);
+						printString = printString.concat("\n\t" + index + " " + temp);
 					}
 					throw new Exception(printString + "\n}");
 						
@@ -321,7 +323,7 @@ public class Commands
 					for (Item it: ((Character)Game.getInstance().getObjects().get(args2[2])).getEquipment())
 					{
 						String temp = it.getItemClass();
-						printString.concat("\t" + index + " " + temp);
+						printString = printString.concat("\n\t" + index + " " + temp);
 						index++;
 					}
 					throw new Exception(printString + "\n}");
@@ -853,6 +855,24 @@ public class Commands
 	{
 		switch (args2[1])
 		{
+		case "output":
+		{
+			try {
+			File myFile = new File(args2[2]);
+			myFile.createNewFile();
+			BufferedWriter bw = new BufferedWriter(new FileWriter(myFile));
+			for (String string : output)
+			{
+				bw.write(string);
+				bw.newLine();
+			}
+			bw.close();
+			} catch(Exception e)
+			{
+				throw new Exception("$Sikertelen mentes!");
+			}
+			throw new Exception("$Sikeres mentes!");
+		}
 		case "state":
 		{
 			try
@@ -979,75 +999,75 @@ public class Commands
 			String printString = new String("$Lehetseges parameterek ( a felsorolt parameterek minden esetben kotelezoek! ):");
 			switch(command){
 				case "load":
-					printString.concat("$\tstate <fajlnev> : Betolt egy elore elkeszitett jatekallast a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
-					printString.concat("$\tlevel <fajlnev> : Betolt egy elore elkeszitett palyat a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+					printString = printString.concat("$\tstate <fajlnev> : Betolt egy elore elkeszitett jatekallast a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+					printString = printString.concat("$\tlevel <fajlnev> : Betolt egy elore elkeszitett palyat a megadott fajlbol. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
 					break;
 				case "save":
-					printString.concat("$\t<fajlnev> : Kimenti a megadott fajlba az osszes letezo objektumot. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
+					printString = printString.concat("$\t<fajlnev> : Kimenti a megadott fajlba az osszes letezo objektumot. A fajlnevnek tartalmaznia kell a .txt kiterjesztest.");
 					break;
 				case "create":
-					printString.concat("$\t<objektum> <nev> : Letrehoz egy peldanyt a megadott típussal es a megadott nevvel.");
-					printString.concat("$\t\tobjektum: Barmelyik peldanyosithato osztaly neve kerulhet ide.");
-					printString.concat("$\t\tnev: A nev, amit az adott peldanynak adni akarunk, kesobb ezzel hivatkozhato. Ha tartalmaz whitespace karaktert, akkor csak az elso whitespacig lesz eltarolva.");
+					printString = printString.concat("$\t<objektum> <nev> : Letrehoz egy peldanyt a megadott típussal es a megadott nevvel.");
+					printString = printString.concat("$\t\tobjektum: Barmelyik peldanyosithato osztaly neve kerulhet ide.");
+					printString = printString.concat("$\t\tnev: A nev, amit az adott peldanynak adni akarunk, kesobb ezzel hivatkozhato. Ha tartalmaz whitespace karaktert, akkor csak az elso whitespacig lesz eltarolva.");
 					break;
 				case "delete":
-					printString.concat("$\t<objektum neve> : Kitorli a megadott nevvel rendelkezo peldanyt a jatekbol. Ha nem letezik a megadott objektum, ertesitest kapunk.");
+					printString = printString.concat("$\t<objektum neve> : Kitorli a megadott nevvel rendelkezo peldanyt a jatekbol. Ha nem letezik a megadott objektum, ertesitest kapunk.");
 					break;
 				case "start":
-					printString.concat("$\tgame : Jatek modba valt. A jatekban hasznalatos parancsokat lehet kiadni.");
-					printString.concat("$\tinit : Inicializalas modba valt. Az inicializalasnal hasznalatos parancsok adhatok ki.");
+					printString = printString.concat("$\tgame : Jatek modba valt. A jatekban hasznalatos parancsokat lehet kiadni.");
+					printString = printString.concat("$\tinit : Inicializalas modba valt. Az inicializalasnal hasznalatos parancsok adhatok ki.");
 					break;
 				case "state":
-					printString.concat("$\tall : Minden objektumrol keszit egy teljes leirast.");
-					printString.concat("$\t<objektum> : A megadott objektumrol keszit egy teljes leirast.");
-					printString.concat("$\t\tobjektum: Az objektum neve, aminek az alalpotat le szeretnenk kerdezni. Ha nem letezik az objektum, ertesitest kapunk.");
+					printString = printString.concat("$\tall : Minden objektumrol keszit egy teljes leirast.");
+					printString = printString.concat("$\t<objektum> : A megadott objektumrol keszit egy teljes leirast.");
+					printString = printString.concat("$\t\tobjektum: Az objektum neve, aminek az alalpotat le szeretnenk kerdezni. Ha nem letezik az objektum, ertesitest kapunk.");
 					break;
 				case "set":
-					printString.concat("$\tneighbour <jegtabla> <jegtabla> : Ket jegtabla szomszedossagat allitja, igy a ket megadott objektum csak valamilyen jegtabla lehet.");
-					printString.concat("$\t<attributum> <objektum> <ertek> : A megadott objektum megadott attributumanak erteket allitja be a megadott ertekre.");
+					printString = printString.concat("$\tneighbour <jegtabla> <jegtabla> : Ket jegtabla szomszedossagat allitja, igy a ket megadott objektum csak valamilyen jegtabla lehet.");
+					printString = printString.concat("$\t<attributum> <objektum> <ertek> : A megadott objektum megadott attributumanak erteket allitja be a megadott ertekre.");
 					break;
 				case "move":
-					printString.concat("$\t<objektum> <irany> : A nevevel hivatkozott objektumot elmozgatja a megadott iranyba.");
-					printString.concat("$\t\tobjektum: Csak Character illetve PolarBear tipusu lehet.");
-					printString.concat("$\t\tirany: Egesz szam, azt reprezentalja, hogy a jelenlegi jegtabla hanyadik szomszedjara lepunk.");
+					printString = printString.concat("$\t<objektum> <irany> : A nevevel hivatkozott objektumot elmozgatja a megadott iranyba.");
+					printString = printString.concat("$\t\tobjektum: Csak Character illetve PolarBear tipusu lehet.");
+					printString = printString.concat("$\t\tirany: Egesz szam, azt reprezentalja, hogy a jelenlegi jegtabla hanyadik szomszedjara lepunk.");
 					break;
 				case "use":
-					printString.concat("$\titem <karakter> <index> : A megadott karakter hasznalja a nala levo targyat.");
-					printString.concat("$\t\tkarakter: Barmelyik letezo karakter neve.");
-					printString.concat("$\t\tindex: A hasznalni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+					printString = printString.concat("$\titem <karakter> <index> : A megadott karakter hasznalja a nala levo targyat.");
+					printString = printString.concat("$\t\tkarakter: Barmelyik letezo karakter neve.");
+					printString = printString.concat("$\t\tindex: A hasznalni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
 					break;
 				case "assemble":
-					printString.concat("$\t<karakter> : A karakter megprobalja osszeszerelni a pisztolyt a reszekbol.");
-					printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+					printString = printString.concat("$\t<karakter> : A karakter megprobalja osszeszerelni a pisztolyt a reszekbol.");
+					printString = printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 					break;
 				case "dig":
-					printString.concat("$\t<karakter> : A megadott karakter havat lapatol a jelenlegi tartozkodasi helyen.");
-					printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+					printString = printString.concat("$\t<karakter> : A megadott karakter havat lapatol a jelenlegi tartozkodasi helyen.");
+					printString = printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 					break;
 				case "breakice":
-					printString.concat("$\t<karakter> : A megadott karakter feltori a jeget a jelenlegi tartozkodasi helyen.");
-					printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
+					printString = printString.concat("$\t<karakter> : A megadott karakter feltori a jeget a jelenlegi tartozkodasi helyen.");
+					printString = printString.concat("$\t\tkarakter: Csak a ket letezo karaktertipus egyike lehet, Eskimo vagy Scientist.");
 					break;
 				case "item":
-					printString.concat("$\tlist all : Az osszes jatekban letezo targyat kilistazza.");
-					printString.concat("$\tlist <objektum> : A megadott objektumhoz kapcsolodo targyakat listazza ki.");
-					printString.concat("$\t\tobjektum: Lehet Eskimo, Scientist, ekkor a karakter eszkoztaraban talalhato targyakat listazza ki, illetve barmilyen jegtabla tipus, ekkor pedig a jegen talalhato targyakat listazza");
-					printString.concat("$\tgive <karakter> <karakter> <index> : Egy karakter atad egy targyat egy masiknak.");
-					printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist, az elso argumentum adja, a masodik kapja a targyat.");
-					printString.concat("$\t\tindex: Az atadni kivant targy indexe az atado karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
-					printString.concat("$\tdrop <karakter> <index> : A karakter ledob egy targyat a jegtablara.");
-					printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist, a nevevel hivatkozva.");
-					printString.concat("$\t\tindex: Az eldobni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
-					printString.concat("$\tpickup <karakter> <index> : A karakter felveszi a megadott elemet a jegtablarol.");
-					printString.concat("$\t\tkarakter: A karakter akivel fel akarjuk venni a targyat.");
-					printString.concat("$\t\tindex: Az index, hogy hanyadik targyat akarjuk felvenni a jegtablarol.");
+					printString = printString.concat("$\tlist all : Az osszes jatekban letezo targyat kilistazza.");
+					printString = printString.concat("$\tlist <objektum> : A megadott objektumhoz kapcsolodo targyakat listazza ki.");
+					printString = printString.concat("$\t\tobjektum: Lehet Eskimo, Scientist, ekkor a karakter eszkoztaraban talalhato targyakat listazza ki, illetve barmilyen jegtabla tipus, ekkor pedig a jegen talalhato targyakat listazza");
+					printString = printString.concat("$\tgive <karakter> <karakter> <index> : Egy karakter atad egy targyat egy masiknak.");
+					printString = printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist, az elso argumentum adja, a masodik kapja a targyat.");
+					printString = printString.concat("$\t\tindex: Az atadni kivant targy indexe az atado karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+					printString = printString.concat("$\tdrop <karakter> <index> : A karakter ledob egy targyat a jegtablara.");
+					printString = printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist, a nevevel hivatkozva.");
+					printString = printString.concat("$\t\tindex: Az eldobni kivant targy indexe a karakter eszkoztaraban. 0-4-ig terjedo egesz szam lehet.");
+					printString = printString.concat("$\tpickup <karakter> <index> : A karakter felveszi a megadott elemet a jegtablarol.");
+					printString = printString.concat("$\t\tkarakter: A karakter akivel fel akarjuk venni a targyat.");
+					printString = printString.concat("$\t\tindex: Az index, hogy hanyadik targyat akarjuk felvenni a jegtablarol.");
 					break;
 				case "warmup":
-					printString.concat("$\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
-					printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist.");
+					printString = printString.concat("$\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
+					printString = printString.concat("$\t\tkarakter: Lehet Eskimo vagy Scientist.");
 					break;
 				case "turnend":
-					printString.concat("$\tturnend: Befejezi a karakterek koret, visszaallnak az akicopontjaik az alap ertekre, ekkor erkeznek a hoviharok, es ekkor lep a medve.");
+					printString = printString.concat("$\tturnend: Befejezi a karakterek koret, visszaallnak az akicopontjaik az alap ertekre, ekkor erkeznek a hoviharok, es ekkor lep a medve.");
 			}
 			throw new Exception(printString);
 		}
