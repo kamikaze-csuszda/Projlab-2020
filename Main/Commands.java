@@ -764,14 +764,30 @@ public class Commands
 				break;
 			case "scientist": Game.getInstance().addObject(new Scientist(), name);
 				break;
-			case "polarbear": Game.getInstance().addObject(new PolarBear(), name);
+			case "polarbear":{
+				PolarBear pb = new PolarBear();
+				Game.getInstance().addObject(pb, name);
+				Game.getInstance().getMaci().add(pb);
 				break;
-			case "holeice": Game.getInstance().addObject(new HoleIce(), name);
+				}
+			case "holeice":{
+				HoleIce hi = new HoleIce();
+				Game.getInstance().addObject(hi, name);
+				Game.getInstance().getMapPieces().add(hi);
 				break;
-			case "unstableice": Game.getInstance().addObject(new UnstableIce(3), name);
+				}
+			case "unstableice": {
+				UnstableIce usi = new UnstableIce(3);
+				Game.getInstance().addObject(usi, name);
+				Game.getInstance().getMapPieces().add(usi);
 				break;
-			case "stableice": Game.getInstance().addObject(new StableIce(), name);
+				}
+			case "stableice": {
+				StableIce st = new StableIce();
+				Game.getInstance().addObject(st, name);
+				Game.getInstance().getMapPieces().add(st);
 				break;
+				}
 			case "breakableshovel": Game.getInstance().addObject(new BreakableShovel(), name);
 				break;
 			case "cartridge": Game.getInstance().addObject(new Cartridge(), name);
@@ -815,7 +831,7 @@ public class Commands
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 	}
-	private void save(String[] args2)
+	private void save(String[] args2) throws Exception
 	{
 		switch (args2[1])
 		{
@@ -823,11 +839,14 @@ public class Commands
 		{
 			try
 			{
-				FileOutputStream fout = new FileOutputStream(args2[2]);
-				ObjectOutputStream oout = new ObjectOutputStream(fout);
-				oout.writeObject(Game.getInstance());
-				oout.close();
-				fout.close();
+				File myFile = new File(args2[2]);
+				myFile.createNewFile();
+				BufferedWriter bw = new BufferedWriter(new FileWriter(myFile));
+				for (String string : commands)
+				{
+					bw.write(string);
+					bw.newLine();
+				}
 				System.out.println("$Sikeres mentes!");
 			} catch (Exception e)
 			{
@@ -837,7 +856,26 @@ public class Commands
 		}
 		case "map":
 		{
-			
+			File myFile = new File(args2[2]);
+			try
+			{
+				myFile.createNewFile();
+			} catch (IOException e)
+			{
+				throw new Exception("$Sikertelen mentes!");
+			}
+			BufferedWriter bw = new BufferedWriter(new FileWriter(myFile));
+			int size = Game.getInstance().getMapPieces().size();
+			int[] type = new int[size];
+			for(int i = 0; i < size; i++)
+			{
+				if(Game.getInstance().getMapPieces().get(i) instanceof StableIce)
+					type[i] = 0;
+				else if(Game.getInstance().getMapPieces().get(i) instanceof UnstableIce)
+					type[i] = 1;
+				else if(Game.getInstance().getMapPieces().get(i) instanceof HoleIce)
+					type[i] = 2;
+			}
 			break;
 		}
 		default: throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
