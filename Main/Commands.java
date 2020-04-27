@@ -41,7 +41,8 @@ public class Commands
 	ArrayList<String> commands = new ArrayList<String>();
 	String[] args;
 	
-	/**A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak. 
+	/**
+	 * A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak.
 	 * Ez a fuggveny hivja meg a kapott parancsnak megfelelo metodust. 
 	 * Mukodes:
 	 *  - standard inputrol beolvassunk a br stringbe egy sort, majd kisbetusiti
@@ -155,7 +156,8 @@ public class Commands
 			}
 	}
 	
-	/**A karakter feltori a jeget, azon a jegtablan ahol all. Ennek eredmenye, hogy minden targy ami azon a jegtablan volt kiolvad, es felvehetove valik. 
+	/**
+	 * A karakter feltori a jeget, azon a jegtablan ahol all. Ennek eredmenye, hogy minden targy ami azon a jegtablan volt kiolvad, es felvehetove valik.
 	 * Miutan a targyakat kitortuk a jegbol, ki is listazzuk a felhasznalonak. 
 	 * 
 	 * Hibat dob, ha:
@@ -192,7 +194,8 @@ public class Commands
 		}
 	}
 	
-	/**Az adott karakter 3 akciï¿½ pontot felhasznal ï¿½s noveli a testhojet 1-gyel, ha van hianyzo testhoje 
+	/**
+	 * Az adott karakter 3 akcio pontot felhasznal es noveli a testhojet 1-gyel, ha van hianyzo testhoje
 	 * 
 	 * Hibat dob, ha:
 	 * - nem megfelelo szamu argumentum van 
@@ -222,7 +225,8 @@ public class Commands
 		}
 		
 	}
-	/**Minden targyal kapcsolatos interakcio
+	/**
+	 * Minden targyal kapcsolatos interakcio
 	 * Elfogadott (meta) parancsok:
 	 * - item list all: minden targy kilistazasa ami a jatekban jelen van, barhol (jegen/karakternel)
 	 * - item list <<ice>>: a megnevezett jegtablan levo targyak kilistazasa 
@@ -354,7 +358,8 @@ public class Commands
 		
 	}
 	
-	/**A karakter havat as lapattal, vagy kezzel.
+	/**
+	 * A karakter havat as lapattal, vagy kezzel.
 	 * Az asas a havat eltunteti, ha lapattal, akkor 2 egysegnyi, ha kezzel akkor 1 egysegnyit.
 	 * 
 	 * Hibat dob, ha:
@@ -456,7 +461,7 @@ public class Commands
 		}
 	}
 	/**
-	 * Mozgatja a karaktereket ï¿½s a jegyesmedvet.
+	 * Mozgatja a karaktereket es a jegyesmedvet.
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	 * @throws IllegalArgumentException ha kevesebb mint 3 elem van a tombben
 	 * @throws IllegalArgumentException ha az objektum nem mozgathato
@@ -497,10 +502,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jeg!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key2 + " nem Jég!");
+				throw new IllegalArgumentException("$"+key2 + " nem Jeg!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addNeighbour((Ice)Game.getInstance().getObjects().get(key2));
 			((Ice)Game.getInstance().getObjects().get(key2)).addNeighbour((Ice)Game.getInstance().getObjects().get(key1));
 			
@@ -510,10 +515,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jeg!");
 			int num = Integer.parseInt(args2[3]);
 			if(num < 0 || num > 5)
-				throw new IllegalArgumentException("$"+num + " nem elfogadható hómagasság");
+				throw new IllegalArgumentException("$"+num + " nem elfogadhato homagassag");
 			((Ice)Game.getInstance().getObjects().get(key1)).setSnow(num);
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -538,14 +543,14 @@ public class Commands
 				System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException("$"+key1 + "nem Jég vagy Tárgy!");
+				throw new IllegalArgumentException("$"+key1 + "nem Jeg vagy Targy!");
 			break;
 		}
 		case "bearstrategy":
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jeg!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof BearStrategy)) 
 				throw new IllegalArgumentException("$"+key2 + " nem BearStrategy!");
@@ -561,7 +566,7 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key2 + " nem Tárgy!");
+				throw new IllegalArgumentException("$"+key2 + " nem Targy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
@@ -569,12 +574,12 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key2 + " nem Tárgy!");
+				throw new IllegalArgumentException("$"+key2 + " nem Targy!");
 			((Character)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException("$"+key1 + " nem Jég vagy Tárgy!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jeg vagy Targy!");
 			
 			break;
 		}
@@ -582,7 +587,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " nem Jég");
+				throw new IllegalArgumentException("$"+key1 + " nem Jeg");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof IglooStrategy)) 
 				throw new IllegalArgumentException("$"+key2 + " nem IglooStrategy!");
@@ -617,7 +622,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " nem Jég!");
+					throw new IllegalArgumentException("$"+key2 + " nem Jeg!");
 				((Character)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -625,7 +630,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " nem Jég!");
+					throw new IllegalArgumentException("$"+key2 + " nem Jeg!");
 				((Item)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -633,11 +638,11 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " nem Jég");
+					throw new IllegalArgumentException("$"+key2 + " nem Jeg");
 				((PolarBear)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
-			else throw new IllegalArgumentException("$"+key1 + " nem Karakter vagy Tárgy!");
+			else throw new IllegalArgumentException("$"+key1 + " nem Karakter vagy Targy!");
 			break;
 		}
 		case "gunpart":
@@ -692,7 +697,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key1 + " nem Tárgy!");
+				throw new IllegalArgumentException("$"+key1 + " nem Targy!");
 			int num = Integer.parseInt(args[3]);
 			((Item)Game.getInstance().getObjects().get(key1)).setDurability(num);
 			System.out.println("$Sikeres beallitas!");
@@ -1013,7 +1018,7 @@ public class Commands
 				System.out.println("$\t\tkarakter: Lehet Eskimo vagy Scientist.");
 				break;
 			case "turnend":
-				System.out.println("$\tturnend: Befejezi a karakterek körét, visszaállnak az akicópontjaik az alap értékre, ekkor érkeznek a hóviharok, és ekkor lép a medve.");
+				System.out.println("$\tturnend: Befejezi a karakterek koret, visszaallnak az akicopontjaik az alap ertekre, ekkor erkeznek a hoviharok, es ekkor lep a medve.");
 		}
 		
 	}
