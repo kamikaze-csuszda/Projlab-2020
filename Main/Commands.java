@@ -499,10 +499,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
 			int num = Integer.parseInt(args2[3]);
 			if(num < 0 || num > 5)
-				throw new IllegalArgumentException("$"+num + " is an invalid number for snow!");
+				throw new IllegalArgumentException("$"+num + " nem elfogadható hómagasság");
 			((Ice)Game.getInstance().getObjects().get(key1)).setSnow(num);
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -514,7 +514,7 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key2 + " is not Character!");
+				throw new IllegalArgumentException("$"+key2 + " nem Karakter!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addCharacter(((Character)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
@@ -522,22 +522,22 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Character)) 
-					throw new IllegalArgumentException("$"+key2 + " is not Character!");
+					throw new IllegalArgumentException("$"+key2 + " nem Karakter!");
 				((Item)Game.getInstance().getObjects().get(key1)).setCharacter(((Character)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException("$"+key1 + " is not Ice or Item!");
+				throw new IllegalArgumentException("$"+key1 + "nem Jég vagy Tárgy!");
 			break;
 		}
 		case "bearstrategy":
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jég!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof BearStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " is not BearStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " nem BearStrategy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setBearStrategy(((BearStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			
@@ -550,7 +550,7 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key2 + " is not Item!");
+				throw new IllegalArgumentException("$"+key2 + " nem Tárgy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
@@ -558,12 +558,12 @@ public class Commands
 			{
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key2 + " is not Item!");
+				throw new IllegalArgumentException("$"+key2 + " nem Tárgy!");
 			((Character)Game.getInstance().getObjects().get(key1)).addItem(((Item)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			}
 			else
-				throw new IllegalArgumentException("$"+key1 + " is not Item or Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jég vagy Tárgy!");
 			
 			break;
 		}
@@ -571,10 +571,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Ice)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Ice!");
+				throw new IllegalArgumentException("$"+key1 + " nem Jég");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof IglooStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " is not IglooStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " nem IglooStrategy!");
 			((Ice)Game.getInstance().getObjects().get(key1)).setIglooStrategy(((IglooStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -583,7 +583,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Karakter!");
 			int num = Integer.parseInt(args2[3]);
 			((Character)Game.getInstance().getObjects().get(key1)).setBodywarmth(num);
 			System.out.println("$Sikeres beallitas!");
@@ -593,7 +593,7 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Karakter!");
 			int num = Integer.parseInt(args2[3]);
 			((Character)Game.getInstance().getObjects().get(key1)).setAction(num);
 			System.out.println("$Sikeres beallitas!");
@@ -606,7 +606,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " nem Jég!");
 				((Character)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -614,7 +614,7 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " nem Jég!");
 				((Item)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
@@ -622,21 +622,21 @@ public class Commands
 			{
 				String key2 = args2[3];
 				if(!(Game.getInstance().getObjects().get(key2) instanceof Ice)) 
-					throw new IllegalArgumentException("$"+key2 + " is not Ice!");
+					throw new IllegalArgumentException("$"+key2 + " nem Jég");
 				((PolarBear)Game.getInstance().getObjects().get(key1)).setIce(((Ice)Game.getInstance().getObjects().get(key2)));
 				System.out.println("$Sikeres beallitas!");
 			}
-			else throw new IllegalArgumentException("$"+key1 + " is not Character or Item!");
+			else throw new IllegalArgumentException("$"+key1 + " nem Karakter vagy Tárgy!");
 			break;
 		}
 		case "gunpart":
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Karakter");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get("$"+key2) instanceof Gun)) 
-				throw new IllegalArgumentException(key2 + " is not Gun!");
+				throw new IllegalArgumentException(key2 + " nem Fegyver!");
 			((Character)Game.getInstance().getObjects().get(key1)).addGunpart(((Gun)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -645,10 +645,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Karakter!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof DigStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " is not DigStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " nem Karakter!");
 			((Character)Game.getInstance().getObjects().get(key1)).setDigStrategy(((DigStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -657,10 +657,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + "nem Karakter!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof WaterStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " is not WaterStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " nem WaterStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setWaterStrategy(((WaterStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -669,10 +669,10 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Character!");
+				throw new IllegalArgumentException("$"+key1 + " nem Karakter!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof HelpStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " is not HelpStrategy!");
+				throw new IllegalArgumentException("$"+key2 + " nem HelpStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setHelpStrategy(((HelpStrategy)Game.getInstance().getObjects().get(key2)));
 			System.out.println("$Sikeres beallitas!");
 			break;
@@ -681,14 +681,14 @@ public class Commands
 		{
 			String key1 = args2[2]; 
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Item)) 
-				throw new IllegalArgumentException("$"+key1 + " is not Item!");
+				throw new IllegalArgumentException("$"+key1 + " nem Tárgy!");
 			int num = Integer.parseInt(args[3]);
 			((Item)Game.getInstance().getObjects().get(key1)).setDurability(num);
 			System.out.println("$Sikeres beallitas!");
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		
 		}
 		
@@ -704,7 +704,7 @@ public class Commands
 	private void delete(String[] args2) throws Exception
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help delete' parancsot tovabbi informacioert!");
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
 			Character character = ((Character)Game.getInstance().getObjects().get(key));
@@ -749,7 +749,7 @@ public class Commands
 	private void create(String[] args2) throws Exception
 	{
 		if (args2.length != 3)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help create' parancsot tovabbi informacioert!");
 		String type = args2[1];
 		String name = args2[2];
 		switch(type){
@@ -833,7 +833,7 @@ public class Commands
 			
 			break;
 		}
-		default: throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
+		default: throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
 		
 	}
@@ -845,7 +845,7 @@ public class Commands
 	private void help(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help' parancsot tovabbi informacioert!");
 		String command = args2[1];
 		System.out.println("$Lehetseges parameterek ( a felsorolt parameterek minden esetben kotelezoek! ):");
 		switch(command){
@@ -948,14 +948,14 @@ public class Commands
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("$Unexpected value: " + args2[1]);
+			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
 		
 	}
 	private void state(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("$Nem megfelelo paramterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help state' parancsot tovabbi informacioert!");
 		String argument = args2[1];
 		if (argument.equals("all")){
 
