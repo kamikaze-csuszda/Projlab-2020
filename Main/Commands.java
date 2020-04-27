@@ -1127,17 +1127,19 @@ public class Commands
 	/**
 	*
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws Exception 
 	* @throws IllegalArgumentException
 	*/
-	private void state(String[] args2)
+	private void state(String[] args2) throws Exception
 	{
 		if (args2.length != 2)
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help state' parancsot tovabbi informacioert!");
 		String argument = args2[1];
 		if (argument.equals("all")){
-			for (Object o : Game.getInstance().getObjects()){
-				if (o instanceof Character || o instanceof Ice || o instanceof Item || o instanceof PolarBear) {
-					execute(new String[] {"state", Game.getInstance().findName(o)});
+			for (String key : Game.getInstance().getObjects().keySet()){
+				if (Game.getInstance().getObjects().get(key) instanceof Character || Game.getInstance().getObjects().get(key) instanceof Ice || 
+						Game.getInstance().getObjects().get(key) instanceof Item || Game.getInstance().getObjects().get(key) instanceof PolarBear) {
+					execute(new String[] {"state", key});
 				}
 
 			}
@@ -1148,18 +1150,21 @@ public class Commands
 			message = message.concat("\tEskimo: " + argument + ":\n");
 			message = message.concat("\t\tbodywarmth: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getWarmth());
 			message = message.concat("\t\taction: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getAction());
-			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() + "\n");
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() + "\n"));
 			message = message.concat("\t\tItems:");
-			for (int i = 0; i < (Eskimo)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
+			for (int i = 0; i < ((Eskimo)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
 				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
 			}
 			message = message.concat("\n\t\tGunParts:");
-			for (int i = 0; i < (Eskimo)Game.getInstance().getObjects().get(argument)).getGunParts().size(); i++){
+			for (int i = 0; i < ((Eskimo)Game.getInstance().getObjects().get(argument)).getGunParts().size(); i++){
 				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getGunPart(i)) + ", ");
 			}
 			message = message.concat("\n\t\tWaterStrategy:");
 			try{
 
+			}catch (Exception e)
+			{
+				
 			}
 
 			message = message.concat("\t\tDigStrategy:");
