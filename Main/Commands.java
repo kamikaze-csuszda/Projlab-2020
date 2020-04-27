@@ -1105,7 +1105,9 @@ public class Commands
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help state' parancsot tovabbi informacioert!");
 		String argument = args2[1];
 		if (argument.equals("all")){
-
+			for(String key: Game.getInstance().getObjects().keySet()) {
+				
+			}
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
 
