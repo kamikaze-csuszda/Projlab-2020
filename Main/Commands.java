@@ -42,7 +42,7 @@ public class Commands
 	ArrayList<String> commands = new ArrayList<String>();
 	String[] args;
 	ArrayList<String> output = new ArrayList<String>();
-	
+
 	/**
 	 * A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak.
 	 * Ez a fuggveny hivja meg a kapott parancsnak megfelelo metodust. 
@@ -969,7 +969,7 @@ public class Commands
 	/**
 	* A paracstol fuggoen kiirja a segitseget. Minden parancshoz tarozik legalbb 1 segitseg.
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
-	* @throws Exception 
+	* @throws Exception
 	* @throws IllegalArgumentException ha a parameter szam nem 2 
 	*/
 	private void help(String[] args2) throws Exception
@@ -1135,8 +1135,11 @@ public class Commands
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help state' parancsot tovabbi informacioert!");
 		String argument = args2[1];
 		if (argument.equals("all")){
-			for(String key: Game.getInstance().getObjects().keySet()) {
-				
+			for (Object o : Game.getInstance().getObjects()){
+				if (o instanceof Character || o instanceof Ice || o instanceof Item || o instanceof PolarBear) {
+					execute(new String[] {"state", Game.getInstance().findName(o)});
+				}
+
 			}
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
@@ -1146,6 +1149,12 @@ public class Commands
 
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof PolarBear){
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Ice) {
+
+		}
+		else if (Game.getInstance().getObjects().get(argument) instanceof Item){
 
 		}
 	}
