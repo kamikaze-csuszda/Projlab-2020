@@ -86,15 +86,19 @@ public class Commands
 					break;
 				case "load":
 					load(args);
+					
 					break;
 				case "help":
 					help(args);
 					break;
 				case "start":
-					if (args[1] == "game") {
+					if(m.equals(mode.INIT))
+					if (args[1].equals("game")) {
 						m = mode.GAME;
-						System.out.println("$Mar Game modban vagyunk!");
+						System.out.println("$----------Game Mode----------");
 					}
+					else 
+						System.out.println("$Mar Game modban vagyunk!");
 					break;
 				case "item":
 					item(args);
@@ -146,9 +150,13 @@ public class Commands
 					turnend(args);
 					break;
 				case "start":
-					if (args[1] == "init")
+					if(m.equals(mode.GAME))
+					if (args[1].equals("INIT"))
 						m = mode.INIT;	
+					else
 						System.out.println("$Mar Init modban vagyunk!");
+					break;
+						
 					default:
 						throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
@@ -245,8 +253,9 @@ public class Commands
 	 * - nincs olyan objektum amire hivatkozik
 	 * - tulindexeles lep fel
 	 * @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	 * @throws Exception 
 	 */
-	private void item(String[] args2)
+	private void item(String[] args2) throws Exception
 	{
 		if (args2.length < 2)
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help item' parancsot tovabbi informacioert!");
@@ -339,8 +348,9 @@ public class Commands
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 				throw new IllegalArgumentException("$"+key+" nem Karakter!");
+			String item = Game.getInstance().findName(((Character)Game.getInstance().getObjects().get(key)).getItem(index));
 			((Character)Game.getInstance().getObjects().get(key)).itemDiscard(((Character)Game.getInstance().getObjects().get(key)).getItem(index));
-		
+			System.out.println("$Ledobtad a(z) " + item + " eszkozt a " +  Game.getInstance().findName(((Character)Game.getInstance().getObjects().get(key)).getIce()) + " mezore!");
 			break;
 			}
 		case "pickup":
@@ -351,7 +361,9 @@ public class Commands
 			int index = Integer.parseInt(args2[3]);
 			if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 				throw new IllegalArgumentException("$"+key+" nem Karakter!");
+			String item = Game.getInstance().findName(((Character)Game.getInstance().getObjects().get(key)).getIce().getItem(index));
 			((Character)Game.getInstance().getObjects().get(key)).itemPickup(index);
+			System.out.println("$Sikeresen felvetted a(z) " + item + " eszkozt!");
 			break;
 		}
 			default:
@@ -402,6 +414,7 @@ public class Commands
 		if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 			throw new IllegalArgumentException("$"+key+" nem Karakter!");
 		((Character)Game.getInstance().getObjects().get(key)).assembleGun();
+		System.out.println("$Sikeres assembleGun parancs!");
 	}
 	/**A targyak vagy kepessegek hasznalata. 
 	 * Eszkimo iglut epit, a sarkkutato 
@@ -436,6 +449,7 @@ public class Commands
 					if(!(Game.getInstance().getObjects().get(key) instanceof Eskimo)) 
 						throw new IllegalArgumentException("$"+key+" nem Eskimo!");
 					((Eskimo)Game.getInstance().getObjects().get(key)).ability();
+					System.out.println("$Sikeres igluepites!");
 				}
 				if(args2.length == 4) 
 				{
@@ -443,7 +457,8 @@ public class Commands
 					String key = args2[2];
 					if(!(Game.getInstance().getObjects().get(key) instanceof Scientist)) 
 						throw new IllegalArgumentException("$"+key+" nem Sarkkutato!");
-					((Scientist)Game.getInstance().getObjects().get(key)).ability(d);
+					int teher = ((Scientist)Game.getInstance().getObjects().get(key)).ability(d);
+					System.out.println("$" + d + " iranyban levo jegtabla " + teher + " embert bir el!");
 				}
 				break;	
 			}
@@ -480,6 +495,7 @@ public class Commands
 			((PolarBear)Game.getInstance().getObjects().get(key)).move(d);
 		else
 			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
+		System.out.println("$A " + key + " objektum sikeresen mozgott " + d + " iranyba!");
 		
 	}
 	/**
@@ -841,6 +857,7 @@ public class Commands
 				break;
 			default: throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
+		System.out.println("$Sikeresen letrehozta a " + name + " objektumot!");
 	}
 	private void save(String[] args2) throws Exception
 	{
@@ -1056,6 +1073,7 @@ public class Commands
 			try
 			{
 				Game.getInstance().generateMap(filename);
+				System.out.println("$Sikeres betoltes!");
 			} catch (FileNotFoundException e)
 			{
 				System.out.println("$Sikertelen palyabetoltes!");
@@ -1078,6 +1096,7 @@ public class Commands
 					ldargs = loaded.get(i).split(" ");
 					execute(ldargs);
 				}
+				System.out.println("$Sikeres betoltes!");
 			} catch (Exception e)
 			{
 				System.out.println("$Sikertelen betoltes!");
