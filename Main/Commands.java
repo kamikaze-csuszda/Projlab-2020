@@ -31,11 +31,13 @@ import Strategy.TentStrategy;
 import Strategy.WaterStrategy;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Commands
 {
 	enum mode {GAME, INIT}
 	mode m;
+	ArrayList<String> commands = new ArrayList<String>();
 	String[] args;
 	
 	/**A program indulasaval indul el. Default modon INIT modban indul a jatek, ami at inicializacios modja a programnak. 
@@ -60,10 +62,17 @@ public class Commands
 		{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 			temp = br.readLine();
+			commands.add(temp);
 			temp = temp.toLowerCase();
 			args = temp.split(" ");
-			String command = args[0];
-			try {
+			execute(args);
+			
+		
+			}
+	}
+	public void execute(String[] args) {
+		String command = args[0];
+		try {
 			if(m == mode.INIT)
 				switch (command)
 				{
@@ -139,8 +148,6 @@ public class Commands
 			} catch (Exception e)
 			{
 				System.out.println(e.getMessage());
-			}
-		
 			}
 	}
 	
