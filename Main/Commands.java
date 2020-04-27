@@ -155,7 +155,7 @@ public class Commands
 	private void breakice(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 	 	String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Ice){
 			if (((Ice)Game.getInstance().getObjects().get(key)).getSnow() == 0){
@@ -171,10 +171,10 @@ public class Commands
 				System.out.println(print);
 			}
 			else
-				throw new IllegalArgumentException("Sikertelen jegtores!");
+				throw new IllegalArgumentException("$Sikertelen jegtores!");
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen objektum!");
+			throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 	}
 	
@@ -190,7 +190,7 @@ public class Commands
 	private void warmup(String[] args2)
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
 			int warmthbefore = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
@@ -204,7 +204,7 @@ public class Commands
 
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen objektum!");
+			throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 		
 	}
@@ -229,11 +229,11 @@ public class Commands
 	private void item(String[] args2)
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$Nem megfelelo parameterszam!");
 		switch (args2[1])
 		{
 		case "list":
-			if(args2[2] == "all")
+			if(args2[2].equals("all"))
 			{
 				for(String key: Game.getInstance().getObjects().keySet())
 					if(!(Game.getInstance().getObjects().get(key) instanceof Character) && !(Game.getInstance().getObjects().get(key) instanceof Ice))
@@ -246,9 +246,7 @@ public class Commands
 							int index = 0;
 							for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray())
 							{
-								String temp = it.getClass().toString();
-								String[] temp2 = temp.split(".");
-								temp = temp2[temp2.length-1];
+								String temp = it.getItemClass();
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}
@@ -260,9 +258,7 @@ public class Commands
 							int index = 0;
 							for (Item it: ((Character)Game.getInstance().getObjects().get(key)).getEquipment())
 							{
-								String temp = it.getClass().toString();
-								String[] temp2 = temp.split(".");
-								temp = temp2[temp2.length-1];
+								String temp = it.getItemClass();
 								System.out.println("\t" + index + " " + temp);
 								index++;
 							}

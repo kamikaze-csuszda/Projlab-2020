@@ -41,7 +41,7 @@ public class Game implements Serializable
 		return game;
 	}
 	private int numOfCharacters = 0;
-	private ArrayList<Ice> mapPieces;
+	private ArrayList<Ice> mapPieces = new ArrayList<Ice>();
 	private Map<String, Object> objects = new HashMap<String, Object>();
 	public Map<String, Object> getObjects()
 	{
