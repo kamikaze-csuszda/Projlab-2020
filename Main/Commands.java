@@ -78,8 +78,10 @@ public class Commands
 					help(args);
 					break;
 				case "start":
-					if (args[1] == "game")
-						m = mode.GAME;				
+					if (args[1] == "game") {
+						m = mode.GAME;
+						System.out.println("$Mar Game modban vagyunk!");
+					}
 					break;
 				case "item":
 					item(args);
@@ -98,7 +100,7 @@ public class Commands
 					break;
 				
 				default:
-					throw new IllegalArgumentException("Unexpected value: " + command);
+					throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 				}
 			else if(m == mode.GAME)
 				switch(command) 
@@ -130,8 +132,9 @@ public class Commands
 				case "start":
 					if (args[1] == "init")
 						m = mode.INIT;	
+						System.out.println("$Mar Init modban vagyunk!");
 					default:
-						throw new IllegalArgumentException("Unexpected value: " + command);
+						throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 		}
 			} catch (Exception e)
 			{
@@ -155,7 +158,7 @@ public class Commands
 	private void breakice(String[] args2)
 	{
 		if (args2.length != 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help breakeice' parancsot tovabbi informacioert!");
 	 	String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Ice){
 			if (((Ice)Game.getInstance().getObjects().get(key)).getSnow() == 0){
@@ -171,10 +174,10 @@ public class Commands
 				System.out.println(print);
 			}
 			else
-				throw new IllegalArgumentException("Sikertelen jegtores!");
+				throw new IllegalArgumentException("$Sikertelen jegtores!");
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen objektum!");
+			throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 	}
 	
@@ -190,7 +193,7 @@ public class Commands
 	private void warmup(String[] args2)
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help warmup' parancsot tovabbi informacioert!");
 		String key = args2[1];
 		if (Game.getInstance().getObjects().get(key) instanceof Character){
 			int warmthbefore = ((Character) Game.getInstance().getObjects().get(key)).getWarmth();
@@ -204,7 +207,7 @@ public class Commands
 
 		}
 		else{
-			throw new IllegalArgumentException("Nincs ilyen objektum!");
+			throw new IllegalArgumentException("$Nincs ilyen objektum!");
 		}
 		
 	}
@@ -229,7 +232,7 @@ public class Commands
 	private void item(String[] args2)
 	{
 		if (args2.length < 2)
-			throw new IllegalArgumentException("Nem megfelelo parameterszam!");
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help item' parancsot tovabbi informacioert!");
 		switch (args2[1])
 		{
 		case "list":
@@ -297,20 +300,22 @@ public class Commands
 					}
 					System.out.println("}");
 				}
-				else throw new IllegalArgumentException("Unexpected value: " + args2[2]);
+				else throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 			}
 			break;
 		case "give":
 			if(args2.length < 5)
-				throw new IllegalArgumentException("Not enough arguments!");
+				throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help item' parancsot tovabbi informacioert!");
 			String key1 = args2[2], key2 = args2[3];
 			int id = Integer.parseInt(args2[4]);
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character) || !(Game.getInstance().getObjects().get(key2) instanceof Character)) 
-				throw new IllegalArgumentException("Object is not a Character!");
+				throw new IllegalArgumentException("$Nem karakter objektum!");
 			if(id < 0 || id > 5)
-				throw new IllegalArgumentException("Maximum index: 5. Given index: " + id);
+				throw new IllegalArgumentException("$Nincs ennyi eszkozod! Hasznald az 'item list' parancsot az eszkozeid listazasahoz!");
+			else {
 			((Character)Game.getInstance().getObjects().get(key1)).itemGive((Character)(Game.getInstance().getObjects().get(key2)), ((Character)Game.getInstance().getObjects().get(key1)).getItem(id));
-			
+			System.out.println("$Sikeresen atadtad a " + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id) + " eszkozt" + ((Character)Game.getInstance().getObjects().get(key1)).getItem(id) + "nek!");
+			}
 			
 			break;
 		case "drop":

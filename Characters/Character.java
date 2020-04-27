@@ -200,8 +200,11 @@ public abstract class Character implements Movable
 	 */
 	public void itemGive(Character c, Item i)
 	{
+		if (c.equipment.size()<4) {
 		removeItem(i);
 		c.addItem(i);
+		}
+		
 	}
 	/**
 	 * A Charactert atmozgatjuk egy masik jegteblara, szomszedossag vizsgalat nelkul 
