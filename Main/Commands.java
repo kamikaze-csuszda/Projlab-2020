@@ -283,7 +283,7 @@ public class Commands
 								print.concat("\t" + index + " " + temp);
 								index++;
 							}
-							throw new Exception(print + "}");
+							throw new Exception(print + "\n}");
 						}
 						if(Game.getInstance().getObjects().get(key) instanceof Character)
 						{
@@ -295,7 +295,7 @@ public class Commands
 								printString.concat("\t" + index + " " + temp);
 								index++;
 							}
-							throw new Exception(printString + "}");
+							throw new Exception(printString + "\n}");
 						}
 					}
 			}
@@ -311,7 +311,7 @@ public class Commands
 						String temp = it.getItemClass();
 						printString.concat("\t" + index + " " + temp);
 					}
-					throw new Exception(printString + "}");
+					throw new Exception(printString + "\n}");
 						
 				}
 				else if(Game.getInstance().getObjects().get(args2[2]) instanceof Character)
@@ -324,7 +324,7 @@ public class Commands
 						printString.concat("\t" + index + " " + temp);
 						index++;
 					}
-					throw new Exception(printString + "}");
+					throw new Exception(printString + "\n}");
 				}
 				else throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 			}
@@ -958,21 +958,21 @@ public class Commands
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help' parancsot tovabbi informacioert!");
 		if (args2.length == 1){
 			throw new Exception("Lehetseges parancsok ( tobb informacioert hasznalja a 'help <parancs>' parancsot ):"
-			+ "\tload"
-			+ "\tsave"
-			+ "\tcreate"
-			+ "\tdelete"
-			+ "\tstart"
-			+ "\tstate"
-			+ "\tset"
-			+ "\tmove"
-			+ "\tuse"
-			+ "\tassemble"
-			+ "\tdig"
-			+ "\tbreakice"
-			+ "\titem"
-			+ "\twarmup"
-			+ "\tturnend");
+			+ "\tload\n"
+			+ "\tsave\n"
+			+ "\tcreate\n"
+			+ "\tdelete\n"
+			+ "\tstart\n"
+			+ "\tstate\n"
+			+ "\tset\n"
+			+ "\tmove\n"
+			+ "\tuse\n"
+			+ "\tassemble\n"
+			+ "\tdig\n"
+			+ "\tbreakice\n"
+			+ "\titem\n"
+			+ "\twarmup\n"
+			+ "\tturnend\n");
 		}
 		else {
 			String command = args2[1];
@@ -1115,7 +1115,9 @@ public class Commands
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help state' parancsot tovabbi informacioert!");
 		String argument = args2[1];
 		if (argument.equals("all")){
-
+			for(String key: Game.getInstance().getObjects().keySet()) {
+				
+			}
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
 
