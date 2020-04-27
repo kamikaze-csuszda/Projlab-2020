@@ -283,7 +283,7 @@ public class Commands
 								print.concat("\t" + index + " " + temp);
 								index++;
 							}
-							throw new Exception(print + "}");
+							throw new Exception(print + "\n}");
 						}
 						if(Game.getInstance().getObjects().get(key) instanceof Character)
 						{
@@ -295,7 +295,7 @@ public class Commands
 								printString.concat("\t" + index + " " + temp);
 								index++;
 							}
-							throw new Exception(printString + "}");
+							throw new Exception(printString + "\n}");
 						}
 					}
 			}
@@ -311,7 +311,7 @@ public class Commands
 						String temp = it.getItemClass();
 						printString.concat("\t" + index + " " + temp);
 					}
-					throw new Exception(printString + "}");
+					throw new Exception(printString + "\n}");
 						
 				}
 				else if(Game.getInstance().getObjects().get(args2[2]) instanceof Character)
@@ -324,7 +324,7 @@ public class Commands
 						printString.concat("\t" + index + " " + temp);
 						index++;
 					}
-					throw new Exception(printString + "}");
+					throw new Exception(printString + "\n}");
 				}
 				else throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
 			}
