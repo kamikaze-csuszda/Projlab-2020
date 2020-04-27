@@ -32,6 +32,7 @@ import Strategy.WaterStrategy;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Commands
 {
@@ -137,6 +138,9 @@ public class Commands
 					break;
 				case "help":
 					help(args);
+					break;
+				case "turnend":
+					turnend(args);
 					break;
 				case "start":
 					if (args[1] == "init")
@@ -924,6 +928,8 @@ public class Commands
 				System.out.println("$\t<karakter> : A megadott karakter 3 akciopont felhasznalasaval noveli eggyel a testhojet, amennyiben nincs meg maximumon.");
 				System.out.println("$\t\tkarakter: Lehet Eskimo vagy Scientist.");
 				break;
+			case "turnend":
+				System.out.println("$\tturnend: Befejezi a karakterek körét, visszaállnak az akicópontjaik az alap értékre, ekkor érkeznek a hóviharok, és ekkor lép a medve.");
 		}
 		
 	}
@@ -977,4 +983,14 @@ public class Commands
 
 		}
 	}
+	
+	private void turnend(String[] args2)
+	{
+		if (args2.length != 1)
+			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help turnend' parancsot tovabbi informacioert!");
+		Random random = new Random();
+		int random1 = random.nextInt();
+		
+	}
+	
 }

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import Characters.PolarBear;
 import Ice.HoleIce;
 import Ice.Ice;
 import Ice.StableIce;
@@ -37,6 +38,7 @@ public class Game implements Serializable
 	private Game() {
 		
 	}
+	
 	public static Game getInstance() {
 		return game;
 	}
