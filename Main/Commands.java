@@ -851,6 +851,11 @@ public class Commands
 		}
 		throw new Exception("$Sikeresen letrehozta a " + name + " objektumot!");
 	}
+	/**
+	* Lementi a jatekot.
+	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
+	* @throws Exception ha sikertelen a mentes
+	*/
 	private void save(String[] args2) throws Exception
 	{
 		switch (args2[1])
@@ -1127,7 +1132,7 @@ public class Commands
 	/**
 	*
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
-	 * @throws Exception 
+	* @throws Exception 
 	* @throws IllegalArgumentException
 	*/
 	private void state(String[] args2) throws Exception
