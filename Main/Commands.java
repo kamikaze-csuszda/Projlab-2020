@@ -1080,9 +1080,10 @@ public class Commands
 		
 	}
 	/**
-	*
+	* Betolti a parameterben megadott terkepet vagy state-et.
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
-	* @throws Exception
+	* @throws Exception ha sikertelen a betoltes
+	* @throws IllegalArgumentException
 	*/
 	private void load(String[] args2) throws Exception
 	{
