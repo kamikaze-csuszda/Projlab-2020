@@ -57,74 +57,79 @@ public class Commands
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 		temp = br.readLine();
-		temp.toLowerCase();
-		args = temp.split(" ");
-		String command = args[0];
-		if(m == mode.INIT)
-			switch (command)
-			{
-			case "state":
-				state(args);
-			
-				break;
-			case "load":
-				load(args);
-				break;
-			case "help":
-				help(args);
-				break;
-			case "start":
-				if (args[1] == "game")
-					m = mode.GAME;				
-				break;
-			case "save":
-				save(args);
-				break;
-			case "create":
-				create(args);
-				break;
-			case "delete":
-				delete(args);
-				break;
-			case "set":
-				set(args);
-				break;
-			
-			default:
-				throw new IllegalArgumentException("Unexpected value: " + command);
-			}
-		else if(m == mode.GAME)
-			switch(command) 
-			{
-			case "breakice":
-				breakice(args);
-				break;
-			case "move":
-				move(args);
-				break;
-			case "use":
-				use(args);
-				break;
-			case "assemble":
-				assemble(args);
-				break;
-			case "dig":
-				dig(args);
-				break;
-			case "item":
-				item(args);
-				break;
-			case "warmup":
-				warmup(args);
-				break;
-			case "help":
-				help(args);
-				break;
-			case "start":
-				if (args[1] == "init")
-					m = mode.INIT;	
+		while(temp != null)
+		{
+			temp.toLowerCase();
+			args = temp.split(" ");
+			String command = args[0];
+			if(m == mode.INIT)
+				switch (command)
+				{
+				case "state":
+					state(args);
+				
+					break;
+				case "load":
+					load(args);
+					break;
+				case "help":
+					help(args);
+					break;
+				case "start":
+					if (args[1] == "game")
+						m = mode.GAME;				
+					break;
+				case "save":
+					save(args);
+					break;
+				case "create":
+					create(args);
+					break;
+				case "delete":
+					delete(args);
+					break;
+				case "set":
+					set(args);
+					break;
+				
 				default:
 					throw new IllegalArgumentException("Unexpected value: " + command);
+				}
+			else if(m == mode.GAME)
+				switch(command) 
+				{
+				case "breakice":
+					breakice(args);
+					break;
+				case "move":
+					move(args);
+					break;
+				case "use":
+					use(args);
+					break;
+				case "assemble":
+					assemble(args);
+					break;
+				case "dig":
+					dig(args);
+					break;
+				case "item":
+					item(args);
+					break;
+				case "warmup":
+					warmup(args);
+					break;
+				case "help":
+					help(args);
+					break;
+				case "start":
+					if (args[1] == "init")
+						m = mode.INIT;	
+					default:
+						throw new IllegalArgumentException("Unexpected value: " + command);
+		}
+		
+		
 			}
 	}
 	
@@ -800,7 +805,26 @@ public class Commands
 	}
 	private void save(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		switch (args2[1])
+		{
+		case "state":
+		{
+			try
+			{
+				Game.getInstance().saveGame(args2[2]);
+			} catch (Exception e)
+			{
+				System.out.println("$Sikertelen mentes!");
+			}
+			break;
+		}
+		case "map":
+		{
+			
+			break;
+		}
+		default: throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+		}
 		
 	}
 	/**
@@ -888,7 +912,34 @@ public class Commands
 	}
 	private void load(String[] args2)
 	{
-		// TODO Auto-generated method stub
+		switch(args2[1])
+		{
+		case "map":
+		{
+			String filename = args2[2];
+			try
+			{
+				Game.getInstance().generateMap(filename);
+			} catch (FileNotFoundException e)
+			{
+				System.out.println("$Sikertelen palyabetoltes!");
+			}
+			break;
+		}
+		case "state":
+		{
+			try
+			{
+				Game.getInstance().loadGame(args2[2]);
+			} catch (Exception e)
+			{
+				System.out.println("$Sikertelen betoltes!");
+			}
+			break;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + args2[1]);
+		}
 		
 	}
 	private void state(String[] args2)

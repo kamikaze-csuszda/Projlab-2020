@@ -1,6 +1,12 @@
 package Main;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +31,7 @@ import Ice.UnstableIce;
 
 
 
-public class Game
+public class Game implements Serializable
 {
 	private static Game game = new Game();
 	private Game() {
@@ -40,6 +46,24 @@ public class Game
 	public Map<String, Object> getObjects()
 	{
 		return objects;
+	}
+	public void saveGame(String filename) throws IOException
+	{
+		FileOutputStream fout = new FileOutputStream(filename);
+		ObjectOutputStream oout = new ObjectOutputStream(fout);
+		oout.writeObject(game);
+		oout.close();
+		fout.close();
+		System.out.println("$Sikeres mentes!");
+	}
+	public void loadGame(String filename) throws IOException, ClassNotFoundException
+	{
+		FileInputStream fin = new FileInputStream(filename);
+		ObjectInputStream oin = new ObjectInputStream(fin);
+		game = (Game) oin.readObject();
+		oin.close();
+		fin.close();
+		System.out.println("$Sikeres betoltes!");
 	}
 	/**
 	 * Vegigmegy az osszes objects beli kulcson, es ha talal egy olyat, aminel 
@@ -142,7 +166,14 @@ public class Game
 		}
 		for(int i = 0; i < length; i++)
 		{
-			
+			for(int j = i; j < length; j++)
+			{
+				if(mapMatrix[i][j] == 1)
+				{
+					mapPieces.get(i).addNeighbour(mapPieces.get(j));
+					mapPieces.get(j).addNeighbour(mapPieces.get(i));
+				}
+			}
 		}
 		
 		
