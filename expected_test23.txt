@@ -1,0 +1,31 @@
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a usi1 objektumot!
+$Sikeresen letrehozta a ts1 objektumot!
+$Sikeresen letrehozta a ts2 objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$----------Game Mode----------
+$Sikeres korvege
+$----------Init Mode----------
+$Sikeres beallitas!
+$Sikeres beallitas!
+{ 
+	UnstableIce usi1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 1
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}

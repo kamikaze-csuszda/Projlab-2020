@@ -1,0 +1,39 @@
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a hi1 objektumot!
+$Sikeres beallitas!
+$----------Game Mode----------
+Game Lost!
+$A e1 objektum sikeresen mozgott 0 iranyba!
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	HoleIce hi1:
+		Neighbours: st1, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: hi1
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------

@@ -1,0 +1,48 @@
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a st2 objektumot!
+$Sikeresen letrehozta a macilaci objektumot!
+$Sikeresen letrehozta a ig objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeresen letrehozta a bs objektumot!
+$Sikeres beallitas!
+$----------Game Mode----------
+$A macilaci objektum sikeresen mozgott 0 iranyba!
+{ 
+	StableIce st2:
+		Neighbours: st1, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	StableIce st1:
+		Neighbours: st2, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, 
+		IglooStrategy: ig
+		BearStrategy:  default
+}
+{
+	PolarBear macica:
+		Ice: st2
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st2
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------

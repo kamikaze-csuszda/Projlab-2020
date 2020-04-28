@@ -1,0 +1,214 @@
+$Sikeres betoltes!
+$Sikeresen letrehozta a r1 objektumot!
+$Sikeresen letrehozta a r2 objektumot!
+$Sikeresen letrehozta a r3 objektumot!
+$Sikeresen letrehozta a macilaci objektumot!
+$Sikeresen letrehozta a sh objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a sc1 objektumot!
+$Sikeresen letrehozta a sc2 objektumot!
+$Sikeresen letrehozta a b objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres betoltes!
+{ 
+	FlareGun r2:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+{ 
+	Eskimo: sc1:
+		bodywarmth: 4
+		action: 4
+		Ice: usi2
+		Items:
+		GunParts:
+		WaterStrategy:  default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	Cartridge r3:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+{ 
+	Eskimo: sc2:
+		bodywarmth: 4
+		action: 4
+		Ice: st5
+		Items:
+		GunParts:
+		WaterStrategy:  default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: usi3
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	StableIce st1:
+		Neighbours: usi1, hi2, st2, hi1, 
+		snow: 0
+		maxCharacter: 0
+		Items: r1, 
+		Character: 
+		IglooStrategy:  default
+		BearStrategy: b
+}
+{ 
+	StableIce st4:
+		Neighbours: usi2, st2, st3, hi3, hi4, usi3, 
+		snow: 0
+		maxCharacter: 0
+		Items: r2
+		Character: 
+		IglooStrategy:  default
+		BearStrategy: b
+}
+{ 
+	StableIce st2:
+		Neighbours: st1, hi1, hi2, usi2, st4, hi3, 
+		snow: 0
+		maxCharacter: 0
+		Items: sh
+		Character: 
+		IglooStrategy:  default
+		BearStrategy: b
+}
+{ 
+	HoleIce hi2:
+		Neighbours: usi1, st1, st2, st3, st4, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	HoleIce hi1:
+		Neighbours: st1, st2, usi2, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	UnstableIce usi2:
+		Neighbours: hi1, st2, hi3, st5, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: sc1, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	UnstableIce usi1:
+		Neighbours: st1, hi2, st3, 
+		snow: 0
+		maxCharacter: 0
+		Items: r3
+		Character: sc1, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	HoleIce hi4:
+		Neighbours: st3, st4, usi3, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	StableIce st3:
+		Neighbours: usi1, hi2, st4, hi4, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy: b
+}
+{ 
+	HoleIce hi3:
+		Neighbours: st2, usi2, st4, usi3, st5, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{
+	PolarBear macilaci:
+		Ice: st3
+}
+{ 
+	StableIce st5:
+		Neighbours: usi2, st4, hi3, usi3, hi5, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: sc2, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	HoleIce hi5:
+		Neighbours: usi3, st5, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Shovel sh:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+{ 
+	UnstableIce usi3:
+		Neighbours: hi3, hi4, st5, hi5, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Flare r1:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}

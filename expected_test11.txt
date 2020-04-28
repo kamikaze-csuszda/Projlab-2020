@@ -1,0 +1,28 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeres beallitas!
+$----------Game Mode----------
+$A ho vastagsaga 5rol 4re csokkent!
+{ 
+	StableIce st:
+		Neighbours: 
+		snow: 4
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 3
+		Ice: st
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------

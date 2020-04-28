@@ -1,0 +1,36 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a dvs objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$----------Game Mode----------
+$Sikeres felvetel!
+{ 
+	DivingSuit dvs:
+		IsFrozen: false
+		durability: -1
+		Character: 
+}
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st
+		Items: dvs, 
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------

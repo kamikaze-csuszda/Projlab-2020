@@ -1,0 +1,33 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a ds objektumot!
+$Sikeres beallitas!
+$Ledobtad a(z) ds eszkozt a st mezore!
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items: ds, 
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	DivingSuit ds:
+		IsFrozen: true
+		durability: -1
+		Character: e1
+}

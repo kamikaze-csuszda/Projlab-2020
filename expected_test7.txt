@@ -1,0 +1,38 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeresen letrehozta a sc objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a ust objektumot!
+$----------Game Mode----------
+$0 iranyban levo jegtabla 1 embert bir el!
+{ 
+	Eskimo: sc:
+		bodywarmth: 4
+		action: 4
+		Ice: st
+		Items:
+		GunParts:
+		WaterStrategy:  default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	StableIce st:
+		Neighbours: ust, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	UnstableIce ust:
+		Neighbours: st, 
+		snow: 0
+		maxCharacter: 1
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+$----------Init Mode----------

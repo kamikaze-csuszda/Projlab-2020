@@ -1,0 +1,67 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a e2 objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeresen letrehozta a crt objektumot!
+$Sikeresen letrehozta a flr objektumot!
+$Sikeresen letrehozta a flg objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$----------Game Mode----------
+Game Won!
+$Sikeres assembleGun parancs!
+{ 
+	FlareGun flg:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+{ 
+	StableIce st:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, e2, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Cartridge crt:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st
+		Items:
+		GunParts:crt, flr, flg, 
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	Eskimo: e2:
+		bodywarmth: 5
+		action: 4
+		Ice: st
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	Flare flr:
+		IsFrozen: true
+		durability: -1
+		Character: 
+}
+$----------Init Mode----------
