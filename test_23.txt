@@ -9,5 +9,6 @@ turnend
 set snow st1 0
 set snow usi1 0
 state all
+start init
 save output actual_test23.txt
 close
