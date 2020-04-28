@@ -342,10 +342,12 @@ public abstract class Character implements Movable
 	public void move(int d)
 	{
 		try {
-		
-			ice.getNeighbour(d).moveHere(this);
+			Ice now = ice;
 			ice.removeCharacter(this);
 			setIce(ice.getNeighbour(d));
+			now.getNeighbour(d).moveHere(this);
+			
+			
 			ice.bearHere();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
