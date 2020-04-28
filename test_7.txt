@@ -6,5 +6,6 @@ set neighbour st ust
 start game
 use ability sc 0
 state all
+start init
 save output actual_test7.txt
 close

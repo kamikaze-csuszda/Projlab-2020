@@ -8,5 +8,6 @@ set neighbour st1 st2
 start game
 move macica 0
 state all
+start init
 save output actual_test17.txt
 close

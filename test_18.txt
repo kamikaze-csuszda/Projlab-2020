@@ -10,5 +10,6 @@ set neighbour st1 st2
 start game
 move pb1 0
 state all
+start init
 save output actual_test18.txt
 close

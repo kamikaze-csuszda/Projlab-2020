@@ -12,5 +12,6 @@ set igloostrategy st2 tent
 start game
 move maci 0
 state all
+start init
 save output actual_test19.txt
 close

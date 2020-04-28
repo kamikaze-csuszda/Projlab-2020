@@ -8,7 +8,8 @@ create DivingSuitStrategy dss
 set waterstrategy sc1 dss
 set ice sc1 ust
 start game
-move Eskimo 0
+move e1 0
 state all
+start init
 save output actual_test2.txt
 close

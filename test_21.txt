@@ -11,5 +11,6 @@ create Bear bs
 set bearstrategy st2 bs
 move macilaci 0
 state all
+start init
 save output actual_test21.txt
 close

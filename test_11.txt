@@ -5,5 +5,6 @@ set ice e1 st
 start game
 dig e1
 state all
+start init
 save output actual_test11.txt
 close

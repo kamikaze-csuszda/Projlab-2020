@@ -8,5 +8,6 @@ game start
 use item e1 0
 dig e1
 state all
+start init
 save output actual_test9.txt
 close

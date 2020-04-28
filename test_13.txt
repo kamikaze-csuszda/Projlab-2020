@@ -7,5 +7,6 @@ set frozen dvs false
 start game
 item pickup e1 0
 state all
+start init
 save output actual_test13.txt
 close

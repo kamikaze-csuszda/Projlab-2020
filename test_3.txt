@@ -6,7 +6,8 @@ set neighbour st hi
 create DivingSuitStrategy dss
 set waterstrategy e1 dss
 start game
-move Eskimo 0
+move e1 0
 state all
+start init
 save output actual_test3.txt
 close

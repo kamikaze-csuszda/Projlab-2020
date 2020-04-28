@@ -12,5 +12,6 @@ set gunpart e1 flg
 start game
 assemblegun e1
 state all
+start init
 save output actual_test15.txt
 close

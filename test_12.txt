@@ -8,5 +8,6 @@ set item st r
 start game
 breakeice e1
 state all
+start init
 save output actual_test12.txt
 close

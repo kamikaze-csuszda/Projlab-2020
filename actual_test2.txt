@@ -1,0 +1,53 @@
+$Sikeresen letrehozta a st objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a ust objektumot!
+$Sikeresen letrehozta a sc1 objektumot!
+$Sikeresen letrehozta a dss objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$----------Game Mode----------
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+{ 
+	Eskimo: sc1:
+		bodywarmth: 4
+		action: 4
+		Ice: ust
+		Items:
+		GunParts:
+		WaterStrategy: dss
+		DigStrategy: default
+		HelpStrategy: default
+}
+{ 
+	StableIce st:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	UnstableIce ust:
+		Neighbours: st, 
+		snow: 0
+		maxCharacter: 1
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------
