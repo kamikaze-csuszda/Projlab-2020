@@ -80,6 +80,12 @@ public abstract class Ice
 			return true;
 		return false;
 	}
+	public IglooStrategy getIglooStrategy() {
+		return iglooStrategy;
+	}
+	public BearStrategy getBearStrategy() {
+		return bearStrategy;
+	}
 	
 	/**
 	 * A maxCharacters gettere

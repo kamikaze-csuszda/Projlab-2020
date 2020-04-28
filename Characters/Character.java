@@ -78,6 +78,16 @@ public abstract class Character implements Movable
 		ice = i;
 		i.addCharacter(this);
 	}
+	
+	public WaterStrategy getWaterStrategy() {
+		return waterStrategy;
+	}
+	public HelpStrategy getHelpStrategy() {
+		return helpStrategy;
+	}
+	public DigStrategy getDigStrategy() {
+		return digStrategy;
+	}
 	/**
 	 * Getter az aktualis jegtablara
 	 * @return  Visszaadja az aktualis jegtablat, amin a Character all 
@@ -200,7 +210,7 @@ public abstract class Character implements Movable
 	 */
 	public void itemGive(Character c, Item i)
 	{
-		if (c.equipment.size()<4) {
+		if (c.equipment.size()<4 && c.getIce() == this.getIce()) {
 		removeItem(i);
 		c.addItem(i);
 		}

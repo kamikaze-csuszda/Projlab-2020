@@ -1186,7 +1186,7 @@ public class Commands
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Eskimo){
 			String message = new String();
-			message = message.concat("Eskimo:\n { \n");
+			message = message.concat("{ \n");
 			message = message.concat("\tEskimo: " + argument + ":\n");
 			message = message.concat("\t\tbodywarmth: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getWarmth());
 			message = message.concat("\t\taction: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getAction());
@@ -1200,26 +1200,125 @@ public class Commands
 				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getGunPart(i)) + ", ");
 			}
 			message = message.concat("\n\t\tWaterStrategy:");
-			try{
-
-			}catch (Exception e)
+			try
 			{
-				
+				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getWaterStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
 			}
+			
 
 			message = message.concat("\t\tDigStrategy:");
+			try
+			{
+				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getDigStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
+			}
 			message = message.concat("\t\tHelpStrategy:");
-			message = message.concat("}");
+			try
+			{
+				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getHelpStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
+			}
 
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
+			String message = new String();
+			message = message.concat("{ \n");
+			message = message.concat("\tEskimo: " + argument + ":\n");
+			message = message.concat("\t\tbodywarmth: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getWarmth());
+			message = message.concat("\t\taction: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getAction());
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getIce() + "\n"));
+			message = message.concat("\t\tItems:");
+			for (int i = 0; i < ((Scientist)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
+				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
+			}
+			message = message.concat("\n\t\tGunParts:");
+			for (int i = 0; i < ((Scientist)Game.getInstance().getObjects().get(argument)).getGunParts().size(); i++){
+				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getGunPart(i)) + ", ");
+			}
+			message = message.concat("\n\t\tWaterStrategy: " );
+			try
+			{
+				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getWaterStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
+			}
+			
 
+			message = message.concat("\t\tDigStrategy:");
+			try
+			{
+				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getDigStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
+			}
+			message = message.concat("\t\tHelpStrategy:");
+			try
+			{
+				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getHelpStrategy())+ "\n");
+			} catch (Exception e)
+			{
+				message = message.concat(" default\n");
+			}
+			message = message.concat("}");
+			throw new Exception(message);
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof PolarBear){
-
+			String message = new String();
+			message = message.concat("{ \n");
+			message = message.concat("\tPolarBear " + argument + ":\n");
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((PolarBear)Game.getInstance().getObjects().get(argument)).getIce() + "\n"));
+			message = message.concat("}");
+			throw new Exception(message);
+			
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Ice) {
-
+			String message = new String();
+			message = message.concat("{ \n");
+			if (Game.getInstance().getObjects().get(argument) instanceof HoleIce)
+			{
+				message = message.concat("\tHoleIce " + argument + ":\n");
+			}
+			else if (Game.getInstance().getObjects().get(argument) instanceof StableIce)
+			{
+				message = message.concat("\tStableIce " + argument + ":\n");
+			}
+			else if (Game.getInstance().getObjects().get(argument) instanceof UnstableIce)
+			{
+				message = message.concat("\tUnstableIce " + argument + ":\n");
+			}
+			
+			message = message.concat("\t\tNeighbours: ");
+			for (Ice ice : Game.getInstance().getMapPieces())
+			{
+				if(ice.isNeighbour((Ice)(Game.getInstance().getObjects().get(argument))))
+						{
+							message = message.concat(Game.getInstance().findName(ice) + ", ");
+						}
+				message = message.concat("\n\t\tsnow: " + ((Ice)Game.getInstance().getObjects().get(argument)).getSnow() + "\n");
+				message = message.concat("\t\tmaxCharacter: " + ((Ice)Game.getInstance().getObjects().get(argument)).getMaxCharacters() + "\n");
+				message = message.concat("\t\tItems:");
+				for (int i = 0; i < ((Ice)Game.getInstance().getObjects().get(argument)).getItemArray().size(); i++){
+					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
+				}
+				message = message.concat("\n\t\tCharacter: ");
+				for(int i = 0; i < ((Ice)Game.getInstance().getObjects().get(argument)).getCharNum(); i++)
+				{
+					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getCharacter(i) + ", "));
+				}
+				message = message.concat("\n\t\tIglooStrategy: ");
+				
+				message = message.concat("\n\t\tBearStrategy: ");
+			}
+			
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Item){
 
