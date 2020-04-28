@@ -1,0 +1,10 @@
+create StableIce st
+create Scientist sc
+set ice sc st
+create UnstableIce ust
+set neighbour st ust
+start game
+use ability sc 0
+state all
+save output actual_test7.txt
+close

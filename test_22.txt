@@ -1,0 +1,9 @@
+create StableIce st1
+create Eskimo e
+set character st1 e
+create TentStrategy ts1
+set tentstrategy st1 ts1
+storm st1	
+state all
+save output actual_test22.txt
+close

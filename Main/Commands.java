@@ -1166,8 +1166,9 @@ public class Commands
 				Scanner loadedScanner = new Scanner(new FileReader(args2[2]));
 				while(loadedScanner.hasNextLine())
 				{
-					loaded.add(loadedScanner.nextLine());
+					loaded.add(loadedScanner.nextLine().toLowerCase());
 				}
+				
 				String[] ldargs;
 				for(int i = 0; i < loaded.size(); i++)
 				{

@@ -1,0 +1,9 @@
+create StableIce st
+create Eskimo e1
+set ice e1 st
+create DivingSuit ds
+set item e1 ds
+item drop e1 0
+state all
+save output actual_test16.txt
+close

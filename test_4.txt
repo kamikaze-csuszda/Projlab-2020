@@ -1,0 +1,10 @@
+create Eskimo e1
+create StableIce st1
+create HoleIce hi1
+set neighbour st1 hi1
+set ice e1 st1
+start game
+move Eskimo 0
+state all
+save output actual_test4.txt
+close

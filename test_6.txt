@@ -1,0 +1,9 @@
+create StableIce st
+create Eskimo e1
+set ice e1 st
+create Igloo igl
+set igloostrategy st igl
+storm st
+state all
+save output actual_test6.txt
+close

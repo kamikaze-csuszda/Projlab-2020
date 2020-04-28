@@ -1,0 +1,12 @@
+create Eskimo e1
+create StableIce st1
+create BreakableShovel sh
+set item e1 sh
+set snow st1 5
+set ice e1 st1
+start game
+use item e1 0
+dig e1
+state all
+save output actual_test10.txt
+close

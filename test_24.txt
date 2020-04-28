@@ -1,0 +1,4 @@
+load level map_teszt.txt
+load state state_teszt.txt
+state all
+save output actual_test24.txt

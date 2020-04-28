@@ -1,0 +1,8 @@
+create Eskimo e1
+create Food f1
+set item e1 f1
+set bodywamth 3
+use item e1 0
+state all
+save output actual_test14.txt
+close

@@ -1,0 +1,14 @@
+create StableIce st1
+create StableIce st2
+create Eskimo e1
+create PolarBear pb1
+create Bear bs
+set ice e1 st1
+set ice pb1 st2
+set bearstrategy st2 bs
+set neighbour st1 st2
+start game
+move pb1 0
+state all
+save output actual_test18.txt
+close

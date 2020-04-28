@@ -1,0 +1,13 @@
+create StableIce st1
+create UnstableIce usi1
+create TentStrategy ts1
+create TentStrategy ts2
+set tentstrategy st1 ts1
+set tentstrategy usi1 ts2
+start game
+turnend
+set snow st1 0
+set snow usi1 0
+state all
+save output actual_test23.txt
+close
