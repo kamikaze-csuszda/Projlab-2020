@@ -1,0 +1,43 @@
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a st2 objektumot!
+$Sikeresen letrehozta a maci objektumot!
+$Sikeresen letrehozta a bs objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$----------Game Mode----------
+$A e1 objektum sikeresen mozgott 0 iranyba!
+{ 
+	StableIce st2:
+		Neighbours: st1, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, 
+		IglooStrategy:  default
+		BearStrategy: bs
+}
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+$Nincs ilyen objektum a jatekban!
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st2
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$----------Init Mode----------

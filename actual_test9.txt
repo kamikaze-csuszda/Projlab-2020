@@ -1,0 +1,37 @@
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a sh objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 5
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Shovel sh:
+		IsFrozen: true
+		durability: -1
+		Character: e1
+}
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: st1
+		Items:sh, 
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$Mar Game modban vagyunk!

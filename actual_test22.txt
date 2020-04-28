@@ -1,0 +1,28 @@
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a e objektumot!
+$Sikeres beallitas!
+$Sikeresen letrehozta a ts1 objektumot!
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+st1	 nem Ice!
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e, 
+		IglooStrategy:  default
+		BearStrategy:  default
+}
+{ 
+	Eskimo: e:
+		bodywarmth: 5
+		action: 4
+		Ice: 
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$Mar Game modban vagyunk!

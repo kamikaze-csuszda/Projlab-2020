@@ -1,0 +1,44 @@
+$Sikeresen letrehozta a st1 objektumot!
+$Sikeresen letrehozta a e1 objektumot!
+$Sikeresen letrehozta a st2 objektumot!
+$Sikeresen letrehozta a macilaci objektumot!
+$Sikeresen letrehozta a ig objektumot!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeres beallitas!
+$Sikeresen letrehozta a bs objektumot!
+$Sikeres beallitas!
+$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!
+{ 
+	StableIce st2:
+		Neighbours: st1, 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: 
+		IglooStrategy:  default
+		BearStrategy: bs
+}
+{ 
+	StableIce st1:
+		Neighbours: 
+		snow: 0
+		maxCharacter: 0
+		Items:
+		Character: e1, 
+		IglooStrategy: ig
+		BearStrategy:  default
+}
+$Nincs ilyen objektum a jatekban!
+{ 
+	Eskimo: e1:
+		bodywarmth: 5
+		action: 4
+		Ice: 
+		Items:
+		GunParts:
+		WaterStrategy: default
+		DigStrategy: default
+		HelpStrategy: default
+}
+$Mar Game modban vagyunk!
