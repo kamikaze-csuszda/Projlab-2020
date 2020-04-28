@@ -1,4 +1,5 @@
 load level map_teszt.txt
 load state state_teszt.txt
 state all
+start init
 save output actual_test24.txt
