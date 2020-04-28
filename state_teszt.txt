@@ -1,0 +1,21 @@
+create flare r1
+create flaregun r2
+create cartridge r3
+create PolarBear macilaci
+create Shovel sh
+create Eskimo e1
+create Scientist sc1
+create Scientist sc2
+create Bear b
+set item usi1 r3
+set item st1 r1
+set item st2 sh
+set ice sc1 usi2
+set character usi2 sc1
+set ice macilaci st3
+set bearstrategy st3 b
+set item st4 r2
+set ice e1 usi3
+set character usi3 e1
+set ice sc2 st5
+set character st5 sc2
