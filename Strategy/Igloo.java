@@ -22,8 +22,6 @@ public class Igloo implements IglooStrategy
 	 */
 	public Igloo()
 	{
-		System.out.println("--> Igloo()");
-		System.out.println("<--");
 	}
 	/**
 	 * Ha van iglu az adott mezon, akkor a vihar azt lerombolja.

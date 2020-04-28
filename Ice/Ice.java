@@ -5,6 +5,7 @@ import Characters.Character;
 import Item.Item;
 import Strategy.BearStrategy;
 import Strategy.IglooStrategy;
+import Strategy.NoBear;
 import Strategy.NoIgloo;
 
 //
@@ -48,6 +49,8 @@ public abstract class Ice
 		neighbours = new ArrayList<Ice>();
 		items = new ArrayList<Item>();
 		NoIgloo nig = new NoIgloo();
+		NoBear nb = new NoBear();
+		bearStrategy = nb;
 		iglooStrategy = nig;
 		neighbourNum = 0;
 	}

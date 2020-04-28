@@ -10,11 +10,7 @@ public class TentStrategy implements IglooStrategy
 	/**
 	 * Alapertelmezett konstruktor.
 	 */
-	public TentStrategy() {
-		
-		System.out.println("--> Igloo()");
-		System.out.println("<--");
-		
+	public TentStrategy() {		
 	}
 	
 	public void stormEffects(Ice i) throws Exception

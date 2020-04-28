@@ -117,8 +117,8 @@ public abstract class Item
 	/**
 	 *  Csokkenti eggyel a durability adattagot amikor hasznaljak a targyat.
 	 */
-	public void decreaseDurability(){ ///TODO: itt fog valszeg eltorni is ha lecsokken nullara
-		durability--;
+	public void decreaseDurability() {
+		
 	}
 	
 	/**

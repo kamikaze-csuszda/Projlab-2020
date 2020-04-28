@@ -26,9 +26,7 @@ public class ShovelDig implements DigStrategy
 	 */
 	public ShovelDig(Shovel sh)
 	{
-		System.out.println("--> ShovelDig()");
 		shovel = sh;
-		System.out.println("<--");
 	}
 
 	/**

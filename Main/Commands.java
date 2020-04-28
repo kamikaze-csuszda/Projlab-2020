@@ -174,9 +174,11 @@ public class Commands
 					break;
 				case "start":
 					if(m.equals(mode.GAME))
-					if (args[1].equals("INIT")) {
+					{
+					if (args[1].equals("init")) {
 						m = mode.INIT;	
 						throw new Exception("$----------Init Mode----------");
+					}
 					}
 					else
 						throw new Exception("$Mar Init modban vagyunk!");
@@ -520,7 +522,7 @@ public class Commands
 				if(!(Game.getInstance().getObjects().get(key) instanceof Character)) 
 					throw new IllegalArgumentException("$"+key+" nem Karakter!");
 				((Character)Game.getInstance().getObjects().get(key)).getItem(id).use();
-				break;
+				throw new Exception("$Sikeres hasznalat!");
 			}
 		default:
 			throw new IllegalArgumentException("$Nincs ilyen parancs! A teljes parancslistahoz hasznalja a help parancsot!");
@@ -1212,9 +1214,12 @@ public class Commands
 			String message = new String();
 			message = message.concat("{ \n");
 			message = message.concat("\tEskimo: " + argument + ":\n");
-			message = message.concat("\t\tbodywarmth: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getWarmth());
-			message = message.concat("\t\taction: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getAction());
-			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() + "\n"));
+			message = message.concat("\t\tbodywarmth: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getWarmth() + "\n");
+			message = message.concat("\t\taction: " + ((Eskimo)Game.getInstance().getObjects().get(argument)).getAction() + "\n");
+			if(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() != null)
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getIce() ) + "\n");
+			else
+				message = message.concat("\t\tIce: \n");
 			message = message.concat("\t\tItems:");
 			for (int i = 0; i < ((Eskimo)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
 				message = message.concat(Game.getInstance().findName(((Eskimo)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
@@ -1249,15 +1254,19 @@ public class Commands
 			{
 				message = message.concat(" default\n");
 			}
-
+			message = message.concat("}");
+			throw new Exception(message);
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
 			String message = new String();
 			message = message.concat("{ \n");
 			message = message.concat("\tEskimo: " + argument + ":\n");
-			message = message.concat("\t\tbodywarmth: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getWarmth());
-			message = message.concat("\t\taction: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getAction());
-			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getIce() + "\n"));
+			message = message.concat("\t\tbodywarmth: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getWarmth() + "\n");
+			message = message.concat("\t\taction: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getAction() + "\n");
+			if(((Scientist)Game.getInstance().getObjects().get(argument)).getIce() != null)
+			message = message.concat("\t\tIce: " + Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getIce()) + "\n");
+			else
+				message = message.concat("\t\tIce: \n");
 			message = message.concat("\t\tItems:");
 			for (int i = 0; i < ((Scientist)Game.getInstance().getObjects().get(argument)).getEquipment().size(); i++){
 				message = message.concat(Game.getInstance().findName(((Scientist)Game.getInstance().getObjects().get(argument)).getItem(i)) + ", ");
@@ -1336,16 +1345,42 @@ public class Commands
 				message = message.concat("\n\t\tCharacter: ");
 				for(int i = 0; i < ((Ice)Game.getInstance().getObjects().get(argument)).getCharNum(); i++)
 				{
-					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getCharacter(i) + ", "));
+					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getCharacter(i) )+ ", ");
 				}
 				message = message.concat("\n\t\tIglooStrategy: ");
+				try
+				{
+					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getIglooStrategy())+ "\n");
+				} catch (Exception e)
+				{
+					message = message.concat(" default\n");
+				}
 				
-				message = message.concat("\n\t\tBearStrategy: ");
+				message = message.concat("\t\tBearStrategy: ");
+				try
+				{
+					message = message.concat(Game.getInstance().findName(((Ice)Game.getInstance().getObjects().get(argument)).getBearStrategy())+ "\n");
+				} catch (Exception e)
+				{
+					message = message.concat(" default\n");
+				}
+				message = message.concat("}");
+				throw new Exception(message);
 			}
 			
 		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Item){
-
+			String message = new String();
+			message = message.concat("{ \n");
+			message = message.concat("\t" + ((Item)Game.getInstance().getObjects().get(argument)).getItemClass() + " " + argument + ":\n");
+			message = message.concat("\t\tIsFrozen: " + String.valueOf(((Item)Game.getInstance().getObjects().get(argument)).getFrozen()) + "\n");
+			message = message.concat("\t\tdurability: " + String.valueOf(((Item)Game.getInstance().getObjects().get(argument)).getDurability()) + "\n");
+			if(((Item)Game.getInstance().getObjects().get(argument)).getCharacter() != null)
+				message = message.concat("\t\tCharacter: " + Game.getInstance().findName(((Item)Game.getInstance().getObjects().get(argument)).getCharacter()) + "\n");
+			else
+				message = message.concat("\t\tCharacter: \n");
+			message = message.concat("}");
+			throw new Exception(message);
 		}
 	}
 	
