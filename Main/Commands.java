@@ -75,6 +75,15 @@ public class Commands
 		
 			}
 	}
+	
+	/**
+	 * Parancsertelmezo, itt dol el, hogy melyik parancs lesz hasznalva
+	 * 
+	 * Hibat dob, amikor ki kell irnia valaminek az allapotat
+	 * 
+	 * @param args String tomb, ami a parancsot tartalmazza
+	 * @throws Exception
+	 */
 	public void execute(String[] args) throws Exception {
 		String command = args[0];
 		try {
@@ -183,6 +192,17 @@ public class Commands
 			}
 	}
 	
+	/**
+	 * Hovihar eloidezesere szolgal a megadott jegtablan
+	 * 
+	 * Hibat dob, ha:
+	 * - nem megfelelo szamu argumentum van 
+	 * - ha nem a megadott argumentum nem jegtabla
+	 * - sikeres a hovihar
+	 * 
+	 * @param args2 String tomb, ami a fuggveny parametereit tartalmazza
+	 * @throws Exception
+	 */
 	private void storm(String[] args2) throws Exception
 	{
 		if (args2.length != 2)
@@ -1164,11 +1184,15 @@ public class Commands
 		}
 		
 	}
+	
 	/**
-	*
+	* Kilistazza a megadott objektumoknak vagy az osszes objektumoknak az allapotait
+	* 
+	* Hibat dob, amikor valaminek az allapotat ki kell irnia
+	* 
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	* @throws Exception 
-	* @throws IllegalArgumentException
+	* @throws IllegalArgumentException ha rosszul vannak megadva a parameterek
 	*/
 	private void state(String[] args2) throws Exception
 	{
@@ -1324,11 +1348,15 @@ public class Commands
 
 		}
 	}
+	
 	/**
-	*
+	* Veget vet az aktualis kornek
+	* 
+	*  Hiba dob, ha kornek sikeresen vege van
+	*  
 	* @param args2 String tomb ami a fuggveny parametereit tartalmazza
 	* @throws Exception
-	* @throws IllegalArgumentException
+	* @throws IllegalArgumentException ha rosszul vannak magadva a parameterek
 	*/
 	private void turnend(String[] args2) throws Exception
 	{

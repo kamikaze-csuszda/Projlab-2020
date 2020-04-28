@@ -27,7 +27,11 @@ import Strategy.WaterStrategy;
 
 
 
-
+/**
+ * Ez az osztaly felel a karakterek osszes tulajdonsagaert
+ * es interakciojaert
+ * 
+ */
 public abstract class Character implements Movable
 {
 	private int bodywarmth;
@@ -79,12 +83,26 @@ public abstract class Character implements Movable
 		i.addCharacter(this);
 	}
 	
+	/**
+	 * Getter fuggveny, ami visszaadja a water strategiajat a karakternek
+	 * @return waterStrategy 
+	 */
 	public WaterStrategy getWaterStrategy() {
 		return waterStrategy;
 	}
+	
+	/**
+	 * Getter fuggveny, ami visszaadja a help strategiajat a karakternek
+	 * @return helpStrategy
+	 */
 	public HelpStrategy getHelpStrategy() {
 		return helpStrategy;
 	}
+	
+	/**
+	 * Getter fuggveny, ami visszaadja a dig strategiajat a karakternek
+	 * @return digStrategy
+	 */
 	public DigStrategy getDigStrategy() {
 		return digStrategy;
 	}

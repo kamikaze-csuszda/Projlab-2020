@@ -14,7 +14,11 @@ import Ice.Ice;
 //
 
 
-
+/**
+ * Az eszkozok tulajdonsagaiert es a veluk valo interakciokert
+ * felelos osztaly
+ *
+ */
 
 public abstract class Item
 {
@@ -40,9 +44,18 @@ public abstract class Item
 		frozen = true;
 		durability = dur;
 	}
+	
+	/**
+	 * Setter fuggveny, ami beallitja az adott eszkoz fagyottsagi allapotat
+	 * @param b a fagyottsag adattag kivant erteke
+	 */
 	public void setFrozen(Boolean b) {
 		frozen = b;
 	}
+	
+	/**
+	 * Absztrakt fuggveny, amit a leszarmazottak valositanak meg
+	 */
 	public abstract String getItemClass();
 	/**
 	 * Beallitja, melyik tablan van az item

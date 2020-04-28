@@ -75,14 +75,31 @@ public abstract class Ice
 		this(snow);
 		maxCharacters = maxChar;
 	}
+	
+	/**
+	 * Megmondja, hogy a parameterben kapott jegtabla szomszedos e
+	 * az aktualis jegtablaval
+	 * @param i jegtabla, aminek a szomszedossagara kivancsiak vagyunk
+	 * @return true ha szomszedos, false, ha nem szomszedos
+	 */
 	public Boolean isNeighbour(Ice i) {
 		if(neighbours.contains(i))
 			return true;
 		return false;
 	}
+	
+	/**
+	 * Getter fuggveny, ami visszaadja az igloo startegiajat a jegtablanak
+	 * @return iglooStrategy
+	 */
 	public IglooStrategy getIglooStrategy() {
 		return iglooStrategy;
 	}
+	
+	/**
+	 * Getter fuggveny, ami visszaadja a bear strategiajat a jegnek
+	 * @return bearStrategy
+	 */
 	public BearStrategy getBearStrategy() {
 		return bearStrategy;
 	}
@@ -306,6 +323,10 @@ public abstract class Ice
 		return items;
 	}
 	
+	/**
+	 * Setter fuggveny, ami beallitja a bear strategiajat a jegnek
+	 * @param bs a bear strategia, amit be kell allitania
+	 */
 	public void setBearStrategy(BearStrategy bs) {
 		bearStrategy = bs;
 		
