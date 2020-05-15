@@ -121,7 +121,7 @@ public class Game implements Serializable
 			type[i] = Integer.parseInt(temp[i]);
 		}
 		String name = "";
-		int stable = 0, unstable = 0, hole = 0;
+		int stable = 1, unstable = 1, hole = 1;
 		for(int i = 0; i<length; i++)
 		{
 			switch(type[i])

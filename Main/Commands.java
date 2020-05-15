@@ -233,14 +233,12 @@ public class Commands
 		if (args2.length != 2)
 			throw new IllegalArgumentException("$A parancs nem hasznalhato ennyi parameterrel! Hasznalja a 'help breakeice' parancsot tovabbi informacioert!");
 	 	String key = args2[1];
-		if (Game.getInstance().getObjects().get(key) instanceof Ice){
-			if (((Ice)Game.getInstance().getObjects().get(key)).getSnow() == 0){
+		if (Game.getInstance().getObjects().get(key) instanceof Character){
+			if (((Character)Game.getInstance().getObjects().get(key)).getIce().getSnow() == 0){
 				String print = new String("$Sikeresen kitorted a jegbol a(z)");
-				for (Item it: ((Ice)Game.getInstance().getObjects().get(key)).getItemArray()){
+				for (Item it: ((Character)Game.getInstance().getObjects().get(key)).getIce().getItemArray()){
 					it.defrost();
-					String temp = it.getClass().toString();
-					String[] temp2 = temp.split(".");
-					temp = temp2[temp2.length-1];
+					String temp = it.getItemClass();
 					print = print.concat(" " + temp + ",");
 				}
 				print = print.concat("eszkozoket!");
@@ -711,7 +709,7 @@ public class Commands
 			if(!(Game.getInstance().getObjects().get(key1) instanceof Character)) 
 				throw new IllegalArgumentException("$"+key1 + " nem Karakter");
 			String key2 = args2[3];
-			if(!(Game.getInstance().getObjects().get("$"+key2) instanceof Gun)) 
+			if(!(Game.getInstance().getObjects().get(key2) instanceof Gun)) 
 				throw new IllegalArgumentException(key2 + " nem Fegyver!");
 			((Character)Game.getInstance().getObjects().get(key1)).addGunpart(((Gun)Game.getInstance().getObjects().get(key2)));
 			throw new Exception("$Sikeres beallitas!");
@@ -723,7 +721,7 @@ public class Commands
 				throw new IllegalArgumentException("$"+key1 + " nem Karakter!");
 			String key2 = args2[3];
 			if(!(Game.getInstance().getObjects().get(key2) instanceof DigStrategy)) 
-				throw new IllegalArgumentException("$"+key2 + " nem Karakter!");
+				throw new IllegalArgumentException("$"+key2 + " nem DigStrategy!");
 			((Character)Game.getInstance().getObjects().get(key1)).setDigStrategy(((DigStrategy)Game.getInstance().getObjects().get(key2)));
 			throw new Exception("$Sikeres beallitas!");
 		}
@@ -1175,11 +1173,12 @@ public class Commands
 					ldargs = loaded.get(i).split(" ");
 					execute(ldargs);
 				}
-				throw new Exception("$Sikeres betoltes!");
+				
 			} catch (Exception e)
 			{
 				throw new Exception("$Sikertelen betoltes!");
 			}
+			throw new Exception("$Sikeres betoltes!");
 
 		}
 		default:
@@ -1261,7 +1260,7 @@ public class Commands
 		else if (Game.getInstance().getObjects().get(argument) instanceof Scientist){
 			String message = new String();
 			message = message.concat("{ \n");
-			message = message.concat("\tEskimo: " + argument + ":\n");
+			message = message.concat("\tScientist: " + argument + ":\n");
 			message = message.concat("\t\tbodywarmth: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getWarmth() + "\n");
 			message = message.concat("\t\taction: " + ((Scientist)Game.getInstance().getObjects().get(argument)).getAction() + "\n");
 			if(((Scientist)Game.getInstance().getObjects().get(argument)).getIce() != null)
@@ -1337,6 +1336,7 @@ public class Commands
 						{
 							message = message.concat(Game.getInstance().findName(ice) + ", ");
 						}
+			}
 				message = message.concat("\n\t\tsnow: " + ((Ice)Game.getInstance().getObjects().get(argument)).getSnow() + "\n");
 				message = message.concat("\t\tmaxCharacter: " + ((Ice)Game.getInstance().getObjects().get(argument)).getMaxCharacters() + "\n");
 				message = message.concat("\t\tItems:");
@@ -1369,7 +1369,6 @@ public class Commands
 				throw new Exception(message);
 			}
 			
-		}
 		else if (Game.getInstance().getObjects().get(argument) instanceof Item){
 			String message = new String();
 			message = message.concat("{ \n");

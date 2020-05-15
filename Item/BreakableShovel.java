@@ -11,13 +11,14 @@ public class BreakableShovel extends Shovel {
     public BreakableShovel(){
             super(3);
             }
-    
+public void decreaseDurability() {
+		setDurability(getDurability() - 1);
+	}
     public void use()
 	{
 		ShovelDig sd = new ShovelDig(this);
 		Character c = this.getCharacter();
 		c.setDigStrategy(sd);
-		decreaseDurability();
 	}
 
 	/**

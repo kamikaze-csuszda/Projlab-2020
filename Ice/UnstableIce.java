@@ -36,7 +36,6 @@ public class UnstableIce extends Ice
 	public void moveHere(Character c) {
 
 		addCharacter(c);
-		c.getIce().removeCharacter(c);
 		c.setIce(this);
 		if(getCharNum() >= getMaxCharacters())
 			for (int i = getCharNum()-1; i>= 0; i--)
