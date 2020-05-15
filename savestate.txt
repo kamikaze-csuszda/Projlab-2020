@@ -1,3 +1,0 @@
-create eskimo e1
-create shovel sh
-set item e1 sh

@@ -1,8 +1,0 @@
-create Eskimo e1
-create StableIce st
-set ice e1 st
-storm st
-state all
-start init
-save output actual_test5.txt
-close
