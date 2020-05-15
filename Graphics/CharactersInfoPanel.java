@@ -5,23 +5,23 @@ import java.awt.Panel;
 
 public class CharactersInfoPanel extends Panel implements UpdateInterface
 {
-
+	private static final long serialVersionUID = 1L;
+	
 	public CharactersInfoPanel()
 	{
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public CharactersInfoPanel(LayoutManager layout)
 	{
 		super(layout);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	@Override
 	public void update()
 	{
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

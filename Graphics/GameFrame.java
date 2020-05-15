@@ -1,11 +1,17 @@
 package Graphics;
 
-public class GameFrame extends MyFrame
+public class GameFrame extends MyFrame implements UpdateInterface
 {
 
 	public GameFrame()
 	{
-		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	@Override
+	public void update()
+	{
+		
 	}
 
 }

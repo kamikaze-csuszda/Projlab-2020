@@ -8,7 +8,7 @@ public class IceInfoPanel extends Panel implements UpdateInterface
 
 	public IceInfoPanel()
 	{
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public IceInfoPanel(LayoutManager layout)
@@ -20,8 +20,7 @@ public class IceInfoPanel extends Panel implements UpdateInterface
 	@Override
 	public void update()
 	{
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }
