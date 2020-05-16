@@ -13,7 +13,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
+import Characters.Eskimo;
 import Characters.PolarBear;
+import Characters.Scientist;
 import Ice.HoleIce;
 import Ice.Ice;
 import Ice.StableIce;
@@ -89,8 +91,20 @@ public class Game implements Serializable
 		if(objects.putIfAbsent(key, o)!= null)
 			throw new Exception("$Mar van ilyen nevu objektum");
 	}
-	public void init()
+	public void initGame1()
 	{
+		numOfCharacters = 3;
+		objects.put("e1", new Eskimo());
+		objects.put("e2", new Eskimo());
+		objects.put("sc1", new Scientist());
+		try
+		{
+			generateMap("map1.txt");
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void generateItems()
