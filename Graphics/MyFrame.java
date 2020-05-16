@@ -1,8 +1,7 @@
 package Graphics;
+import javax.swing.JFrame;
 
-import java.awt.Frame;
-
-public class MyFrame extends Frame
+public class MyFrame extends JFrame
 {
 	private static final long serialVersionUID = 1L;
 	private boolean active;

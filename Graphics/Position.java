@@ -2,28 +2,28 @@ package Graphics;
 
 public class Position
 {
-	float x;
-	float y;
-	float r;
-	public Position(float _x, float _y, float _r) {
+	int x;
+	int y;
+	int r;
+	public Position(int _x, int _y, int _r) {
 		x = _x;
 		y = _y;
 		r = _r;
 	}
-	public float getX() {
+	public int getX() {
 		return x;
 	}
-	public float getY() {
+	public int getY() {
 		return y;
 	}
-	public float getR() {
+	public int getR() {
 		return r;
 	}
-	public void setPos(float _x, float _y) {
+	public void setPos(int _x, int _y) {
 		x = _x;
 		y = _y;
 	}
-	public void setRadius(float _r) {
+	public void setRadius(int _r) {
 		r = _r;
 	}
 }

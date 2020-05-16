@@ -1,9 +1,14 @@
 package Graphics;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
-public class MapView implements UpdateInterface
+import javax.swing.JPanel;
+
+public class MapView extends JPanel implements UpdateInterface
 {
+	private static final long serialVersionUID = 1L;
 	private ArrayList<ItemView> itemView;
 	private ArrayList<CharacterView> characterView;
 	private ArrayList<IceView> iceView;
@@ -14,6 +19,7 @@ public class MapView implements UpdateInterface
 		characterView = new ArrayList<CharacterView>();
 		iceView = new ArrayList<IceView>();
 		bearView = null;
+		this.setBackground(Color.cyan);
 	}
 
 	public MapView(GameFrame g)
@@ -64,6 +70,18 @@ public class MapView implements UpdateInterface
 	}
 	public void removeItemView(ItemView iv) {
 		itemView.remove(iv);
+	}
+	public void paintComponent(Graphics g) {
+		for (IceView item : iceView)
+		{
+			if(item instanceof StableView)
+				g.setColor(Color.white);
+			else if(item instanceof UnstableView)
+				g.setColor(Color.gray);
+			else if(item instanceof HoleView)
+				g.setColor(Color.red);
+			g.fillOval(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+		}
 	}
 	@Override
 	public void update()
