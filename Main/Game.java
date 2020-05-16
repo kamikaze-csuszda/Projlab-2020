@@ -20,6 +20,9 @@ import Ice.HoleIce;
 import Ice.Ice;
 import Ice.StableIce;
 import Ice.UnstableIce;
+import Item.*;
+import Strategy.Bear;
+import Strategy.BearStrategy;
 
 //
 //
@@ -94,9 +97,12 @@ public class Game implements Serializable
 	public void initGame1()
 	{
 		numOfCharacters = 3;
-		objects.put("e1", new Eskimo());
-		objects.put("e2", new Eskimo());
-		objects.put("sc1", new Scientist());
+		Eskimo e1 = new Eskimo();
+		Eskimo e2 = new Eskimo();
+		Scientist sc1 = new Scientist();
+		objects.put("e1", e1);
+		objects.put("e2", e2);
+		objects.put("sc1", sc1);
 		try
 		{
 			generateMap("map1.txt");
@@ -104,11 +110,46 @@ public class Game implements Serializable
 		{
 			e.printStackTrace();
 		}
-		
+		StableIce.class.cast(objects.get("st1")).addCharacter(e1);
+		StableIce.class.cast(objects.get("st1")).addCharacter(e2);
+		StableIce.class.cast(objects.get("st1")).addCharacter(sc1);
+		e1.setIce(StableIce.class.cast(objects.get("st1")));
+		e2.setIce(StableIce.class.cast(objects.get("st1")));
+		sc1.setIce(StableIce.class.cast(objects.get("st1")));
+		generateItems1();
 	}
 	
-	public void generateItems()
+	public void generateItems1()
 	{
+		Flare r1 = new Flare();
+		Cartridge r2 = new Cartridge();
+		FlareGun r3 = new FlareGun();
+		objects.put("r1", r1);
+		objects.put("r2", r2);
+		objects.put("r3", r3);
+		UnstableIce.class.cast(objects.get("usi1")).addItem(r3);
+		StableIce.class.cast(objects.get("st1")).addItem(r1);
+		StableIce.class.cast(objects.get("st4")).addItem(r2);
+		Shovel sh = new Shovel();
+		objects.put("sh",  sh);
+		Food f = new Food();
+		objects.put("f",  f);
+		Rope r = new Rope();
+		objects.put("r",  r);
+		DivingSuit ds = new DivingSuit();
+		objects.put("ds",  ds);
+		Tent t = new Tent();
+		objects.put("t",  t);
+		StableIce.class.cast(objects.get("st2")).addItem(sh);
+		StableIce.class.cast(objects.get("st3")).addItem(f);
+		StableIce.class.cast(objects.get("st3")).addItem(t);
+		StableIce.class.cast(objects.get("st5")).addItem(ds);
+		UnstableIce.class.cast(objects.get("usi2")).addItem(sh);
+		PolarBear pb = new PolarBear();
+		objects.put("pb", pb);
+		pb.setIce(StableIce.class.cast(objects.get("st5")));
+		StableIce.class.cast(objects.get("st5")).setBearStrategy(new Bear());;
+		
 	}
 	
 	public void generateMap(String filename) throws FileNotFoundException
