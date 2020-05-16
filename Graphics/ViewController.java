@@ -52,7 +52,7 @@ public class ViewController implements UpdateInterface
 		mf.setVisible(false);
 		gf.setVisible(true);
 		Game.getInstance().initGame1();
-		mapView.update();
+		mapView.init();
 	}
 	public void initController() {
 		frames.get(0).setVisible(true);

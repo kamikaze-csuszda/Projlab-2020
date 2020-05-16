@@ -83,6 +83,9 @@ public class MapView extends JPanel implements UpdateInterface
 			g.fillOval(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
 		}
 	}
+	public void init() {
+		
+	}
 	@Override
 	public void update()
 	{

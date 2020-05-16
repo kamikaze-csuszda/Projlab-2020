@@ -17,10 +17,9 @@ public class IceView implements UpdateInterface
 		neighbours = new ArrayList<IceView>();
 		itemView = new ArrayList<ItemView>();
 	}
-	public IceView(Position _pos, BearView _bearView, Ice _ice) {
+	public IceView(Position _pos, Ice _ice) {
 		this();
 		pos = _pos;
-		bearView = _bearView;
 		ice = _ice;
 		
 	}
@@ -38,6 +37,9 @@ public class IceView implements UpdateInterface
 	}
 	public BearView getBearView() {
 		return bearView;
+	}
+	public void setBearView(BearView bv) {
+		bearView = bv;
 	}
 	public ArrayList<CharacterView> getCharView(){
 		return characterView;
