@@ -75,7 +75,7 @@ public class Game implements Serializable
 	{
 		String ret = "Not found";
 		for(String key: objects.keySet()) {
-			if(objects.get(key) == _object)
+			if(objects.get(key).equals(_object))
 				ret = key;
 		}
 		if (ret.equals("Not found"))

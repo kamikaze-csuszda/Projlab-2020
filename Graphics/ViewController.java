@@ -1,7 +1,11 @@
 package Graphics;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,6 +67,21 @@ public class ViewController implements UpdateInterface
 		mf.setVisible(false);
 		gf.setVisible(true);
 		gf.add(mapView);
+		mapView.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				for (IceView item : mapView.getIceView())
+				{
+					Rectangle rect = new Rectangle(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+					if(rect.contains(e.getX(), e.getY())) 
+					{
+						selectedIce = item.getIce();
+					gf.icePanel.setIce(selectedIce);
+					}
+				}
+			}
+		});
+		gf.addIcePanel(new IceInfoPanel(Game.getInstance().getMapPieces().get(0)));
 	}
 	public class CommandActionListener implements ActionListener{
 		@Override
@@ -81,7 +100,6 @@ public class ViewController implements UpdateInterface
 	@Override
 	public void update()
 	{
-		// TODO Auto-generated method stub
-		
+		gf.update();
 	}
 }

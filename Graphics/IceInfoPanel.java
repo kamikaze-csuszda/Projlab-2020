@@ -1,43 +1,42 @@
 package Graphics;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.LayoutManager;
 import java.awt.Panel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Ice.Ice;
 import Main.Game;
+import Strategy.NoIgloo;
+import Strategy.TentStrategy;
 
-public class IceInfoPanel extends Panel implements UpdateInterface
+public class IceInfoPanel extends JPanel implements UpdateInterface
 {
 	private Ice ice;
 	private JLabel name;
-	private JLabel characters;
-	private JLabel items;
 	private JLabel snow;
 	private JLabel igloo;
-	private JLabel bear;
 	private JLabel maxchar;
-	public IceInfoPanel()
+	public IceInfoPanel(Ice i)
 	{
 		super();
-		name = new JLabel();
-		characters = new JLabel();
-		items = new JLabel();
-		snow = new JLabel();
-		igloo = new JLabel();
-		bear = new JLabel();
-		maxchar = new JLabel();
+		ice = i;
+		setBackground(new Color(138,210,255));
+		name = new JLabel("Jegtabla: ");
+		snow = new JLabel("Horeteg: ");
+		igloo = new JLabel("Van iglu: ");
+		maxchar = new JLabel("Max karakterek: ");
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
+		setPreferredSize(new Dimension(200, 800));
 		add(name);
-		add(characters);
-		add(items);
 		add(snow);
 		add(igloo);
-		add(bear);
 		add(maxchar);
+		repaint(0, 0, 200, 800);
 	}
 
 	public IceInfoPanel(LayoutManager layout)
@@ -54,9 +53,22 @@ public class IceInfoPanel extends Panel implements UpdateInterface
 	@Override
 	public void update()
 	{
+		
 		try
 		{
 			name.setText("Jegtabla: " + Game.getInstance().findName(ice));
+			snow.setText("Horeteg: " + ice.getSnow());
+			if(ice.getIglooStrategy() instanceof NoIgloo)
+				igloo.setText("Van igloo: nincs");
+			else if(ice.getIglooStrategy() instanceof TentStrategy)
+				igloo.setText("Van igloo: sator van");
+			else
+				igloo.setText("Van igloo: van");
+			if(ice.getMaxCharacters() > 0)
+				maxchar.setText("Max karakterek: " + ice.getMaxCharacters());
+			else
+				maxchar.setText("Max karakterek: Nem instabil");
+			
 		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
