@@ -17,6 +17,9 @@ public class IceView implements UpdateInterface
 		neighbours = new ArrayList<IceView>();
 		itemView = new ArrayList<ItemView>();
 	}
+	public void addItemView(ItemView iv) {
+		itemView.add(iv);
+	}
 	public Ice getIce() {
 		return ice;
 	}

@@ -271,6 +271,9 @@ public abstract class Ice
 	public ArrayList<Ice> getNeighbourArray(){
 		return neighbours;
 	}
+	public ArrayList<Character> getCharacterArray(){
+		return characters;
+	}
 	/**
 	 * Kivesz egy targyat a mezon levo targyak kozul
 	 * @param i a kivevendo targy

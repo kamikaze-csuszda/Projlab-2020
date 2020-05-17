@@ -16,6 +16,7 @@ import Ice.HoleIce;
 import Ice.Ice;
 import Ice.StableIce;
 import Ice.UnstableIce;
+import Item.Item;
 import Main.Game;
 
 public class MapView extends JPanel implements UpdateInterface
@@ -31,7 +32,7 @@ public class MapView extends JPanel implements UpdateInterface
 		characterView = new ArrayList<CharacterView>();
 		iceView = new ArrayList<IceView>();
 		bearView = null;
-		setBackground(Color.cyan);
+		setBackground(new Color(138, 210, 255));
 		setOpaque(true);
 	}
 
@@ -109,9 +110,11 @@ public class MapView extends JPanel implements UpdateInterface
 		{
 			grid.clear();
 			int gridsTaken = 0;
-			for(int i = 0; i < 9; i++)
+			for(int i = 0; i < 3; i++)
 			{
-				grid.add(new Position((i*46) + item.getPos().getX(), (i*46) + item.getPos().getY(), 46));
+				for(int j = 0; j < 3; j++) {
+					grid.add(new Position((j*46) + item.getPos().getX(), (i*46) + item.getPos().getY(), 46));
+				}
 			}
 			if(item instanceof StableView)
 				g.setColor(Color.white);
@@ -121,7 +124,16 @@ public class MapView extends JPanel implements UpdateInterface
 				g.setColor(Color.red);
 			
 			g.fillOval(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
-			
+			for (CharacterView chv: item.getCharView())
+			{
+				chv.paint(g, grid.get(gridsTaken));
+				gridsTaken++;
+			}
+			for (ItemView itv : item.getItemView())
+			{
+				itv.paint(g, grid.get(gridsTaken));
+				gridsTaken++;
+			}
 			repaint(0, 0, getWidth(), getHeight());
 		}
 		
@@ -155,18 +167,19 @@ public class MapView extends JPanel implements UpdateInterface
 			{
 				item.addNeighbour(findIceView(ice));
 			}
-		}
-		//----------------------------------------
-		//A CharacterView-k betoltese es hozzaadasa a megfelelo IceView-hoz
-		for (String key : Game.getInstance().getObjects().keySet())
-		{
-			if(Game.getInstance().getObjects().get(key) instanceof Character)
+			for(Item it : item.getIce().getItemArray()) 
 			{
-				characterView.add(new CharacterView(findIceView(Character.class.cast(Game.getInstance().getObjects().get(key)).getIce()), Character.class.cast(Game.getInstance().getObjects().get(key))));
+				ItemView iv = new ItemView(item, it);
+				item.addItemView(iv);
+				itemView.add(iv);
+			}
+			for (Character ch: item.getIce().getCharacterArray())
+			{
+				CharacterView cv = new CharacterView(item, ch);
+				item.addCharacterView(cv);
+				characterView.add(cv);
 			}
 		}
-		
-		
 	}
 	@Override
 	public void update()

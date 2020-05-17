@@ -144,7 +144,7 @@ public class Game implements Serializable
 		StableIce.class.cast(objects.get("st3")).addItem(f);
 		StableIce.class.cast(objects.get("st3")).addItem(t);
 		StableIce.class.cast(objects.get("st5")).addItem(ds);
-		UnstableIce.class.cast(objects.get("usi2")).addItem(sh);
+		UnstableIce.class.cast(objects.get("usi2")).addItem(r);
 		PolarBear pb = new PolarBear();
 		objects.put("pb", pb);
 		pb.setIce(StableIce.class.cast(objects.get("st5")));
