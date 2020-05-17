@@ -15,6 +15,7 @@ public class ViewController implements UpdateInterface
 	private ArrayList<MyFrame> frames;
 	public MapView mapView;
 	public Ice selectedIce;
+	public Character selectedCharacter;
 	private MenuFrame mf;
 	GameFrame gf;
 	public ViewController() {
@@ -24,11 +25,8 @@ public class ViewController implements UpdateInterface
 		mapView = new MapView();
 		frames.add(new MenuFrame());
 		frames.get(0).setActive(true);
-		frames.add(new GameFrame());
-		frames.get(1).add(new MapView());
 		initController();
 		mf = (MenuFrame)frames.get(0);
-		gf = (GameFrame)frames.get(1);
 		mf.closeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -47,10 +45,7 @@ public class ViewController implements UpdateInterface
 		
 	}
 	public void initGame1() {
-		mf.setActive(false);
-		gf.setActive(true);
-		mf.setVisible(false);
-		gf.setVisible(true);
+		
 		Game.getInstance().initGame1();
 		try
 		{
@@ -60,7 +55,25 @@ public class ViewController implements UpdateInterface
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		frames.add(new GameFrame());
+		gf = (GameFrame)frames.get(1);
+		generateActionListeners();
+		mf.setActive(false);
+		gf.setActive(true);
+		mf.setVisible(false);
+		gf.setVisible(true);
 		gf.add(mapView);
+	}
+	public class CommandActionListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+	public void generateActionListeners()
+	{
+		
 	}
 	public void initController() {
 		frames.get(0).setVisible(true);
