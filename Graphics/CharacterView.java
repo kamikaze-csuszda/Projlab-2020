@@ -1,5 +1,5 @@
 package Graphics;
-
+import Characters.Character;
 public class CharacterView implements UpdateInterface
 {
 	private Character character;

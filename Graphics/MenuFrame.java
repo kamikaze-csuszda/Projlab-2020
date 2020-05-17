@@ -23,7 +23,7 @@ public class MenuFrame extends MyFrame
 	public JButton closeButton;
 	public MenuFrame()
 	{
-		super();
+		super("Jegmezo - Menu");
 		startButton1 = new JButton("Palya 1 Start");
 		startButton2 = new JButton("Palya 2 Start");
 		closeButton = new JButton("Bezaras");
@@ -51,6 +51,7 @@ public class MenuFrame extends MyFrame
 		jp.add(Box.createRigidArea(new Dimension(0,20)));
 		jp.add(closeButton);
 		this.add(jp, BorderLayout.CENTER);
+		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 		//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 	}

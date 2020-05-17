@@ -52,7 +52,15 @@ public class ViewController implements UpdateInterface
 		mf.setVisible(false);
 		gf.setVisible(true);
 		Game.getInstance().initGame1();
-		mapView.init();
+		try
+		{
+			mapView.init1();
+		} catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		gf.add(mapView);
 	}
 	public void initController() {
 		frames.get(0).setVisible(true);
