@@ -3,16 +3,16 @@ package Graphics;
 import java.awt.LayoutManager;
 import java.awt.Panel;
 
-public class CharactersInfoPanel extends Panel implements UpdateInterface
+public class CharacterInfoPanel extends Panel implements UpdateInterface
 {
 	private static final long serialVersionUID = 1L;
 	
-	public CharactersInfoPanel()
+	public CharacterInfoPanel()
 	{
 		super();
 	}
 
-	public CharactersInfoPanel(LayoutManager layout)
+	public CharacterInfoPanel(LayoutManager layout)
 	{
 		super(layout);
 		

@@ -2,6 +2,7 @@ package Graphics;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.File;
@@ -28,12 +29,14 @@ public class MapView extends JPanel implements UpdateInterface
 	private BearView bearView;
 	private GameFrame gameFrame;
 	public MapView() {
+		super();
 		itemView = new ArrayList<ItemView>();
 		characterView = new ArrayList<CharacterView>();
 		iceView = new ArrayList<IceView>();
 		bearView = null;
 		setBackground(new Color(138, 210, 255));
 		setOpaque(true);
+		setPreferredSize(new Dimension(800, 800));
 	}
 
 	public MapView(GameFrame g)

@@ -18,20 +18,13 @@ public class GameFrame extends MyFrame implements UpdateInterface
 	public ArrayList<JRadioButtonMenuItem> characters;
 	public JMenuItem warmup, itemDrop, shovel, eat, assemble;
 	public JRadioButtonMenuItem move, itemGive, itemPickup, ability;
+	public IceInfoPanel icePanel;
+	public CharacterInfoPanel characterPanel;
 	public GameFrame()
 	{
 		super("Jegmezo - Jatek");
 		setLayout(new BorderLayout());
 		setSize(1200, 800);
-		
-		JPanel jp1 = new JPanel();
-		jp1.setPreferredSize(new Dimension(200, 800));
-		JPanel jp2 = new JPanel();
-		jp2.setPreferredSize(new Dimension(200, 800));
-		jp1.setBackground(Color.cyan);
-		jp2.setBackground(Color.cyan);
-		add(jp1, BorderLayout.EAST);
-		add(jp2, BorderLayout.WEST);
 		characters = new ArrayList<JRadioButtonMenuItem>();
 		menuBar = new JMenuBar();
 		characterMenu = new JMenu("Karakterek");
@@ -102,15 +95,18 @@ public class GameFrame extends MyFrame implements UpdateInterface
 		add(m, BorderLayout.CENTER);
 	}
 	public void addIcePanel(IceInfoPanel ip) {
+		icePanel = ip;
 		add(ip, BorderLayout.EAST);
 	}
-	public void addCharPanel(CharactersInfoPanel cp) {
+	public void addCharPanel(CharacterInfoPanel cp) {
+		characterPanel = cp;
 		add(cp, BorderLayout.WEST);
 	}
 	@Override
 	public void update()
 	{
-		
+		icePanel.update();
+		characterPanel.update();
 	}
 
 }
