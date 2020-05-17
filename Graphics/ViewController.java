@@ -8,6 +8,8 @@ import java.util.HashMap;
 import Ice.Ice;
 import Main.Game;
 
+import javax.swing.*;
+
 public class ViewController implements UpdateInterface
 {
 	public HashMap<Character, CharacterView> characterMap;
@@ -68,7 +70,13 @@ public class ViewController implements UpdateInterface
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			JFrame items = new JFrame("Eszkozvalaszto");
+			items.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			for(String key : Game.getInstance().getObjects().keySet()){
+				if (Game.getInstance().getObjects().get(key) instanceof Item && Game.getInstance().getObjects().get(key).getCharacter().equals(selectedCharacter))
+					items.add(new JRadioButton(key));
+			}
+			items.add(new JButton("Kivalaszt"));
 		}
 	}
 	public void generateActionListeners()
