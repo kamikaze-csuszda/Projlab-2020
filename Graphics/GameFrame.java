@@ -54,12 +54,18 @@ public class GameFrame extends MyFrame implements UpdateInterface
 		ButtonGroup actions = new ButtonGroup();
 		move = new JRadioButtonMenuItem("Mozgas");
 		warmup = new JMenuItem("Melegedes");
+		warmup.setActionCommand("warmup");
 		eat = new JMenuItem("Eves");
+		eat.setActionCommand("eat");
 		itemGive = new JRadioButtonMenuItem("Eszkoz atadas");
 		itemPickup = new JRadioButtonMenuItem("Eszkoz felvetel");
 		itemDrop = new JMenuItem("Eszkoz eldobasa");
+		itemDrop.setActionCommand("itemDrop");
 		shovel = new JMenuItem("Ho eltakaritas");
+		shovel.setActionCommand("shovel");
 		assemble = new JMenuItem("Fegyver osszerakasa");
+		assemble.setActionCommand("assemble");
+		
 		ability = new JRadioButtonMenuItem("Kepesseg hasznalata");
 		JMenuItem cancel = new JMenuItem("Megse");
 		actionMenu.add(warmup);
