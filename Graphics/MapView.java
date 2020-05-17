@@ -93,6 +93,7 @@ public class MapView extends JPanel implements UpdateInterface
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		ArrayList<Position> grid = new ArrayList<Position>();
 		Graphics2D g2 = (Graphics2D)g;
 		for (IceView item : iceView)
 		{
@@ -106,7 +107,12 @@ public class MapView extends JPanel implements UpdateInterface
 		}
 		for (IceView item : iceView)
 		{
-			
+			grid.clear();
+			int gridsTaken = 0;
+			for(int i = 0; i < 9; i++)
+			{
+				grid.add(new Position((i*46) + item.getPos().getX(), (i*46) + item.getPos().getY(), 46));
+			}
 			if(item instanceof StableView)
 				g.setColor(Color.white);
 			else if(item instanceof UnstableView)
@@ -115,8 +121,10 @@ public class MapView extends JPanel implements UpdateInterface
 				g.setColor(Color.red);
 			
 			g.fillOval(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+			
 			repaint(0, 0, getWidth(), getHeight());
 		}
+		
 		
 	}
 	public void init1() throws FileNotFoundException {
