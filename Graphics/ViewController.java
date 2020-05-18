@@ -27,6 +27,7 @@ public class ViewController implements UpdateInterface
 	public MapView mapView;
 	public Ice selectedIce;
 	public Character selectedCharacter;
+	CommandActionListener cListener = new CommandActionListener();
 	private MenuFrame mf;
 	GameFrame gf;
 	public ViewController() {
@@ -36,6 +37,7 @@ public class ViewController implements UpdateInterface
 		mapView = new MapView();
 		frames.add(new MenuFrame());
 		frames.get(0).setActive(true);
+		
 		initController();
 		mf = (MenuFrame)frames.get(0);
 		mf.closeButton.addActionListener(new ActionListener() {
@@ -94,8 +96,9 @@ public class ViewController implements UpdateInterface
 							}
 						}
 					}
-					gf.update();
-					mapView.update();
+					if(gf.isVisible())
+						update();
+					
 				}
 				else if(gf.itemGive.isSelected())
 				{
@@ -229,7 +232,7 @@ public class ViewController implements UpdateInterface
 		}
 		gf.addCharPanel(new CharacterInfoPanel(selectedCharacter));
 		gf.addIcePanel(new IceInfoPanel(mapView.getIceView(Ice.class.cast(Game.getInstance().getMapPieces().get(0)))));
-		CommandActionListener cListener = new CommandActionListener();
+		
 		gf.itemDrop.addActionListener(cListener);
 		gf.turnend.addActionListener(cListener);
 		gf.shovel.addActionListener(cListener);
@@ -291,24 +294,25 @@ public class ViewController implements UpdateInterface
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				gf.update();
+				update();
 			}
 			else if(e.getActionCommand().equals("shovel")) {
 				selectedCharacter.dig();
-				gf.update();
+				update();
 			}
 			else if(e.getActionCommand().equals("eat")) {
 				for(int i = 0; i < selectedCharacter.getEquipment().size(); i++)
 					if(selectedCharacter.getEquipment().get(i) instanceof Food)
 						selectedCharacter.getEquipment().get(i).use();
-				gf.update();
+				update();
 			}
 			else if(e.getActionCommand().equals("breakIce")) {
 				selectedCharacter.breakIce();
-				gf.update();
+				update();
 			}
 			else if(e.getActionCommand().equals("assemble")) {
 				selectedCharacter.assembleGun();
+				update();
 			}
 			else if(e.getActionCommand().equals("warmup")) {
 				selectedCharacter.warmup();
@@ -362,6 +366,61 @@ public class ViewController implements UpdateInterface
 	@Override
 	public void update()
 	{
+		if(Game.getInstance().getLost())
+		{
+			JOptionPane.showMessageDialog(gf, "Elvesztetted a jatekot!", "Game Lost!", JOptionPane.ERROR_MESSAGE);
+			gf.setVisible(false);
+			gf.remove(gf.characterPanel);
+			gf.remove(gf.icePanel);
+			gf.remove(gf.menuBar);
+			gf.itemDrop.removeActionListener(cListener);
+			gf.turnend.removeActionListener(cListener);
+			gf.shovel.removeActionListener(cListener);
+			gf.eat.removeActionListener(cListener);
+			gf.breakIce.removeActionListener(cListener);
+			gf.assemble.removeActionListener(cListener);
+			gf.warmup.removeActionListener(cListener);
+			gf.use.removeActionListener(cListener);
+			gf.removeGunPart.removeActionListener(cListener);
+			for(JRadioButtonMenuItem item : gf.characters)
+			{
+				item.removeActionListener(item.getActionListeners()[0]);
+			}
+			mapView.removeMouseListener(mapView.getMouseListeners()[0]);
+			mf.setVisible(true);
+			gf.dispose();
+			Game.getInstance().clear();
+			mapView.clear();
+		}
+		else if(Game.getInstance().getWon())
+		{
+			JOptionPane.showMessageDialog(gf, "Megnyerted a jatekot!", "Game Won!", JOptionPane.PLAIN_MESSAGE);
+			gf.setVisible(false);
+			mf.setVisible(true);
+			gf.itemDrop.removeActionListener(cListener);
+			gf.turnend.removeActionListener(cListener);
+			gf.shovel.removeActionListener(cListener);
+			gf.eat.removeActionListener(cListener);
+			gf.breakIce.removeActionListener(cListener);
+			gf.assemble.removeActionListener(cListener);
+			gf.warmup.removeActionListener(cListener);
+			gf.use.removeActionListener(cListener);
+			gf.removeGunPart.removeActionListener(cListener);
+			for(JRadioButtonMenuItem item : gf.characters)
+			{
+				item.removeActionListener(item.getActionListeners()[0]);
+			}
+			mapView.removeMouseListener(mapView.getMouseListeners()[0]);
+			gf.remove(gf.characterPanel);
+			gf.remove(gf.icePanel);
+			gf.remove(gf.menuBar);
+			gf.dispose();
+			Game.getInstance().clear();
+			mapView.clear();
+		}
+		else {
 		gf.update();
+		mapView.update();
+		}
 	}
 }

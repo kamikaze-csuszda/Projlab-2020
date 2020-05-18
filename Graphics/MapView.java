@@ -241,4 +241,12 @@ public class MapView extends JPanel implements UpdateInterface
 		}
 		return null;
 	}
+
+	public void clear()
+	{
+		bearView = null;
+		characterView.clear();
+		iceView.clear();
+		itemView.clear();
+	}
 }

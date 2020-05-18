@@ -26,6 +26,7 @@ public class MenuFrame extends MyFrame
 		super("Jegmezo - Menu");
 		startButton1 = new JButton("Palya 1 Start");
 		startButton2 = new JButton("Palya 2 Start");
+		startButton2.setEnabled(false);
 		closeButton = new JButton("Bezaras");
 		JLabel jl = new JLabel("Jegmezo");
 		this.setSize(400,400);

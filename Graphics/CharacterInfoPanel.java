@@ -61,7 +61,7 @@ public class CharacterInfoPanel extends JPanel implements UpdateInterface
 		{
 			try
 			{
-				temp = temp.concat(Game.getInstance().findName(item));
+				temp = temp.concat(Game.getInstance().findName(item) + ", ");
 			} catch (Exception e){}
 			
 		}
@@ -73,7 +73,7 @@ public class CharacterInfoPanel extends JPanel implements UpdateInterface
 		{
 			try
 			{
-				temp = temp.concat(Game.getInstance().findName(item));
+				temp = temp.concat(Game.getInstance().findName(item) + ", ");
 			} catch (Exception e){}
 			
 		}
