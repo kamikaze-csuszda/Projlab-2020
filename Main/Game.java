@@ -87,9 +87,9 @@ public class Game implements Serializable
 		Eskimo e1 = new Eskimo();
 		Eskimo e2 = new Eskimo();
 		Scientist sc1 = new Scientist();
-		objects.put("e1", e1);
-		objects.put("e2", e2);
-		objects.put("sc1", sc1);
+		objects.put("Bela az eszkimo", e1);
+		objects.put("Jeno az eszkimo", e2);
+		objects.put("Alfonse a kutato", sc1);
 		try
 		{
 			generateMap("map1.txt");
@@ -97,24 +97,12 @@ public class Game implements Serializable
 		{
 			e.printStackTrace();
 		}
-		StableIce.class.cast(objects.get("st1")).addCharacter(e1);
-		StableIce.class.cast(objects.get("st1")).addCharacter(e2);
-		StableIce.class.cast(objects.get("st1")).addCharacter(sc1);
-		e1.setIce(StableIce.class.cast(objects.get("st1")));
-		e2.setIce(StableIce.class.cast(objects.get("st1")));
-		sc1.setIce(StableIce.class.cast(objects.get("st1")));
-		Flare sh = new Flare();
-		e1.addItem(sh);
-		sh.setCharacter(e1);
-		objects.put("flare", sh);
-		FlareGun fg = new FlareGun();
-		e1.addItem(fg);
-		sh.setCharacter(e1);
-		objects.put("flaregun", fg);
-		Cartridge cr = new Cartridge();
-		e1.addItem(cr);
-		sh.setCharacter(e1);
-		objects.put("patron", cr);
+		StableIce.class.cast(objects.get("Stabil Tabla1")).addCharacter(e1);
+		StableIce.class.cast(objects.get("Stabil Tabla1")).addCharacter(e2);
+		StableIce.class.cast(objects.get("Stabil Tabla1")).addCharacter(sc1);
+		e1.setIce(StableIce.class.cast(objects.get("Stabil Tabla1")));
+		e2.setIce(StableIce.class.cast(objects.get("Stabil Tabla1")));
+		sc1.setIce(StableIce.class.cast(objects.get("Stabil Tabla1")));
 		generateItems1();
 	}
 	
@@ -123,32 +111,32 @@ public class Game implements Serializable
 		Flare r1 = new Flare();
 		Cartridge r2 = new Cartridge();
 		FlareGun r3 = new FlareGun();
-		objects.put("r1", r1);
-		objects.put("r2", r2);
-		objects.put("r3", r3);
-		UnstableIce.class.cast(objects.get("usi1")).addItem(r3);
-		StableIce.class.cast(objects.get("st1")).addItem(r1);
-		StableIce.class.cast(objects.get("st4")).addItem(r2);
+		objects.put("jelzofeny", r1);
+		objects.put("patron", r2);
+		objects.put("jelzopisztoly", r3);
+		UnstableIce.class.cast(objects.get("Instabil Tabla1")).addItem(r3);
+		StableIce.class.cast(objects.get("Stabil Tabla1")).addItem(r1);
+		StableIce.class.cast(objects.get("Stabil Tabla4")).addItem(r2);
 		Shovel sh = new Shovel();
-		objects.put("sh",  sh);
+		objects.put("aso",  sh);
 		Food f = new Food();
-		objects.put("f",  f);
+		objects.put("elelem",  f);
 		Rope r = new Rope();
-		objects.put("r",  r);
+		objects.put("kotel",  r);
 		DivingSuit ds = new DivingSuit();
-		objects.put("ds",  ds);
+		objects.put("buvarruha",  ds);
 		Tent t = new Tent();
-		objects.put("t",  t);
-		StableIce.class.cast(objects.get("st2")).addItem(sh);
-		StableIce.class.cast(objects.get("st3")).addItem(f);
-		StableIce.class.cast(objects.get("st3")).addItem(t);
-		StableIce.class.cast(objects.get("st5")).addItem(ds);
-		UnstableIce.class.cast(objects.get("usi2")).addItem(r);
+		objects.put("sator",  t);
+		StableIce.class.cast(objects.get("Stabil Tabla2")).addItem(sh);
+		StableIce.class.cast(objects.get("Stabil Tabla3")).addItem(f);
+		StableIce.class.cast(objects.get("Stabil Tabla3")).addItem(t);
+		StableIce.class.cast(objects.get("Stabil Tabla5")).addItem(ds);
+		UnstableIce.class.cast(objects.get("Instabil Tabla2")).addItem(r);
 		PolarBear pb = new PolarBear();
 		maci.add(pb);
 		objects.put("pb", pb);
-		pb.setIce(StableIce.class.cast(objects.get("st5")));
-		StableIce.class.cast(objects.get("st5")).setBearStrategy(new Bear());;
+		pb.setIce(StableIce.class.cast(objects.get("Stabil Tabla5")));
+		StableIce.class.cast(objects.get("Stabil Tabla5")).setBearStrategy(new Bear());;
 		
 	}
 	
@@ -183,7 +171,7 @@ public class Game implements Serializable
 			{
 			case 0:
 			{
-				name = "st" + stable;
+				name = "Stabil Tabla" + stable;
 				stable++;
 				StableIce st = new StableIce();
 				objects.put(name, st);
@@ -192,7 +180,7 @@ public class Game implements Serializable
 			}
 			case 1:
 			{
-				name = "usi" + unstable;
+				name = "Instabil Tabla" + unstable;
 				unstable++;
 				UnstableIce usi = new UnstableIce((int)(numOfCharacters / 2));
 				objects.put(name, usi);
@@ -201,7 +189,7 @@ public class Game implements Serializable
 			}
 			case 2:
 			{
-				name = "hi" + hole;
+				name = "Lukas Tabla" + hole;
 				hole++;
 				HoleIce hi = new HoleIce();
 				objects.put(name, hi);
