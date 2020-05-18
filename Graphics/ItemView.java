@@ -63,7 +63,7 @@ public class ItemView implements UpdateInterface
 			if(item instanceof FlareGun)
 				fr = new File("pisztoly.png");
 			if(item instanceof Tent)
-				return;
+				fr = new File("tent.png");
 			 bi = ImageIO.read(fr);
 			
 		} catch (FileNotFoundException e)

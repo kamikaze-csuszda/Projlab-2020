@@ -19,6 +19,7 @@ import Ice.StableIce;
 import Ice.UnstableIce;
 import Item.Item;
 import Main.Game;
+import Strategy.Bear;
 
 public class MapView extends JPanel implements UpdateInterface
 {
@@ -99,6 +100,17 @@ public class MapView extends JPanel implements UpdateInterface
 		super.paintComponent(g);
 		ArrayList<Position> grid = new ArrayList<Position>();
 		Graphics2D g2 = (Graphics2D)g;
+		for(ItemView item : itemView)
+		{
+			if(item.getItem().getIce() == null)
+				item.getIceView().removeItemView(item);
+			else if(!item.getIceView().getItemView().contains(item))
+				{
+					item.setIceView(getIceView(item.getItem().getIce()));
+					item.getIceView().addItemView(item);
+				}
+			
+		}
 		for (IceView item : iceView)
 		{
 			g2.setColor(Color.PINK);
@@ -121,8 +133,10 @@ public class MapView extends JPanel implements UpdateInterface
 			}
 			if(item instanceof StableView)
 				g.setColor(Color.white);
-			else if(item instanceof UnstableView)
+			else if(item instanceof UnstableView && item.explored)
 				g.setColor(Color.gray);
+			else if(item instanceof UnstableView && !item.explored)
+				g.setColor(Color.white);
 			else if(item instanceof HoleView)
 				g.setColor(Color.red);
 			
@@ -134,7 +148,18 @@ public class MapView extends JPanel implements UpdateInterface
 			}
 			for (ItemView itv : item.getItemView())
 			{
-				itv.paint(g, grid.get(gridsTaken));
+				if(item.getIce().getSnow() == 0)
+				{itv.paint(g, grid.get(gridsTaken));
+				gridsTaken++;}
+			}
+			if(item.getIce().getBearStrategy() instanceof Bear)
+				item.setBearView(new BearView(item));
+			else {
+				item.removeBearView();
+			}
+			if(item.getBearView() != null)
+			{
+				item.getBearView().paint(g, grid.get(gridsTaken));
 				gridsTaken++;
 			}
 			repaint(0, 0, getWidth(), getHeight());
@@ -182,11 +207,38 @@ public class MapView extends JPanel implements UpdateInterface
 				item.addCharacterView(cv);
 				characterView.add(cv);
 			}
+			
 		}
+		for(CharacterView cv: characterView)
+		{
+			for (Item it : cv.getCharacter().getEquipment())
+			{
+				ItemView iv = new ItemView(new IceView(), it);
+				itemView.add(iv);
+			}
+		}
+	}
+	public CharacterView getCharacterView(Character c) {
+		for (CharacterView cv : characterView)
+		{
+			if(cv.getCharacter() == c)
+				return cv;
+		}
+		return null;
 	}
 	@Override
 	public void update()
 	{
-		
+		paintComponent(getGraphics());
+	}
+
+	public IceView getIceView(Ice ice)
+	{
+		for (IceView iv : iceView)
+		{
+			if(iv.getIce() == ice)
+				return iv;
+		}
+		return null;
 	}
 }

@@ -13,12 +13,16 @@ import Characters.Eskimo;
 import Characters.Scientist;
 import Item.BreakableShovel;
 import Item.Shovel;
-public class CharacterView implements UpdateInterface
+public class CharacterView
 {
 	private Character character;
 	private IceView iceView;
+	private Image img;
 	public void setCharacter(Character c) {
 		character = c;
+	}
+	public void setIceView(IceView iv) {
+		iceView = iv;
 	}
 	public IceView getIceView() {
 		return iceView;
@@ -29,14 +33,6 @@ public class CharacterView implements UpdateInterface
 	public CharacterView(IceView i, Character c) {
 		character = c;
 		iceView = i;
-	}
-	@Override
-	public void update()
-	{
-		
-	}
-	public void paint(Graphics g, Position pos)
-	{
 		File fr = null;
 		BufferedImage bi = null;
 		try
@@ -54,9 +50,15 @@ public class CharacterView implements UpdateInterface
 	{
 		e.printStackTrace();
 	}
-	Image img = bi.getScaledInstance(46, 46, Image.SCALE_DEFAULT);
-	g.drawImage(img, pos.getX(), pos.getY(), null);
+	img = bi.getScaledInstance(46, 46, Image.SCALE_DEFAULT);
+	}
+	public void update()
+	{
 		
+	}
+	public void paint(Graphics g, Position pos)
+	{
+		g.drawImage(img, pos.getX(), pos.getY(), null);
 	}
 
 }

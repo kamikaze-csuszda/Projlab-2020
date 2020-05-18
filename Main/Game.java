@@ -116,6 +116,11 @@ public class Game implements Serializable
 		e1.setIce(StableIce.class.cast(objects.get("st1")));
 		e2.setIce(StableIce.class.cast(objects.get("st1")));
 		sc1.setIce(StableIce.class.cast(objects.get("st1")));
+		Rope sh = new Rope();
+		e1.addItem(sh);
+		e1.getItem(0).use();
+		sh.setCharacter(e1);
+		objects.put("kotel", sh);
 		generateItems1();
 	}
 	
@@ -146,6 +151,7 @@ public class Game implements Serializable
 		StableIce.class.cast(objects.get("st5")).addItem(ds);
 		UnstableIce.class.cast(objects.get("usi2")).addItem(r);
 		PolarBear pb = new PolarBear();
+		maci.add(pb);
 		objects.put("pb", pb);
 		pb.setIce(StableIce.class.cast(objects.get("st5")));
 		StableIce.class.cast(objects.get("st5")).setBearStrategy(new Bear());;

@@ -34,6 +34,7 @@ public class Food extends Item
 		Character c = this.getCharacter();
 		c.warmthInc();
 		c.removeItem(this);
+		c.decAction();
 	}
 	@Override
 	public String getItemClass()

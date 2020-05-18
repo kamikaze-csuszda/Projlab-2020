@@ -38,8 +38,11 @@ public class Scientist extends Character
 	 */
 	public int ability(int d) throws Exception
 	{
-		int result = getIce().getNeighbour(d).getMaxCharacters();
-		return result;
+		if(getAction() > 0) {
+			decAction();
+			return getIce().getNeighbour(d).getMaxCharacters();
+		}
+		return -444;
 		
 	}
 }

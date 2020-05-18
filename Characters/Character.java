@@ -312,10 +312,12 @@ public abstract class Character implements Movable
 	
 	public void warmup()
 	{
+		if(action >= 3) {
 		for (int i = 0; i < 3; i++) {
 			decAction();
 		}
 		warmthInc();
+		}
 	}
 	/**
 	 * csokkenti a bodywarmth erteket eggyel 
@@ -341,16 +343,18 @@ public abstract class Character implements Movable
 	 */
 	public void move(int d)
 	{
-		try {
-			Ice now = ice;
-			ice.removeCharacter(this);
-			setIce(ice.getNeighbour(d));
-			now.getNeighbour(d).moveHere(this);
-			
-			
-			ice.bearHere();
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		if(action > 0){
+			try {
+				Ice now = ice;
+				ice.removeCharacter(this);
+				setIce(ice.getNeighbour(d));
+				now.getNeighbour(d).moveHere(this);
+				
+				action--;
+				ice.bearHere();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 	/**

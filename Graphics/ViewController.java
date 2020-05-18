@@ -10,7 +10,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import Ice.Ice;
+import Item.Food;
+import Item.Item;
 import Main.Game;
+import Characters.Character;
+import Characters.Eskimo;
+import Characters.Scientist;
 
 import javax.swing.*;
 
@@ -63,7 +68,6 @@ public class ViewController implements UpdateInterface
 		}
 		frames.add(new GameFrame());
 		gf = (GameFrame)frames.get(1);
-		generateActionListeners();
 		mf.setActive(false);
 		gf.setActive(true);
 		mf.setVisible(false);
@@ -72,35 +76,241 @@ public class ViewController implements UpdateInterface
 		mapView.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				for (IceView item : mapView.getIceView())
+				if(gf.move.isSelected())
 				{
-					Rectangle rect = new Rectangle(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
-					if(rect.contains(e.getX(), e.getY())) 
+					int direction = 0;
+					for (IceView item : mapView.getIceView())
 					{
-						selectedIce = item.getIce();
-					gf.icePanel.setIce(selectedIce);
+						Rectangle rect = new Rectangle(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+						if(rect.contains(e.getX(), e.getY())) 
+						{
+							if(selectedCharacter.getIce().getNeighbourArray().contains(item.getIce()))
+							{
+								direction = selectedCharacter.getIce().getNeighbourArray().indexOf(item.getIce());
+								mapView.getIceView(selectedCharacter.getIce()).removeCharacterView(mapView.getCharacterView(selectedCharacter));
+								selectedCharacter.move(direction);
+								mapView.getCharacterView(selectedCharacter).setIceView(mapView.getIceView(selectedCharacter.getIce()));
+								mapView.getIceView(selectedCharacter.getIce()).addCharacterView(mapView.getCharacterView(selectedCharacter));
+							}
+						}
+					}
+					gf.update();
+					mapView.update();
+				}
+				else if(gf.itemGive.isSelected())
+				{
+					int index=999;
+					ArrayList<Position> grid = new ArrayList<Position>();
+					
+						Rectangle rect = new Rectangle(mapView.getIceView(selectedCharacter.getIce()).getPos().getX(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getY(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR());
+						if(rect.contains(e.getX(), e.getY())) 
+						{
+							for(int i = 0; i < 3; i++)
+							{
+								for(int j = 0; j < 3; j++) {
+									grid.add(new Position((j*46) + mapView.getIceView(selectedCharacter.getIce()).getPos().getX(), 
+											(i*46) + mapView.getIceView(selectedCharacter.getIce()).getPos().getY(), 46));
+								}
+							}
+							for(int i = 0; i < grid.size(); i++) {
+								Rectangle rect2 = new Rectangle(grid.get(i).getX(),grid.get(i).getY(), 46, 46);
+								if(rect2.contains(e.getX(), e.getY()))
+									index = i;
+							}
+						}
+					if(selectedCharacter.getIce().getCharNum() >= index)
+					{
+						try
+						{
+							if(!selectedCharacter.equals(selectedCharacter.getIce().getCharacter(index)))
+							{
+								String[] choices = new String[selectedCharacter.getEquipment().size() + 1];
+								String s = "none";
+								for(int i = 0; i < choices.length - 1; i++)
+								{
+									choices[i] = Game.getInstance().findName(selectedCharacter.getEquipment().get(i));
+								}
+								choices[choices.length-1] = "none";
+								s = (String)JOptionPane.showInputDialog(gf, "Melyiket adod at?", "Atadas", JOptionPane.PLAIN_MESSAGE, null,choices, "none");
+								if(!s.equals("none"))
+									selectedCharacter.itemGive(selectedCharacter.getIce().getCharacter(index), Item.class.cast(Game.getInstance().getObjects().get(s)));
+							}
+						} catch (Exception e1){}
+					}
+					update();
+				}
+				else if(gf.itemPickup.isSelected()) 
+				{
+					
+				}
+				else if(gf.ability.isSelected()) 
+				{
+					if(selectedCharacter instanceof Scientist)
+					{
+						for (IceView item : mapView.getIceView(selectedCharacter.getIce()).getNeighbours())
+						{
+							Rectangle rect = new Rectangle(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+							if(rect.contains(e.getX(), e.getY())) 
+							{
+								
+								try
+								{
+									if(Scientist.class.cast(selectedCharacter).ability(selectedCharacter.getIce().getNeighbourArray().indexOf(item.getIce())) != -444)
+										item.explored = true;
+								} catch (Exception e1)
+								{
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								}
+							}
+						}
+					}
+					else
+					{
+						Rectangle rect = new Rectangle(mapView.getIceView(selectedCharacter.getIce()).getPos().getX(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getY(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR());
+						if(rect.contains(e.getX(), e.getY())) 
+						{
+							Eskimo.class.cast(selectedCharacter).ability();
+						}
+					}
+					update();
+				}
+				else {
+					for (IceView item : mapView.getIceView())
+					{
+						Rectangle rect = new Rectangle(item.getPos().getX(), item.getPos().getY(), item.getPos().getR(), item.getPos().getR());
+						if(rect.contains(e.getX(), e.getY())) 
+						{
+							selectedIce = item.getIce();
+							gf.icePanel.setIce(mapView.getIceView(selectedIce));
+						}
 					}
 				}
 			}
 		});
-		gf.addIcePanel(new IceInfoPanel(Game.getInstance().getMapPieces().get(0)));
+		for (String key : Game.getInstance().getObjects().keySet())
+		{
+			if(Game.getInstance().getObjects().get(key) instanceof Character)
+			{
+				selectedCharacter = Character.class.cast(Game.getInstance().getObjects().get(key));
+				break;
+			}
+		}
+		gf.addCharPanel(new CharacterInfoPanel(selectedCharacter));
+		gf.addIcePanel(new IceInfoPanel(mapView.getIceView(Ice.class.cast(Game.getInstance().getMapPieces().get(0)))));
+		CommandActionListener cListener = new CommandActionListener();
+		gf.itemDrop.addActionListener(cListener);
+		gf.turnend.addActionListener(cListener);
+		gf.shovel.addActionListener(cListener);
+		gf.eat.addActionListener(cListener);
+		gf.breakIce.addActionListener(cListener);
+		gf.assemble.addActionListener(cListener);
+		gf.warmup.addActionListener(cListener);
+		for (JRadioButtonMenuItem item : gf.characters)
+		{
+			item.addActionListener(new CharacterSelectionActionListener());
+		}
+	}
+	public class CharacterSelectionActionListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			for (JRadioButtonMenuItem item : gf.characters)
+			{
+				if(item.isSelected())
+					selectedCharacter = Character.class.cast(Game.getInstance().getObjects().get(item.getText()));
+			}
+			gf.characterPanel.setCharacter(selectedCharacter);
+			
+		}
 	}
 	public class CommandActionListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			JFrame items = new JFrame("Eszkozvalaszto");
-			items.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-			for(String key : Game.getInstance().getObjects().keySet()){
-				if (Game.getInstance().getObjects().get(key) instanceof Item && Game.getInstance().getObjects().get(key).getCharacter().equals(selectedCharacter))
-					items.add(new JRadioButton(key));
+			if(e.getActionCommand().equals("itemDrop")) 
+			{
+				
+				JFrame items = new JFrame("Eszkozvalaszto");
+				ArrayList<JRadioButton> buttons = new ArrayList<JRadioButton>();
+				ButtonGroup gr = new ButtonGroup();
+				items.setSize(200, 400);
+				items.setLayout(new BoxLayout(items.getContentPane(), BoxLayout.Y_AXIS));
+				items.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				for(Item it: selectedCharacter.getEquipment()){
+					try
+					{
+						JRadioButton jrbmi = new JRadioButton(Game.getInstance().findName(it));
+						items.add(jrbmi);
+						buttons.add(jrbmi);
+						gr.add(jrbmi);
+					} catch (Exception e1)
+					{
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				JButton jb = new JButton("Kivalaszt");
+				jb.addActionListener(new ActionListener()
+				{
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						String key = "";
+						for (JRadioButton button : buttons)
+						{
+							if(button.isSelected())
+								key = button.getText();
+						}
+						if(!key.equals(""))
+							selectedCharacter.itemDiscard(Item.class.cast(Game.getInstance().getObjects().get(key)));
+						items.dispose();
+						gf.update();
+					}
+				});
+				items.add(jb);
+				items.setVisible(true);
 			}
-			items.add(new JButton("Kivalaszt"));
+			else if(e.getActionCommand().equals("turnend")) {
+				try
+				{
+					Game.getInstance().turnend();
+				} catch (Exception e1)
+				{
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				gf.update();
+			}
+			else if(e.getActionCommand().equals("shovel")) {
+				selectedCharacter.dig();
+				gf.update();
+			}
+			else if(e.getActionCommand().equals("eat")) {
+				for(int i = 0; i < selectedCharacter.getEquipment().size(); i++)
+					if(selectedCharacter.getEquipment().get(i) instanceof Food)
+						selectedCharacter.getEquipment().get(i).use();
+				gf.update();
+			}
+			else if(e.getActionCommand().equals("breakIce")) {
+				selectedCharacter.breakIce();
+				gf.update();
+			}
+			else if(e.getActionCommand().equals("assemble")) {
+				selectedCharacter.assembleGun();
+			}
+			else if(e.getActionCommand().equals("warmup")) {
+				selectedCharacter.warmup();
+				update();
+			}
+			
 		}
-	}
-	public void generateActionListeners()
-	{
-		
 	}
 	public void initController() {
 		frames.get(0).setVisible(true);

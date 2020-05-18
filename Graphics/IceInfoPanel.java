@@ -16,12 +16,12 @@ import Strategy.TentStrategy;
 
 public class IceInfoPanel extends JPanel implements UpdateInterface
 {
-	private Ice ice;
+	private IceView ice;
 	private JLabel name;
 	private JLabel snow;
 	private JLabel igloo;
 	private JLabel maxchar;
-	public IceInfoPanel(Ice i)
+	public IceInfoPanel(IceView i)
 	{
 		super();
 		ice = i;
@@ -44,7 +44,7 @@ public class IceInfoPanel extends JPanel implements UpdateInterface
 		super(layout);
 		// TODO Auto-generated constructor stub
 	}
-	public void setIce(Ice i) {
+	public void setIce(IceView i) {
 		ice = i;
 		update();
 		
@@ -56,18 +56,21 @@ public class IceInfoPanel extends JPanel implements UpdateInterface
 		
 		try
 		{
-			name.setText("Jegtabla: " + Game.getInstance().findName(ice));
-			snow.setText("Horeteg: " + ice.getSnow());
-			if(ice.getIglooStrategy() instanceof NoIgloo)
+			name.setText("Jegtabla: " + Game.getInstance().findName(ice.getIce()));
+			snow.setText("Horeteg: " + ice.getIce().getSnow());
+			if(ice.getIce().getIglooStrategy() instanceof NoIgloo)
 				igloo.setText("Van igloo: nincs");
-			else if(ice.getIglooStrategy() instanceof TentStrategy)
+			else if(ice.getIce().getIglooStrategy() instanceof TentStrategy)
 				igloo.setText("Van igloo: sator van");
 			else
 				igloo.setText("Van igloo: van");
-			if(ice.getMaxCharacters() > 0)
-				maxchar.setText("Max karakterek: " + ice.getMaxCharacters());
+			if(ice.explored)
+			{if(ice.getIce().getMaxCharacters() > 0)
+				maxchar.setText("Max karakterek: " + ice.getIce().getMaxCharacters());
 			else
-				maxchar.setText("Max karakterek: Nem instabil");
+				maxchar.setText("Max karakterek: Nem instabil");}
+			else
+				maxchar.setText("Max karakterek: Nincs felfedezve!");
 			
 		} catch (Exception e)
 		{

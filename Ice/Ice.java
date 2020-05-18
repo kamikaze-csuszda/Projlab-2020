@@ -248,7 +248,7 @@ public abstract class Ice
 	 */
 	public int getNeighbourNum()
 	{
-		return neighbourNum;
+		return neighbours.size();
 	}
 	/**
 	 * Kitori a mezon talalhato osszes targyat a jegbol
@@ -267,6 +267,7 @@ public abstract class Ice
 	public void addItem(Item i)
 	{
 		items.add(i);
+		i.setIce(this);
 	}
 	public ArrayList<Ice> getNeighbourArray(){
 		return neighbours;

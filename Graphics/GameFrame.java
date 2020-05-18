@@ -16,10 +16,11 @@ public class GameFrame extends MyFrame implements UpdateInterface
 	public JMenuBar menuBar;
 	public JMenu characterMenu, actionMenu;
 	public ArrayList<JRadioButtonMenuItem> characters;
-	public JMenuItem warmup, itemDrop, shovel, eat, assemble;
+	public JMenuItem warmup, itemDrop, shovel, eat, assemble, turnend, breakIce;
 	public JRadioButtonMenuItem move, itemGive, itemPickup, ability;
 	public IceInfoPanel icePanel;
 	public CharacterInfoPanel characterPanel;
+	public ButtonGroup actions;
 	public GameFrame()
 	{
 		super("Jegmezo - Jatek");
@@ -44,8 +45,12 @@ public class GameFrame extends MyFrame implements UpdateInterface
 		{
 			characterMenu.add(item);
 		}
-		ButtonGroup actions = new ButtonGroup();
+		actions = new ButtonGroup();
+		breakIce = new JMenuItem("Jeg feltorese");
+		breakIce.setActionCommand("breakIce");
 		move = new JRadioButtonMenuItem("Mozgas");
+		turnend = new JMenuItem("Kor vege");
+		turnend.setActionCommand("turnend");
 		warmup = new JMenuItem("Melegedes");
 		warmup.setActionCommand("warmup");
 		eat = new JMenuItem("Eves");
@@ -58,14 +63,15 @@ public class GameFrame extends MyFrame implements UpdateInterface
 		shovel.setActionCommand("shovel");
 		assemble = new JMenuItem("Fegyver osszerakasa");
 		assemble.setActionCommand("assemble");
-		
 		ability = new JRadioButtonMenuItem("Kepesseg hasznalata");
 		JMenuItem cancel = new JMenuItem("Megse");
 		actionMenu.add(warmup);
+		actionMenu.add(breakIce);
 		actionMenu.add(itemDrop);
 		actionMenu.add(shovel);
 		actionMenu.add(eat);
 		actionMenu.add(assemble);
+		actionMenu.add(turnend);
 		actionMenu.addSeparator();
 		actionMenu.add(move);
 		actions.add(move);
