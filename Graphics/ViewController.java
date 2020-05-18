@@ -263,46 +263,24 @@ public class ViewController implements UpdateInterface
 		{
 			if(e.getActionCommand().equals("itemDrop")) 
 			{
-				
-				JFrame items = new JFrame("Eszkozvalaszto");
-				ArrayList<JRadioButton> buttons = new ArrayList<JRadioButton>();
-				ButtonGroup gr = new ButtonGroup();
-				items.setSize(200, 400);
-				items.setLayout(new BoxLayout(items.getContentPane(), BoxLayout.Y_AXIS));
-				items.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				for(Item it: selectedCharacter.getEquipment()){
+				String[] choices = new String[selectedCharacter.getEquipment().size() + 1];
+				String s = "none";
+				for(int i = 0; i < choices.length - 1; i++)
+				{
 					try
 					{
-						JRadioButton jrbmi = new JRadioButton(Game.getInstance().findName(it));
-						items.add(jrbmi);
-						buttons.add(jrbmi);
-						gr.add(jrbmi);
-					} catch (Exception e1)
-					{
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+						choices[i] = Game.getInstance().findName(selectedCharacter.getEquipment().get(i));
+					} catch (Exception e1){}
 				}
-				JButton jb = new JButton("Kivalaszt");
-				jb.addActionListener(new ActionListener()
-				{
-					@Override
-					public void actionPerformed(ActionEvent e)
-					{
-						String key = "";
-						for (JRadioButton button : buttons)
-						{
-							if(button.isSelected())
-								key = button.getText();
-						}
-						if(!key.equals(""))
-							selectedCharacter.itemDiscard(Item.class.cast(Game.getInstance().getObjects().get(key)));
-						items.dispose();
-						gf.update();
-					}
-				});
-				items.add(jb);
-				items.setVisible(true);
+				choices[choices.length-1] = "none";
+				s = (String)JOptionPane.showInputDialog(gf, "Melyiket dobod el?", "Eldobas", JOptionPane.PLAIN_MESSAGE, null,choices, "none");
+				int index = 10;
+				for(int i = 0; i < choices.length; i++)
+					if(s.equals(choices[i]))
+						index = i;
+				if(!s.equals("none"))
+					selectedCharacter.itemDiscard(selectedCharacter.getEquipment().get(index));
+					update();
 			}
 			else if(e.getActionCommand().equals("turnend")) {
 				try
