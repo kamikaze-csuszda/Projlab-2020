@@ -16,7 +16,7 @@ public class GameFrame extends MyFrame implements UpdateInterface
 	public JMenuBar menuBar;
 	public JMenu characterMenu, actionMenu;
 	public ArrayList<JRadioButtonMenuItem> characters;
-	public JMenuItem warmup, itemDrop, shovel, eat, assemble, turnend, breakIce;
+	public JMenuItem warmup, itemDrop, shovel, eat, assemble, turnend, breakIce, use, removeGunPart;
 	public JRadioButtonMenuItem move, itemGive, itemPickup, ability;
 	public IceInfoPanel icePanel;
 	public CharacterInfoPanel characterPanel;
@@ -46,8 +46,12 @@ public class GameFrame extends MyFrame implements UpdateInterface
 			characterMenu.add(item);
 		}
 		actions = new ButtonGroup();
+		removeGunPart = new JMenuItem("Fegyveralkatresz felszerelesbe mozgatasa");
+		removeGunPart.setActionCommand("remove");
 		breakIce = new JMenuItem("Jeg feltorese");
 		breakIce.setActionCommand("breakIce");
+		use = new JMenuItem("Targy hasznalata");
+		use.setActionCommand("use");
 		move = new JRadioButtonMenuItem("Mozgas");
 		turnend = new JMenuItem("Kor vege");
 		turnend.setActionCommand("turnend");
@@ -71,6 +75,8 @@ public class GameFrame extends MyFrame implements UpdateInterface
 		actionMenu.add(shovel);
 		actionMenu.add(eat);
 		actionMenu.add(assemble);
+		actionMenu.add(use);
+		actionMenu.add(removeGunPart);
 		actionMenu.add(turnend);
 		actionMenu.addSeparator();
 		actionMenu.add(move);

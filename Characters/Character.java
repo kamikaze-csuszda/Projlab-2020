@@ -160,13 +160,18 @@ public abstract class Character implements Movable
 	 */
 	public void itemPickup(int i)
 	{
-		try {
-		if(equipment.size()<=4 && ice.getItem(i).getFrozen()==false) {
-			addItem(ice.getItem(i));
-			ice.removeItem(ice.getItem(i));
-				} 
-			}catch (Exception e) {
-				System.out.println(e.getMessage());
+		if(action > 0)
+			{try {
+			if(equipment.size()<=4 && ice.getItem(i).getFrozen()==false) {
+				addItem(ice.getItem(i));
+				ice.getItem(i).setIce(null);
+				ice.removeItem(ice.getItem(i));
+					} 
+			
+				}catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+			action--;
 			}
 	}
 	/**
@@ -388,6 +393,7 @@ public abstract class Character implements Movable
 	 * @param g a kiszedni kivant alkatresz
 	 */
 	public void removeGunpart(Gun g) {
+		
 		if(equipment.size() < 5) {
 			gunParts.remove(g);
 			addItem(g);
@@ -417,5 +423,11 @@ public abstract class Character implements Movable
 	 */
 	public ArrayList<Gun> getGunParts(){
 		return gunParts;
+	}
+	public void itemUse(int index) {
+		if(action > 0) {
+			action--;
+			equipment.get(index).use();
+			}
 	}
 }

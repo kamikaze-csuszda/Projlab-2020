@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Characters.Character;
+import Item.Gun;
 import Item.Item;
 import Main.Game;
 
@@ -17,7 +18,7 @@ public class CharacterInfoPanel extends JPanel implements UpdateInterface
 {
 	private Character selected;
 	private static final long serialVersionUID = 1L;
-	JLabel name, items, warmth, action;
+	JLabel name, items, warmth, action, gunparts;
 	public CharacterInfoPanel(Character c)
 	{
 		super();
@@ -25,14 +26,17 @@ public class CharacterInfoPanel extends JPanel implements UpdateInterface
 		items = new JLabel();
 		warmth = new JLabel();
 		action = new JLabel();
+		gunparts = new JLabel();
 		setCharacter(c);;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setPreferredSize(new Dimension(200, 800));
 		setBackground(new Color(138,210,255));
 		add(name);
 		add(items);
+		add(gunparts);
 		add(warmth);
 		add(action);
+		
 		
 	}
 
@@ -64,6 +68,16 @@ public class CharacterInfoPanel extends JPanel implements UpdateInterface
 		items.setText(temp);
 		warmth.setText("Testho: " + selected.getWarmth() + "/" + selected.getMaxWarmth());
 		action.setText("Hatralevo akciok: " + selected.getAction());
+		temp = "Fegyverreszek: ";
+		for (Gun item : selected.getGunParts())
+		{
+			try
+			{
+				temp = temp.concat(Game.getInstance().findName(item));
+			} catch (Exception e){}
+			
+		}
+		gunparts.setText(temp);
 	}
 
 }

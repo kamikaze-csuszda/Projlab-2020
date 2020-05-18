@@ -144,7 +144,32 @@ public class ViewController implements UpdateInterface
 				}
 				else if(gf.itemPickup.isSelected()) 
 				{
+					int index=999;
+					ArrayList<Position> grid = new ArrayList<Position>();
 					
+						Rectangle rect = new Rectangle(mapView.getIceView(selectedCharacter.getIce()).getPos().getX(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getY(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR(), 
+								mapView.getIceView(selectedCharacter.getIce()).getPos().getR());
+						if(rect.contains(e.getX(), e.getY())) 
+						{
+							for(int i = 0; i < 3; i++)
+							{
+								for(int j = 0; j < 3; j++) {
+									grid.add(new Position((j*46) + mapView.getIceView(selectedCharacter.getIce()).getPos().getX(), 
+											(i*46) + mapView.getIceView(selectedCharacter.getIce()).getPos().getY(), 46));
+								}
+							}
+							for(int i = 0; i < grid.size(); i++) {
+								Rectangle rect2 = new Rectangle(grid.get(i).getX(),grid.get(i).getY(), 46, 46);
+								if(rect2.contains(e.getX(), e.getY()))
+									index = i;
+							}
+						}
+						index -= selectedCharacter.getIce().getCharNum();
+						if(selectedCharacter.getIce().getItemArray().size() >= index)
+							selectedCharacter.itemPickup(index);
+						update();
 				}
 				else if(gf.ability.isSelected()) 
 				{
@@ -212,6 +237,8 @@ public class ViewController implements UpdateInterface
 		gf.breakIce.addActionListener(cListener);
 		gf.assemble.addActionListener(cListener);
 		gf.warmup.addActionListener(cListener);
+		gf.use.addActionListener(cListener);
+		gf.removeGunPart.addActionListener(cListener);
 		for (JRadioButtonMenuItem item : gf.characters)
 		{
 			item.addActionListener(new CharacterSelectionActionListener());
@@ -309,7 +336,46 @@ public class ViewController implements UpdateInterface
 				selectedCharacter.warmup();
 				update();
 			}
-			
+			else if(e.getActionCommand().equals("use")) {
+				String[] choices = new String[selectedCharacter.getEquipment().size() + 1];
+				String s = "none";
+				for(int i = 0; i < choices.length - 1; i++)
+				{
+					try
+					{
+						choices[i] = Game.getInstance().findName(selectedCharacter.getEquipment().get(i));
+					} catch (Exception e1){}
+				}
+				choices[choices.length-1] = "none";
+				s = (String)JOptionPane.showInputDialog(gf, "Melyiket hasznalod?", "Hasznalat", JOptionPane.PLAIN_MESSAGE, null,choices, "none");
+				int index = 10;
+				for(int i = 0; i < choices.length; i++)
+					if(s.equals(choices[i]))
+						index = i;
+				if(!s.equals("none"))
+					selectedCharacter.itemUse(index);
+				update();
+			}
+			else if(e.getActionCommand().equals("remove")) {
+				String[] choices = new String[selectedCharacter.getGunParts().size() + 1];
+				String s = "none";
+				for(int i = 0; i < choices.length - 1; i++)
+				{
+					try
+					{
+						choices[i] = Game.getInstance().findName(selectedCharacter.getGunParts().get(i));
+					} catch (Exception e1){}
+				}
+				choices[choices.length-1] = "none";
+				s = (String)JOptionPane.showInputDialog(gf, "Melyiket rakod vissza?", "Eltavolitas", JOptionPane.PLAIN_MESSAGE, null,choices, "none");
+				int index = 10;
+				for(int i = 0; i < choices.length; i++)
+					if(s.equals(choices[i]))
+						index = i;
+				if(!s.equals("none"))
+					selectedCharacter.removeGunpart(selectedCharacter.getGunParts().get(index));
+				update();
+			}
 		}
 	}
 	public void initController() {

@@ -116,11 +116,10 @@ public class Game implements Serializable
 		e1.setIce(StableIce.class.cast(objects.get("st1")));
 		e2.setIce(StableIce.class.cast(objects.get("st1")));
 		sc1.setIce(StableIce.class.cast(objects.get("st1")));
-		Rope sh = new Rope();
+		Tent sh = new Tent();
 		e1.addItem(sh);
-		e1.getItem(0).use();
 		sh.setCharacter(e1);
-		objects.put("kotel", sh);
+		objects.put("sator", sh);
 		generateItems1();
 	}
 	
